@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="1_h00vy"]
 [ext_resource type="Script" uid="uid://b3iru2dj4bi4g" path="res://scenes/Player/player.gd" id="1_ky53y"]
+[ext_resource type="Script" uid="uid://b5j1tlv6juamc" path="res://scenes/Player/lerpCamera.gd" id="3_bvqhm"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_h00vy"]
 
@@ -37,4 +38,5 @@ shape = SubResource("RectangleShape2D_ky53y")
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 texture = SubResource("GradientTexture2D_ky53y")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1335660228]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=910468840]
+script = ExtResource("3_bvqhm")
