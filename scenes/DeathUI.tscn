@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://b0ea0pkrkrqyj"]
+
+[ext_resource type="Texture2D" uid="uid://ds2on7amp5fky" path="res://scenes/MyDrilla.png" id="1_n3gfk"]
+[ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_pihsr"]
+[ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_n3gfk"]
+
+[node name="DeathUi" type="Control" unique_id=716579032]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=550521349]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39120886, 0.35433006, 0.3330147, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=399867372]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = 468.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=254632277]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=694017651]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_pihsr")
+theme_override_font_sizes/font_size = 32
+text = "drillin'"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1068205948]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_n3gfk")
+theme_override_font_sizes/font_size = 42
+text = "Play"
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1024862383]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control" unique_id=1719194117]
+top_level = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 401.0
+offset_top = 110.0
+offset_right = 529.0
+offset_bottom = 238.0
+rotation = 0.1308997
+texture = ExtResource("1_n3gfk")
+stretch_mode = 5
