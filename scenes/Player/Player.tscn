@@ -1,3 +1,38 @@
 [gd_scene format=3 uid="uid://coc1f6okc4yx7"]
 
+[ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="1_h00vy"]
+[ext_resource type="Script" uid="uid://b3iru2dj4bi4g" path="res://scenes/Player/player.gd" id="1_ky53y"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_h00vy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky53y"]
+size = Vector2(28, 42)
+
+[sub_resource type="Gradient" id="Gradient_h00vy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ky53y"]
+gradient = SubResource("Gradient_h00vy")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [node name="Player" type="Sprite2D" unique_id=591300798]
+texture = SubResource("ImageTexture_h00vy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2035189495]
+script = ExtResource("1_ky53y")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=103217289]
+texture_filter = 1
+texture = ExtResource("1_h00vy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1931208187]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ky53y")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=429943406]
+color = Color(0.92156863, 0.62352943, 0.28627452, 1)
+texture = SubResource("GradientTexture2D_ky53y")
