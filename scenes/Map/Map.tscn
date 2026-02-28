@@ -22,7 +22,6 @@ sources/0 = SubResource("TileSetAtlasSource_x27a8")
 [node name="Map" type="Node" unique_id=107924198]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=555694956]
-visible = false
 color = Color(0.2574758, 0.25747576, 0.25747573, 1)
 energy = 3.25
 blend_mode = 1
