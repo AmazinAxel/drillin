@@ -20,6 +20,7 @@ fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
 [node name="Player" type="Sprite2D" unique_id=591300798]
+scale = Vector2(1.0053291, 1)
 texture = SubResource("ImageTexture_h00vy")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2035189495]
