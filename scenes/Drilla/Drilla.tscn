@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://che0kn53qwtxy"]
+
+[ext_resource type="Texture2D" uid="uid://cun7f45f3byma" path="res://scenes/Drilla/MyDrillin.png" id="1_7tgjl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2uqm"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb5c1"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygnt4"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruqpt"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbbk6"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h2t3"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4ra2"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crvsb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2uqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb5c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygnt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruqpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbbk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h2t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4ra2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 42.0
+}]
+
+[node name="Drilla" type="Node" unique_id=222219034]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=929274075]
+sprite_frames = SubResource("SpriteFrames_crvsb")
+frame_progress = 0.8264961

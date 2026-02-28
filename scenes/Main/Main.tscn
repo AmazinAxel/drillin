@@ -2,11 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://b2wrk6fclb2g4" path="res://scenes/Map/Map.tscn" id="1_owiiy"]
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
+[ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 
 [node name="Main" type="Node" unique_id=2130844757]
 
 [node name="Map" parent="." unique_id=107924198 instance=ExtResource("1_owiiy")]
 
 [node name="Player" parent="." unique_id=591300798 instance=ExtResource("2_8llo8")]
+position = Vector2(148, -134)
+
+[node name="Drilla" parent="." unique_id=222219034 instance=ExtResource("3_8llo8")]
 position = Vector2(925, 546)
 scale = Vector2(-1, 1)
