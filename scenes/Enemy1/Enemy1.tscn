@@ -1,19 +1,70 @@
 [gd_scene format=3 uid="uid://bwgg0l4esmqmt"]
 
 [ext_resource type="Script" uid="uid://bumefr8jq8jmh" path="res://scenes/Enemy1/enemy.gd" id="1_o2ma7"]
-[ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="2_ecdva"]
+[ext_resource type="Texture2D" uid="uid://637gamsd6seb" path="res://scenes/SlimeIceAttack.png" id="2_o2ma7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqqjk"]
-size = Vector2(28, 42)
+size = Vector2(28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecdva"]
+atlas = ExtResource("2_o2ma7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqqjk"]
+atlas = ExtResource("2_o2ma7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfl7l"]
+atlas = ExtResource("2_o2ma7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_258k1"]
+atlas = ExtResource("2_o2ma7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kngcm"]
+atlas = ExtResource("2_o2ma7")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0mjf"]
+atlas = ExtResource("2_o2ma7")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubwdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecdva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqqjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfl7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_258k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kngcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0mjf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Enemy1" type="CharacterBody2D" unique_id=835573775]
 script = ExtResource("1_o2ma7")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2087475064]
-texture_filter = 1
-position = Vector2(-7.1525574e-07, 4.7683716e-07)
-texture = ExtResource("2_ecdva")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=29585376]
-position = Vector2(2, 2)
+position = Vector2(2, -6.5)
 shape = SubResource("RectangleShape2D_aqqjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1504369345]
+position = Vector2(2, -5.5)
+scale = Vector2(0.875, 0.84375)
+sprite_frames = SubResource("SpriteFrames_ubwdv")
+frame_progress = 0.5377365

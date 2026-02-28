@@ -35,4 +35,7 @@ tile_set = SubResource("TileSet_iut6q")
 [node name="Spawnpoints1" type="Node" parent="." unique_id=169008920]
 
 [node name="Marker2D" type="Marker2D" parent="Spawnpoints1" unique_id=890832645]
-position = Vector2(-158, 185)
+position = Vector2(731, 276)
+
+[node name="Marker2D" type="Marker2D" parent="Spawnpoints1/Marker2D" unique_id=1602721701]
+position = Vector2(302, 344)
