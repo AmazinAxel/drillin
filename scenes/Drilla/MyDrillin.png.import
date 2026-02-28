@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds2on7amp5fky"
-path="res://.godot/imported/MyDrilla.png-53831ca2224b481b589710f4f22df8b9.ctex"
+uid="uid://cun7f45f3byma"
+path="res://.godot/imported/MyDrillin.png-4f7167272a7fa33fb9ac6787de40f241.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/MyDrilla.png"
-dest_files=["res://.godot/imported/MyDrilla.png-53831ca2224b481b589710f4f22df8b9.ctex"]
+source_file="res://scenes/Drilla/MyDrillin.png"
+dest_files=["res://.godot/imported/MyDrillin.png-4f7167272a7fa33fb9ac6787de40f241.ctex"]
 
 [params]
 
