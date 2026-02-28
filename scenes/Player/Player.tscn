@@ -1,37 +1,87 @@
 [gd_scene format=3 uid="uid://coc1f6okc4yx7"]
 
-[ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="1_h00vy"]
 [ext_resource type="Script" uid="uid://bbc03uvvumeip" path="res://scenes/Player/playerMovement.gd" id="1_ky53y"]
+[ext_resource type="Texture2D" uid="uid://bq0ebqqy3bya1" path="res://scenes/Walker3000.png" id="2_ky53y"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_h00vy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky53y"]
-size = Vector2(28, 42)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvqhm"]
+atlas = ExtResource("2_ky53y")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="Gradient" id="Gradient_h00vy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ved6o"]
+atlas = ExtResource("2_ky53y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcisb"]
+atlas = ExtResource("2_ky53y")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_socpp"]
+atlas = ExtResource("2_ky53y")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxc31"]
+atlas = ExtResource("2_ky53y")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puxyr"]
+atlas = ExtResource("2_ky53y")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmokv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvqhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ved6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcisb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_socpp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxc31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puxyr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky53y"]
+size = Vector2(16.909885, 32)
+
+[sub_resource type="Gradient" id="Gradient_dqp0f"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ky53y"]
-gradient = SubResource("Gradient_h00vy")
+gradient = SubResource("Gradient_dqp0f")
 width = 128
 height = 128
 fill = 1
 fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
-[node name="Player" type="Sprite2D" unique_id=591300798]
+[node name="Player" type="Sprite2D" unique_id=591300798 groups=["player"]]
 scale = Vector2(1.0053291, 1)
 texture = SubResource("ImageTexture_h00vy")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2035189495]
 script = ExtResource("1_ky53y")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=103217289]
-texture_filter = 1
-texture = ExtResource("1_h00vy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1918917714]
+sprite_frames = SubResource("SpriteFrames_mmokv")
+frame_progress = 0.0776589
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1931208187]
-position = Vector2(2, 2)
+position = Vector2(-0.49735004, 0)
 shape = SubResource("RectangleShape2D_ky53y")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=429943406]
@@ -47,3 +97,4 @@ offset_left = -17.0
 offset_top = -28.0
 offset_right = 20.0
 offset_bottom = -20.0
+metadata/_edit_use_anchors_ = true
