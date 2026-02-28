@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2wrk6fclb2g4" path="res://scenes/Map/Map.tscn" id="1_owiiy"]
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
+[ext_resource type="PackedScene" uid="uid://b0ea0pkrkrqyj" path="res://scenes/DeathUI.tscn" id="4_brr1f"]
 
 [node name="Main" type="Node" unique_id=2130844757]
 
@@ -14,3 +15,5 @@ position = Vector2(1399, 745)
 [node name="Drilla" parent="." unique_id=222219034 instance=ExtResource("3_8llo8")]
 position = Vector2(1435, 746)
 scale = Vector2(-1, 1)
+
+[node name="DeathUi" parent="." unique_id=716579032 instance=ExtResource("4_brr1f")]
