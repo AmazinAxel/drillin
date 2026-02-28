@@ -40,6 +40,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=694017651]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_pihsr")
 theme_override_font_sizes/font_size = 42

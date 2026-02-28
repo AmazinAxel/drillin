@@ -34,8 +34,15 @@ position = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_ky53y")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=429943406]
+position = Vector2(0, 3)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 texture = SubResource("GradientTexture2D_ky53y")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1335660228]
 zoom = Vector2(2, 2)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=220829333]
+offset_left = -17.0
+offset_top = -28.0
+offset_right = 20.0
+offset_bottom = -20.0

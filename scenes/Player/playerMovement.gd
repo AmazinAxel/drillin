@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 10
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -350.0
 
 @onready var spotLight = $PointLight2D  # adjust path as needed
 
