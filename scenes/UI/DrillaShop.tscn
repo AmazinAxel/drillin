@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://cn0c5air71r5c"]
 
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_21mno"]
+[ext_resource type="Script" uid="uid://cyur2o4xvcstp" path="res://scenes/UI/upgradeShop.gd" id="1_yhmws"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_n4ip6"]
-[ext_resource type="Script" path="res://scenes/button.gd" id="3_jx6w6"]
 
 [node name="DrillaShop" type="Control" unique_id=1174118641]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yhmws")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1923499551]
 layout_mode = 1
@@ -55,7 +55,6 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "Upgrade Weapon (5)"
-script = ExtResource("3_jx6w6")
 
 [node name="HealthUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=161677201]
 custom_minimum_size = Vector2(140, 0)
@@ -65,7 +64,6 @@ theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "Upgrade Armor (5)
 "
-script = ExtResource("3_jx6w6")
 
 [node name="RiskUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=989345003]
 custom_minimum_size = Vector2(140, 0)
@@ -75,7 +73,6 @@ theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "Reduce Risk (2)
 "
-script = ExtResource("3_jx6w6")
 
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1966712827]
 custom_minimum_size = Vector2(140, 0)
@@ -85,14 +82,12 @@ theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "-- Continue -- 
 "
-script = ExtResource("3_jx6w6")
 
 [node name="Control" type="Control" parent="HBoxContainer" unique_id=1165342862]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/DamageUpgrade" to="HBoxContainer/VBoxContainer/DamageUpgrade" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/HealthUpgrade" to="HBoxContainer/VBoxContainer/HealthUpgrade" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/RiskUpgrade" to="HBoxContainer/VBoxContainer/RiskUpgrade" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/DamageUpgrade" to="." method="_on_damage_upgrade_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HealthUpgrade" to="." method="_on_health_upgrade_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/RiskUpgrade" to="." method="_on_risk_upgrade_pressed"]
