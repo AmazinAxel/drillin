@@ -7,10 +7,13 @@ var jump_force = -300.0
 var damage = 10
 var can_damage = true
 
+@onready var enemyWalkingAnimation = $AnimatedSprite2D 
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
+	enemyWalkingAnimation.play("default")
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var direction = (player.global_position - global_position).normalized()

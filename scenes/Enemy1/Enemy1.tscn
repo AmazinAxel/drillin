@@ -62,6 +62,7 @@ script = ExtResource("1_o2ma7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=29585376]
 position = Vector2(2, -6.5)
 shape = SubResource("RectangleShape2D_aqqjk")
+one_way_collision = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1504369345]
 position = Vector2(2, -5.5)

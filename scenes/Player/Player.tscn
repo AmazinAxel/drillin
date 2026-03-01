@@ -103,3 +103,31 @@ metadata/_edit_use_anchors_ = true
 [node name="Heart" type="Sprite2D" parent="." unique_id=1888556675]
 position = Vector2(-18.814468, -24)
 texture = ExtResource("5_fxc31")
+
+[node name="damageParticles" type="CPUParticles2D" parent="." unique_id=1158062059]
+emitting = false
+amount = 10
+texture = ExtResource("4_socpp")
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+initial_velocity_min = 82.68
+initial_velocity_max = 144.13
+scale_amount_min = 0.8
+
+[node name="walkingParticles" type="CPUParticles2D" parent="." unique_id=640064207]
+position = Vector2(-0.9946991, 14)
+emitting = false
+amount = 2
+texture = ExtResource("3_xcisb")
+lifetime = 0.09999999999999999
+one_shot = true
+speed_scale = 0.6
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+initial_velocity_min = 82.68
+initial_velocity_max = 144.13
+scale_amount_min = 0.8

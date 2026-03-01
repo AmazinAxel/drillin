@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -350.0
 @onready var spotLight = $PointLight2D
 @onready var health_bar = $TextureProgressBar
 @onready var sprite = $AnimatedSprite2D
+@onready var damageParticles = $damageParticles
+@onready var walkingParticles = $walkingParticles
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -15,12 +17,14 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = lerp(direction * SPEED, direction * SPEED * 2, 10)
-		# Flip sprite based on direction
 		sprite.flip_h = direction > 0
+		sprite.play("default")
+		walkingParticles.emitting = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		sprite.set_frame_and_progress(0, 0)
+		sprite.pause()
 		
-	sprite.play("default")
 	move_and_slide()
 	
 	var mousePos = get_global_mouse_position()
@@ -35,6 +39,7 @@ func take_damage(amount):
 	var actual_damage = amount * Globals.damageReduction
 	Globals.health -= actual_damage
 	Globals.health = max(Globals.health, 0)
+	damageParticles.emitting = true
 	if health_bar:
 		health_bar.value = Globals.health
 	modulate = Color.RED
