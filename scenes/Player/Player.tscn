@@ -5,7 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_xcisb"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_socpp"]
 [ext_resource type="Texture2D" uid="uid://dbqx4wuya0ivd" path="res://scenes/Heart.png" id="5_fxc31"]
+[ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="6_fxc31"]
+[ext_resource type="Texture2D" uid="uid://b8242othxtd1a" path="res://assets/sprites/OhParticle.png" id="6_puxyr"]
 [ext_resource type="Texture2D" uid="uid://ndi6sbrklvgq" path="res://assets/sprites/flashlight.png" id="6_socpp"]
+[ext_resource type="Texture2D" uid="uid://bj6ytqqb302rb" path="res://assets/sprites/OuchParticle.png" id="9_tl8lu"]
+[ext_resource type="Texture2D" uid="uid://becivtixuvqgf" path="res://assets/sprites/UhParticle.png" id="10_qt7jd"]
+[ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvqhm"]
 atlas = ExtResource("2_ky53y")
@@ -60,16 +65,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ky53y"]
 size = Vector2(16.909885, 32)
 
-[sub_resource type="Gradient" id="Gradient_dqp0f"]
+[sub_resource type="Gradient" id="Gradient_puxyr"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ky53y"]
-gradient = SubResource("Gradient_dqp0f")
+gradient = SubResource("Gradient_puxyr")
 width = 128
 height = 128
 fill = 1
 fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
+
+[sub_resource type="Gradient" id="Gradient_8djf2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_lbts4"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 scale = Vector2(1.0053291, 1)
@@ -105,11 +116,14 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-18.814468, -24)
 texture = ExtResource("5_fxc31")
 
-[node name="damageParticles" type="CPUParticles2D" parent="." unique_id=1158062059]
+[node name="ohParticles" type="CPUParticles2D" parent="." unique_id=1158062059]
+position = Vector2(0, -9)
 emitting = false
-amount = 10
-texture = ExtResource("4_socpp")
+amount = 1
+texture = ExtResource("6_puxyr")
+lifetime = 0.2
 one_shot = true
+speed_scale = 0.8
 explosiveness = 0.9
 emission_shape = 1
 emission_sphere_radius = 0.01
@@ -117,13 +131,14 @@ spread = 180.0
 initial_velocity_min = 82.68
 initial_velocity_max = 144.13
 scale_amount_min = 0.8
+color_ramp = SubResource("Gradient_8djf2")
 
 [node name="walkingParticles" type="CPUParticles2D" parent="." unique_id=640064207]
 position = Vector2(-0.9946991, 14)
 emitting = false
 amount = 2
-texture = ExtResource("3_xcisb")
-lifetime = 0.09999999999999999
+texture = ExtResource("6_fxc31")
+lifetime = 0.1
 one_shot = true
 speed_scale = 0.6
 emission_shape = 1
@@ -132,6 +147,7 @@ spread = 180.0
 initial_velocity_min = 82.68
 initial_velocity_max = 144.13
 scale_amount_min = 0.8
+color_ramp = SubResource("Gradient_lbts4")
 
 [node name="flashlight" type="PointLight2D" parent="." unique_id=40282454]
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
@@ -140,3 +156,61 @@ shadow_enabled = true
 texture = ExtResource("6_socpp")
 offset = Vector2(0, -80)
 texture_scale = 0.1
+
+[node name="ouchParticles" type="CPUParticles2D" parent="." unique_id=403680794]
+position = Vector2(0, -8)
+emitting = false
+amount = 1
+texture = ExtResource("9_tl8lu")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.8
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+initial_velocity_min = 82.68
+initial_velocity_max = 144.13
+scale_amount_min = 0.8
+color_ramp = SubResource("Gradient_8djf2")
+
+[node name="uhParticles" type="CPUParticles2D" parent="." unique_id=558021616]
+position = Vector2(-0.9946991, -6)
+emitting = false
+amount = 1
+texture = ExtResource("10_qt7jd")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.8
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+initial_velocity_min = 82.68
+initial_velocity_max = 144.13
+scale_amount_min = 0.8
+color_ramp = SubResource("Gradient_8djf2")
+
+[node name="unfriendlyOuchParticles" type="CPUParticles2D" parent="." unique_id=592789888]
+position = Vector2(0.9946991, -7)
+emitting = false
+amount = 1
+texture = ExtResource("11_cd157")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.8
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+initial_velocity_min = 82.68
+initial_velocity_max = 144.13
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_8djf2")
+
+[node name="attackDelay" type="Timer" parent="." unique_id=1874964922]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
