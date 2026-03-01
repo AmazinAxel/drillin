@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_r0bhs"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_p033w"]
-[ext_resource type="Script" path="res://scenes/button.gd" id="3_vxir0"]
+[ext_resource type="Script" uid="uid://cfabot5h6e74b" path="res://scenes/button.gd" id="3_vxir0"]
 [ext_resource type="Texture2D" uid="uid://ds2on7amp5fky" path="res://scenes/Drilla/MyDrilla.png" id="4_ee75v"]
 
 [node name="PlayUi" type="Control" unique_id=1353135535]

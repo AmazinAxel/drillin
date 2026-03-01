@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 const SPEED = 10
 const JUMP_VELOCITY = -350.0
 
@@ -15,28 +14,29 @@ const JUMP_VELOCITY = -350.0
 
 @onready var walkingParticles = $walkingParticles
 @onready var flashlight = $flashlight
+@onready var skullParticles = $skullParticles  # add this node
+
+var is_dead := false
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return  # stop all input/movement when dead
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	var direction := Input.get_axis("left", "right")
 	
-	
-	
-	
 	if direction:
 		velocity.x = lerp(direction * SPEED, direction * SPEED * 2, 10)
 		sprite.flip_h = direction > 0
-		
 		var lightDirection
 		if direction > 0:
 			lightDirection = 89.5
 		else:
 			lightDirection = -89.5
 		flashlight.rotation = lightDirection
-		
 		sprite.play("default")
 		
 		if is_on_floor():
@@ -48,13 +48,12 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
-	#var mousePos = get_global_mouse_position()
-	#var lightDirection = (mousePos - global_position).angle()
-	
 	if health_bar:
 		health_bar.value = Globals.health
 
 func take_damage(amount):
+	if is_dead:
+		return
 	var actual_damage = amount * Globals.damageReduction
 	Globals.health -= actual_damage
 	Globals.health = max(Globals.health, 0)
@@ -76,28 +75,42 @@ func take_damage(amount):
 	await get_tree().create_timer(0.15).timeout
 	modulate = Color.WHITE
 	if Globals.health <= 0:
-		get_tree().change_scene_to_file("res://scenes/DeathUI.tscn")
-		Globals.health = 100;
-		Globals.level = 1;
-		Globals.damageReduction = 1;
-		Globals.shootSpeed = 1;
+		die()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") and not isAttacking:
-		attack()
+func die():
+	is_dead = true
+	velocity = Vector2.ZERO
+	walkingParticles.emitting = false
+	
+	sprite.play("death")
+	skullParticles.emitting = true
+	
+	# Wait 2 seconds then fade (no dependency on animation)
+	get_tree().create_timer(2.0).timeout.connect(_on_death_timer_done, CONNECT_ONE_SHOT)
 
-func attack():
-	if (self.name == "Player"):
-		#var manager = get_node("/root/main/GameManager")
-		#manager.lastDamageReason = "attack"
-		#manager.health -= 5
-		isAttacking = true
-		#self.get_node("DamageSound").play()
-		var timer = get_node("attackDelay");
-		timer.start()
-
-
-func _on_attack_delay_timeout() -> void:
-	isAttacking = false 
-	#var attackSprite = get_node("hurtBox/CollisionShape2D/Sprite2D")
-	#attackSprite.visible = false
+func _on_death_timer_done():
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.size = get_viewport().get_visible_rect().size
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	var canvas = CanvasLayer.new()
+	canvas.layer = 100
+	canvas.add_child(overlay)
+	get_tree().root.add_child(canvas)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(overlay, "color:a", 1.0, 0.5)
+	tween.tween_callback(func():
+		Globals.health = 100
+		Globals.level = 1
+		Globals.damageReduction = 1
+		Globals.shootSpeed = 1
+		get_tree().change_scene_to_file("res://scenes/UI/PlayUI.tscn")
+		
+		# Bind tween to overlay so it survives the scene change
+		var tween2 = overlay.create_tween()
+		tween2.tween_interval(0.1)
+		tween2.tween_property(overlay, "color:a", 0.0, 0.5)
+		tween2.tween_callback(canvas.queue_free)
+	)

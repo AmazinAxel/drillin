@@ -64,7 +64,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "Reduce Risk (2)
+text = "Reduce Risks (2)
 "
 
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1966712827]
