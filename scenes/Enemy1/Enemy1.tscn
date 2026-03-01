@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bumefr8jq8jmh" path="res://scenes/Enemy1/enemy.gd" id="1_o2ma7"]
 [ext_resource type="Texture2D" uid="uid://637gamsd6seb" path="res://scenes/SlimeIceAttack.png" id="2_o2ma7"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_aqqjk"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_yfl7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqqjk"]
 size = Vector2(28, 25)
@@ -69,3 +71,13 @@ position = Vector2(2, -5.5)
 scale = Vector2(0.875, 0.84375)
 sprite_frames = SubResource("SpriteFrames_ubwdv")
 frame_progress = 0.5377365
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1997358124]
+offset_left = -14.0
+offset_top = -37.0
+offset_right = 23.0
+offset_bottom = -5.0
+value = 100.0
+texture_under = ExtResource("3_aqqjk")
+texture_progress = ExtResource("4_yfl7l")
+metadata/_edit_use_anchors_ = true

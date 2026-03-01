@@ -143,7 +143,10 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 		return
 	elif body.name == "TileMapLayer":
 		return
-	
+
+	if body.has_method("take_damage"):
+		body.take_damage(Globals.attackDamage)
+
 	pickaxeAttackArea.monitoring = false
 
 func die():
