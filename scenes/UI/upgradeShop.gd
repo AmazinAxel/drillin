@@ -17,6 +17,3 @@ func _on_risk_upgrade_pressed() -> void:
 
 func _process(delta):
 	$MineralsLabel.text = str(Globals.minerals)
-
-func _on_continue_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/your_next_scene.tscn")  # change to your actual scene path

@@ -208,12 +208,16 @@ func _on_death_timer_done():
 	var tween = get_tree().create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.5)
 	tween.tween_callback(func():
-		Globals.health = 100
-		Globals.level = 1
-		Globals.damageReduction = 1
-		Globals.shootSpeed = 1
+		Globals.level = 0;
+		Globals.health = 100;
+		Globals.damageReduction = 1;
+		Globals.shootSpeed = 1;
+		Globals.attackDamage = 1;
+		Globals.minerals = 0;
+		Globals.riskChance = 10;
+
 		get_tree().change_scene_to_file("res://scenes/UI/PlayUI.tscn")
-		
+
 		var tween2 = overlay.create_tween()
 		tween2.tween_interval(0.1)
 		tween2.tween_property(overlay, "color:a", 0.0, 0.5)

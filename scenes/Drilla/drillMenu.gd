@@ -160,20 +160,33 @@ func stop_drill():
 
 	var final_tween = create_tween()
 	final_tween.set_parallel(true)
-	final_tween.tween_property(self, "global_position:y", 700.0, 3.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-	final_tween.tween_property(player_node, "global_position:y", 700.0, 3.7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	
+	var goToY = 750;
+	if Globals.level == 1:
+		goToY = 1230
+	elif Globals.level == 2:
+		goToY = 2250
+	
+	final_tween.tween_property(self, "global_position:y", goToY, 3.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	final_tween.tween_property(player_node, "global_position:y", goToY, 3.7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	await final_tween.finished
 	
 	stop()
 	
 	miningParticles.emitting = false
 	
+	Globals.level += 1;
+	print(Globals.level);
+
+	
 	if darkness_overlay:
 		var dark_tween = create_tween()
 		dark_tween.tween_property(darkness_overlay, "color:a", 0.0, 0.5)
 		await dark_tween.finished
-		darkness_overlay.queue_free()
-		darkness_overlay = null
+		
+		if darkness_overlay:
+			darkness_overlay.queue_free()
+			darkness_overlay = null
 	
 	var return_tween = create_tween()
 	return_tween.set_parallel(true)
@@ -190,3 +203,4 @@ func stop_drill():
 	started = false
 	await get_tree().create_timer(1.0).timeout
 	show_gui_blocked = false
+	
