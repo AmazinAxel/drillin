@@ -2,18 +2,19 @@ extends AnimatedSprite2D
 
 @onready var area = $Area2D
 @onready var gui = $Control
+@onready var player = get_parent().get_node("Player")
 
 func _ready() -> void:
-	pass # Replace with function body.
+	print(gui)
+	print(area)
+	print(player)
+	
+var trigger_distance := 50.0  # pixels
 
-func _on_Area2D_body_entered(body):
-	print(body);
-	if body.name == "Player":
-		gui.visible = true;
-
-func _on_Area2D_body_exited(body):
-	if body.name == "Player":
-		gui.visible = false
-		
 func _process(delta: float) -> void:
-	pass
+	if not player:
+		return
+
+	var dist = global_position.distance_to(player.global_position)
+
+	gui.visible = dist < trigger_distance

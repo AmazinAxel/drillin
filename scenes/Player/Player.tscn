@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_socpp"]
 [ext_resource type="Texture2D" uid="uid://dbqx4wuya0ivd" path="res://scenes/Heart.png" id="5_fxc31"]
 
-[sub_resource type="ImageTexture" id="ImageTexture_h00vy"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvqhm"]
 atlas = ExtResource("2_ky53y")
 region = Rect2(0, 0, 32, 32)
@@ -72,30 +70,27 @@ fill = 1
 fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
-[node name="Player" type="Sprite2D" unique_id=591300798 groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 scale = Vector2(1.0053291, 1)
-texture = SubResource("ImageTexture_h00vy")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=2035189495]
 script = ExtResource("1_ky53y")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1918917714]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1918917714]
 sprite_frames = SubResource("SpriteFrames_mmokv")
 frame_progress = 0.84294903
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1931208187]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1931208187]
 position = Vector2(-0.49735004, 0)
 shape = SubResource("RectangleShape2D_ky53y")
 
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=429943406]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=429943406]
 position = Vector2(0, 3)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 texture = SubResource("GradientTexture2D_ky53y")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1335660228]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1335660228]
 zoom = Vector2(2, 2)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterBody2D" unique_id=220829333]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=220829333]
 offset_left = -14.835671
 offset_top = -38.0
 offset_right = 22.16433
@@ -105,6 +100,6 @@ texture_under = ExtResource("3_xcisb")
 texture_progress = ExtResource("4_socpp")
 metadata/_edit_use_anchors_ = true
 
-[node name="Heart" type="Sprite2D" parent="CharacterBody2D" unique_id=1888556675]
+[node name="Heart" type="Sprite2D" parent="." unique_id=1888556675]
 position = Vector2(-18.814468, -24)
 texture = ExtResource("5_fxc31")
