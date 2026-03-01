@@ -111,7 +111,6 @@ func attack():
 	if (self.name == "Player"):
 		isAttacking = true
 		swing_pickaxe()
-		pickaxeAttackArea.monitoring = true
 		var timer = get_node("attackDelay")
 		timer.start()
 
@@ -127,12 +126,18 @@ func swing_pickaxe():
 	if sprite.flip_h:
 		swing_amount = -swing_amount
 	
+	# Enable damage during the swing
+	pickaxeAttackArea.monitoring = true
+	
 	swing_tween.tween_property($pickaxe, "rotation", current_angle + swing_amount, 0.1)\
 		.set_ease(Tween.EASE_OUT)\
 		.set_trans(Tween.TRANS_BACK)
 	swing_tween.tween_property($pickaxe, "rotation", current_angle, 0.1)\
 		.set_ease(Tween.EASE_IN)\
 		.set_trans(Tween.TRANS_SINE)
+	
+	# Disable damage when swing ends
+	swing_tween.tween_callback(func(): pickaxeAttackArea.monitoring = false)
 
 func _on_attack_delay_timeout() -> void:
 	isAttacking = false
@@ -146,8 +151,6 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 
 	if body.has_method("take_damage"):
 		body.take_damage(Globals.attackDamage)
-
-	pickaxeAttackArea.monitoring = false
 
 func die():
 	is_dead = true
