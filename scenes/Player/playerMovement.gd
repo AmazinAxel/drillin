@@ -100,11 +100,7 @@ func take_damage(amount):
 	await get_tree().create_timer(0.15).timeout
 	modulate = Color.WHITE
 	if Globals.health <= 0:
-		get_tree().change_scene_to_file("res://scenes/DeathUI.tscn")
-		Globals.health = 100;
-		Globals.level = 1;
-		Globals.damageReduction = 1;
-		Globals.shootSpeed = 1;
+		die()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not isAttacking:
@@ -149,7 +145,6 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 		return
 	
 	pickaxeAttackArea.monitoring = false
-		die()
 
 func die():
 	is_dead = true
@@ -159,7 +154,6 @@ func die():
 	sprite.play("death")
 	skullParticles.emitting = true
 	
-	# Wait 2 seconds then fade (no dependency on animation)
 	get_tree().create_timer(2.0).timeout.connect(_on_death_timer_done, CONNECT_ONE_SHOT)
 
 func _on_death_timer_done():
