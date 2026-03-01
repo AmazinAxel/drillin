@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vmqlp4ccwtcl"
-path="res://.godot/imported/pickaxe.png-5013b830a574d8820783d578e1c5086e.ctex"
+uid="uid://c7oioh8erwctf"
+path="res://.godot/imported/HandyDigger.png-310f4754491721eec2cded1c9e9750a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/pickaxe.png"
-dest_files=["res://.godot/imported/pickaxe.png-5013b830a574d8820783d578e1c5086e.ctex"]
+source_file="res://assets/sprites/HandyDigger.png"
+dest_files=["res://.godot/imported/HandyDigger.png-310f4754491721eec2cded1c9e9750a4.ctex"]
 
 [params]
 

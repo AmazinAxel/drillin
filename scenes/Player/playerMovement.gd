@@ -18,6 +18,8 @@ const JUMP_VELOCITY = -350.0
 @onready var pickaxe = $pickaxe
 @onready var pickaxeAttackArea = $pickaxe/damageArea
 
+@export var thrown_pickaxe_scene: PackedScene  # assign in Inspector
+
 var is_swinging: bool = false
 var swing_tween: Tween
 var baseRotation = 0
@@ -105,7 +107,37 @@ func take_damage(amount):
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not isAttacking:
 		attack()
+	elif event.is_action_pressed("throw") and not isAttacking:
+		throwPickaxe()
+		
+var thrown_instance = null
 
+func throwPickaxe():
+	if not thrown_pickaxe_scene:
+		return
+	if thrown_instance != null:  # already one in the air
+		return
+
+	pickaxe.visible = false
+	isAttacking = true
+
+	thrown_instance = thrown_pickaxe_scene.instantiate()
+	get_tree().current_scene.add_child(thrown_instance)
+	thrown_instance.global_position = pickaxe.global_position
+
+	var dir = (get_global_mouse_position() - global_position).normalized()
+	thrown_instance.rotation = dir.angle()
+	thrown_instance.launch(dir, self)
+
+	# After a short delay, start returning
+	await get_tree().create_timer(0.5).timeout
+	if is_instance_valid(thrown_instance):
+		thrown_instance.returning = true
+
+func catch_pickaxe():
+	pickaxe.visible = true
+	isAttacking = false
+	thrown_instance = null
 
 func attack():
 	if (self.name == "Player"):

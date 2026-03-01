@@ -43,12 +43,16 @@ script = ExtResource("2_x27a8")
 
 [node name="Marker2D2" type="Marker2D" parent="Spawnpoints1" unique_id=1602721701]
 position = Vector2(1068, 653)
+scale = Vector2(1, 1.00622)
 
 [node name="Marker2D3" type="Marker2D" parent="Spawnpoints1" unique_id=858332140]
 position = Vector2(994, 1194)
+scale = Vector2(1, 1.00622)
 
 [node name="Marker2D4" type="Marker2D" parent="Spawnpoints1" unique_id=1152944316]
 position = Vector2(272, 1057)
+scale = Vector2(1, 1.00622)
 
 [node name="Marker2D" type="Marker2D" parent="Spawnpoints1" unique_id=890832645]
 position = Vector2(735, 282)
+scale = Vector2(1, 1.00622)

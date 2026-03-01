@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bbc03uvvumeip" path="res://scenes/Player/playerMovement.gd" id="1_ky53y"]
 [ext_resource type="Texture2D" uid="uid://vwmx13ngsf1" path="res://scenes/SceletonDisassamble_2.png" id="2_fxc31"]
 [ext_resource type="Texture2D" uid="uid://bq0ebqqy3bya1" path="res://scenes/Walker3000.png" id="2_ky53y"]
+[ext_resource type="PackedScene" uid="uid://rmkjhfpdyjv7" path="res://scenes/thrownPickaxe/ThrownPickaxe.tscn" id="2_lbts4"]
 [ext_resource type="Texture2D" uid="uid://fv1mcsktlxtw" path="res://scenes/UI/SKULL_EMOJI.png" id="2_puxyr"]
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_xcisb"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_socpp"]
@@ -13,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bj6ytqqb302rb" path="res://assets/sprites/OuchParticle.png" id="9_tl8lu"]
 [ext_resource type="Texture2D" uid="uid://becivtixuvqgf" path="res://assets/sprites/UhParticle.png" id="10_qt7jd"]
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
-[ext_resource type="Texture2D" uid="uid://bjqjji8j8a1sf" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
+[ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmokv"]
 atlas = ExtResource("2_fxc31")
@@ -250,6 +251,7 @@ size = Vector2(43.332184, 23.760918)
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 scale = Vector2(1.0053291, 1)
 script = ExtResource("1_ky53y")
+thrown_pickaxe_scene = ExtResource("2_lbts4")
 
 [node name="skullParticles" type="CPUParticles2D" parent="." unique_id=167397581]
 emitting = false

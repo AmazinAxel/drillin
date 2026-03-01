@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://rmkjhfpdyjv7"]
+
+[ext_resource type="Texture2D" uid="uid://c7oioh8erwctf" path="res://assets/sprites/HandyDigger.png" id="1_ppl77"]
+[ext_resource type="Script" uid="uid://dhc3dbknh56ap" path="res://scenes/thrownPickaxe/thrownPickaxe.gd" id="2_vs3oi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppl77"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs3oi"]
+size = Vector2(14, 14)
+
+[node name="thrownPickaxe" type="RigidBody2D" unique_id=805336626]
+script = ExtResource("2_vs3oi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=349201214]
+texture = ExtResource("1_ppl77")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2111669898]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=499513348]
+shape = SubResource("RectangleShape2D_ppl77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466886692]
+shape = SubResource("RectangleShape2D_vs3oi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
