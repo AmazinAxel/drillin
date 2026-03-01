@@ -3,7 +3,6 @@ extends AnimatedSprite2D
 @onready var area = $Area2D
 @onready var gui = $Label
 @onready var player = get_parent().get_node("Player")
-@onready var drillShop = get_parent().get_node("DrillaShop")
 
 func _ready() -> void:
 	print(gui)
