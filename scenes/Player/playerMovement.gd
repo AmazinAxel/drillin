@@ -36,8 +36,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	var direction := Input.get_axis("left", "right")
-	
-	
+
+		
 	if direction:
 		velocity.x = lerp(direction * SPEED, direction * SPEED * 2, 10)
 		sprite.flip_h = direction > 0
@@ -55,16 +55,20 @@ func _physics_process(delta: float) -> void:
 			
 		flashlight.rotation = lightDirection
 		sprite.play("default")
-		
 		if is_on_floor():
 			walkingParticles.emitting = true
+			
+		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		sprite.set_frame_and_progress(0, 0)
 		sprite.pause()
-		
+	
 	move_and_slide()
 	
+	if !is_on_floor():
+		sprite.play("jump")
+		
 	var mouse_pos = get_global_mouse_position()
 	var mouseDirection = mouse_pos - global_position
 	var angle = mouseDirection.angle()

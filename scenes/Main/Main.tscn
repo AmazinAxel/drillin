@@ -23,4 +23,4 @@ offset_top = -381.0
 offset_bottom = -381.0
 
 [node name="BigDrilla" parent="." unique_id=1445029359 instance=ExtResource("5_pkilc")]
-position = Vector2(466, 754)
+position = Vector2(405, 2247)

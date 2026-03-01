@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_xcisb"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_socpp"]
 [ext_resource type="Texture2D" uid="uid://dbqx4wuya0ivd" path="res://scenes/Heart.png" id="5_fxc31"]
+[ext_resource type="Texture2D" uid="uid://c748sdylf84rr" path="res://assets/sprites/JumpingFrame.png" id="6_dqefj"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="6_fxc31"]
 [ext_resource type="Texture2D" uid="uid://b8242othxtd1a" path="res://assets/sprites/OhParticle.png" id="6_puxyr"]
 [ext_resource type="Texture2D" uid="uid://ndi6sbrklvgq" path="res://assets/sprites/flashlight.png" id="6_socpp"]
@@ -226,16 +227,24 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dqefj")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ky53y"]
 size = Vector2(16.909885, 32)
 
-[sub_resource type="Gradient" id="Gradient_puxyr"]
+[sub_resource type="Gradient" id="Gradient_mn6xr"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ky53y"]
-gradient = SubResource("Gradient_puxyr")
+gradient = SubResource("Gradient_mn6xr")
 width = 128
 height = 128
 fill = 1
@@ -273,7 +282,7 @@ color_ramp = SubResource("Gradient_dqefj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1918917714]
 sprite_frames = SubResource("SpriteFrames_mmokv")
-frame_progress = 0.19262263
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1931208187]
 position = Vector2(-0.49735004, 0)
