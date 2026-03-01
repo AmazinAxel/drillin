@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
 [ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
 
+[sub_resource type="Gradient" id="Gradient_dqefj"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmokv"]
 atlas = ExtResource("2_fxc31")
 region = Rect2(0, 0, 32, 32)
@@ -254,8 +257,10 @@ script = ExtResource("1_ky53y")
 thrown_pickaxe_scene = ExtResource("2_lbts4")
 
 [node name="skullParticles" type="CPUParticles2D" parent="." unique_id=167397581]
-emitting = false
+amount = 4
 texture = ExtResource("2_puxyr")
+lifetime = 0.54
+color_ramp = SubResource("Gradient_dqefj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1918917714]
 sprite_frames = SubResource("SpriteFrames_mmokv")
