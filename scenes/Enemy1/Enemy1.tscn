@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwgg0l4esmqmt"]
 
-[ext_resource type="Script" uid="uid://bumefr8jq8jmh" path="res://scenes/Enemy1/enemy.gd" id="1_o2ma7"]
+[ext_resource type="Script" path="res://scenes/Enemy1/enemy.gd" id="1_o2ma7"]
 [ext_resource type="Texture2D" uid="uid://637gamsd6seb" path="res://scenes/SlimeIceAttack.png" id="2_o2ma7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqqjk"]
