@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cyur2o4xvcstp" path="res://scenes/UI/upgradeShop.gd" id="1_yhmws"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_n4ip6"]
 [ext_resource type="Script" uid="uid://b1e7v0tfrit3x" path="res://scenes/UI/continueBtn.gd" id="4_21mno"]
+[ext_resource type="Texture2D" uid="uid://bgvpuvqs1t3g5" path="res://scenes/UI/UiCrystalllllllllllllllllllll.png" id="5_n4ip6"]
 
 [node name="DrillaShop" type="Control" unique_id=1174118641]
 layout_mode = 3
@@ -46,7 +47,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "Upgrade Weapon (5)"
+text = "Upgrade Weapon (-3)"
 
 [node name="HealthUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=161677201]
 custom_minimum_size = Vector2(140, 0)
@@ -55,7 +56,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "Upgrade Armor (5)
+text = "Upgrade Armor (-3)
 "
 
 [node name="RiskUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=989345003]
@@ -64,7 +65,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "Reduce Risks (2)
+text = "Reduce Risks (-1)
 "
 
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1966712827]
@@ -73,9 +74,29 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "Continue
-"
+text = "Continue"
 script = ExtResource("4_21mno")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1575484618]
+layout_mode = 0
+offset_left = 467.0
+offset_top = -9.0
+offset_right = 572.0
+offset_bottom = 93.0
+texture = ExtResource("5_n4ip6")
+
+[node name="MineralsLabel" type="Label" parent="." unique_id=435678253]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 14.0
+offset_right = 627.0
+offset_bottom = 62.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_21mno")
+theme_override_font_sizes/font_size = 42
+text = "15"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DamageUpgrade" to="." method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HealthUpgrade" to="." method="_on_health_upgrade_pressed"]
