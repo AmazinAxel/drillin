@@ -41,6 +41,12 @@ func start_drill_sequence():
 	
 	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
 	var player_node = get_tree().get_first_node_in_group("player")
+
+	# Give them 50% of their health back
+	if Globals.health >= 50:
+		Globals.health = 100
+	else:
+		Globals.health += 50;
 	
 	player_node.set_physics_process(false)
 	player_node.visible = false
