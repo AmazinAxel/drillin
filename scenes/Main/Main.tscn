@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2wrk6fclb2g4" path="res://scenes/Map/Map.tscn" id="1_owiiy"]
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
+[ext_resource type="PackedScene" uid="uid://cn0c5air71r5c" path="res://scenes/UI/DrillaShop.tscn" id="4_brr1f"]
 
 [node name="Main" type="Node" unique_id=2130844757]
 
@@ -14,3 +15,8 @@ position = Vector2(54, 336)
 [node name="Drilla" parent="." unique_id=222219034 instance=ExtResource("3_8llo8")]
 position = Vector2(21, 333)
 scale = Vector2(-1, 1)
+frame_progress = 0.0
+
+[node name="DrillaShop" parent="." unique_id=1174118641 instance=ExtResource("4_brr1f")]
+offset_top = -381.0
+offset_bottom = -381.0

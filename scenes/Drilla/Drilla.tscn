@@ -4,21 +4,13 @@
 [ext_resource type="Script" uid="uid://dcy4ch7nqqhmi" path="res://scenes/Drilla/drillMenu.gd" id="2_d2uqm"]
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="3_yb5c1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tgjl"]
-atlas = ExtResource("1_7tgjl")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2uqm"]
-atlas = ExtResource("1_7tgjl")
-region = Rect2(64, 0, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yb5c1"]
 atlas = ExtResource("1_7tgjl")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygnt4"]
 atlas = ExtResource("1_7tgjl")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ruqpt"]
 atlas = ExtResource("1_7tgjl")
@@ -26,21 +18,23 @@ region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cbbk6"]
 atlas = ExtResource("1_7tgjl")
-region = Rect2(128, 64, 64, 64)
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h2t3"]
 atlas = ExtResource("1_7tgjl")
-region = Rect2(0, 128, 64, 64)
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4ra2"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crvsb"]
+atlas = ExtResource("1_7tgjl")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e4ra2"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7tgjl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d2uqm")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yb5c1")
 }, {
@@ -55,6 +49,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8h2t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4ra2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crvsb")
 }],
 "loop": true,
 "name": &"default",
@@ -64,9 +64,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tgjl"]
 size = Vector2(100.5, 106)
 
-[node name="Drilla" type="AnimatedSprite2D" unique_id=1117207976]
+[node name="Drilla" type="AnimatedSprite2D" unique_id=1117207976 groups=["drill"]]
 sprite_frames = SubResource("SpriteFrames_e4ra2")
-frame = 2
 frame_progress = 0.9016821
 script = ExtResource("2_d2uqm")
 

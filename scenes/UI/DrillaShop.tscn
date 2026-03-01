@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_21mno"]
 [ext_resource type="Script" uid="uid://cyur2o4xvcstp" path="res://scenes/UI/upgradeShop.gd" id="1_yhmws"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_n4ip6"]
+[ext_resource type="Script" uid="uid://b1e7v0tfrit3x" path="res://scenes/UI/continueBtn.gd" id="4_21mno"]
 
 [node name="DrillaShop" type="Control" unique_id=1174118641]
 layout_mode = 3
@@ -13,35 +14,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yhmws")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1923499551]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.39120886, 0.35433006, 0.3330147, 1)
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1068811948]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -173.5
-offset_right = 173.5
+offset_left = -114.0
+offset_right = 318.0
 offset_bottom = 358.0
 grow_horizontal = 2
-alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=625252694]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=189316661]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_21mno")
 theme_override_font_sizes/font_size = 42
@@ -51,15 +43,16 @@ horizontal_alignment = 1
 [node name="DamageUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=562273983]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "Upgrade Weapon (5)"
 
 [node name="HealthUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=161677201]
 custom_minimum_size = Vector2(140, 0)
+layout_direction = 2
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "Upgrade Armor (5)
@@ -68,7 +61,7 @@ text = "Upgrade Armor (5)
 [node name="RiskUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=989345003]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
 text = "Reduce Risk (2)
@@ -77,17 +70,15 @@ text = "Reduce Risk (2)
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1966712827]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "-- Continue -- 
+text = "Continue
 "
-
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=1165342862]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+script = ExtResource("4_21mno")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DamageUpgrade" to="." method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HealthUpgrade" to="." method="_on_health_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/RiskUpgrade" to="." method="_on_risk_upgrade_pressed"]
+[connection signal="button_up" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_button_up"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
