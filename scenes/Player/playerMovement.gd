@@ -214,7 +214,6 @@ func _on_death_timer_done():
 		Globals.shootSpeed = 1
 		get_tree().change_scene_to_file("res://scenes/UI/PlayUI.tscn")
 		
-		# Bind tween to overlay so it survives the scene change
 		var tween2 = overlay.create_tween()
 		tween2.tween_interval(0.1)
 		tween2.tween_property(overlay, "color:a", 0.0, 0.5)

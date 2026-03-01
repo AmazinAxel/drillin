@@ -58,6 +58,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_aqqjk"]
+colors = PackedColorArray(0.27058825, 0.5529412, 0.5764706, 1, 0.26870808, 0.5527599, 0.5763457, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yfl7l"]
+gradient = SubResource("Gradient_aqqjk")
+width = 1
+
 [node name="Enemy1" type="CharacterBody2D" unique_id=835573775]
 script = ExtResource("1_o2ma7")
 
@@ -81,3 +88,18 @@ value = 100.0
 texture_under = ExtResource("3_aqqjk")
 texture_progress = ExtResource("4_yfl7l")
 metadata/_edit_use_anchors_ = true
+
+[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=465430250]
+position = Vector2(2, -5)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_yfl7l")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 280.33
+initial_velocity_max = 290.5
+color = Color(0, 0.6461681, 0.76761734, 1)

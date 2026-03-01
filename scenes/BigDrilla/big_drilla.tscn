@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dyufts3fkfcc6"]
+
+[ext_resource type="Script" uid="uid://bncoh0menkjqm" path="res://scenes/BigDrilla/bigDrilla.gd" id="1_nacbp"]
+[ext_resource type="Texture2D" uid="uid://wjy80e2ypi6g" path="res://assets/sprites/BigDrillaIdleDrillin.png" id="1_ripgs"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="2_jv1xi"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="3_nacbp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bil7u"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv1xi"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nacbp"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dytqo"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnxqk"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci0t4"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfb6v"]
+atlas = ExtResource("1_ripgs")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2faa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bil7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv1xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nacbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dytqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnxqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci0t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfb6v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
+size = Vector2(93, 68)
+
+[node name="BigDrilla" type="CharacterBody2D" unique_id=1445029359]
+script = ExtResource("1_nacbp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501585013]
+sprite_frames = SubResource("SpriteFrames_d2faa")
+animation = &"idle"
+frame_progress = 0.1841052
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99379516]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_ripgs")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1232517892]
+offset_left = -17.0
+offset_top = -60.0
+offset_right = 20.0
+offset_bottom = -28.0
+value = 100.0
+texture_under = ExtResource("2_jv1xi")
+texture_progress = ExtResource("3_nacbp")
+metadata/_edit_use_anchors_ = true
