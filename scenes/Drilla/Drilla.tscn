@@ -66,7 +66,8 @@ size = Vector2(100.5, 106)
 
 [node name="Drilla" type="AnimatedSprite2D" unique_id=1117207976]
 sprite_frames = SubResource("SpriteFrames_e4ra2")
-frame_progress = 0.7680145
+frame = 2
+frame_progress = 0.9016821
 script = ExtResource("2_d2uqm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1526511769]
@@ -77,27 +78,12 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_7tgjl")
 disabled = true
 
-[node name="Control" type="Control" parent="." unique_id=1317191227]
+[node name="Label" type="Label" parent="." unique_id=1149840511]
 visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = -44.0
-offset_right = -31.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Control" unique_id=1149840511]
-layout_mode = 0
-offset_left = 32.0
-offset_top = -35.0
-offset_right = 46.0
-offset_bottom = -22.0
+offset_left = -7.0
+offset_top = -50.0
+offset_right = 7.0
+offset_bottom = -37.0
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_yb5c1")
