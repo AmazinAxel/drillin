@@ -40,3 +40,9 @@ func take_damage(amount):
 	modulate = Color.WHITE
 	if Globals.health <= 0:
 		get_tree().change_scene_to_file("res://scenes/DeathUI.tscn")
+		Globals.health = 100;
+		Globals.level = 1;
+		Globals.damageReduction = 1;
+		Globals.shootSpeed = 1;
+
+		
