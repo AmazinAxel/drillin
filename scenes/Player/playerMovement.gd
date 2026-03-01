@@ -19,6 +19,8 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = direction > 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	sprite.play("default")
 	move_and_slide()
 	
 	var mousePos = get_global_mouse_position()
