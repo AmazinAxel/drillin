@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c035qx8eqron7"]
+
+[ext_resource type="Texture2D" uid="uid://p8jyhfca4357" path="res://assets/tileset/PinkSlimeWalk.png" id="1_ruwya"]
+[ext_resource type="Texture2D" uid="uid://6dakjvdru28i" path="res://assets/tileset/RythmIsADancer-shoot.png" id="2_sj2jw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xroqt"]
+size = Vector2(23, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbbh0"]
+atlas = ExtResource("1_ruwya")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0022e"]
+atlas = ExtResource("1_ruwya")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uboy5"]
+atlas = ExtResource("1_ruwya")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ocg"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doox8"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlqyp"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02etx"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gi2sj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbbh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0022e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uboy5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2ocg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doox8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02etx")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 8.0
+}]
+
+[node name="Enemy3" type="CharacterBody2D" unique_id=562708192]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648074876]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_xroqt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1174440913]
+position = Vector2(2, -5.5)
+scale = Vector2(0.875, 0.84375)
+sprite_frames = SubResource("SpriteFrames_gi2sj")
+frame_progress = 0.24404088
