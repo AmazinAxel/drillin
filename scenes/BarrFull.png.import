@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwjr5hub7lq1i"
-path="res://.godot/imported/Barr.png-fed915f9af2e6a7476fed8ebb47bff25.ctex"
+uid="uid://dw5qqjyh5rfq2"
+path="res://.godot/imported/BarrFull.png-e0a979cc099a6a9ac3430d3544c25757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Map/Barr.png"
-dest_files=["res://.godot/imported/Barr.png-fed915f9af2e6a7476fed8ebb47bff25.ctex"]
+source_file="res://scenes/BarrFull.png"
+dest_files=["res://.godot/imported/BarrFull.png-e0a979cc099a6a9ac3430d3544c25757.ctex"]
 
 [params]
 

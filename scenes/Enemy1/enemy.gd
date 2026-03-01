@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var speed = 50.0
-var health = 3
+var speed = 50.0;
+var health = 3;
 
 func _physics_process(delta):
 	# Find the player
