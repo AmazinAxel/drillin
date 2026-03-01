@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = lerp(direction * SPEED, direction * SPEED * 2, 10)
 		# Flip sprite based on direction
-		sprite.flip_h = direction < 0
+		sprite.flip_h = direction > 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
