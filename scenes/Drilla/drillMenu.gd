@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 @onready var area = $Area2D
 @onready var gui = $Label
 @onready var player = get_parent().get_node("Player")
+@onready var miningParticles = $miningParticles
 
 var is_shaking = false
 var darkness_overlay = null
@@ -62,7 +63,7 @@ func start_drill_sequence():
 	is_shaking = true
 	shake_camera_forever(camera)
 	
-	spawn_drill_particles()
+	miningParticles.emitting = true
 	
 	var dark_tween = create_tween()
 	dark_tween.tween_property(darkness_overlay, "color:a", 0.6, 2.0)
@@ -100,26 +101,6 @@ func shake_camera_forever(camera: Camera2D):
 		)
 		await get_tree().process_frame
 	camera.offset = camera_base_offset
-
-func spawn_drill_particles():
-	var particles = GPUParticles2D.new()
-	particles.name = "DrillParticles"
-	particles.amount = 20
-	particles.lifetime = 0.8
-	particles.position = Vector2(0, 20)
-	
-	var material = ParticleProcessMaterial.new()
-	material.direction = Vector3(0, -1, 0)
-	material.spread = 30.0
-	material.initial_velocity_min = 30.0
-	material.initial_velocity_max = 60.0
-	material.gravity = Vector3(0, 100, 0)
-	material.scale_min = 1.0
-	material.scale_max = 3.0
-	material.color = Color(0.6, 0.4, 0.2, 1.0)
-	
-	particles.process_material = material
-	add_child(particles)
 
 func ease_in_out_custom(t: float) -> float:
 	# Spends more time easing in, peaks around t=0.4, then eases out
@@ -178,6 +159,8 @@ func stop_drill():
 	await final_tween.finished
 	
 	stop()
+	
+	miningParticles.emitting = false
 	
 	if darkness_overlay:
 		var dark_tween = create_tween()
