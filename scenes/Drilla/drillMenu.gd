@@ -16,7 +16,6 @@ var trigger_distance := 50.0  # pixels
 func _process(delta: float) -> void:
 	if not player:
 		return
-
 	var dist = global_position.distance_to(player.global_position)
 	
 	if dist < trigger_distance:
@@ -25,3 +24,6 @@ func _process(delta: float) -> void:
 			get_tree().change_scene_to_file("res://scenes/UI/DrillaShop.tscn");
 	else:
 		gui.visible = false
+	
+	# Keep label from flipping with parent
+	gui.scale.x = abs(gui.scale.x) * sign(scale.x)

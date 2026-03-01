@@ -79,11 +79,10 @@ shape = SubResource("RectangleShape2D_7tgjl")
 disabled = true
 
 [node name="Label" type="Label" parent="." unique_id=1149840511]
-visible = false
-offset_left = -7.0
-offset_top = -50.0
-offset_right = 7.0
-offset_bottom = -37.0
+offset_left = 8.0
+offset_top = -53.0
+offset_right = 22.0
+offset_bottom = -40.0
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_yb5c1")
