@@ -14,6 +14,13 @@ const JUMP_VELOCITY = -350.0
 
 @onready var walkingParticles = $walkingParticles
 @onready var flashlight = $flashlight
+
+@onready var pickaxe = $pickaxe
+@onready var pickaxeAttackArea = $pickaxe/damageArea
+
+var is_swinging: bool = false
+var swing_tween: Tween
+var baseRotation = 0
 @onready var skullParticles = $skullParticles  # add this node
 
 var is_dead := false
@@ -28,14 +35,22 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	var direction := Input.get_axis("left", "right")
 	
+	
 	if direction:
 		velocity.x = lerp(direction * SPEED, direction * SPEED * 2, 10)
 		sprite.flip_h = direction > 0
+		pickaxe.flip_h = direction > 0
+		pickaxe.flip_v = direction < 0
+		
+		
 		var lightDirection
 		if direction > 0:
 			lightDirection = 89.5
+			baseRotation = 0
 		else:
 			lightDirection = -89.5
+			baseRotation = 30
+			
 		flashlight.rotation = lightDirection
 		sprite.play("default")
 		
@@ -48,8 +63,18 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
+	var mouse_pos = get_global_mouse_position()
+	var mouseDirection = mouse_pos - global_position
+	var angle = mouseDirection.angle()
+
+	$pickaxe.rotation = angle + baseRotation
+	var radius = 10 
+	$pickaxe.position = Vector2.RIGHT.rotated(angle) * radius
+
+	
 	if health_bar:
 		health_bar.value = Globals.health
+		
 
 func take_damage(amount):
 	if is_dead:
@@ -75,6 +100,55 @@ func take_damage(amount):
 	await get_tree().create_timer(0.15).timeout
 	modulate = Color.WHITE
 	if Globals.health <= 0:
+		get_tree().change_scene_to_file("res://scenes/DeathUI.tscn")
+		Globals.health = 100;
+		Globals.level = 1;
+		Globals.damageReduction = 1;
+		Globals.shootSpeed = 1;
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and not isAttacking:
+		attack()
+
+
+func attack():
+	if (self.name == "Player"):
+		isAttacking = true
+		swing_pickaxe()
+		pickaxeAttackArea.monitoring = true
+		var timer = get_node("attackDelay")
+		timer.start()
+
+func swing_pickaxe():
+	if swing_tween:
+		swing_tween.kill()
+	
+	swing_tween = create_tween()
+	
+	var current_angle = $pickaxe.rotation
+	var swing_amount = deg_to_rad(90)
+	
+	if sprite.flip_h:
+		swing_amount = -swing_amount
+	
+	swing_tween.tween_property($pickaxe, "rotation", current_angle + swing_amount, 0.1)\
+		.set_ease(Tween.EASE_OUT)\
+		.set_trans(Tween.TRANS_BACK)
+	swing_tween.tween_property($pickaxe, "rotation", current_angle, 0.1)\
+		.set_ease(Tween.EASE_IN)\
+		.set_trans(Tween.TRANS_SINE)
+
+func _on_attack_delay_timeout() -> void:
+	isAttacking = false
+
+
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		return
+	elif body.name == "TileMapLayer":
+		return
+	
+	pickaxeAttackArea.monitoring = false
 		die()
 
 func die():

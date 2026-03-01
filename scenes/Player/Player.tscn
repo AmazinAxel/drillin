@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bj6ytqqb302rb" path="res://assets/sprites/OuchParticle.png" id="9_tl8lu"]
 [ext_resource type="Texture2D" uid="uid://becivtixuvqgf" path="res://assets/sprites/UhParticle.png" id="10_qt7jd"]
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
+[ext_resource type="Texture2D" uid="uid://bjqjji8j8a1sf" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mmokv"]
 atlas = ExtResource("2_fxc31")
@@ -243,6 +244,9 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="Gradient" id="Gradient_lbts4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt7jd"]
+size = Vector2(43.332184, 23.760918)
+
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 scale = Vector2(1.0053291, 1)
 script = ExtResource("1_ky53y")
@@ -378,4 +382,18 @@ color_ramp = SubResource("Gradient_8djf2")
 wait_time = 0.3
 one_shot = true
 
+[node name="pickaxe" type="Sprite2D" parent="." unique_id=396576197]
+position = Vector2(-10.94169, 3)
+texture = ExtResource("12_qt7jd")
+
+[node name="damageArea" type="Area2D" parent="pickaxe" unique_id=481415658]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickaxe/damageArea" unique_id=59650308]
+rotation = -3.1415925
+scale = Vector2(0.32137287, -0.5892029)
+shape = SubResource("RectangleShape2D_qt7jd")
+debug_color = Color(0.89517343, 0.256144, 0.49235988, 0.41960785)
+
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
+[connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]
