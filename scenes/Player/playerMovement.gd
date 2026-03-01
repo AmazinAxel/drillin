@@ -3,11 +3,11 @@ extends CharacterBody2D
 const SPEED = 10
 const JUMP_VELOCITY = -350.0
 
-@onready var spotLight = $PointLight2D
 @onready var health_bar = $TextureProgressBar
 @onready var sprite = $AnimatedSprite2D
 @onready var damageParticles = $damageParticles
 @onready var walkingParticles = $walkingParticles
+@onready var flashlight = $flashlight
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -15,9 +15,21 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	var direction := Input.get_axis("left", "right")
+	
+	
+	
+	
 	if direction:
 		velocity.x = lerp(direction * SPEED, direction * SPEED * 2, 10)
 		sprite.flip_h = direction > 0
+		
+		var lightDirection
+		if direction > 0:
+			lightDirection = 89.5
+		else:
+			lightDirection = -89.5
+		flashlight.rotation = lightDirection
+		
 		sprite.play("default")
 		walkingParticles.emitting = true
 	else:
@@ -27,11 +39,9 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
-	var mousePos = get_global_mouse_position()
-	var lightDirection = (mousePos - global_position).angle()
-	spotLight.rotation = lightDirection
+	#var mousePos = get_global_mouse_position()
+	#var lightDirection = (mousePos - global_position).angle()
 	
-	# Update health bar from global
 	if health_bar:
 		health_bar.value = Globals.health
 

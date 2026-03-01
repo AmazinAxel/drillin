@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_xcisb"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_socpp"]
 [ext_resource type="Texture2D" uid="uid://dbqx4wuya0ivd" path="res://scenes/Heart.png" id="5_fxc31"]
+[ext_resource type="Texture2D" uid="uid://ndi6sbrklvgq" path="res://assets/sprites/flashlight.png" id="6_socpp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvqhm"]
 atlas = ExtResource("2_ky53y")
@@ -131,3 +132,11 @@ spread = 180.0
 initial_velocity_min = 82.68
 initial_velocity_max = 144.13
 scale_amount_min = 0.8
+
+[node name="flashlight" type="PointLight2D" parent="." unique_id=40282454]
+color = Color(0.92156863, 0.62352943, 0.28627452, 1)
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("6_socpp")
+offset = Vector2(0, -80)
+texture_scale = 0.1
