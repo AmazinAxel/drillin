@@ -65,6 +65,17 @@ colors = PackedColorArray(0.27058825, 0.5529412, 0.5764706, 1, 0.26870808, 0.552
 gradient = SubResource("Gradient_aqqjk")
 width = 1
 
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aqqjk"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [node name="Enemy1" type="CharacterBody2D" unique_id=835573775]
 script = ExtResource("1_o2ma7")
 
@@ -103,3 +114,9 @@ spread = 180.0
 initial_velocity_min = 280.33
 initial_velocity_max = 290.5
 color = Color(0, 0.6461681, 0.76761734, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1009831219]
+position = Vector2(0, 3)
+color = Color(0.3189962, 0.7685697, 0.839239, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_aqqjk")

@@ -3,11 +3,9 @@ extends CharacterBody2D
 @export var max_health: int = 3
 @export var speed: float = 10.0
 @export var gravity: float = 400.0
-@export var jump_force: float = -200.0
 @export var damage: int = 10
 @export var damage_cooldown: float = 1.0
 @export var attack_range: float = 40.0
-@export var jump_threshold: float = 20.0 
 
 # === INTERNAL STATE ===
 var health: int
@@ -25,17 +23,12 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	animated_sprite.play("default")
+	animated_sprite.play("idle")
 
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		var direction = (player.global_position - global_position).normalized()
 		velocity.x = direction.x * speed
-
-		if player.global_position.y < global_position.y - jump_threshold and is_on_floor():
-			velocity.y = jump_force
-		if is_on_wall() and is_on_floor():
-			velocity.y = jump_force
 
 		if direction.x > 0:
 			animated_sprite.flip_h = false

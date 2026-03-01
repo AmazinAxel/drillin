@@ -65,13 +65,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
 size = Vector2(93, 68)
 
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nacbp"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [node name="BigDrilla" type="CharacterBody2D" unique_id=1445029359]
 script = ExtResource("1_nacbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501585013]
 sprite_frames = SubResource("SpriteFrames_d2faa")
 animation = &"idle"
-frame_progress = 0.1841052
+frame_progress = 0.49190703
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99379516]
 position = Vector2(0.5, -6)
@@ -86,3 +97,8 @@ value = 100.0
 texture_under = ExtResource("2_jv1xi")
 texture_progress = ExtResource("3_nacbp")
 metadata/_edit_use_anchors_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=922551642]
+position = Vector2(0, 3)
+color = Color(0.59575146, 0, 0, 1)
+texture = SubResource("GradientTexture2D_nacbp")
