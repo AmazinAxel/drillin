@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c035qx8eqron7"]
 
 [ext_resource type="Texture2D" uid="uid://p8jyhfca4357" path="res://assets/tileset/PinkSlimeWalk.png" id="1_ruwya"]
+[ext_resource type="Script" uid="uid://balg04l50f1hw" path="res://scenes/Enemy3/enemy3.gd" id="1_sj2jw"]
 [ext_resource type="Texture2D" uid="uid://6dakjvdru28i" path="res://assets/tileset/RythmIsADancer-shoot.png" id="2_sj2jw"]
-[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_xroqt"]
-[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_hbbh0"]
+[ext_resource type="PackedScene" uid="uid://c8r2ns3xqe11m" path="res://scenes/SmallProjectile/small_projectile.tscn" id="2_xroqt"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="5_0022e"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="6_uboy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xroqt"]
 size = Vector2(23, 18)
@@ -71,13 +73,26 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_aqqjk"]
-colors = PackedColorArray(0.2627451, 0.5764706, 0.38431373, 1, 0.2627451, 0.5764706, 0.38431373, 1)
+colors = PackedColorArray(0.87144446, 3.0996205e-05, 0.62592566, 1, 0.87058824, 0, 0.627451, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0022e"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sj2jw"]
 gradient = SubResource("Gradient_aqqjk")
 width = 1
 
+[sub_resource type="Gradient" id="Gradient_yfl7l"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0022e"]
+gradient = SubResource("Gradient_yfl7l")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [node name="Enemy3" type="CharacterBody2D" unique_id=562708192]
+script = ExtResource("1_sj2jw")
+projectile_scene = ExtResource("2_xroqt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648074876]
 position = Vector2(-0.5, -4)
@@ -87,23 +102,13 @@ shape = SubResource("RectangleShape2D_xroqt")
 position = Vector2(2, -5.5)
 scale = Vector2(0.875, 0.84375)
 sprite_frames = SubResource("SpriteFrames_gi2sj")
-frame_progress = 0.24404088
+animation = &"shoot"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=972398749]
-offset_left = -14.0
-offset_top = -37.0
-offset_right = 23.0
-offset_bottom = -5.0
-value = 100.0
-texture_under = ExtResource("3_xroqt")
-texture_progress = ExtResource("4_hbbh0")
-metadata/_edit_use_anchors_ = true
-
-[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=1580956672]
+[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=1169977919]
 position = Vector2(2, -5)
 emitting = false
 amount = 20
-texture = SubResource("GradientTexture1D_0022e")
+texture = SubResource("GradientTexture1D_sj2jw")
 lifetime = 0.2
 one_shot = true
 speed_scale = 0.3
@@ -112,4 +117,19 @@ direction = Vector2(0, -1)
 spread = 180.0
 initial_velocity_min = 280.33
 initial_velocity_max = 290.5
-color = Color(0, 0.6461681, 0.76761734, 1)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=381208864]
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 22.0
+offset_bottom = 2.0
+value = 100.0
+texture_under = ExtResource("5_0022e")
+texture_progress = ExtResource("6_uboy5")
+metadata/_edit_use_anchors_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=454055913]
+position = Vector2(0, 3)
+color = Color(0.7687156, 1.2995302e-05, 0.5282726, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_0022e")
