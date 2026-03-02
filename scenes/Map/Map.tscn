@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://8oujrahfnp72" path="res://scenes/Mineral1/Mineral1.tscn" id="1_iut6q"]
 [ext_resource type="Texture2D" uid="uid://b8ui7nhjk2ctn" path="res://assets/tileset/CurrentTilesetVer.png" id="1_x27a8"]
+[ext_resource type="PackedScene" uid="uid://csstyy7xbly0s" path="res://scenes/Mineral2/Mineral2.tscn" id="2_ehbow"]
 [ext_resource type="Script" uid="uid://bga6sm6wsmys5" path="res://scenes/Map/enemies.gd" id="2_x27a8"]
+[ext_resource type="PackedScene" uid="uid://3w8sga1w2wj7" path="res://scenes/Mineral3/Mineral3.tscn" id="3_hkcfk"]
 [ext_resource type="Texture2D" uid="uid://c464fm7dk10ly" path="res://assets/sprites/SecondaryTilemapACTUAL.png" id="4_n3hww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iut6q"]
@@ -207,6 +209,69 @@ sources/0 = SubResource("TileSetAtlasSource_ehbow")
 
 [node name="Mineral1" parent="Minerals" unique_id=1561138462 instance=ExtResource("1_iut6q")]
 position = Vector2(281, 383)
+
+[node name="Mineral11" parent="Minerals" unique_id=1624243610 instance=ExtResource("1_iut6q")]
+position = Vector2(387, 588)
+
+[node name="Mineral12" parent="Minerals" unique_id=847728670 instance=ExtResource("1_iut6q")]
+position = Vector2(563, 444)
+
+[node name="Mineral13" parent="Minerals" unique_id=474889470 instance=ExtResource("1_iut6q")]
+position = Vector2(343, 188)
+
+[node name="Mineral14" parent="Minerals" unique_id=815540181 instance=ExtResource("1_iut6q")]
+position = Vector2(-152, 394)
+
+[node name="Mineral15" parent="Minerals" unique_id=1761548494 instance=ExtResource("1_iut6q")]
+position = Vector2(53, 908)
+
+[node name="Mineral22" parent="Minerals" unique_id=1668474036 instance=ExtResource("1_iut6q")]
+position = Vector2(-154, 2268)
+
+[node name="Mineral2" parent="Minerals" unique_id=2033881077 instance=ExtResource("2_ehbow")]
+position = Vector2(1, 681)
+
+[node name="Mineral3" parent="Minerals" unique_id=248342972 instance=ExtResource("2_ehbow")]
+position = Vector2(521, 778)
+
+[node name="Mineral16" parent="Minerals" unique_id=1922379821 instance=ExtResource("2_ehbow")]
+position = Vector2(350, 1017)
+
+[node name="Mineral8" parent="Minerals" unique_id=954361585 instance=ExtResource("2_ehbow")]
+position = Vector2(846, 1336)
+
+[node name="Mineral18" parent="Minerals" unique_id=650811027 instance=ExtResource("2_ehbow")]
+position = Vector2(521, 1784)
+
+[node name="Mineral19" parent="Minerals" unique_id=2067905288 instance=ExtResource("2_ehbow")]
+position = Vector2(16, 2009)
+
+[node name="Mineral20" parent="Minerals" unique_id=1649432848 instance=ExtResource("2_ehbow")]
+position = Vector2(194, 2264)
+
+[node name="Mineral10" parent="Minerals" unique_id=1159289675 instance=ExtResource("2_ehbow")]
+position = Vector2(33, 1577)
+
+[node name="Mineral4" parent="Minerals" unique_id=746288680 instance=ExtResource("3_hkcfk")]
+position = Vector2(761, 763)
+
+[node name="Mineral5" parent="Minerals" unique_id=200249841 instance=ExtResource("3_hkcfk")]
+position = Vector2(275, 1227)
+
+[node name="Mineral17" parent="Minerals" unique_id=1737849766 instance=ExtResource("3_hkcfk")]
+position = Vector2(667, 1755)
+
+[node name="Mineral21" parent="Minerals" unique_id=1334032614 instance=ExtResource("3_hkcfk")]
+position = Vector2(770, 2107)
+
+[node name="Mineral6" parent="Minerals" unique_id=350010087 instance=ExtResource("3_hkcfk")]
+position = Vector2(-98, 1403)
+
+[node name="Mineral7" parent="Minerals" unique_id=1674906339 instance=ExtResource("3_hkcfk")]
+position = Vector2(603, 1436)
+
+[node name="Mineral9" parent="Minerals" unique_id=1524410756 instance=ExtResource("3_hkcfk")]
+position = Vector2(816, 1542)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=555694956]
 visible = false
