@@ -27,3 +27,4 @@ offset_bottom = -381.0
 position = Vector2(648, 2245)
 
 [node name="WinningUI" parent="." unique_id=418545339 instance=ExtResource("6_d463r")]
+anchors_preset = 15

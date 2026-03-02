@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://becivtixuvqgf" path="res://assets/sprites/UhParticle.png" id="10_qt7jd"]
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
 [ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
-[ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/woosh.mp3" id="18_2aixn"]
 [ext_resource type="AudioStream" uid="uid://bf686kqtmoi86" path="res://assets/sounds/walkingSound.mp3" id="17_5gcuk"]
+[ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/woosh.mp3" id="18_2aixn"]
 
 [sub_resource type="Gradient" id="Gradient_dqefj"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)

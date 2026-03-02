@@ -152,10 +152,11 @@ func attack():
 		var timer = get_node("attackDelay")
 		timer.start()
 
+
 func swing_pickaxe():
 	if swing_tween:
 		swing_tween.kill()
-	
+		
 	swing_tween = create_tween()
 	
 	var current_angle = $pickaxe.rotation

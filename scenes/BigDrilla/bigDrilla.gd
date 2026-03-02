@@ -120,8 +120,16 @@ func die():
 	deathParticles.emitting = true
 	await get_tree().create_timer(1).timeout
 	
-	var win_ui = get_tree().current_scene.get_node("WinningUI")
-	if win_ui:
-		win_ui.visible = true
+	await get_tree().create_timer(1.0).timeout
+	var shop_layer = CanvasLayer.new()
+	shop_layer.layer = 100
+	shop_layer.name = "ShopLayer"
+	var shop = preload("res://scenes/UI/WinningUI.tscn").instantiate()
+	shop.modulate = Color(1, 1, 1, 0)
+	shop_layer.add_child(shop)
+	get_tree().current_scene.add_child(shop_layer)
+	
+	var tween = shop.create_tween()
+	tween.tween_property(shop, "modulate:a", 1.0, 0.5)
 	
 	queue_free()
