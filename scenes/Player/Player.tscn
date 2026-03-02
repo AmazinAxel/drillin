@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://becivtixuvqgf" path="res://assets/sprites/UhParticle.png" id="10_qt7jd"]
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
 [ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
+[ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/woosh.mp3" id="18_2aixn"]
 
 [sub_resource type="Gradient" id="Gradient_dqefj"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -419,6 +420,9 @@ rotation = -3.1415925
 scale = Vector2(0.32137287, -0.5892029)
 shape = SubResource("RectangleShape2D_qt7jd")
 debug_color = Color(0.89517343, 0.256144, 0.49235988, 0.41960785)
+
+[node name="woosh" type="AudioStreamPlayer2D" parent="." unique_id=826807480]
+stream = ExtResource("18_2aixn")
 
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]

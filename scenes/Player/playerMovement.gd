@@ -121,6 +121,8 @@ func throwPickaxe():
 		return
 	if thrown_instance != null:  # already one in the air
 		return
+		
+	$woosh.play()
 
 	pickaxe.visible = false
 	isAttacking = true
