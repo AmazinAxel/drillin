@@ -9,6 +9,17 @@ size = Vector2(4, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tc4vi"]
 size = Vector2(4, 4)
 
+[sub_resource type="Gradient" id="Gradient_yfl7l"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_77rmk"]
+gradient = SubResource("Gradient_yfl7l")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [node name="SmallProjectile" type="CharacterBody2D" unique_id=1484946372]
 script = ExtResource("1_77rmk")
 
@@ -23,5 +34,11 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=706898865]
 shape = SubResource("RectangleShape2D_tc4vi")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=328577462]
+position = Vector2(0, 3)
+color = Color(0.7687156, 1.2995302e-05, 0.5282726, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_77rmk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

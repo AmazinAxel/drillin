@@ -6,6 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njouk"]
 size = Vector2(15, 7)
 
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_njouk"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [node name="BigDrillaProjectile" type="CharacterBody2D" unique_id=1207000733]
 script = ExtResource("1_5rrx4")
 
@@ -24,5 +35,10 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1160705954]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_njouk")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=485854219]
+color = Color(0.59575146, 0, 0, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_njouk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
