@@ -8,10 +8,10 @@ anchors_preset = 0
 
 [node name="Label" type="Label" parent="." unique_id=257477398]
 layout_mode = 0
-offset_left = 223.0
-offset_top = 136.0
-offset_right = 371.0
-offset_bottom = 184.0
+offset_left = 225.0
+offset_top = 133.0
+offset_right = 450.0
+offset_bottom = 181.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_j6rys")
