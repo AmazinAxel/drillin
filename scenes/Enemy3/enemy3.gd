@@ -1,8 +1,10 @@
 extends CharacterBody2D
+@export var jump_force: float = -300.0
 
 @export var max_health: int = 3
-@export var speed: float = 10.0
+@export var speed: float = 40.0
 @export var gravity: float = 400.0
+@export var jump_threshold: float = 20.0  # How far above the enemy the player must be to trigger a jump
 
 @export var damage: int = 50
 @export var damage_cooldown: float = 0.5
@@ -60,6 +62,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+
 	var player = get_tree().get_first_node_in_group("player")
 
 	if player:
@@ -74,6 +77,10 @@ func _physics_process(delta):
 			can_damage = false
 			await get_tree().create_timer(damage_cooldown).timeout
 			can_damage = true
+			
+		# Jump if player is above or if stuck against a wall
+		if player.global_position.y < global_position.y - jump_threshold and is_on_floor():
+			velocity.y = jump_force
 
 	move_and_slide()
 

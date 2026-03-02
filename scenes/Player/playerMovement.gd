@@ -91,6 +91,10 @@ func take_damage(amount):
 	
 	screen_shake(5, 0.2)
 	
+	if randf() < 0.5:
+		$ouch.play()
+	else:
+		$ow.play()
 	
 	var rand_int = randi_range(1, 4)
 	

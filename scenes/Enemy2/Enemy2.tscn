@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://negrhvo8d8cf"]
 
-[ext_resource type="Script" path="res://scenes/Enemy2/enemy2.gd" id="1_f2n7g"]
+[ext_resource type="Script" uid="uid://cbnicqmjbfdfw" path="res://scenes/Enemy2/enemy2.gd" id="1_f2n7g"]
 [ext_resource type="Texture2D" uid="uid://b4d5eouygp57b" path="res://scenes/SlimetVersion1.png" id="2_f2n7g"]
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_iojhh"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_3nu70"]
+[ext_resource type="AudioStream" uid="uid://3s0khcb1kxcx" path="res://assets/sounds/Slimy.mp3" id="5_3nu70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iojhh"]
 size = Vector2(28, 25)
@@ -38,14 +39,11 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_iojhh"]
-colors = PackedColorArray(0.2627451, 0.5764706, 0.38431373, 1, 0.2627451, 0.5764706, 0.38431373, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_23qtn"]
 gradient = SubResource("Gradient_iojhh")
 width = 1
-
-[sub_resource type="Gradient" id="Gradient_iojhh"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3nu70"]
 gradient = SubResource("Gradient_iojhh")
@@ -98,3 +96,6 @@ position = Vector2(0, 3)
 color = Color(0.39295325, 0.997814, 0.19943595, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_3nu70")
+
+[node name="slimesound" type="AudioStreamPlayer2D" parent="." unique_id=1147073860]
+stream = ExtResource("5_3nu70")

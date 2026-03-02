@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
 [ext_resource type="AudioStream" uid="uid://bf686kqtmoi86" path="res://assets/sounds/walkingSound.mp3" id="17_5gcuk"]
 [ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/woosh.mp3" id="18_2aixn"]
+[ext_resource type="AudioStream" uid="uid://cccvynvsry5et" path="res://scenes/Player/PronouncedOuch.mp3" id="19_2aixn"]
+[ext_resource type="AudioStream" uid="uid://bq68he1lb0sr4" path="res://scenes/Player/Ouch.mp3" id="20_miygw"]
 
 [sub_resource type="Gradient" id="Gradient_dqefj"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -428,6 +430,12 @@ stream = ExtResource("18_2aixn")
 [node name="Walking" type="AudioStreamPlayer2D" parent="." unique_id=1226021126]
 stream = ExtResource("17_5gcuk")
 volume_db = 10.0
+
+[node name="ouch" type="AudioStreamPlayer2D" parent="." unique_id=785443759]
+stream = ExtResource("19_2aixn")
+
+[node name="ow" type="AudioStreamPlayer2D" parent="." unique_id=1868238959]
+stream = ExtResource("20_miygw")
 
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]

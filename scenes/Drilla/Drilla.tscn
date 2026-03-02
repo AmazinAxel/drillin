@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dcy4ch7nqqhmi" path="res://scenes/Drilla/drillMenu.gd" id="2_d2uqm"]
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="3_yb5c1"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="4_ygnt4"]
+[ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="5_ruqpt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yb5c1"]
 atlas = ExtResource("1_7tgjl")
@@ -124,6 +125,9 @@ initial_velocity_min = 500.0
 initial_velocity_max = 540.78
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_ruqpt")
+
+[node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1791640435]
+stream = ExtResource("5_ruqpt")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

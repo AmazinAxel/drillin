@@ -63,6 +63,7 @@ func start_drill_sequence():
 	
 	is_shaking = true
 	shake_camera_forever(camera)
+	play_drill_sound_loop()
 	
 	miningParticles.emitting = true
 	
@@ -103,14 +104,16 @@ func shake_camera_forever(camera: Camera2D):
 		await get_tree().process_frame
 	camera.offset = camera_base_offset
 
+func play_drill_sound_loop():
+	while is_shaking:
+		$drillSound.play()
+		await $drillSound.finished
+
 func ease_in_out_custom(t: float) -> float:
-	# Spends more time easing in, peaks around t=0.4, then eases out
 	if t < 0.4:
-		# Ease in (quadratic)
 		var normalized = t / 0.4
 		return normalized * normalized
 	else:
-		# Ease out (quadratic)
 		var normalized = (t - 0.4) / 0.6
 		return 1.0 - (normalized * normalized)
 
@@ -124,7 +127,6 @@ func stop_drill():
 	
 	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
 	var player_node = get_tree().get_first_node_in_group("player")
-	is_shaking = false
 	camera.offset = camera_base_offset
 	
 	var shop_layer = get_tree().current_scene.get_node_or_null("ShopLayer")
@@ -142,7 +144,6 @@ func stop_drill():
 				particles.queue_free()
 		)
 
-	# Custom eased animation speed: ramps up gradually then slows down
 	var min_speed = 0.3
 	var max_speed = 3.0
 	var duration = 3.5
@@ -165,14 +166,16 @@ func stop_drill():
 	final_tween.tween_property(player_node, "global_position:y", goToY, 3.7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	await final_tween.finished
 	
-	stop()
+	# Stop sound and shaking AFTER the lerp ends
+	is_shaking = false
+	$drillSound.stop()
 	
+	stop()
 	miningParticles.emitting = false
 	
 	Globals.level += 1;
 	print(Globals.level);
 
-	
 	if darkness_overlay:
 		var dark_tween = create_tween()
 		dark_tween.tween_property(darkness_overlay, "color:a", 0.0, 0.5)
@@ -197,7 +200,7 @@ func stop_drill():
 	started = false
 	await get_tree().create_timer(1.0).timeout
 	show_gui_blocked = false
-	
+
 func kill_all_enemies():
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if is_instance_valid(enemy) and enemy.has_method("die"):

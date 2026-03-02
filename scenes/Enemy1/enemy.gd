@@ -61,6 +61,7 @@ func take_damage(amount: int):
 	health_bar.value = health
 	if health <= 0:
 		die()
+	$slimesound.play()
 
 func die():
 	deathParticles.emitting = true
