@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="PackedScene" uid="uid://cn0c5air71r5c" path="res://scenes/UI/DrillaShop.tscn" id="4_brr1f"]
 [ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="5_pkilc"]
+[ext_resource type="PackedScene" uid="uid://cbm2v7o7dcnr6" path="res://scenes/UI/WinningUI.tscn" id="6_d463r"]
 
 [node name="Main" type="Node" unique_id=2130844757]
 
@@ -24,3 +25,5 @@ offset_bottom = -381.0
 
 [node name="BigDrilla" parent="." unique_id=1445029359 instance=ExtResource("5_pkilc")]
 position = Vector2(648, 2245)
+
+[node name="WinningUI" parent="." unique_id=418545339 instance=ExtResource("6_d463r")]

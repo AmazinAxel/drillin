@@ -200,7 +200,6 @@ func stop_drill():
 	
 func kill_all_enemies():
 	for enemy in get_tree().get_nodes_in_group("enemies"):
-		print(enemy)
-		if enemy.has_method("die"):
+		if is_instance_valid(enemy) and enemy.has_method("die"):
 			enemy.die()
 		await get_tree().create_timer(0.1).timeout

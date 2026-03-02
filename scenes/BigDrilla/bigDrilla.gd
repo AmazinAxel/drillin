@@ -119,4 +119,9 @@ func die():
 	animated_sprite.play("death")
 	deathParticles.emitting = true
 	await get_tree().create_timer(1).timeout
+	
+	var win_ui = get_tree().current_scene.get_node("WinningUI")
+	if win_ui:
+		win_ui.visible = true
+	
 	queue_free()

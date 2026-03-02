@@ -15,7 +15,7 @@ var bob_time: float = 0.0
 
 @onready var damage_particles = $damageParticles
 @onready var point_light = $PointLight2D
-@onready var sprite = $Sprite2D
+@onready var sprite = get_node_or_null("Sprite2D")
 @onready var health_bar = $TextureProgressBar
 @onready var ui_thing = $UI
 @onready var collision = $CollisionShape2D

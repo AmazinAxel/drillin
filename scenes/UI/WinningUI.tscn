@@ -4,14 +4,19 @@
 
 [node name="WinningUI" type="Control" unique_id=418545339]
 layout_mode = 3
-anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="." unique_id=257477398]
 layout_mode = 0
-offset_left = 225.0
-offset_top = 133.0
-offset_right = 450.0
-offset_bottom = 181.0
+offset_left = 217.0
+offset_top = 149.0
+offset_right = 442.0
+offset_bottom = 197.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_j6rys")
