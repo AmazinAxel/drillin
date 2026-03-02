@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://p8jyhfca4357" path="res://assets/tileset/PinkSlimeWalk.png" id="1_ruwya"]
 [ext_resource type="Texture2D" uid="uid://6dakjvdru28i" path="res://assets/tileset/RythmIsADancer-shoot.png" id="2_sj2jw"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_xroqt"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_hbbh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xroqt"]
 size = Vector2(23, 18)
@@ -68,6 +70,13 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_aqqjk"]
+colors = PackedColorArray(0.2627451, 0.5764706, 0.38431373, 1, 0.2627451, 0.5764706, 0.38431373, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0022e"]
+gradient = SubResource("Gradient_aqqjk")
+width = 1
+
 [node name="Enemy3" type="CharacterBody2D" unique_id=562708192]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648074876]
@@ -79,3 +88,28 @@ position = Vector2(2, -5.5)
 scale = Vector2(0.875, 0.84375)
 sprite_frames = SubResource("SpriteFrames_gi2sj")
 frame_progress = 0.24404088
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=972398749]
+offset_left = -14.0
+offset_top = -37.0
+offset_right = 23.0
+offset_bottom = -5.0
+value = 100.0
+texture_under = ExtResource("3_xroqt")
+texture_progress = ExtResource("4_hbbh0")
+metadata/_edit_use_anchors_ = true
+
+[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=1580956672]
+position = Vector2(2, -5)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_0022e")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 280.33
+initial_velocity_max = 290.5
+color = Color(0, 0.6461681, 0.76761734, 1)

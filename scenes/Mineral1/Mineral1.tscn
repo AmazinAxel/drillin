@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://8oujrahfnp72"]
+
+[ext_resource type="Script" uid="uid://d05iav3r7byk3" path="res://scenes/Mineral1/mineral1.gd" id="1_a75ro"]
+[ext_resource type="Texture2D" uid="uid://dhqhruvbd8rxo" path="res://scenes/Drilla/CrystalWhite_ButNotMeth.png" id="1_pxwml"]
+[ext_resource type="Texture2D" uid="uid://dfwkoybwt3apx" path="res://scenes/CrystalBarrMpty.png" id="3_bcbq4"]
+[ext_resource type="Texture2D" uid="uid://dalvpshrf57fp" path="res://scenes/CrystallBarrFull.png" id="4_0v8au"]
+[ext_resource type="Texture2D" uid="uid://bgvpuvqs1t3g5" path="res://scenes/UI/UiCrystalllllllllllllllllllll.png" id="5_li6ab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v8au"]
+size = Vector2(28, 27)
+
+[sub_resource type="Gradient" id="Gradient_aqqjk"]
+colors = PackedColorArray(0.27058825, 0.5529412, 0.5764706, 1, 0.26870808, 0.5527599, 0.5763457, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g2v5g"]
+gradient = SubResource("Gradient_aqqjk")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3q3ht"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
+[node name="Mineral1" type="StaticBody2D" unique_id=1561138462]
+script = ExtResource("1_a75ro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1645010957]
+position = Vector2(2, -7.5)
+shape = SubResource("RectangleShape2D_0v8au")
+one_way_collision = true
+
+[node name="damageParticles" type="CPUParticles2D" parent="." unique_id=282160738]
+position = Vector2(2, -5)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_g2v5g")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 280.33
+initial_velocity_max = 290.5
+color = Color(0, 0.6461681, 0.76761734, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1830611367]
+position = Vector2(1, 4)
+color = Color(0.3189962, 0.7685697, 0.839239, 1)
+energy = 0.1
+texture = SubResource("GradientTexture2D_3q3ht")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1201616920]
+position = Vector2(2.000001, -7.5000005)
+scale = Vector2(0.875, 0.84374994)
+texture = ExtResource("1_pxwml")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1668386165]
+offset_left = -14.0
+offset_top = -39.0
+offset_right = 23.0
+offset_bottom = -7.0
+value = 100.0
+texture_under = ExtResource("3_bcbq4")
+texture_progress = ExtResource("4_0v8au")
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="Sprite2D" parent="." unique_id=1320984302]
+position = Vector2(-16.999998, -25.000002)
+scale = Vector2(0.50781244, 0.4999999)
+texture = ExtResource("5_li6ab")
