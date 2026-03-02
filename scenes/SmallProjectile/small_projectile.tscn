@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c8r2ns3xqe11m"]
+
+[ext_resource type="Script" uid="uid://wb6dgjjjtyyf" path="res://scenes/SmallProjectile/smallProjectile.gd" id="1_77rmk"]
+[ext_resource type="Texture2D" uid="uid://buq01go6ahq4p" path="res://assets/tileset/PinkProjectile.png" id="1_ei63u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77rmk"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc4vi"]
+size = Vector2(4, 4)
+
+[node name="SmallProjectile" type="CharacterBody2D" unique_id=1484946372]
+script = ExtResource("1_77rmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1754155218]
+texture = ExtResource("1_ei63u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=484800284]
+shape = SubResource("RectangleShape2D_77rmk")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1226903992]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=706898865]
+shape = SubResource("RectangleShape2D_tc4vi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
