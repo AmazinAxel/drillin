@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c035qx8eqron7"]
 
 [ext_resource type="Texture2D" uid="uid://p8jyhfca4357" path="res://assets/tileset/PinkSlimeWalk.png" id="1_ruwya"]
-[ext_resource type="Script" path="res://scenes/Enemy3/enemy3.gd" id="1_sj2jw"]
+[ext_resource type="Script" uid="uid://balg04l50f1hw" path="res://scenes/Enemy3/enemy3.gd" id="1_sj2jw"]
 [ext_resource type="Texture2D" uid="uid://6dakjvdru28i" path="res://assets/tileset/RythmIsADancer-shoot.png" id="2_sj2jw"]
 [ext_resource type="PackedScene" uid="uid://c8r2ns3xqe11m" path="res://scenes/SmallProjectile/small_projectile.tscn" id="2_xroqt"]
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="5_0022e"]

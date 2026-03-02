@@ -119,7 +119,7 @@ var thrown_instance = null
 func throwPickaxe():
 	if not thrown_pickaxe_scene:
 		return
-	if thrown_instance != null:  # already one in the air
+	if thrown_instance != null:
 		return
 		
 	$woosh.play()
@@ -129,13 +129,15 @@ func throwPickaxe():
 
 	thrown_instance = thrown_pickaxe_scene.instantiate()
 	get_tree().current_scene.add_child(thrown_instance)
-	thrown_instance.global_position = pickaxe.global_position
-
+	
 	var dir = (get_global_mouse_position() - global_position).normalized()
+	thrown_instance.global_position = pickaxe.global_position + dir * 20.0
 	thrown_instance.rotation = dir.angle()
 	thrown_instance.launch(dir, self)
 
-	# After a short delay, start returning
+	# Recoil — push player opposite to throw direction
+	velocity += -dir * 150.0
+
 	await get_tree().create_timer(0.5).timeout
 	if is_instance_valid(thrown_instance):
 		thrown_instance.returning = true

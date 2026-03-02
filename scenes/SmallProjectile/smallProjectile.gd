@@ -5,6 +5,7 @@ var player: Node2D
 var direction: Vector2 = Vector2.RIGHT
 var homing: bool = false
 
+
 func launch(dir: Vector2):
 	direction = Vector2.UP
 	rotation = direction.angle()
@@ -14,7 +15,7 @@ func launch(dir: Vector2):
 		return
 	homing = true
 	
-	await get_tree().create_timer(0.5).timeout  # home for 1 second then fly straight
+	await get_tree().create_timer(0.5).timeout
 	if not is_instance_valid(self):
 		return
 	homing = false

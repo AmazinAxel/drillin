@@ -414,6 +414,8 @@ width = 1
 
 [node name="BigDrilla" type="CharacterBody2D" unique_id=1445029359]
 script = ExtResource("1_nacbp")
+max_health = 25
+charge_duration = 2.0
 projectile_scene = ExtResource("2_hnxqk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501585013]

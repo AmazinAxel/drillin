@@ -6,9 +6,15 @@ var direction: Vector2 = Vector2.RIGHT
 var homing: bool = false
 
 func launch(dir: Vector2):
+	direction = Vector2.UP
 	rotation = direction.angle()
 	
-	await get_tree().create_timer(0.5).timeout 
+	await get_tree().create_timer(0.5).timeout
+	if not is_instance_valid(self):
+		return
+	homing = true
+	
+	await get_tree().create_timer(0.5).timeout
 	if not is_instance_valid(self):
 		return
 	homing = false

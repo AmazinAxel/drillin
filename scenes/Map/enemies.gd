@@ -38,13 +38,16 @@ var L3_INITIAL_SPAWNS: int = 2
 var L3_W1_ENEMY = "Enemy3"
 var L3_W1_START_INTERVAL: float = 2.5
 var L3_W1_SPEED_DIVISOR: float = 4.0
-var L3_W1_MIN_INTERVAL: float = 0.6
+var L3_W1_MIN_INTERVAL: float = 1.0
 var L3_W1_COUNT: int = -1
 
 # ========================== INTERNAL STATE ==========================
 # { level_number: [Marker2D, ...] }
 var level_spawn_points: Dictionary = {}
 var level_waves: Dictionary = {}
+
+@onready var bossSpawnPoint = $BossMarker
+@export var boss: PackedScene
 
 var current_wave_index: int = 0
 var wave_spawn_count: int = 0
@@ -93,6 +96,11 @@ func _process(delta):
 		wave2_started = false
 		_start_wave(0, level)
 		_spawn_initial(level)
+		
+		if level == 3:
+			var bossRef = boss.instantiate()
+			bossRef.position = bossSpawnPoint.position
+			add_child(bossRef)
 
 	timer += delta
 	if timer >= current_interval:
@@ -144,6 +152,8 @@ func _spawn_from_wave(index: int, level: int):
 	if not wave2_started and wave["count"] != -1 and wave_spawn_count >= wave["count"]:
 		wave2_started = true
 		_start_wave(current_wave_index + 1, level)
+		
+		
 
 func _spawn_enemy_at_level(scene: PackedScene, level: int):
 	var points = level_spawn_points.get(level, [])
@@ -153,6 +163,7 @@ func _spawn_enemy_at_level(scene: PackedScene, level: int):
 	var enemy = scene.instantiate()
 	enemy.global_position = pos
 	get_tree().current_scene.add_child(enemy)
+	
 
 func _get_scene(enemy_name: String):
 	match enemy_name:

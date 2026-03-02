@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bga6sm6wsmys5" path="res://scenes/Map/enemies.gd" id="2_x27a8"]
 [ext_resource type="PackedScene" uid="uid://3w8sga1w2wj7" path="res://scenes/Mineral3/Mineral3.tscn" id="3_hkcfk"]
 [ext_resource type="Texture2D" uid="uid://c464fm7dk10ly" path="res://assets/sprites/SecondaryTilemapACTUAL.png" id="4_n3hww"]
+[ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="6_hkcfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iut6q"]
 texture = ExtResource("1_x27a8")
@@ -291,16 +292,13 @@ position = Vector2(218, 302)
 
 [node name="Spawnpoints" type="Node" parent="." unique_id=169008920]
 script = ExtResource("2_x27a8")
+boss = ExtResource("6_hkcfk")
 
 [node name="Level2" type="Node" parent="Spawnpoints" unique_id=570857686]
 
 [node name="2" type="Marker2D" parent="Spawnpoints/Level2" unique_id=1519352790]
 position = Vector2(-232, 1367)
 scale = Vector2(1, 1.0124787)
-
-[node name="1" type="Marker2D" parent="Spawnpoints/Level2" unique_id=858332140]
-position = Vector2(834, 1321.9999)
-scale = Vector2(1, 1.00622)
 
 [node name="Level1" type="Node" parent="Spawnpoints" unique_id=1502419677]
 
@@ -315,8 +313,11 @@ scale = Vector2(1, 1.00622)
 [node name="Level3" type="Node" parent="Spawnpoints" unique_id=1704988941]
 
 [node name="1" type="Marker2D" parent="Spawnpoints/Level3" unique_id=1152944316]
-position = Vector2(684, 2230.9998)
+position = Vector2(728, 1382)
 scale = Vector2(1, 1.00622)
+
+[node name="BossMarker" type="Marker2D" parent="Spawnpoints" unique_id=62359305]
+position = Vector2(632, 2224)
 
 [node name="backgroundTilemap" type="TileMapLayer" parent="." unique_id=2030483697]
 z_index = -1
