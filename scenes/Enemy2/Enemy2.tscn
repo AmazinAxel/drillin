@@ -37,11 +37,11 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_aqqjk"]
+[sub_resource type="Gradient" id="Gradient_iojhh"]
 colors = PackedColorArray(0.2627451, 0.5764706, 0.38431373, 1, 0.2627451, 0.5764706, 0.38431373, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_23qtn"]
-gradient = SubResource("Gradient_aqqjk")
+gradient = SubResource("Gradient_iojhh")
 width = 1
 
 [sub_resource type="Gradient" id="Gradient_iojhh"]
@@ -68,7 +68,7 @@ scale = Vector2(0.875, 0.84375)
 sprite_frames = SubResource("SpriteFrames_23qtn")
 frame_progress = 0.79007775
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1072409059]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1072409059 groups=["enemies"]]
 offset_left = -14.0
 offset_top = -37.0
 offset_right = 23.0
@@ -78,7 +78,7 @@ texture_under = ExtResource("3_iojhh")
 texture_progress = ExtResource("4_3nu70")
 metadata/_edit_use_anchors_ = true
 
-[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=1993072326]
+[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=1993072326 groups=["enemies"]]
 position = Vector2(2, -5)
 emitting = false
 amount = 20

@@ -19,6 +19,7 @@ var can_damage: bool = true
 @onready var deathParticles = $deathParticles
 
 func _ready():
+	add_to_group("enemies")
 	health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = max_health

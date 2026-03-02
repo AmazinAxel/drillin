@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://csstyy7xbly0s"]
+
+[ext_resource type="Script" uid="uid://b0nuiq7d1d5rl" path="res://scenes/Mineral2/mineral2.gd" id="1_kp67b"]
+[ext_resource type="Texture2D" uid="uid://dfwkoybwt3apx" path="res://scenes/CrystalBarrMpty.png" id="3_sw3ml"]
+[ext_resource type="Texture2D" uid="uid://dalvpshrf57fp" path="res://scenes/CrystallBarrFull.png" id="4_wo61s"]
+[ext_resource type="Texture2D" uid="uid://bbrpy5xt5rjm2" path="res://assets/tileset/RedStuff.png" id="5_8l3gc"]
+[ext_resource type="Texture2D" uid="uid://bgvpuvqs1t3g5" path="res://scenes/UI/UiCrystalllllllllllllllllllll.png" id="5_r22fq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oho2q"]
+size = Vector2(25, 29)
+
+[sub_resource type="Gradient" id="Gradient_aqqjk"]
+colors = PackedColorArray(0.27058825, 0.5529412, 0.5764706, 1, 0.26870808, 0.5527599, 0.5763457, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8l3gc"]
+gradient = SubResource("Gradient_aqqjk")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_20jug"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20jug"]
+atlas = ExtResource("5_8l3gc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f17jm"]
+atlas = ExtResource("5_8l3gc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qht0s"]
+atlas = ExtResource("5_8l3gc")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80xp1"]
+atlas = ExtResource("5_8l3gc")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ce3b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20jug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f17jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qht0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80xp1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Mineral2" type="StaticBody2D" unique_id=2033881077]
+script = ExtResource("1_kp67b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=395610476]
+position = Vector2(0.5, -6.5)
+shape = SubResource("RectangleShape2D_oho2q")
+one_way_collision = true
+
+[node name="damageParticles" type="CPUParticles2D" parent="." unique_id=1111228589]
+position = Vector2(2, -5)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_8l3gc")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 280.33
+initial_velocity_max = 290.5
+color = Color(0, 0.6461681, 0.76761734, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=94349026]
+position = Vector2(1, 4)
+color = Color(0.3189962, 0.7685697, 0.839239, 1)
+energy = 0.1
+texture = SubResource("GradientTexture2D_20jug")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1060979682]
+offset_left = -14.0
+offset_top = -39.0
+offset_right = 23.0
+offset_bottom = -7.0
+value = 100.0
+texture_under = ExtResource("3_sw3ml")
+texture_progress = ExtResource("4_wo61s")
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" type="Sprite2D" parent="." unique_id=338787085]
+position = Vector2(-16.999998, -25.000002)
+scale = Vector2(0.50781244, 0.4999999)
+texture = ExtResource("5_r22fq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1229798176]
+position = Vector2(2, -6)
+sprite_frames = SubResource("SpriteFrames_7ce3b")
+frame_progress = 0.45390403

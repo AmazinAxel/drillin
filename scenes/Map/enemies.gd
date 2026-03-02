@@ -55,6 +55,7 @@ var wave2_started: bool = false
 var last_level: int = -1
 
 func _ready():
+	add_to_group("enemies")
 	# Collect spawn points from Level1, Level2, Level3 child nodes
 	for child in get_children():
 		if child.name.begins_with("Level"):

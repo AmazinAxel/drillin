@@ -29,6 +29,7 @@ window/stretch/mode="viewport"
 
 player=""
 drill=""
+enemies=""
 
 [input]
 

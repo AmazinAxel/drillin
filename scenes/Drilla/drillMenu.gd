@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 
 func start_drill_sequence():
 	play("default")
+	kill_all_enemies()
 	
 	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
 	var player_node = get_tree().get_first_node_in_group("player")
@@ -123,7 +124,6 @@ func stop_drill():
 	
 	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
 	var player_node = get_tree().get_first_node_in_group("player")
-	
 	is_shaking = false
 	camera.offset = camera_base_offset
 	
@@ -154,7 +154,7 @@ func stop_drill():
 
 	var final_tween = create_tween()
 	final_tween.set_parallel(true)
-	
+		
 	var goToY = 750;
 	if Globals.level == 1:
 		goToY = 1230
@@ -198,3 +198,9 @@ func stop_drill():
 	await get_tree().create_timer(1.0).timeout
 	show_gui_blocked = false
 	
+func kill_all_enemies():
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		print(enemy)
+		if enemy.has_method("die"):
+			enemy.die()
+		await get_tree().create_timer(0.1).timeout
