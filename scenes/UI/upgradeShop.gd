@@ -9,7 +9,7 @@ func _on_damage_upgrade_pressed() -> void:
 func _on_health_upgrade_pressed() -> void:
 	if Globals.minerals >= 3:
 		Globals.minerals -= 3
-		Globals.damageReduction -= 0.1  # takes less damage (since damage = amount * damageReduction)
+		Globals.damageReduction -= 0.3  # takes less damage (since damage = amount * damageReduction)
 		$purchase.play()
 
 func _on_replenish_health_pressed() -> void:

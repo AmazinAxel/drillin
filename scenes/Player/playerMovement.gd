@@ -89,6 +89,9 @@ func take_damage(amount):
 	Globals.health -= actual_damage
 	Globals.health = max(Globals.health, 0)
 	
+	screen_shake(5, 0.2)
+	
+	
 	var rand_int = randi_range(1, 4)
 	
 	if (rand_int == 1):
@@ -154,11 +157,13 @@ func attack():
 		var timer = get_node("attackDelay")
 		timer.start()
 
+
 func swing_pickaxe():
 	if swing_tween:
 		swing_tween.kill()
-	
+		
 	swing_tween = create_tween()
+	screen_shake(2, 0.1)
 	
 	var current_angle = $pickaxe.rotation
 	var swing_amount = deg_to_rad(90)
@@ -231,3 +236,13 @@ func _on_death_timer_done():
 		tween2.tween_property(overlay, "color:a", 0.0, 0.5)
 		tween2.tween_callback(canvas.queue_free)
 	)
+
+func screen_shake(intensity: float = 5.0, duration: float = 0.15):
+	var camera = get_viewport().get_camera_2d()
+	if not camera:
+		return
+	var tween = create_tween()
+	tween.tween_method(func(t):
+		camera.offset = Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
+	, 0.0, 1.0, duration)
+	tween.tween_callback(func(): camera.offset = Vector2.ZERO)
