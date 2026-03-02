@@ -60,13 +60,13 @@ theme_override_font_sizes/font_size = 42
 text = "Upgrade Armor (-3)
 "
 
-[node name="RiskUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=989345003]
+[node name="ReplenishHealth" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=989345003]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 42
-text = "Reduce Risks (-1)
+text = "Replenish Health (-1)
 "
 
 [node name="Continue" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1966712827]
@@ -104,6 +104,7 @@ stream = ExtResource("6_jx6w6")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DamageUpgrade" to="." method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HealthUpgrade" to="." method="_on_health_upgrade_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/RiskUpgrade" to="." method="_on_risk_upgrade_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_risk_upgrade_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_replenish_health_pressed"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_button_up"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

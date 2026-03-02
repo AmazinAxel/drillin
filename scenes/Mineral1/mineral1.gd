@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 # ========================== CONFIG ==========================
-@export var max_health: float = 5.0
+@export var max_health: float = 4.0
 @export var mineral_reward: int = 1
 
 

@@ -12,10 +12,10 @@ func _on_health_upgrade_pressed() -> void:
 		Globals.damageReduction -= 0.1  # takes less damage (since damage = amount * damageReduction)
 		$purchase.play()
 
-func _on_risk_upgrade_pressed() -> void:
+func _on_replenish_health_pressed() -> void:
 	if Globals.minerals >= 1:
 		Globals.minerals -= 1
-		Globals.riskChance -= 0.1
+		Globals.health = 100
 		$purchase.play()
 
 func _process(delta):
