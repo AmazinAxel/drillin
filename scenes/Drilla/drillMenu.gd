@@ -24,6 +24,7 @@ extends AnimatedSprite2D
 @export_group("Sound - Fade Out")
 @export var fadeout_target_volume_db := -50.0
 @export var fadeout_duration := 1
+@export_range(0.0, 5.0) var sound_end_early_offset := 0.1  ## How many seconds before descent ends to start fade out + pitch return
 
 var is_shaking = false
 var darkness_overlay = null
@@ -197,8 +198,13 @@ func stop_drill():
 	final_tween.tween_property(player_node, "global_position:y", goToY, 3.7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	
 	# Pitch ramps up during fast descent
+	var descent_duration = 3.5
 	var pitch_tween = create_tween()
 	pitch_tween.tween_property($drillSound, "pitch_scale", descent_peak_pitch, descent_pitch_ramp_up_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	
+	# Schedule fade out + pitch return to start before descent ends
+	var early_delay = max(descent_duration - sound_end_early_offset, 0.0)
+	_start_sound_end_after(early_delay)
 	
 	await final_tween.finished
 	
@@ -211,12 +217,6 @@ func stop_drill():
 	Globals.level += 1;
 	print(Globals.level);
 
-	# Start darkness removal and sound fade out / pitch return simultaneously
-	var sound_end_tween = create_tween()
-	sound_end_tween.set_parallel(true)
-	sound_end_tween.tween_property($drillSound, "pitch_scale", descent_return_pitch, descent_pitch_ramp_down_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	sound_end_tween.tween_property($drillSound, "volume_db", fadeout_target_volume_db, fadeout_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-
 	if darkness_overlay:
 		var dark_tween = create_tween()
 		dark_tween.tween_property(darkness_overlay, "color:a", 0.0, 0.5)
@@ -226,7 +226,6 @@ func stop_drill():
 			darkness_overlay.queue_free()
 			darkness_overlay = null
 	
-	await sound_end_tween.finished
 	$drillSound.stop()
 	$drillSound.pitch_scale = 1.0
 	$drillSound.volume_db = 0.0
@@ -246,6 +245,14 @@ func stop_drill():
 	started = false
 	await get_tree().create_timer(1.0).timeout
 	show_gui_blocked = false
+
+func _start_sound_end_after(delay: float):
+	if delay > 0.0:
+		await get_tree().create_timer(delay).timeout
+	var sound_end_tween = create_tween()
+	sound_end_tween.set_parallel(true)
+	sound_end_tween.tween_property($drillSound, "pitch_scale", descent_return_pitch, descent_pitch_ramp_down_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	sound_end_tween.tween_property($drillSound, "volume_db", fadeout_target_volume_db, fadeout_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 
 func kill_all_enemies():
 	for enemy in get_tree().get_nodes_in_group("enemies"):

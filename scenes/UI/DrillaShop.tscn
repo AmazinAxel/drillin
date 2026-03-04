@@ -47,7 +47,7 @@ custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 32
 text = "Upgrade Weapon (-3)"
 
 [node name="HealthUpgrade" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=161677201]
@@ -56,7 +56,7 @@ layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 32
 text = "Upgrade Armor (-3)
 "
 
@@ -65,7 +65,7 @@ custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_n4ip6")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 32
 text = "Replenish Health (-1)
 "
 
@@ -80,18 +80,18 @@ script = ExtResource("4_21mno")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1575484618]
 layout_mode = 0
-offset_left = 467.0
-offset_top = -9.0
-offset_right = 572.0
-offset_bottom = 93.0
+offset_left = 440.0
+offset_top = 6.0
+offset_right = 545.0
+offset_bottom = 108.0
 texture = ExtResource("5_n4ip6")
 
 [node name="MineralsLabel" type="Label" parent="." unique_id=435678253]
 layout_mode = 0
-offset_left = 535.0
-offset_top = 14.0
-offset_right = 627.0
-offset_bottom = 62.0
+offset_left = 506.0
+offset_top = 28.0
+offset_right = 598.0
+offset_bottom = 76.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_21mno")
@@ -104,7 +104,7 @@ stream = ExtResource("6_jx6w6")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DamageUpgrade" to="." method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HealthUpgrade" to="." method="_on_health_upgrade_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_risk_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_replenish_health_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_risk_upgrade_pressed"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_button_up"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
