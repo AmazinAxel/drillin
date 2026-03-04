@@ -13,7 +13,6 @@ var acceleration: float = 600.0
 var target: Node2D = null
 var bob_time: float = 0.0
 
-@onready var damage_particles = $damageParticles
 @onready var point_light = $PointLight2D
 @onready var sprite = get_node_or_null("Sprite2D")
 @onready var health_bar = $TextureProgressBar
@@ -39,7 +38,7 @@ func take_damage(amount):
 	health_bar.visible = true
 	health_bar.value = health
 	ui_thing.visible = true
-	damage_particles.emitting = true
+	$damageParticles.emitting = true
 
 	modulate = Color.WHITE * 2
 	await get_tree().create_timer(0.1).timeout

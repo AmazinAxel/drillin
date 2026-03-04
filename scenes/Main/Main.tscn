@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0jwngbbuhwcr"]
 
 [ext_resource type="PackedScene" uid="uid://b2wrk6fclb2g4" path="res://scenes/Map/Map.tscn" id="1_owiiy"]
-[ext_resource type="Script" uid="uid://ccnhbewk2dku1" path="res://scenes/Main/main.gd" id="1_q8kdv"]
+[ext_resource type="Script" path="res://scenes/Main/main.gd" id="1_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="PackedScene" uid="uid://cn0c5air71r5c" path="res://scenes/UI/DrillaShop.tscn" id="4_brr1f"]
@@ -26,7 +26,9 @@ offset_bottom = -381.0
 
 [node name="WinningUI" parent="." unique_id=418545339 instance=ExtResource("6_d463r")]
 anchors_preset = 15
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = 1.0
+offset_top = -363.0
+offset_right = 1.0
+offset_bottom = -363.0
 grow_horizontal = 2
 grow_vertical = 2

@@ -72,7 +72,7 @@ shape = SubResource("RectangleShape2D_g03jp")
 one_way_collision = true
 
 [node name="damageParticles" type="CPUParticles2D" parent="." unique_id=1146484245]
-position = Vector2(2, -5)
+position = Vector2(2, -8)
 emitting = false
 amount = 20
 texture = SubResource("GradientTexture1D_bltrk")
