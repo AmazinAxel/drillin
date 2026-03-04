@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # === CONFIGURATION ===
-@export var max_health: int = 3
+@export var max_health: int = 6
 @export var speed: float = 50.0
 @export var gravity: float = 800.0
 @export var jump_force: float = -300.0

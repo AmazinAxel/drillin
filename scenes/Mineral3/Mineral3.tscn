@@ -67,6 +67,7 @@ animations = [{
 
 [node name="Mineral3" type="StaticBody2D" unique_id=746288680]
 script = ExtResource("1_5unja")
+max_health = 18.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=929661007]
 position = Vector2(2, -7.5)

@@ -415,6 +415,8 @@ position = Vector2(-10.94169, 3)
 texture = ExtResource("12_qt7jd")
 
 [node name="damageArea" type="Area2D" parent="pickaxe" unique_id=481415658]
+collision_layer = 7
+collision_mask = 7
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickaxe/damageArea" unique_id=59650308]

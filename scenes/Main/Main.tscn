@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d0jwngbbuhwcr"]
 
 [ext_resource type="PackedScene" uid="uid://b2wrk6fclb2g4" path="res://scenes/Map/Map.tscn" id="1_owiiy"]
-[ext_resource type="Script" path="res://scenes/Main/main.gd" id="1_q8kdv"]
+[ext_resource type="Script" uid="uid://ccnhbewk2dku1" path="res://scenes/Main/main.gd" id="1_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="PackedScene" uid="uid://cn0c5air71r5c" path="res://scenes/UI/DrillaShop.tscn" id="4_brr1f"]
