@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ehokckihf526" path="res://assets/tileset/BlueStone.png" id="2_sj3q5"]
 [ext_resource type="Texture2D" uid="uid://dalvpshrf57fp" path="res://scenes/CrystallBarrFull.png" id="3_sj3q5"]
 [ext_resource type="Texture2D" uid="uid://bgvpuvqs1t3g5" path="res://scenes/UI/UiCrystalllllllllllllllllllll.png" id="4_xd31y"]
+[ext_resource type="AudioStream" uid="uid://b5o1sonrp01lj" path="res://assets/sounds/metal hit 1.mp3" id="6_xd31y"]
+[ext_resource type="AudioStream" uid="uid://bqjjeet5tremr" path="res://assets/sounds/metal hit 2.mp3" id="7_g03jp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g03jp"]
 size = Vector2(28, 27)
@@ -111,3 +113,9 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-16.999998, -25.000002)
 scale = Vector2(0.50781244, 0.4999999)
 texture = ExtResource("4_xd31y")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=2041500164]
+stream = ExtResource("6_xd31y")
+
+[node name="hit2" type="AudioStreamPlayer2D" parent="." unique_id=2124282121]
+stream = ExtResource("7_g03jp")

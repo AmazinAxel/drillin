@@ -30,6 +30,11 @@ func _ready():
 func take_damage(amount):
 	health -= amount
 	health = max(health, 0)
+	
+	if randf() < 0.5:
+		$hit.play()
+	else:
+		$hit2.play()
 
 	health_bar.visible = true
 	health_bar.value = health
