@@ -29,4 +29,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body.name == "TileMapLayer" or body.name == "thrownPickaxe":
 		return
 	if body.has_method("take_damage"):
-		body.take_damage(round((Globals.attackDamage)/2))
+		if body.is_in_group("enemies") && !returning:
+			body.take_damage(round((Globals.attackDamage)/2), global_position)
+		else:
+			body.take_damage(round((Globals.attackDamage)/2))
+	#returning = true <- do we want it to not pierce?

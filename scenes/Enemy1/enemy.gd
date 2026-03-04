@@ -10,12 +10,15 @@ extends CharacterBody2D
 @export var attack_range: float = 40.0
 @export var jump_threshold: float = 20.0 
 
+@export var knockbackFromPlayer: float = 1000.0
 @export var knockbackForce: float = 3.0  
 
 # === INTERNAL STATE ===
 var health: int
 var can_damage: bool = true
-var isKnockedBack: bool = false
+
+var isKnockedBackFromPlayer: bool = false
+var knockbackVelocity: Vector2
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $TextureProgressBar
@@ -29,12 +32,18 @@ func _ready():
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		
+	if isKnockedBackFromPlayer:
+		knockbackVelocity = knockbackVelocity.lerp(Vector2.ZERO, delta * 10)
+		velocity = knockbackVelocity
+		if knockbackVelocity.length() < 10:
+			knockbackVelocity = Vector2.ZERO
+			isKnockedBackFromPlayer = false
 
 	animated_sprite.play("default")
-
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
-		if not isKnockedBack:
+		if not isKnockedBackFromPlayer:
 			var direction = (player.global_position - global_position).normalized()
 			velocity.x = direction.x * speed
 
@@ -47,25 +56,27 @@ func _physics_process(delta):
 				animated_sprite.flip_h = false
 			elif direction.x < 0:
 				animated_sprite.flip_h = true
-
-		var distance = global_position.distance_to(player.global_position)
-		if can_damage and distance < attack_range:
-			player.take_damage(damage)
-			print("damage taken")
-			var push_direction = (global_position - player.global_position).normalized()
-			velocity.x = push_direction.x * speed * knockbackForce
-			velocity.y = push_direction.y * speed * knockbackForce
-			can_damage = false
-			isKnockedBack = false
-			await get_tree().create_timer(damage_cooldown).timeout
-			isKnockedBack = true
-			can_damage = true
+				
+			var distance = global_position.distance_to(player.global_position)
+			if can_damage and distance < attack_range:
+				player.take_damage(damage)
+				var push_direction = (global_position - player.global_position).normalized()
+				velocity.x = push_direction.x * speed * knockbackForce
+				velocity.y = push_direction.y * speed * knockbackForce
+				can_damage = false
+				await get_tree().create_timer(damage_cooldown).timeout
+				can_damage = true
 
 	move_and_slide()
 
-func take_damage(amount: int):
+func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
 	health_bar.value = health
+	if hitFrom != Vector2.ZERO:
+		var knockbackDir = (global_position - hitFrom).normalized()
+		knockbackVelocity = knockbackDir * knockbackFromPlayer
+		isKnockedBackFromPlayer = true
+	
 	if health <= 0:
 		die()
 	$slimesound.play()

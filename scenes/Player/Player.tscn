@@ -264,9 +264,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 size = Vector2(43.332184, 23.760918)
 
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
+z_index = 1
 scale = Vector2(1.0053291, 1)
 script = ExtResource("1_ky53y")
-thrown_pickaxe_scene = ExtResource("2_lbts4")
+thrownPickaxeScene = ExtResource("2_lbts4")
 
 [node name="skullParticles" type="CPUParticles2D" parent="." unique_id=167397581]
 position = Vector2(0, -8)

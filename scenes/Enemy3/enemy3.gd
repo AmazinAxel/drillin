@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var gravity: float = 400.0
 @export var jump_threshold: float = 20.0  # How far above the enemy the player must be to trigger a jump
 
+@export var knockbackFromPlayer: float = 300.0
+
 @export var damage: int = 50
 @export var damage_cooldown: float = 0.5
 
@@ -15,6 +17,9 @@ extends CharacterBody2D
 # === INTERNAL STATE ===
 var health: int
 var can_damage: bool = true
+
+var isKnockedBackFromPlayer: bool = false
+var knockbackVelocity: Vector2
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $TextureProgressBar
@@ -61,11 +66,16 @@ func shoot_projectile():
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-
+		
+	if isKnockedBackFromPlayer:
+		knockbackVelocity = knockbackVelocity.lerp(Vector2.ZERO, delta * 10)
+		velocity = knockbackVelocity
+		if knockbackVelocity.length() < 10:
+			knockbackVelocity = Vector2.ZERO
+			isKnockedBackFromPlayer = false
+			
 	var player = get_tree().get_first_node_in_group("player")
-
-	if player:
+	if player && !isKnockedBackFromPlayer:
 		animated_sprite.play("default")
 		var direction = (player.global_position - global_position).normalized()
 		velocity.x = direction.x * speed
@@ -84,11 +94,18 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func take_damage(amount: int):
+func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
 	health_bar.value = health
+	
+	if hitFrom != Vector2.ZERO:
+		var knockbackDir = (global_position - hitFrom).normalized()
+		knockbackVelocity = knockbackDir * knockbackFromPlayer
+		isKnockedBackFromPlayer = true
+	
 	if health <= 0:
 		die()
+	$slimesound.play()
 	
 func die():
 	deathParticles.emitting = true

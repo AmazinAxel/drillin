@@ -1,7 +1,7 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772599821
+::res://::1772603660
 ::res://assets/::1772415327
-::res://assets/sounds/::1772420754
+::res://assets/sounds/::1772599822
 attack.mp3::AudioStreamMP3::2524377595125637877::1772413534::1772599822::1::::<><><>0<>0<>2f31cf8cb3a676e3ca1638ccc91350ae<>res://.godot/imported/attack.mp3-8984b5402b0f89a65a0283cf10757be7.mp3str::
 Drill.mp3::AudioStreamMP3::8909209317620365810::1772420751::1772599822::1::::<><><>0<>0<>9490d4b8389d5202895b8b3cab1da831<>res://.godot/imported/Drill.mp3-327b5e71ef22adf6b5519d77d7cbb883.mp3str::
 DRILLIN.mp3::AudioStreamMP3::1758831057591157100::1772420751::1772599822::1::::<><><>0<>0<>1d0e9d7a91c60e16bd274f7b72322e87<>res://.godot/imported/DRILLIN.mp3-2ef5d78ac392552e404c00d85d954dbd.mp3str::
@@ -15,7 +15,7 @@ Slimy.mp3::AudioStreamMP3::2003982575029852999::1772414917::1772599822::1::::<><
 THISisNotADrill.mp3::AudioStreamMP3::2307903911701193005::1772420751::1772599822::1::::<><><>0<>0<>9b6db23603013eab9eeca0d6a806c896<>res://.godot/imported/THISisNotADrill.mp3-049f3af7f12351217f7dca78b2457980.mp3str::
 walkingSound.mp3::AudioStreamMP3::2803420183461702961::1772413905::1772599822::1::::<><><>0<>0<>9b9d1a13da368fab81fb3ca50171b2b6<>res://.godot/imported/walkingSound.mp3-5fd2e11555d63c489dc3c74d84a8418c.mp3str::
 woosh.mp3::AudioStreamMP3::3966880963385973886::1772415327::1772599822::1::::<><><>0<>0<>80d735d981d97605a0aa3e623e71da05<>res://.godot/imported/woosh.mp3-28b091849beec9a2d180b7d5ca876278.mp3str::
-::res://assets/sprites/::1772408702
+::res://assets/sprites/::1772599823
 BigDrilla.png::CompressedTexture2D::7681871607871362761::1772398481::1772599822::1::::<><><>0<>0<>1e30c180ef1b0d67a61aec9efca0bc43<>res://.godot/imported/BigDrilla.png-3175e95d1d999c95e8a470cf6dafd641.ctex::
 BigDrillaDeathAnimation.png::CompressedTexture2D::5894962890676073750::1772403422::1772599822::1::::<><><>0<>0<>a0c141bfaa547c3d9de4e1deb88aa0d6<>res://.godot/imported/BigDrillaDeathAnimation.png-4571aa156c1b512f856b13e45aa04b88.ctex::
 BigDrillaDrivinDrillin.png::CompressedTexture2D::8041317496455774404::1772401032::1772599822::1::::<><><>0<>0<>4578c7c7a5f317d7533cd00196939062<>res://.godot/imported/BigDrillaDrivinDrillin.png-702f9376c5f5e5e9e462720ca0b725b0.ctex::
@@ -36,7 +36,7 @@ SecondaryTilemapACTUAL.png::CompressedTexture2D::6874083944889410114::1772408702
 UhParticle.png::CompressedTexture2D::2671829062742158297::1772385456::1772599822::1::::<><><>0<>0<>cb3239889b2e85d661315164413203e0<>res://.godot/imported/UhParticle.png-8fc3db874d857815f7f7a0ded476ffbe.ctex::
 UnfriendlyOuchPartilcle.png::CompressedTexture2D::4019793888781509627::1772385456::1772599822::1::::<><><>0<>0<>aefbe9d80dbda0ae0e546e8f199310fe<>res://.godot/imported/UnfriendlyOuchPartilcle.png-21e75cabf64002ea1bdd28508a820ce4.ctex::
 Walker3000PlusJump.png::CompressedTexture2D::4915069002365819162::1772403832::1772599822::1::::<><><>0<>0<>0299e961f3ad6cffec58a536bdf718dd<>res://.godot/imported/Walker3000PlusJump.png-f92fafd081bf5935bb90a3cf5bf8327b.ctex::
-::res://assets/tileset/::1772591915
+::res://assets/tileset/::1772599822
 BlueStone.png::CompressedTexture2D::296074035536141765::1772413438::1772599822::1::::<><><>0<>0<>8bb3894066a38e23d63db207b95b37b1<>res://.godot/imported/BlueStone.png-fe16c714da707e658352860ce98cb75f.ctex::
 CurrentTilesetVer.png::CompressedTexture2D::4744483654216982771::1772395791::1772599822::1::::<><><>0<>0<>960059016c4c6107c4b482460fdc89ef<>res://.godot/imported/CurrentTilesetVer.png-da575f015ec5de53814158eafe288114.ctex::
 newTilemap.png::CompressedTexture2D::7843619647489466641::1772591914::1772599822::1::::<><><>0<>0<>78bb815fe1e82d6ee51d1d90147fb812<>res://.godot/imported/newTilemap.png-aa553bb39732ef1a11a5b1b0fe33cb3f.ctex::
@@ -45,9 +45,9 @@ PinkSlimeWalk.png::CompressedTexture2D::1121546807922591220::1772393114::1772599
 RedStuff.png::CompressedTexture2D::2492659175230412127::1772393114::1772599822::1::::<><><>0<>0<>c6d17b74e711f1c40a284b896046acdb<>res://.godot/imported/RedStuff.png-6f51e3d39393648b92c0d84478edb8be.ctex::
 RythmIsADancer-shoot.png::CompressedTexture2D::2182065649291118630::1772393114::1772599822::1::::<><><>0<>0<>8b0eb734dff0a3e142d3089ac72cadaf<>res://.godot/imported/RythmIsADancer-shoot.png-d87442e03781a4be7f16031012b69f2e.ctex::
 tilemap.png::CompressedTexture2D::5772663035920492322::1772318656::1772599822::1::::<><><>0<>0<>6b345d171b3ec4afecc1db6757487ba3<>res://.godot/imported/tilemap.png-ad7d14a333d2a1e46004a2a2e6ec8ba8.ctex::
-::res://assets/tileset/tempTilemap/::1772306291
+::res://assets/tileset/tempTilemap/::1772599822
 Assets.png::CompressedTexture2D::1473116556064264812::1772306291::1772599822::1::::<><><>0<>0<>eb8be3c44c1b3ff9b4e473976e597a0d<>res://.godot/imported/Assets.png-7aa71c018940e493d86b16890fa54831.ctex::
-::res://scenes/::1772597040
+::res://scenes/::1772599823
 BarMpty.png::CompressedTexture2D::8538530641233018997::1772323695::1772599822::1::::<><><>0<>0<>a5326bc935f228f409a8dabc223c5df9<>res://.godot/imported/BarMpty.png-15d35acb0e5b2b83b871727cbe5ed294.ctex::
 BarrFull.png::CompressedTexture2D::8766348498468820503::1772323695::1772599822::1::::<><><>0<>0<>8fe60b4b4c581a79b70d9f5cc70aca8e<>res://.godot/imported/BarrFull.png-e0a979cc099a6a9ac3430d3544c25757.ctex::
 button.gd::GDScript::5123872348331253835::1772389799::0::1::::<>Button<><>0<>0<><>::
@@ -71,7 +71,7 @@ big_drilla.tscn::PackedScene::8885420357436866899::1772598800::0::1::::<><><>0<>
 ::res://scenes/BigDrillaProjectile/::1772597039
 bigDrillaProjectile.gd::GDScript::5757885579094882897::1772593842::0::1::::<>CharacterBody2D<><>0<>0<><>::
 big_drilla_projectile.tscn::PackedScene::3164008283797884025::1772597039::0::1::::<><><>0<>0<><>::uid://cobfsfufu8gj6::::res://scenes/BigDrillaProjectile/bigDrillaProjectile.gd<>uid://bstfqvgkwti54::::res://assets/sprites/BossProjectile.png
-::res://scenes/Drilla/::1772599804
+::res://scenes/Drilla/::1772599822
 areaBox.gd::GDScript::5036103886866881437::1772324440::0::1::::<>Area2D<><>0<>0<><>::
 CrystalWhite_ButNotMeth.png::CompressedTexture2D::7684070461014892280::1772393114::1772599822::1::::<><><>0<>0<>604913ec9b465802d83807e3c66b2912<>res://.godot/imported/CrystalWhite_ButNotMeth.png-ff8e58edb619cd7bb25a4dabba103155.ctex::
 drilla.gd::GDScript::7567904585998254934::1772599804::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
@@ -101,24 +101,24 @@ spawnMinerals.gd::GDScript::2859506704802965654::1772390169::0::1::::<>Node<><>0
 ::res://scenes/Mineral1/::1772597375
 mineral1.gd::GDScript::8976401357654146808::1772592686::0::1::::<>StaticBody2D<><>0<>0<><>::
 Mineral1.tscn::PackedScene::2346364433834590383::1772597375::0::1::::<><><>0<>0<><>::uid://d05iav3r7byk3::::res://scenes/Mineral1/mineral1.gd<>uid://dhqhruvbd8rxo::::res://scenes/Drilla/CrystalWhite_ButNotMeth.png<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
-::res://scenes/Mineral2/::1772597380
+::res://scenes/Mineral2/::1772600388
 mineral2.gd::GDScript::4169208201631803997::1772592689::0::1::::<>StaticBody2D<><>0<>0<><>::
-Mineral2.tscn::PackedScene::6074597145401098124::1772597380::0::1::::<><><>0<>0<><>::uid://b0nuiq7d1d5rl::::res://scenes/Mineral2/mineral2.gd<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bbrpy5xt5rjm2::::res://assets/tileset/RedStuff.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
-::res://scenes/Mineral3/::1772597385
-mineral3.gd::GDScript::833937560820908932::1772592689::0::1::::<>StaticBody2D<><>0<>0<><>::
-Mineral3.tscn::PackedScene::2012740053857711522::1772597385::0::1::::<><><>0<>0<><>::uid://l473hh7epeho::::res://scenes/Mineral3/mineral3.gd<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://ehokckihf526::::res://assets/tileset/BlueStone.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
-::res://scenes/Player/::1772597660
+Mineral2.tscn::PackedScene::6074597145401098124::1772600388::0::1::::<><><>0<>0<><>::uid://b0nuiq7d1d5rl::::res://scenes/Mineral2/mineral2.gd<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bbrpy5xt5rjm2::::res://assets/tileset/RedStuff.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
+::res://scenes/Mineral3/::1772600380
+mineral3.gd::GDScript::833937560820908932::1772600380::0::1::::<>StaticBody2D<><>0<>0<><>::
+Mineral3.tscn::PackedScene::2012740053857711522::1772600380::0::1::::<><><>0<>0<><>::uid://l473hh7epeho::::res://scenes/Mineral3/mineral3.gd<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://ehokckihf526::::res://assets/tileset/BlueStone.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
+::res://scenes/Player/::1772599822
 Ouch.mp3::AudioStreamMP3::3575454304356545247::1772420751::1772599822::1::::<><><>0<>0<>299c4c95091d75d42dbfb6c3614b10d2<>res://.godot/imported/Ouch.mp3-24a3542b1b82b41af936192a6d307657.mp3str::
 Player.tscn::PackedScene::5761203154917539158::1772597660::0::1::::<><><>0<>0<><>::uid://bbc03uvvumeip::::res://scenes/Player/playerMovement.gd<>uid://vwmx13ngsf1::::res://scenes/SceletonDisassamble_2.png<>uid://bq0ebqqy3bya1::::res://scenes/Walker3000.png<>uid://rmkjhfpdyjv7::::res://scenes/thrownPickaxe/ThrownPickaxe.tscn<>uid://fv1mcsktlxtw::::res://scenes/UI/SKULL_EMOJI.png<>uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png<>uid://dbqx4wuya0ivd::::res://scenes/Heart.png<>uid://c748sdylf84rr::::res://assets/sprites/JumpingFrame.png<>uid://dpq8amcccqsb::::res://assets/sprites/Rock.png<>uid://b8242othxtd1a::::res://assets/sprites/OhParticle.png<>uid://ndi6sbrklvgq::::res://assets/sprites/flashlight.png<>uid://bj6ytqqb302rb::::res://assets/sprites/OuchParticle.png<>uid://becivtixuvqgf::::res://assets/sprites/UhParticle.png<>uid://bxjhohi86ko4j::::res://assets/sprites/UnfriendlyOuchPartilcle.png<>uid://vmqlp4ccwtcl::::res://assets/sprites/pickaxe.png<>uid://bf686kqtmoi86::::res://assets/sounds/walkingSound.mp3<>uid://bwrt7kc2o1xxe::::res://assets/sounds/woosh.mp3<>uid://cccvynvsry5et::::res://scenes/Player/PronouncedOuch.mp3<>uid://bq68he1lb0sr4::::res://scenes/Player/Ouch.mp3
 playerMovement.gd::GDScript::2462307293776994479::1772597040::0::1::::<>CharacterBody2D<><>0<>0<><>::
 PronouncedOuch.mp3::AudioStreamMP3::4918666442158177763::1772420751::1772599822::1::::<><><>0<>0<>46c3123c663bfdab9d0ffc0cfdc2fc17<>res://.godot/imported/PronouncedOuch.mp3-d12d0568c8933737fa5c30ed56f42353.mp3str::
-::res://scenes/SmallProjectile/::1772593832
+::res://scenes/SmallProjectile/::1772600156
 smallProjectile.gd::GDScript::1548106851413309085::1772593832::0::1::::<>CharacterBody2D<><>0<>0<><>::
-small_projectile.tscn::PackedScene::7125831193127155688::1772593832::0::1::::<><><>0<>0<><>::uid://wb6dgjjjtyyf::::res://scenes/SmallProjectile/smallProjectile.gd<>uid://buq01go6ahq4p::::res://assets/tileset/PinkProjectile.png
-::res://scenes/thrownPickaxe/::1772599777
-thrownPickaxe.gd::GDScript::7656418213805449227::1772598778::0::1::::<>RigidBody2D<><>0<>0<><>::
+small_projectile.tscn::PackedScene::7125831193127155688::1772600156::0::1::::<><><>0<>0<><>::uid://wb6dgjjjtyyf::::res://scenes/SmallProjectile/smallProjectile.gd<>uid://buq01go6ahq4p::::res://assets/tileset/PinkProjectile.png
+::res://scenes/thrownPickaxe/::1772600328
+thrownPickaxe.gd::GDScript::7656418213805449227::1772600328::0::1::::<>RigidBody2D<><>0<>0<><>::
 ThrownPickaxe.tscn::PackedScene::1218606493042044446::1772599777::0::1::::<><><>0<>0<><>::uid://c7oioh8erwctf::::res://assets/sprites/HandyDigger.png<>uid://dhc3dbknh56ap::::res://scenes/thrownPickaxe/thrownPickaxe.gd
-::res://scenes/UI/::1772599804
+::res://scenes/UI/::1772599822
 BossUI.tscn::PackedScene::9174152222788914500::1772599804::0::1::::<><><>0<>0<><>::uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png
 continueBtn.gd::GDScript::4221569917423981515::1772344921::0::1::::<>Button<><>0<>0<><>::
 DeathUI.tscn::PackedScene::2650873438634044945::1772319249::0::1::::<><><>0<>0<><>::uid://ds2on7amp5fky::::res://scenes/Drilla/MyDrilla.png<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://c65gbpprdei7w::::res://scenes/lowres-pixel.otf<>uid://cfabot5h6e74b::::res://scenes/button.gd

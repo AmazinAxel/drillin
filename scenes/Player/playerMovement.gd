@@ -18,7 +18,7 @@ const JUMP_VELOCITY = -350.0
 @onready var pickaxe = $pickaxe
 @onready var pickaxeAttackArea = $pickaxe/damageArea
 
-@export var thrown_pickaxe_scene: PackedScene  # assign in Inspector
+@export var thrownPickaxeScene: PackedScene  # assign in Inspector
 
 var is_swinging: bool = false
 var swing_tween: Tween
@@ -126,7 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 var thrown_instance = null
 
 func throwPickaxe():
-	if not thrown_pickaxe_scene:
+	if not thrownPickaxeScene:
 		return
 	if thrown_instance != null:
 		return
@@ -136,7 +136,7 @@ func throwPickaxe():
 	pickaxe.visible = false
 	isAttacking = true
 
-	thrown_instance = thrown_pickaxe_scene.instantiate()
+	thrown_instance = thrownPickaxeScene.instantiate()
 	get_tree().current_scene.add_child(thrown_instance)
 	
 	var dir = (get_global_mouse_position() - global_position).normalized()
