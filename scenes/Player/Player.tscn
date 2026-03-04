@@ -241,8 +241,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ky53y"]
-size = Vector2(16.909885, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2aixn"]
 
 [sub_resource type="Gradient" id="Gradient_mn6xr"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -290,7 +289,7 @@ animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1931208187]
 position = Vector2(-0.49735004, 0)
-shape = SubResource("RectangleShape2D_ky53y")
+shape = SubResource("CapsuleShape2D_2aixn")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=429943406]
 position = Vector2(0, 3)

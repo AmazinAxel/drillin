@@ -7,7 +7,7 @@ var homing: bool = false
 
 
 func launch(dir: Vector2):
-	direction = Vector2.UP
+	direction = Vector2.ONE
 	rotation = direction.angle()
 	
 	await get_tree().create_timer(0.5).timeout
@@ -24,7 +24,6 @@ func _physics_process(delta):
 	if homing:
 		var p = get_tree().get_first_node_in_group("player")
 		if p:
-			# Smoothly steer toward player
 			direction = direction.lerp((p.global_position - global_position).normalized(), delta * 8).normalized()
 			rotation = direction.angle()
 	
@@ -32,7 +31,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _ready():
-	# Fallback cleanup
 	await get_tree().create_timer(5.0).timeout
 	if is_instance_valid(self):
 		queue_free()
@@ -43,3 +41,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if p:
 			p.take_damage(10)
 		queue_free()
+	elif body.name == "TileMapLayer":
+		queue_free()
+	

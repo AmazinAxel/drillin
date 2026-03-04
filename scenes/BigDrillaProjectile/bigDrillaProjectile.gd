@@ -40,3 +40,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if p:
 			p.take_damage(10)
 		queue_free()
+	elif body.name == "TileMapLayer":
+		queue_free()
