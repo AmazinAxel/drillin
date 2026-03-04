@@ -140,11 +140,10 @@ func throwPickaxe():
 	get_tree().current_scene.add_child(thrown_instance)
 	
 	var dir = (get_global_mouse_position() - global_position).normalized()
-	thrown_instance.global_position = pickaxe.global_position + dir * 20.0
+	thrown_instance.global_position = pickaxe.global_position 
 	thrown_instance.rotation = dir.angle()
 	thrown_instance.launch(dir, self)
 
-	# Recoil — push player opposite to throw direction
 	velocity += -dir * 150.0
 
 	await get_tree().create_timer(0.5).timeout

@@ -413,6 +413,8 @@ gradient = SubResource("Gradient_aqqjk")
 width = 1
 
 [node name="BigDrilla" type="CharacterBody2D" unique_id=1445029359]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_nacbp")
 max_health = 50
 charge_duration = 2.0

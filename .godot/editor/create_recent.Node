@@ -1,0 +1,14 @@
+Marker2D
+AudioStreamPlayer2D
+TileMapLayer
+Control
+Sprite2D
+CharacterBody2D
+Area2D
+CollisionShape2D
+RigidBody2D
+AnimatedSprite2D
+CPUParticles2D
+Node
+Timer
+PointLight2D

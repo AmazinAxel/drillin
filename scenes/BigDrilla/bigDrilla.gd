@@ -29,20 +29,18 @@ func _ready():
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 	
-	await get_tree().create_timer(randf_range(0.0, 10.0)).timeout
+	shoot_loop()
 	charge_loop()
 	
-	await get_tree().create_timer(randf_range(0.0, 5.0)).timeout
-	shoot_loop()
 
 func charge_loop():
 	while is_instance_valid(self):
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(6.0).timeout
 		start_charge()
 
 func shoot_loop():
 	while is_instance_valid(self):
-		await get_tree().create_timer(randf_range(3.0, 6.0)).timeout
+		await get_tree().create_timer(randf_range(2.0, 5.0)).timeout
 		await shoot_burst()
 
 func shoot_burst():

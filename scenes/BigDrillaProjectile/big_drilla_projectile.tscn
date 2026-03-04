@@ -18,6 +18,8 @@ fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
 [node name="BigDrillaProjectile" type="CharacterBody2D" unique_id=1207000733]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_5rrx4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1884963440]
@@ -28,7 +30,6 @@ texture = ExtResource("2_njouk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807268382]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_njouk")
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=444638115]
 
