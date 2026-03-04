@@ -35,5 +35,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BossUi" parent="." unique_id=308076106 instance=ExtResource("7_q8kdv")]
-offset_top = -72.0
-offset_bottom = -72.0
+offset_top = -472.0
+offset_bottom = -472.0
