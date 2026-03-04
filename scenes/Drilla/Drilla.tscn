@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://che0kn53qwtxy"]
 
 [ext_resource type="Texture2D" uid="uid://cun7f45f3byma" path="res://scenes/Drilla/MyDrillin.png" id="1_7tgjl"]
-[ext_resource type="Script" uid="uid://dcy4ch7nqqhmi" path="res://scenes/Drilla/drillMenu.gd" id="2_d2uqm"]
+[ext_resource type="Script" uid="uid://df27ju8ahpk1s" path="res://scenes/Drilla/drilla.gd" id="2_ruqpt"]
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="3_yb5c1"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="4_ygnt4"]
 [ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="5_ruqpt"]
@@ -83,7 +83,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [node name="Drilla" type="AnimatedSprite2D" unique_id=1117207976 groups=["drill"]]
 sprite_frames = SubResource("SpriteFrames_e4ra2")
 frame_progress = 0.9016821
-script = ExtResource("2_d2uqm")
+script = ExtResource("2_ruqpt")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1526511769]
 

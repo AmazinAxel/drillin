@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="PackedScene" uid="uid://cn0c5air71r5c" path="res://scenes/UI/DrillaShop.tscn" id="4_brr1f"]
 [ext_resource type="PackedScene" uid="uid://cbm2v7o7dcnr6" path="res://scenes/UI/WinningUI.tscn" id="6_d463r"]
+[ext_resource type="PackedScene" uid="uid://d3ya7gpawtaam" path="res://scenes/UI/BossUI.tscn" id="7_q8kdv"]
 
 [node name="Main" type="Node" unique_id=2130844757]
 script = ExtResource("1_q8kdv")
@@ -32,3 +33,7 @@ offset_right = 1.0
 offset_bottom = -363.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BossUi" parent="." unique_id=308076106 instance=ExtResource("7_q8kdv")]
+offset_top = -72.0
+offset_bottom = -72.0

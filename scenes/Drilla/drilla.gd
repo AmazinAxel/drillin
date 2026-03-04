@@ -215,7 +215,17 @@ func stop_drill():
 	miningParticles.emitting = false
 	
 	Globals.level += 1;
-	print(Globals.level);
+	if Globals.level == 3:
+		var boss_layer = CanvasLayer.new()
+		boss_layer.layer = 100
+		boss_layer.name = "BossLayer"
+		var bossLayer = preload("res://scenes/UI/BossUI.tscn").instantiate()
+		bossLayer.modulate = Color(1, 1, 1, 0)
+		boss_layer.add_child(bossLayer)
+		get_tree().current_scene.add_child(boss_layer)
+		
+		var boss_tween = create_tween()
+		boss_tween.tween_property(bossLayer, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 
 	if darkness_overlay:
 		var dark_tween = create_tween()
