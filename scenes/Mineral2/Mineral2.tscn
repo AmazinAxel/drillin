@@ -113,6 +113,7 @@ texture = ExtResource("5_r22fq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1229798176]
 position = Vector2(2, -6)
 sprite_frames = SubResource("SpriteFrames_7ce3b")
+autoplay = "default"
 frame_progress = 0.45390403
 
 [node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=1502812721]

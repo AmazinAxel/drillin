@@ -1,0 +1,5 @@
+res://scenes/SmallProjectile/small_projectile.tscn
+res://scenes/thrownPickaxe/thrownPickaxe.gd
+res://scenes/Mineral3/Mineral3.tscn
+res://scenes/Mineral3/mineral3.gd
+res://scenes/Mineral2/Mineral2.tscn

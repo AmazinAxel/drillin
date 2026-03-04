@@ -97,7 +97,9 @@ texture = SubResource("GradientTexture2D_ls8xj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=475112812]
 position = Vector2(3, -8)
 sprite_frames = SubResource("SpriteFrames_bcgf2")
-frame_progress = 0.9547784
+autoplay = "default"
+frame = 2
+frame_progress = 0.010955074
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1151580139]
 offset_left = -14.0

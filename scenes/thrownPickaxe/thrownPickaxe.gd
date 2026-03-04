@@ -6,7 +6,6 @@ var player: Node2D
 var returning := false
 
 func launch(dir: Vector2, from_player: Node2D):
-	print("dir", dir)
 	player = from_player
 	gravity_scale = 0
 	lock_rotation = true
@@ -30,4 +29,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body.name == "TileMapLayer" or body.name == "thrownPickaxe":
 		return
 	if body.has_method("take_damage"):
-		body.take_damage((Globals.attackDamage)/2)
+		body.take_damage(round((Globals.attackDamage)/2))

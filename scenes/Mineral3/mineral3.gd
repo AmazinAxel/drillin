@@ -15,7 +15,6 @@ var bob_time: float = 0.0
 
 @onready var damage_particles = $damageParticles
 @onready var point_light = $PointLight2D
-@onready var sprite = get_node_or_null("Sprite2D")
 @onready var health_bar = $TextureProgressBar
 @onready var ui_thing = $UI
 @onready var collision = $CollisionShape2D
@@ -51,7 +50,6 @@ func take_damage(amount):
 func _become_pickup():
 	is_pickup = true
 
-	# Hide health bar and disable collision
 	health_bar.visible = false
 	ui_thing.visible = false
 	collision.set_deferred("disabled", true)
