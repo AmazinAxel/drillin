@@ -176,7 +176,6 @@ func swing_pickaxe():
 	if sprite.flip_h:
 		swing_amount = -swing_amount
 	
-	# Enable damage during the swing
 	pickaxeAttackArea.monitoring = true
 	
 	swing_tween.tween_property($pickaxe, "rotation", current_angle + swing_amount, 0.1)\
@@ -186,7 +185,6 @@ func swing_pickaxe():
 		.set_ease(Tween.EASE_IN)\
 		.set_trans(Tween.TRANS_SINE)
 	
-	# Disable damage when swing ends
 	swing_tween.tween_callback(func(): pickaxeAttackArea.monitoring = false)
 
 func _on_attack_delay_timeout() -> void:

@@ -30,6 +30,9 @@ window/stretch/mode="viewport"
 player=""
 drill=""
 enemies=""
+bossMarker1=""
+bossMarker2=""
+bossSpawnpoint=""
 
 [input]
 

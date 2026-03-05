@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var max_health: int = 50
 @export var speed: float = 10.0
+@export var animationSpeed: float = 100.0
 @export var gravity: float = 400.0
 
 @export var damage: int = 50
@@ -12,6 +13,7 @@ extends CharacterBody2D
 @export var chargeDamage: int = 100
 @export var charge_speed: float = 400.0
 @export var charge_duration: float = 0.5
+
 @export var projectile_scene: PackedScene
 
 # === INTERNAL STATE ===
@@ -19,19 +21,87 @@ var health: int
 var can_damage: bool = true
 var is_charging: bool = false
 var charge_direction: Vector2 = Vector2.ZERO
+var isAnimatedIntoScene: bool = true
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $TextureProgressBar
 @onready var deathParticles = $deathParticles
+@onready var drillSound = $drillSound
+@onready var miningParticles = $miningParticles
 
 func _ready():
 	health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 	
+	isAnimatedIntoScene = true
+	beginEnterAnimation()
+	
+	
+func beginEnterAnimation():
+	var marker1 = get_tree().get_first_node_in_group("bossMarker1")
+	var marker2 = get_tree().get_first_node_in_group("bossMarker2")
+	var player = get_tree().get_first_node_in_group("player")
+	
+	if not player or not marker1 or not marker2:
+		print("not found something")
+		initReady()
+		return
+	
+	var camera = player.get_node("Camera2D")
+	
+	# Smoothly lerp camera to boss
+	var cam_tween = create_tween()
+	cam_tween.set_ease(Tween.EASE_IN_OUT)
+	cam_tween.set_trans(Tween.TRANS_CUBIC)
+	cam_tween.tween_method(
+		func(t): camera.global_position = camera.global_position.lerp(global_position, t),
+		0.0, 1.0, 1.5
+	)
+	
+	drillSound.play()
+	
+	miningParticles.emitting = true
+	await _move_to(marker1.global_position, animationSpeed, camera)
+	
+	drillSound.stop()
+	
+	miningParticles.emitting = false
+	await _move_to(marker2.global_position, animationSpeed, camera)
+	
+	var return_tween = create_tween()
+	return_tween.set_ease(Tween.EASE_IN_OUT)
+	return_tween.set_trans(Tween.TRANS_CUBIC)
+	return_tween.tween_method(
+		func(t): camera.global_position = camera.global_position.lerp(player.global_position, t),
+		0.0, 1.0, 1.5
+	)
+	await return_tween.finished
+	
+	isAnimatedIntoScene = false
+	initReady()
+
+func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> void:
+	$CollisionShape2D.disabled = true
+	
+	while global_position.distance_to(target) > 5.0:
+		var dir = (target - global_position).normalized()
+		velocity.x = dir.x * move_speed
+		velocity.y = dir.y * move_speed
+		move_and_slide()
+		animated_sprite.play("driving")
+		
+		if camera:
+			camera.global_position = camera.global_position.lerp(global_position, 0.1)
+		
+		await get_tree().process_frame
+	
+	velocity = Vector2.ZERO
+	$CollisionShape2D.disabled = false
+	
+func initReady():
 	shoot_loop()
 	charge_loop()
-	
 
 func charge_loop():
 	while is_instance_valid(self):
@@ -79,6 +149,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+	if isAnimatedIntoScene:
+		return
+		
 	var player = get_tree().get_first_node_in_group("player")
 	
 	if is_charging:

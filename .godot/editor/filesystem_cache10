@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772675533
+::res://::1772679980
 ::res://assets/::1772415327
 ::res://assets/sounds/::1772599822
 attack.mp3::AudioStreamMP3::2524377595125637877::1772413534::1772599822::1::::<><><>0<>0<>2f31cf8cb3a676e3ca1638ccc91350ae<>res://.godot/imported/attack.mp3-8984b5402b0f89a65a0283cf10757be7.mp3str::
@@ -15,7 +15,7 @@ Slimy.mp3::AudioStreamMP3::2003982575029852999::1772414917::1772599822::1::::<><
 THISisNotADrill.mp3::AudioStreamMP3::2307903911701193005::1772420751::1772599822::1::::<><><>0<>0<>9b6db23603013eab9eeca0d6a806c896<>res://.godot/imported/THISisNotADrill.mp3-049f3af7f12351217f7dca78b2457980.mp3str::
 walkingSound.mp3::AudioStreamMP3::2803420183461702961::1772413905::1772599822::1::::<><><>0<>0<>9b9d1a13da368fab81fb3ca50171b2b6<>res://.godot/imported/walkingSound.mp3-5fd2e11555d63c489dc3c74d84a8418c.mp3str::
 woosh.mp3::AudioStreamMP3::3966880963385973886::1772415327::1772599822::1::::<><><>0<>0<>80d735d981d97605a0aa3e623e71da05<>res://.godot/imported/woosh.mp3-28b091849beec9a2d180b7d5ca876278.mp3str::
-::res://assets/sprites/::1772675533
+::res://assets/sprites/::1772675540
 BigDrilla.png::CompressedTexture2D::7681871607871362761::1772398481::1772599822::1::::<><><>0<>0<>1e30c180ef1b0d67a61aec9efca0bc43<>res://.godot/imported/BigDrilla.png-3175e95d1d999c95e8a470cf6dafd641.ctex::
 BigDrillaDeathAnimation.png::CompressedTexture2D::5894962890676073750::1772403422::1772599822::1::::<><><>0<>0<>a0c141bfaa547c3d9de4e1deb88aa0d6<>res://.godot/imported/BigDrillaDeathAnimation.png-4571aa156c1b512f856b13e45aa04b88.ctex::
 BigDrillaDrivinDrillin.png::CompressedTexture2D::8041317496455774404::1772401032::1772599822::1::::<><><>0<>0<>4578c7c7a5f317d7533cd00196939062<>res://.godot/imported/BigDrillaDrivinDrillin.png-702f9376c5f5e5e9e462720ca0b725b0.ctex::
@@ -67,17 +67,18 @@ SlimeIceAttack.png::CompressedTexture2D::2235610407785372857::1772322443::177259
 SlimetVersion1.png::CompressedTexture2D::4429919702738916881::1772322443::1772599822::1::::<><><>0<>0<>b0677acffd3e6b16e55fd5f5ecf947ef<>res://.godot/imported/SlimetVersion1.png-1d308ad1fb5258b88e88674182430a8d.ctex::
 SlimetVersion1_1.png::CompressedTexture2D::6897157157068002055::1772322443::1772599822::1::::<><><>0<>0<>cefbce2c101b96ae912f1c8dbd47031a<>res://.godot/imported/SlimetVersion1_1.png-f0bac30b9d58672c0ad76ce30d246f66.ctex::
 Walker3000.png::CompressedTexture2D::3561297145736491970::1772321312::1772599822::1::::<><><>0<>0<>b12eda948ee91b4c6d976725982657ea<>res://.godot/imported/Walker3000.png-558bff98642dd3e1e1a0345a7ec21315.ctex::
-::res://scenes/BigDrilla/::1772598800
-bigDrilla.gd::GDScript::3303868276772631024::1772598800::0::1::::<>CharacterBody2D<><>0<>0<><>::
-big_drilla.tscn::PackedScene::8885420357436866899::1772598800::0::1::::<><><>0<>0<><>::uid://bncoh0menkjqm::::res://scenes/BigDrilla/bigDrilla.gd<>uid://wjy80e2ypi6g::::res://assets/sprites/BigDrillaIdleDrillin.png<>uid://dmtjla55nnoem::::res://assets/sprites/BigDrillaDrivinDrillin.png<>uid://blcw0v21gkp10::::res://scenes/BigDrillaProjectile/big_drilla_projectile.tscn<>uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://cp8tgbihhf62m::::res://assets/sprites/BigDrillaDeathAnimation.png<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png<>uid://dyfpamn11qjhc::::res://assets/sounds/Effect.mp3
+::res://scenes/Bat/::0
+::res://scenes/BigDrilla/::1772683286
+bigDrilla.gd::GDScript::3303868276772631024::1772683286::0::1::::<>CharacterBody2D<><>0<>0<><>::
+big_drilla.tscn::PackedScene::8885420357436866899::1772683026::0::1::::<><><>0<>0<><>::uid://bncoh0menkjqm::::res://scenes/BigDrilla/bigDrilla.gd<>uid://wjy80e2ypi6g::::res://assets/sprites/BigDrillaIdleDrillin.png<>uid://dmtjla55nnoem::::res://assets/sprites/BigDrillaDrivinDrillin.png<>uid://blcw0v21gkp10::::res://scenes/BigDrillaProjectile/big_drilla_projectile.tscn<>uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://cp8tgbihhf62m::::res://assets/sprites/BigDrillaDeathAnimation.png<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png<>uid://dyfpamn11qjhc::::res://assets/sounds/Effect.mp3<>uid://dpq8amcccqsb::::res://assets/sprites/Rock.png<>uid://dy6xm1o2xcho1::::res://assets/sounds/Drill.mp3
 ::res://scenes/BigDrillaProjectile/::1772597039
 bigDrillaProjectile.gd::GDScript::5757885579094882897::1772593842::0::1::::<>CharacterBody2D<><>0<>0<><>::
 big_drilla_projectile.tscn::PackedScene::3164008283797884025::1772597039::0::1::::<><><>0<>0<><>::uid://cobfsfufu8gj6::::res://scenes/BigDrillaProjectile/bigDrillaProjectile.gd<>uid://bstfqvgkwti54::::res://assets/sprites/BossProjectile.png
-::res://scenes/Drilla/::1772599822
+::res://scenes/Drilla/::1772683164
 areaBox.gd::GDScript::5036103886866881437::1772324440::0::1::::<>Area2D<><>0<>0<><>::
 CrystalWhite_ButNotMeth.png::CompressedTexture2D::7684070461014892280::1772393114::1772599822::1::::<><><>0<>0<>604913ec9b465802d83807e3c66b2912<>res://.godot/imported/CrystalWhite_ButNotMeth.png-ff8e58edb619cd7bb25a4dabba103155.ctex::
 drilla.gd::GDScript::7567904585998254934::1772599804::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
-Drilla.tscn::PackedScene::5273957297069023522::1772599804::0::1::::<><><>0<>0<><>::uid://cun7f45f3byma::::res://scenes/Drilla/MyDrillin.png<>uid://df27ju8ahpk1s::::res://scenes/Drilla/drilla.gd<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://dpq8amcccqsb::::res://assets/sprites/Rock.png<>uid://dy6xm1o2xcho1::::res://assets/sounds/Drill.mp3
+Drilla.tscn::PackedScene::5273957297069023522::1772683164::0::1::::<><><>0<>0<><>::uid://cun7f45f3byma::::res://scenes/Drilla/MyDrillin.png<>uid://df27ju8ahpk1s::::res://scenes/Drilla/drilla.gd<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://dpq8amcccqsb::::res://assets/sprites/Rock.png<>uid://dy6xm1o2xcho1::::res://assets/sounds/Drill.mp3
 drillaDetectPlayer.gd::GDScript::6935351448871289193::1772325046::0::1::::<>Area2D<><>0<>0<><>::
 MyDrilla.png::CompressedTexture2D::8479274370456654176::1772316459::1772599822::1::::<><><>0<>0<>6de9cfa535417873a0b05566ff8becd8<>res://.godot/imported/MyDrilla.png-999f39a8957059ad92d0cabe3f481a6d.ctex::
 MyDrillin.png::CompressedTexture2D::6205408593473626848::1772316459::1772599822::1::::<><><>0<>0<>10ac3968a03491dae4139f3ffcd04995<>res://.godot/imported/MyDrillin.png-4f7167272a7fa33fb9ac6787de40f241.ctex::
@@ -93,26 +94,26 @@ Enemy2.tscn::PackedScene::921107539548337013::1772605569::0::1::::<><><>0<>0<><>
 ::res://scenes/Enemy3/::1772605527
 enemy3.gd::GDScript::2409539327358680484::1772605527::0::1::::<>CharacterBody2D<><>0<>0<><>::
 Enemy3.tscn::PackedScene::6587216377155564634::1772605251::0::1::::<><><>0<>0<><>::uid://p8jyhfca4357::::res://assets/tileset/PinkSlimeWalk.png<>uid://balg04l50f1hw::::res://scenes/Enemy3/enemy3.gd<>uid://6dakjvdru28i::::res://assets/tileset/RythmIsADancer-shoot.png<>uid://c8r2ns3xqe11m::::res://scenes/SmallProjectile/small_projectile.tscn<>uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png<>uid://3s0khcb1kxcx::::res://assets/sounds/Slimy.mp3
-::res://scenes/Main/::1772606537
-main.gd::GDScript::4940483014777977330::1772417205::0::1::::<>Node<><>0<>0<><>::
-Main.tscn::PackedScene::8933921847735644677::1772606612::0::1::::<><><>0<>0<><>::uid://b2wrk6fclb2g4::::res://scenes/Map/Map.tscn<>uid://ccnhbewk2dku1::::res://scenes/Main/main.gd<>uid://coc1f6okc4yx7::::res://scenes/Player/Player.tscn<>uid://che0kn53qwtxy::::res://scenes/Drilla/Drilla.tscn<>uid://cn0c5air71r5c::::res://scenes/UI/DrillaShop.tscn<>uid://cbm2v7o7dcnr6::::res://scenes/UI/WinningUI.tscn
-::res://scenes/Map/::1772675533
-enemies.gd::GDScript::2809468795780615906::1772418069::0::1::::<>Node<><>0<>0<><>::
-Map.tscn::PackedScene::4327987455378887181::1772675533::0::1::::<><><>0<>0<><>::uid://8oujrahfnp72::::res://scenes/Mineral1/Mineral1.tscn<>uid://b8ui7nhjk2ctn::::res://assets/tileset/CurrentTilesetVer.png<>uid://csstyy7xbly0s::::res://scenes/Mineral2/Mineral2.tscn<>uid://bga6sm6wsmys5::::res://scenes/Map/enemies.gd<>uid://3w8sga1w2wj7::::res://scenes/Mineral3/Mineral3.tscn<>uid://dj0rjfxoiegrx::::res://assets/tileset/newTilemap.png<>uid://c464fm7dk10ly::::res://assets/sprites/SecondaryTilemapACTUAL.png<>uid://dyufts3fkfcc6::::res://scenes/BigDrilla/big_drilla.tscn
+::res://scenes/Main/::1772683176
+main.gd::GDScript::4940483014777977330::1772683176::0::1::::<>Node<><>0<>0<><>::
+Main.tscn::PackedScene::8933921847735644677::1772683176::0::1::::<><><>0<>0<><>::uid://b2wrk6fclb2g4::::res://scenes/Map/Map.tscn<>uid://ccnhbewk2dku1::::res://scenes/Main/main.gd<>uid://coc1f6okc4yx7::::res://scenes/Player/Player.tscn<>uid://dyufts3fkfcc6::::res://scenes/BigDrilla/big_drilla.tscn<>uid://che0kn53qwtxy::::res://scenes/Drilla/Drilla.tscn<>uid://cn0c5air71r5c::::res://scenes/UI/DrillaShop.tscn<>uid://cbm2v7o7dcnr6::::res://scenes/UI/WinningUI.tscn
+::res://scenes/Map/::1772683286
+enemies.gd::GDScript::2809468795780615906::1772678201::0::1::::<>Node<><>0<>0<><>::
+Map.tscn::PackedScene::4327987455378887181::1772683286::0::1::::<><><>0<>0<><>::uid://8oujrahfnp72::::res://scenes/Mineral1/Mineral1.tscn<>uid://b8ui7nhjk2ctn::::res://assets/tileset/CurrentTilesetVer.png<>uid://csstyy7xbly0s::::res://scenes/Mineral2/Mineral2.tscn<>uid://bga6sm6wsmys5::::res://scenes/Map/enemies.gd<>uid://3w8sga1w2wj7::::res://scenes/Mineral3/Mineral3.tscn<>uid://dj0rjfxoiegrx::::res://assets/tileset/newTilemap.png<>uid://c464fm7dk10ly::::res://assets/sprites/SecondaryTilemapACTUAL.png<>uid://dyufts3fkfcc6::::res://scenes/BigDrilla/big_drilla.tscn<>uid://b0abq1l2o1j8b::::res://assets/sprites/Tilemap.png<>uid://cexat7i2j64nr::::res://assets/sprites/SecondaryTilemap.png
 spawnMinerals.gd::GDScript::2859506704802965654::1772390169::0::1::::<>Node<><>0<>0<><>::
-::res://scenes/Mineral1/::1772597375
+::res://scenes/Mineral1/::1772682906
 mineral1.gd::GDScript::8976401357654146808::1772592686::0::1::::<>StaticBody2D<><>0<>0<><>::
-Mineral1.tscn::PackedScene::2346364433834590383::1772597375::0::1::::<><><>0<>0<><>::uid://d05iav3r7byk3::::res://scenes/Mineral1/mineral1.gd<>uid://dhqhruvbd8rxo::::res://scenes/Drilla/CrystalWhite_ButNotMeth.png<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
+Mineral1.tscn::PackedScene::2346364433834590383::1772682906::0::1::::<><><>0<>0<><>::uid://d05iav3r7byk3::::res://scenes/Mineral1/mineral1.gd<>uid://dhqhruvbd8rxo::::res://scenes/Drilla/CrystalWhite_ButNotMeth.png<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
 ::res://scenes/Mineral2/::1772600388
 mineral2.gd::GDScript::4169208201631803997::1772592689::0::1::::<>StaticBody2D<><>0<>0<><>::
 Mineral2.tscn::PackedScene::6074597145401098124::1772600388::0::1::::<><><>0<>0<><>::uid://b0nuiq7d1d5rl::::res://scenes/Mineral2/mineral2.gd<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bbrpy5xt5rjm2::::res://assets/tileset/RedStuff.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
 ::res://scenes/Mineral3/::1772600380
 mineral3.gd::GDScript::833937560820908932::1772600380::0::1::::<>StaticBody2D<><>0<>0<><>::
 Mineral3.tscn::PackedScene::2012740053857711522::1772600380::0::1::::<><><>0<>0<><>::uid://l473hh7epeho::::res://scenes/Mineral3/mineral3.gd<>uid://dfwkoybwt3apx::::res://scenes/CrystalBarrMpty.png<>uid://ehokckihf526::::res://assets/tileset/BlueStone.png<>uid://dalvpshrf57fp::::res://scenes/CrystallBarrFull.png<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://b5o1sonrp01lj::::res://assets/sounds/metal hit 1.mp3<>uid://bqjjeet5tremr::::res://assets/sounds/metal hit 2.mp3
-::res://scenes/Player/::1772606435
+::res://scenes/Player/::1772679809
 Ouch.mp3::AudioStreamMP3::3575454304356545247::1772420751::1772599822::1::::<><><>0<>0<>299c4c95091d75d42dbfb6c3614b10d2<>res://.godot/imported/Ouch.mp3-24a3542b1b82b41af936192a6d307657.mp3str::
-Player.tscn::PackedScene::5761203154917539158::1772606435::0::1::::<><><>0<>0<><>::uid://bbc03uvvumeip::::res://scenes/Player/playerMovement.gd<>uid://vwmx13ngsf1::::res://scenes/SceletonDisassamble_2.png<>uid://bq0ebqqy3bya1::::res://scenes/Walker3000.png<>uid://rmkjhfpdyjv7::::res://scenes/thrownPickaxe/ThrownPickaxe.tscn<>uid://fv1mcsktlxtw::::res://scenes/UI/SKULL_EMOJI.png<>uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png<>uid://dbqx4wuya0ivd::::res://scenes/Heart.png<>uid://c748sdylf84rr::::res://assets/sprites/JumpingFrame.png<>uid://dpq8amcccqsb::::res://assets/sprites/Rock.png<>uid://b8242othxtd1a::::res://assets/sprites/OhParticle.png<>uid://ndi6sbrklvgq::::res://assets/sprites/flashlight.png<>uid://bj6ytqqb302rb::::res://assets/sprites/OuchParticle.png<>uid://becivtixuvqgf::::res://assets/sprites/UhParticle.png<>uid://bxjhohi86ko4j::::res://assets/sprites/UnfriendlyOuchPartilcle.png<>uid://vmqlp4ccwtcl::::res://assets/sprites/pickaxe.png<>uid://bf686kqtmoi86::::res://assets/sounds/walkingSound.mp3<>uid://bwrt7kc2o1xxe::::res://assets/sounds/woosh.mp3<>uid://cccvynvsry5et::::res://scenes/Player/PronouncedOuch.mp3<>uid://bq68he1lb0sr4::::res://scenes/Player/Ouch.mp3
-playerMovement.gd::GDScript::2462307293776994479::1772603820::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Player.tscn::PackedScene::5761203154917539158::1772679809::0::1::::<><><>0<>0<><>::uid://bbc03uvvumeip::::res://scenes/Player/playerMovement.gd<>uid://vwmx13ngsf1::::res://scenes/SceletonDisassamble_2.png<>uid://bq0ebqqy3bya1::::res://scenes/Walker3000.png<>uid://rmkjhfpdyjv7::::res://scenes/thrownPickaxe/ThrownPickaxe.tscn<>uid://fv1mcsktlxtw::::res://scenes/UI/SKULL_EMOJI.png<>uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png<>uid://dbqx4wuya0ivd::::res://scenes/Heart.png<>uid://c748sdylf84rr::::res://assets/sprites/JumpingFrame.png<>uid://dpq8amcccqsb::::res://assets/sprites/Rock.png<>uid://b8242othxtd1a::::res://assets/sprites/OhParticle.png<>uid://ndi6sbrklvgq::::res://assets/sprites/flashlight.png<>uid://bj6ytqqb302rb::::res://assets/sprites/OuchParticle.png<>uid://becivtixuvqgf::::res://assets/sprites/UhParticle.png<>uid://bxjhohi86ko4j::::res://assets/sprites/UnfriendlyOuchPartilcle.png<>uid://vmqlp4ccwtcl::::res://assets/sprites/pickaxe.png<>uid://bf686kqtmoi86::::res://assets/sounds/walkingSound.mp3<>uid://bwrt7kc2o1xxe::::res://assets/sounds/woosh.mp3<>uid://cccvynvsry5et::::res://scenes/Player/PronouncedOuch.mp3<>uid://bq68he1lb0sr4::::res://scenes/Player/Ouch.mp3
+playerMovement.gd::GDScript::2462307293776994479::1772676669::0::1::::<>CharacterBody2D<><>0<>0<><>::
 PronouncedOuch.mp3::AudioStreamMP3::4918666442158177763::1772420751::1772599822::1::::<><><>0<>0<>46c3123c663bfdab9d0ffc0cfdc2fc17<>res://.godot/imported/PronouncedOuch.mp3-d12d0568c8933737fa5c30ed56f42353.mp3str::
 ::res://scenes/SmallProjectile/::1772600156
 smallProjectile.gd::GDScript::1548106851413309085::1772593832::0::1::::<>CharacterBody2D<><>0<>0<><>::
@@ -120,10 +121,10 @@ small_projectile.tscn::PackedScene::7125831193127155688::1772600156::0::1::::<><
 ::res://scenes/thrownPickaxe/::1772606435
 thrownPickaxe.gd::GDScript::7656418213805449227::1772606435::0::1::::<>RigidBody2D<><>0<>0<><>::
 ThrownPickaxe.tscn::PackedScene::1218606493042044446::1772599777::0::1::::<><><>0<>0<><>::uid://c7oioh8erwctf::::res://assets/sprites/HandyDigger.png<>uid://dhc3dbknh56ap::::res://scenes/thrownPickaxe/thrownPickaxe.gd
-::res://scenes/UI/::1772606537
+::res://scenes/UI/::1772675762
 BossUI.tscn::PackedScene::9174152222788914500::1772606537::0::1::::<><><>0<>0<><>::uid://dtwel8dslgvjp::::res://scenes/BarMpty.png<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://dw5qqjyh5rfq2::::res://scenes/BarrFull.png
 continueBtn.gd::GDScript::4221569917423981515::1772344921::0::1::::<>Button<><>0<>0<><>::
-DeathUI.tscn::PackedScene::2650873438634044945::1772319249::0::1::::<><><>0<>0<><>::uid://ds2on7amp5fky::::res://scenes/Drilla/MyDrilla.png<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://c65gbpprdei7w::::res://scenes/lowres-pixel.otf<>uid://cfabot5h6e74b::::res://scenes/button.gd
+DeathUI.tscn::PackedScene::2650873438634044945::1772675762::0::1::::<><><>0<>0<><>::uid://ds2on7amp5fky::::res://scenes/Drilla/MyDrilla.png<>uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://c65gbpprdei7w::::res://scenes/lowres-pixel.otf<>uid://cfabot5h6e74b::::res://scenes/button.gd
 DrillaShop.tscn::PackedScene::5737080799509440178::1772597302::0::1::::<><><>0<>0<><>::uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://cyur2o4xvcstp::::res://scenes/UI/upgradeShop.gd<>uid://c65gbpprdei7w::::res://scenes/lowres-pixel.otf<>uid://b1e7v0tfrit3x::::res://scenes/UI/continueBtn.gd<>uid://bgvpuvqs1t3g5::::res://scenes/UI/UiCrystalllllllllllllllllllll.png<>uid://dfkopi4nq6ney::::res://assets/sounds/purchase.mp3
 PlayUI.tscn::PackedScene::7774996458706920692::1772411848::0::1::::<><><>0<>0<><>::uid://c3g62tojgeqhs::::res://scenes/karmatic-arcade.ttf<>uid://c65gbpprdei7w::::res://scenes/lowres-pixel.otf<>uid://cfabot5h6e74b::::res://scenes/button.gd<>uid://ds2on7amp5fky::::res://scenes/Drilla/MyDrilla.png
 SKULL_EMOJI.png::CompressedTexture2D::395896355697588032::1772389799::1772599822::1::::<><><>0<>0<>af22abcf825e15ad6bc70c20d91a941e<>res://.godot/imported/SKULL_EMOJI.png-c0b0fefb1ff04890c1e9618065e714c1.ctex::

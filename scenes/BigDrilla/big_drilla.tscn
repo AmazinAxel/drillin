@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cp8tgbihhf62m" path="res://assets/sprites/BigDrillaDeathAnimation.png" id="3_ci0t4"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="3_nacbp"]
 [ext_resource type="AudioStream" uid="uid://dyfpamn11qjhc" path="res://assets/sounds/Effect.mp3" id="8_xfb6v"]
+[ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="9_qkt3i"]
+[ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="10_jxy6o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qd5q"]
 atlas = ExtResource("3_ci0t4")
@@ -388,7 +390,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
@@ -412,17 +414,20 @@ colors = PackedColorArray(0.2, 0, 0, 1, 0.2, 0, 0, 1)
 gradient = SubResource("Gradient_aqqjk")
 width = 1
 
+[sub_resource type="Gradient" id="Gradient_o6u5y"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="BigDrilla" type="CharacterBody2D" unique_id=1445029359]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_nacbp")
 charge_duration = 2.0
 projectile_scene = ExtResource("2_hnxqk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501585013]
 sprite_frames = SubResource("SpriteFrames_d2faa")
-animation = &"death"
-frame_progress = 0.3682953
+animation = &"driving"
+frame_progress = 0.956829
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99379516]
 position = Vector2(0.5, -6)
@@ -464,3 +469,20 @@ color = Color(0, 0.6461681, 0.76761734, 1)
 [node name="yes" type="AudioStreamPlayer2D" parent="." unique_id=1322630447]
 stream = ExtResource("8_xfb6v")
 autoplay = true
+
+[node name="miningParticles" type="CPUParticles2D" parent="." unique_id=713460814]
+position = Vector2(-46, 0)
+amount = 30
+texture = ExtResource("9_qkt3i")
+lifetime = 0.1
+speed_scale = 0.6
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 75.0
+initial_velocity_min = 500.0
+initial_velocity_max = 540.78
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_o6u5y")
+
+[node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1151748427]
+stream = ExtResource("10_jxy6o")

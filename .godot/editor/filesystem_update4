@@ -1,2 +1,9 @@
+res://scenes/Main/Main.tscn
 res://scenes/Map/Map.tscn
-res://scenes/UI/DeathUI.tscn
+res://scenes/Map/enemies.gd
+res://scenes/BigDrilla/big_drilla.tscn
+res://scenes/BigDrilla/bigDrilla.gd
+res://scenes/Player/Player.tscn
+res://scenes/Main/main.gd
+res://scenes/Mineral1/Mineral1.tscn
+res://scenes/Drilla/Drilla.tscn

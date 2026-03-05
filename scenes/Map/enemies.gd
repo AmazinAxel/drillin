@@ -46,7 +46,7 @@ var L3_W1_COUNT: int = -1
 var level_spawn_points: Dictionary = {}
 var level_waves: Dictionary = {}
 
-@onready var bossSpawnPoint = $BossMarker
+@onready var bossSpawnPoint = $BossMarkers/BigDrilla/BossSpawnpoint
 @export var boss: PackedScene
 
 var current_wave_index: int = 0

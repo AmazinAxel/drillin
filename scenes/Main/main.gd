@@ -1,11 +1,8 @@
 extends Node
 
+@export var boss: PackedScene
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	Globals.level
-	
+#func _ready(): # testing only
+	#var bossRef = boss.instantiate()
+	#bossRef.position = get_tree().get_first_node_in_group("bossSpawnpoint").position
+	#add_child(bossRef)

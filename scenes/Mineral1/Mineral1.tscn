@@ -31,13 +31,14 @@ fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
 [node name="Mineral1" type="StaticBody2D" unique_id=1561138462]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_a75ro")
 max_health = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1645010957]
 position = Vector2(2, -7.5)
 shape = SubResource("RectangleShape2D_0v8au")
-one_way_collision = true
 
 [node name="damageParticles" type="CPUParticles2D" parent="." unique_id=282160738]
 position = Vector2(2, -5)
