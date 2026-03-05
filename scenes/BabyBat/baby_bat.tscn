@@ -1,8 +1,39 @@
 [gd_scene format=3 uid="uid://coexc4n5ty8c0"]
 
 [ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="1_asw57"]
+[ext_resource type="Script" uid="uid://dvlro3kcom013" path="res://scenes/BabyBat/babyBat.gd" id="1_bwrru"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_ykvf7"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_1jg0e"]
 
-[node name="BabyBat" type="CharacterBody2D" unique_id=331467515]
+[sub_resource type="CircleShape2D" id="CircleShape2D_asw57"]
+radius = 19.313208
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=794857265]
-texture = ExtResource("1_asw57")
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykvf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_asw57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BabyBat" type="CharacterBody2D" unique_id=331467515 groups=["enemies"]]
+script = ExtResource("1_bwrru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1171831636]
+shape = SubResource("CircleShape2D_asw57")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1261553120]
+offset_left = -17.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = -5.0
+value = 100.0
+texture_under = ExtResource("3_ykvf7")
+texture_progress = ExtResource("4_1jg0e")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=948601267]
+sprite_frames = SubResource("SpriteFrames_ykvf7")

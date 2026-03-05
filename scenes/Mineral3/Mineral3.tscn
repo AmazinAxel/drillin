@@ -66,6 +66,8 @@ animations = [{
 }]
 
 [node name="Mineral3" type="StaticBody2D" unique_id=746288680]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_5unja")
 max_health = 18.0
 
