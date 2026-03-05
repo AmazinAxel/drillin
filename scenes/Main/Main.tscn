@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
 [ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="2_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
-[ext_resource type="PackedScene" uid="uid://cn0c5air71r5c" path="res://scenes/UI/DrillaShop.tscn" id="4_brr1f"]
-[ext_resource type="PackedScene" uid="uid://cbm2v7o7dcnr6" path="res://scenes/UI/WinningUI.tscn" id="6_d463r"]
 
 [node name="Main" type="Node" unique_id=2130844757]
 script = ExtResource("1_q8kdv")
@@ -21,16 +19,3 @@ position = Vector2(284, 368)
 position = Vector2(147, 372)
 scale = Vector2(-1, 1)
 frame_progress = 0.0
-
-[node name="DrillaShop" parent="." unique_id=1174118641 instance=ExtResource("4_brr1f")]
-offset_top = -381.0
-offset_bottom = -381.0
-
-[node name="WinningUI" parent="." unique_id=418545339 instance=ExtResource("6_d463r")]
-anchors_preset = 15
-offset_left = 1.0
-offset_top = -363.0
-offset_right = 1.0
-offset_bottom = -363.0
-grow_horizontal = 2
-grow_vertical = 2

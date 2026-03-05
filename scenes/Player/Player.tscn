@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coc1f6okc4yx7"]
 
-[ext_resource type="Script" uid="uid://bbc03uvvumeip" path="res://scenes/Player/playerMovement.gd" id="1_ky53y"]
+[ext_resource type="Script" uid="uid://0sdo3j7yvsk0" path="res://scenes/Player/player.gd" id="1_3nxk0"]
 [ext_resource type="Texture2D" uid="uid://vwmx13ngsf1" path="res://scenes/SceletonDisassamble_2.png" id="2_fxc31"]
 [ext_resource type="Texture2D" uid="uid://bq0ebqqy3bya1" path="res://scenes/Walker3000.png" id="2_ky53y"]
 [ext_resource type="PackedScene" uid="uid://rmkjhfpdyjv7" path="res://scenes/thrownPickaxe/ThrownPickaxe.tscn" id="2_lbts4"]
@@ -205,7 +205,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_517nw")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 12.0
 }, {
@@ -266,33 +266,32 @@ size = Vector2(43.332184, 23.760918)
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 z_index = 1
 scale = Vector2(1.0053291, 1)
-script = ExtResource("1_ky53y")
+script = ExtResource("1_3nxk0")
 thrownPickaxeScene = ExtResource("2_lbts4")
 
 [node name="skullParticles" type="CPUParticles2D" parent="." unique_id=167397581]
 position = Vector2(0, -8)
 emitting = false
-amount = 5
+amount = 1
 texture = ExtResource("2_puxyr")
 one_shot = true
 speed_scale = 0.1
 explosiveness = 0.8
 direction = Vector2(0, -1)
-initial_velocity_min = 340.78
-initial_velocity_max = 340.78
+initial_velocity_min = 288.58
+initial_velocity_max = 288.58
 scale_amount_min = 0.5
 scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_dqefj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1918917714]
+[node name="playerSprite" type="AnimatedSprite2D" parent="." unique_id=1918917714]
 sprite_frames = SubResource("SpriteFrames_mmokv")
-animation = &"jump"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1931208187]
+[node name="collisionBox" type="CollisionShape2D" parent="." unique_id=1931208187]
 position = Vector2(-0.49735004, 0)
 shape = SubResource("CapsuleShape2D_2aixn")
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=429943406]
+[node name="light" type="PointLight2D" parent="." unique_id=429943406]
 position = Vector2(0, 3)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 texture = SubResource("GradientTexture2D_ky53y")
@@ -300,7 +299,7 @@ texture = SubResource("GradientTexture2D_ky53y")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1335660228]
 zoom = Vector2(2, 2)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=220829333]
+[node name="healthBar" type="TextureProgressBar" parent="." unique_id=220829333]
 offset_left = -14.835671
 offset_top = -38.0
 offset_right = 22.16433
