@@ -111,9 +111,12 @@ func die():
 	$healthBar.visible = false;
 	$Heart.visible = false;
 
-	get_tree().create_timer(2.0).timeout.connect(_on_death_timer_done, CONNECT_ONE_SHOT)
+	if is_inside_tree():
+		get_tree().create_timer(2.0).timeout.connect(playAgain, CONNECT_ONE_SHOT)
 
-func _on_death_timer_done():
+func playAgain():
+	var tree = get_tree()
+	
 	var overlay = ColorRect.new()
 	overlay.color = Color(0, 0, 0, 0)
 	overlay.size = get_viewport().get_visible_rect().size
@@ -122,21 +125,19 @@ func _on_death_timer_done():
 	var canvas = CanvasLayer.new()
 	canvas.layer = 100
 	canvas.add_child(overlay)
-	get_tree().root.add_child(canvas)
+	tree.root.add_child(canvas)
 	
-	var tween = get_tree().create_tween()
+	var tween = tree.create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.5)
 	tween.tween_callback(func():
 		Globals.resetVars()
-
-		get_tree().change_scene_to_file("res://scenes/UI/PlayUI.tscn")
-
+		tree.change_scene_to_file("res://scenes/Main/Main.tscn")
+		
 		var tween2 = overlay.create_tween()
 		tween2.tween_interval(0.1)
 		tween2.tween_property(overlay, "color:a", 0.0, 0.5)
 		tween2.tween_callback(canvas.queue_free)
 	)
-
 #
 # PICKAXE
 #
