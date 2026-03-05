@@ -10,6 +10,7 @@ var riskChance
 var isAttacking
 var baseRotation
 var isDead
+var bossbar
 
 func _ready():
 	resetVars()
@@ -25,6 +26,7 @@ func resetVars():
 	isAttacking = false
 	baseRotation = 0
 	isDead = false
+	bossbar = 100
 
 
 func screen_shake(strength: float, duration: float):
@@ -37,3 +39,6 @@ func screen_shake(strength: float, duration: float):
 		camera.offset = Vector2(randf_range(-strength, strength), randf_range(-strength, strength))
 	, 0.0, 1.0, duration)
 	tween.tween_callback(func(): camera.offset = Vector2.ZERO)
+
+# bossbar
+signal boss_health_changed(value)

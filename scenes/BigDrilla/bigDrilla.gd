@@ -30,13 +30,16 @@ var isAnimatedIntoScene: bool = true
 @onready var miningParticles = $miningParticles
 
 func _ready():
-	health = max_health
+	Globals.bossbar = 100
+	
 	health_bar.max_value = max_health
 	health_bar.value = max_health
 	
 	isAnimatedIntoScene = true
 	beginEnterAnimation()
 	
+	Globals.bossbar = max_health
+	Globals.boss_health_changed.emit(max_health)
 	
 func beginEnterAnimation():
 	var marker1 = get_tree().get_first_node_in_group("bossMarker1")
@@ -182,10 +185,11 @@ func _physics_process(delta):
 
 func take_damage(amount: int):
 	health -= amount
-	health_bar.value = health
+	Globals.bossbar = health
+	Globals.boss_health_changed.emit(health)
 	if health <= 0:
 		die()
-	
+
 func die():
 	animated_sprite.play("death")
 	deathParticles.emitting = true
