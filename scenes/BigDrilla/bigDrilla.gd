@@ -50,7 +50,6 @@ func beginEnterAnimation():
 	
 	var camera = player.get_node("Camera2D")
 	
-	# Smoothly lerp camera to boss
 	var cam_tween = create_tween()
 	cam_tween.set_ease(Tween.EASE_IN_OUT)
 	cam_tween.set_trans(Tween.TRANS_CUBIC)
@@ -65,6 +64,7 @@ func beginEnterAnimation():
 	await _move_to(marker1.global_position, animationSpeed, camera)
 	
 	drillSound.stop()
+
 	
 	miningParticles.emitting = false
 	await _move_to(marker2.global_position, animationSpeed, camera)
@@ -82,7 +82,6 @@ func beginEnterAnimation():
 	initReady()
 
 func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> void:
-	$CollisionShape2D.disabled = true
 	
 	while global_position.distance_to(target) > 5.0:
 		var dir = (target - global_position).normalized()
@@ -97,9 +96,10 @@ func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> vo
 		await get_tree().process_frame
 	
 	velocity = Vector2.ZERO
-	$CollisionShape2D.disabled = false
 	
 func initReady():
+	collision_layer = 8
+	collision_mask = 8
 	shoot_loop()
 	charge_loop()
 

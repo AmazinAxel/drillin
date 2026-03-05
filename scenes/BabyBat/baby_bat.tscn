@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://coexc4n5ty8c0"]
+
+[ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="1_asw57"]
+
+[node name="BabyBat" type="CharacterBody2D" unique_id=331467515]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=794857265]
+texture = ExtResource("1_asw57")
