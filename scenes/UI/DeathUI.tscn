@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cfabot5h6e74b" path="res://scenes/button.gd" id="3_3rywi"]
 
 [node name="DeathUi" type="Control" unique_id=716579032]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
