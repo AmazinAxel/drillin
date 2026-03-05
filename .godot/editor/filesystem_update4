@@ -1,11 +1,8 @@
-res://scenes/Player/Player.tscn
-res://scenes/Player/playerMovement.gd
-res://scenes/thrownPickaxe/thrownPickaxe.gd
-res://scenes/Enemy1/Enemy1.tscn
 res://scenes/Enemy1/enemy.gd
-res://scenes/UI/BossUI.tscn
-res://scenes/Main/Main.tscn
-res://scenes/Enemy3/Enemy3.tscn
 res://scenes/Enemy2/enemy2.gd
-res://scenes/Enemy3/enemy3.gd
 res://scenes/Enemy2/Enemy2.tscn
+res://scenes/Enemy3/enemy3.gd
+res://scenes/Enemy3/Enemy3.tscn
+res://scenes/Mineral3/mineral3.gd
+res://scenes/Player/playerMovement.gd
+res://scenes/Map/Map.tscn
