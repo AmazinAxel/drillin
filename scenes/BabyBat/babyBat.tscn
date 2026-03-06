@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_1jg0e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_asw57"]
-radius = 19.313208
+radius = 10.049875
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ykvf7"]
 animations = [{
@@ -26,14 +26,15 @@ script = ExtResource("1_bwrru")
 shape = SubResource("CircleShape2D_asw57")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1261553120]
-offset_left = -17.0
-offset_top = -37.0
-offset_right = 20.0
-offset_bottom = -5.0
+offset_left = -16.0
+offset_top = -28.0
+offset_right = 21.0
+offset_bottom = 4.0
 value = 100.0
 texture_under = ExtResource("3_ykvf7")
 texture_progress = ExtResource("4_1jg0e")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=948601267]
+scale = Vector2(0.5, 0.375)
 sprite_frames = SubResource("SpriteFrames_ykvf7")

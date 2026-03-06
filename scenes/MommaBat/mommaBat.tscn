@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bk325pkki607i"]
+
+[ext_resource type="Script" uid="uid://b6m17j85jko5y" path="res://scenes/MommaBat/mommaBat.gd" id="1_1lmfc"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="1_ixb1d"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="2_1lmfc"]
+[ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="3_n3gil"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5jl3"]
+radius = 49.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xa2ae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n3gil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MommaBat" type="CharacterBody2D" unique_id=124854866]
+script = ExtResource("1_1lmfc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528333347]
+shape = SubResource("CircleShape2D_l5jl3")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=331706899]
+offset_left = -16.0
+offset_top = -76.0
+offset_right = 21.0
+offset_bottom = -44.0
+value = 100.0
+texture_under = ExtResource("1_ixb1d")
+texture_progress = ExtResource("2_1lmfc")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670502720]
+position = Vector2(-1, -3)
+scale = Vector2(2.28125, 2.1927083)
+sprite_frames = SubResource("SpriteFrames_xa2ae")

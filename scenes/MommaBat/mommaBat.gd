@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var max_health: int = 6
-@export var speed: float = 50.0
+@export var speed: float = 20.0
 @export var dartSpeed: float = 2
-@export var swarmDistance: float = 2
+@export var swarmDistance: float = 5
 
 @export var gravity: float = 800.0
 @export var jump_force: float = -300.0
@@ -52,7 +52,7 @@ func _startDart():
 		
 	isDarting = true
 	var dir = (player.global_position - global_position).normalized()
-	dir = dir.rotated(randf_range(-0.4, 0.4))
+	dir = dir.rotated(randf_range(-0.9, 0.9))
 	dartVelocity = dir * speed * randf_range(4.0, 7.0) * dartSpeed
 	await get_tree().create_timer(0.2).timeout
 	isDarting = false
