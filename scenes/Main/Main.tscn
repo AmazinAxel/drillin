@@ -23,7 +23,7 @@ scale = Vector2(-1, 1)
 frame_progress = 0.0
 
 [node name="BabyBat" parent="." unique_id=331467515 instance=ExtResource("6_d463r")]
-position = Vector2(1077, 2733)
+position = Vector2(358, 3898)
 
 [node name="MommaBat" parent="." unique_id=124854866 instance=ExtResource("7_q8kdv")]
-position = Vector2(1164, 2762)
+position = Vector2(512, 5774)
