@@ -92,8 +92,8 @@ fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
 [node name="Enemy3" type="CharacterBody2D" unique_id=562708192 groups=["enemies"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 34
+collision_mask = 34
 script = ExtResource("1_sj2jw")
 projectile_scene = ExtResource("2_xroqt")
 

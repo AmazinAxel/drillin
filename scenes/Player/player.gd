@@ -3,9 +3,24 @@ extends CharacterBody2D
 const SPEED = 10
 const JUMP_VELOCITY = -350.0
 
+var dropTimer := 0.0
+var isDropping := false
+
 func _physics_process(delta: float) -> void:
 	if Globals.isDead:
 		return # stop all input/movement when ded
+	
+	if Input.is_action_pressed("down"):
+		isDropping = true
+		dropTimer = 0.15
+		
+	if isDropping:
+		dropTimer -= delta
+		if dropTimer <= 0:
+			isDropping = false
+	
+	set_collision_layer_value(6, not isDropping)
+	set_collision_mask_value(6, not isDropping)
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta

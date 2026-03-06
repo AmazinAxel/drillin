@@ -266,6 +266,8 @@ size = Vector2(43.332184, 23.760918)
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 z_index = 1
 scale = Vector2(1.0053291, 1)
+collision_layer = 33
+collision_mask = 33
 script = ExtResource("1_3nxk0")
 thrownPickaxeScene = ExtResource("2_lbts4")
 
