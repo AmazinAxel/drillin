@@ -4,9 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wjy80e2ypi6g" path="res://assets/sprites/BigDrillaIdleDrillin.png" id="1_ripgs"]
 [ext_resource type="Texture2D" uid="uid://dmtjla55nnoem" path="res://assets/sprites/BigDrillaDrivinDrillin.png" id="2_dytqo"]
 [ext_resource type="PackedScene" uid="uid://blcw0v21gkp10" path="res://scenes/BigDrillaProjectile/big_drilla_projectile.tscn" id="2_hnxqk"]
-[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="2_jv1xi"]
 [ext_resource type="Texture2D" uid="uid://cp8tgbihhf62m" path="res://assets/sprites/BigDrillaDeathAnimation.png" id="3_ci0t4"]
-[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="3_nacbp"]
 [ext_resource type="AudioStream" uid="uid://dyfpamn11qjhc" path="res://assets/sounds/Effect.mp3" id="8_xfb6v"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="9_qkt3i"]
 [ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="10_jxy6o"]
@@ -433,16 +431,6 @@ frame_progress = 0.956829
 position = Vector2(0.5, -6)
 shape = SubResource("RectangleShape2D_ripgs")
 one_way_collision = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1232517892]
-offset_left = -17.0
-offset_top = -60.0
-offset_right = 20.0
-offset_bottom = -28.0
-value = 100.0
-texture_under = ExtResource("2_jv1xi")
-texture_progress = ExtResource("3_nacbp")
-metadata/_edit_use_anchors_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=922551642]
 position = Vector2(0, 3)

@@ -26,12 +26,12 @@ texture_progress = ExtResource("2_wa4j6")
 script = ExtResource("3_wa4j6")
 metadata/_edit_use_anchors_ = true
 
-[node name="bossName" type="Label" parent="." unique_id=1430458172]
+[node name="bossName" type="Label" parent="healthbar" unique_id=1430458172]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 7.0
-offset_right = 333.0
-offset_bottom = 55.0
+offset_left = -280.0
+offset_top = 45.0
+offset_right = 15.0
+offset_bottom = 93.0
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("2_k7218")

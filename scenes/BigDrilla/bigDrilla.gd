@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_health: int = 50
+@export var max_health: int = 20
 @export var speed: float = 10.0
 @export var animationSpeed: float = 100.0
 @export var gravity: float = 400.0
@@ -17,29 +17,20 @@ extends CharacterBody2D
 @export var projectile_scene: PackedScene
 
 # === INTERNAL STATE ===
-var health: int
+var health = max_health
 var can_damage: bool = true
 var is_charging: bool = false
 var charge_direction: Vector2 = Vector2.ZERO
 var isAnimatedIntoScene: bool = true
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $TextureProgressBar
 @onready var deathParticles = $deathParticles
 @onready var drillSound = $drillSound
 @onready var miningParticles = $miningParticles
 
 func _ready():
-	Globals.bossbar = 100
-	
-	health_bar.max_value = max_health
-	health_bar.value = max_health
-	
 	isAnimatedIntoScene = true
 	beginEnterAnimation()
-	
-	Globals.bossbar = max_health
-	Globals.boss_health_changed.emit(max_health)
 	
 func beginEnterAnimation():
 	var marker1 = get_tree().get_first_node_in_group("bossMarker1")
@@ -72,6 +63,22 @@ func beginEnterAnimation():
 	miningParticles.emitting = false
 	await _move_to(marker2.global_position, animationSpeed, camera)
 	
+	# BOSSBAR
+	
+	Globals.bossbarMaxValue = max_health
+	var boss_layer = CanvasLayer.new()
+	boss_layer.layer = 100
+	boss_layer.name = "BossLayer"
+	var bossLayer = preload("res://scenes/UI/BossUI.tscn").instantiate()
+	bossLayer.modulate = Color(1, 1, 1, 0)
+	boss_layer.add_child(bossLayer)
+	get_tree().current_scene.add_child(boss_layer)
+	
+	var boss_tween = create_tween()
+	boss_tween.tween_property(bossLayer, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+	Globals.boss_health_changed.emit(max_health)
+
+	# Return
 	var return_tween = create_tween()
 	return_tween.set_ease(Tween.EASE_IN_OUT)
 	return_tween.set_trans(Tween.TRANS_CUBIC)
@@ -185,7 +192,7 @@ func _physics_process(delta):
 
 func take_damage(amount: int):
 	health -= amount
-	Globals.bossbar = health
+	print("damaged by ", health, "health: ", health)
 	Globals.boss_health_changed.emit(health)
 	if health <= 0:
 		die()

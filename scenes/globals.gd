@@ -10,14 +10,14 @@ var riskChance
 var isAttacking
 var baseRotation
 var isDead
-var bossbar
 var stopping
+var bossbarMaxValue = 100 # doesnt need to have reset vaule since its overwritten by default
 
 func _ready():
 	resetVars()
 
 func resetVars():
-	level = 0
+	level = 2
 	health = 100
 	damageReduction = 1
 	shootSpeed = 1
@@ -27,7 +27,6 @@ func resetVars():
 	isAttacking = false
 	baseRotation = 0
 	isDead = false
-	bossbar = 100
 	stopping = false
 
 
