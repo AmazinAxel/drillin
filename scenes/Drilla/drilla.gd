@@ -150,6 +150,11 @@ func ease_in_out_custom(t: float) -> float:
 		return 1.0 - (normalized * normalized)
 
 func stop_drill():
+	# prevent people from clicking the button multiple times
+	if Globals.stopping:
+		return
+	Globals.stopping = true;
+
 	if drill_move_tween:
 		drill_move_tween.kill()
 	if player_move_tween:
@@ -255,6 +260,7 @@ func stop_drill():
 	started = false
 	await get_tree().create_timer(1.0).timeout
 	show_gui_blocked = false
+	Globals.stopping = false;
 
 func _start_sound_end_after(delay: float):
 	if delay > 0.0:

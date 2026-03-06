@@ -11,6 +11,7 @@ var isAttacking
 var baseRotation
 var isDead
 var bossbar
+var stopping
 
 func _ready():
 	resetVars()
@@ -27,6 +28,7 @@ func resetVars():
 	baseRotation = 0
 	isDead = false
 	bossbar = 100
+	stopping = false
 
 
 func screen_shake(strength: float, duration: float):
