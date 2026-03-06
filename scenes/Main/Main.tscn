@@ -15,15 +15,15 @@ boss = ExtResource("2_q8kdv")
 [node name="Map" parent="." unique_id=107924198 instance=ExtResource("1_owiiy")]
 
 [node name="Player" parent="." unique_id=591300798 instance=ExtResource("2_8llo8")]
-position = Vector2(342, 364)
+position = Vector2(311, 311)
 
 [node name="Drilla" parent="." unique_id=222219034 instance=ExtResource("3_8llo8")]
-position = Vector2(147, 372)
+position = Vector2(150, 367)
 scale = Vector2(-1, 1)
 frame_progress = 0.0
 
 [node name="BabyBat" parent="." unique_id=331467515 instance=ExtResource("6_d463r")]
-position = Vector2(718, 2754)
+position = Vector2(1077, 2733)
 
 [node name="MommaBat" parent="." unique_id=124854866 instance=ExtResource("7_q8kdv")]
-position = Vector2(858, 2783)
+position = Vector2(1164, 2762)

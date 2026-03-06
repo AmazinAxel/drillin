@@ -3,20 +3,66 @@
 [ext_resource type="Script" uid="uid://b6m17j85jko5y" path="res://scenes/MommaBat/mommaBat.gd" id="1_1lmfc"]
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="1_ixb1d"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="2_1lmfc"]
-[ext_resource type="Texture2D" uid="uid://b4y50hn75enei" path="res://assets/sprites/player.png" id="3_n3gil"]
+[ext_resource type="Texture2D" uid="uid://d8gne43wekn7" path="res://assets/sprites/mommaBat.png" id="4_1lmfc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l5jl3"]
-radius = 49.0
+radius = 96.0833
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3gil"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5jl3"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa2ae"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmagd"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7dog"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7l1d"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv1p5"]
+atlas = ExtResource("4_1lmfc")
+region = Rect2(576, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xa2ae"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_n3gil")
+"texture": SubResource("AtlasTexture_n3gil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5jl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa2ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmagd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7dog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7l1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv1p5")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [node name="MommaBat" type="CharacterBody2D" unique_id=124854866]
@@ -39,3 +85,5 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-1, -3)
 scale = Vector2(2.28125, 2.1927083)
 sprite_frames = SubResource("SpriteFrames_xa2ae")
+autoplay = "default"
+frame_progress = 0.9711413
