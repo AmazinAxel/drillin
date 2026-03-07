@@ -457,6 +457,7 @@ color = Color(0, 0.6461681, 0.76761734, 1)
 [node name="yes" type="AudioStreamPlayer2D" parent="." unique_id=1322630447]
 stream = ExtResource("8_xfb6v")
 autoplay = true
+bus = &"cave reverb"
 
 [node name="miningParticles" type="CPUParticles2D" parent="." unique_id=713460814]
 position = Vector2(-46, 0)
@@ -474,3 +475,4 @@ color_ramp = SubResource("Gradient_o6u5y")
 
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1151748427]
 stream = ExtResource("10_jxy6o")
+bus = &"cave reverb"

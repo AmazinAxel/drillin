@@ -139,3 +139,4 @@ texture = SubResource("GradientTexture2D_0022e")
 
 [node name="slimesound" type="AudioStreamPlayer2D" parent="." unique_id=268907942]
 stream = ExtResource("7_uboy5")
+bus = &"cave reverb"

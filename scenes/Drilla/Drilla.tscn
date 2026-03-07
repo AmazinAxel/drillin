@@ -129,6 +129,7 @@ color_ramp = SubResource("Gradient_ruqpt")
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1791640435]
 stream = ExtResource("5_ruqpt")
 pitch_scale = 2.0
+bus = &"cave reverb"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -5,6 +5,7 @@ func _ready():
 	value = Globals.bossbarMaxValue # starts maxed
 	Globals.boss_health_changed.connect(_on_boss_health_changed)
 	print(max_value)
+	$bossName.text = "Big Drilla"
 
 func _on_boss_health_changed(newHealth):
 	print("max health: ", Globals.bossbarMaxValue, " health: ", newHealth)

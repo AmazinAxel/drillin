@@ -429,16 +429,20 @@ debug_color = Color(0.89517343, 0.256144, 0.49235988, 0.41960785)
 
 [node name="woosh" type="AudioStreamPlayer2D" parent="." unique_id=826807480]
 stream = ExtResource("18_2aixn")
+bus = &"cave reverb"
 
 [node name="Walking" type="AudioStreamPlayer2D" parent="." unique_id=1226021126]
 stream = ExtResource("17_5gcuk")
 volume_db = 10.0
+bus = &"cave reverb"
 
 [node name="ouch" type="AudioStreamPlayer2D" parent="." unique_id=785443759]
 stream = ExtResource("19_2aixn")
+bus = &"cave reverb"
 
 [node name="ow" type="AudioStreamPlayer2D" parent="." unique_id=1868238959]
 stream = ExtResource("20_miygw")
+bus = &"cave reverb"
 
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]

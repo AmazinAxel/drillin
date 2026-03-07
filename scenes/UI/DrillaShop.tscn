@@ -101,6 +101,7 @@ horizontal_alignment = 1
 
 [node name="purchase" type="AudioStreamPlayer2D" parent="." unique_id=935871901]
 stream = ExtResource("6_jx6w6")
+bus = &"cave reverb"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/upgradeWeapon" to="." method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/upgradeArmor" to="." method="_on_health_upgrade_pressed"]

@@ -120,6 +120,8 @@ frame_progress = 0.45390403
 
 [node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=1502812721]
 stream = ExtResource("6_f17jm")
+bus = &"cave reverb"
 
 [node name="hit2" type="AudioStreamPlayer2D" parent="." unique_id=1013075655]
 stream = ExtResource("7_qht0s")
+bus = &"cave reverb"
