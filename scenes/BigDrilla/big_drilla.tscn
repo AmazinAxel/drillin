@@ -392,7 +392,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
-size = Vector2(93, 68)
+size = Vector2(93, 53)
 
 [sub_resource type="Gradient" id="Gradient_puxyr"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -428,7 +428,7 @@ animation = &"driving"
 frame_progress = 0.956829
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99379516]
-position = Vector2(0.5, -6)
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_ripgs")
 one_way_collision = true
 
@@ -457,7 +457,6 @@ color = Color(0, 0.6461681, 0.76761734, 1)
 [node name="yes" type="AudioStreamPlayer2D" parent="." unique_id=1322630447]
 stream = ExtResource("8_xfb6v")
 autoplay = true
-bus = &"cave reverb"
 
 [node name="miningParticles" type="CPUParticles2D" parent="." unique_id=713460814]
 position = Vector2(-46, 0)
@@ -475,4 +474,3 @@ color_ramp = SubResource("Gradient_o6u5y")
 
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1151748427]
 stream = ExtResource("10_jxy6o")
-bus = &"cave reverb"
