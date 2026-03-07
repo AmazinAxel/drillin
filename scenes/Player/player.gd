@@ -6,10 +6,21 @@ const JUMP_VELOCITY = -350.0
 var dropTimer := 0.0
 var isDropping := false
 
+var isCrouching := false
+var crouch_tween: Tween
+const CROUCH_SCALE_Y = 0.9
+
 func _physics_process(delta: float) -> void:
 	if Globals.isDead:
 		return # stop all input/movement when ded
 	
+	var wantsCrouch = Input.is_action_pressed("down")
+
+	if wantsCrouch and not isCrouching:
+		_set_crouch(true)
+	elif not wantsCrouch and isCrouching:
+		_set_crouch(false)
+		
 	if Input.is_action_pressed("down"):
 		isDropping = true
 		dropTimer = 0.15
@@ -236,3 +247,26 @@ func swing_pickaxe():
 	
 	# no more damage when swing ends
 	swing_tween.tween_callback(func(): $pickaxe/damageArea.monitoring = false)
+
+func _set_crouch(crouching: bool) -> void:
+	isCrouching = crouching
+
+	if crouch_tween:
+		crouch_tween.kill()
+	crouch_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
+
+	var target_scale_y = CROUCH_SCALE_Y if crouching else 1.0
+
+	crouch_tween.tween_property($playerSprite, "scale:y", target_scale_y, 0.12)
+
+	
+	var col = $collisionBox
+	if col and col.shape:
+		var base_height = col.shape.height  
+		var target_height = (col.shape.height / (1.0 / target_scale_y)) if crouching else col.shape.height
+		crouch_tween.parallel().tween_method(
+			func(h): col.shape.height = h,
+			col.shape.height,
+			16.0 if crouching else 32.0,
+			0.12
+		)
