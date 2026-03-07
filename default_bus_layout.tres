@@ -2,9 +2,13 @@
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
+damping = 0.97
+wet = 0.29
 
 [sub_resource type="AudioEffectDelay" id="AudioEffectDelay_j3pel"]
 resource_name = "Delay"
+tap1_delay_ms = 112.0
+tap2_delay_ms = 264.0
 
 [resource]
 bus/1/name = &"cave reverb"
