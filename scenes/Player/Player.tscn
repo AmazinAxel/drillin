@@ -296,6 +296,7 @@ shape = SubResource("CapsuleShape2D_2aixn")
 [node name="light" type="PointLight2D" parent="." unique_id=429943406]
 position = Vector2(0, 3)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
+shadow_enabled = true
 texture = SubResource("GradientTexture2D_ky53y")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1335660228]

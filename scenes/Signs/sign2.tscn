@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dimexdkjk1cnk"]
+
+[ext_resource type="Script" uid="uid://cvfwdn1c2jng" path="res://scenes/Signs/sign1.gd" id="1_ji2hs"]
+[ext_resource type="Texture2D" uid="uid://dmjx6ynv3tpib" path="res://assets/sprites/THIS_IS_A_SIGN.png" id="2_dnq3y"]
+[ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="3_xgbiw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xgph"]
+size = Vector2(163, 36)
+
+[node name="Sign" type="Node2D" unique_id=1150364895]
+texture_filter = 1
+script = ExtResource("1_ji2hs")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=175230592]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=475494940]
+position = Vector2(16.5, -11)
+shape = SubResource("RectangleShape2D_0xgph")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=173235312]
+texture = ExtResource("2_dnq3y")
+
+[node name="Control" type="Control" parent="." unique_id=1665322321]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -15.0
+offset_top = -40.0
+offset_right = 16.0
+offset_bottom = -7.0
+
+[node name="Label" type="Label" parent="Control" unique_id=977331331]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = -4.0000005
+offset_right = 643.99994
+offset_bottom = 523.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("3_xgbiw")
+theme_override_font_sizes/font_size = 64
+text = "HINT:  Sneak  [S]  to drop down"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+autowrap_trim_flags = 64
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
