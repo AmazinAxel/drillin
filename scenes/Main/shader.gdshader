@@ -53,12 +53,12 @@ void fragment() {
         }
 
 
-        // --- scanlines ---
-       if (enable_scanlines) {
-			// 8.0 distance 0.05 strength
-            float scanline = sin(FRAGCOORD.y * 3.1415 / 8.0) * 0.5 + 0.5;
-            col.rgb -= 0.05 * (1.0 - scanline);
-        }
+        //// --- scanlines ---
+       //if (enable_scanlines) {
+			//// 8.0 distance 0.05 strength
+            //float scanline = sin(FRAGCOORD.y * 3.1415 / 8.0) * 0.5 + 0.5;
+            //col.rgb -= 0.05 * (1.0 - scanline);
+        //}
 
         // --- vignette ---
         if (enable_vignette) {
