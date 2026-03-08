@@ -28,6 +28,7 @@ offset_left = -15.0
 offset_top = -40.0
 offset_right = 16.0
 offset_bottom = -7.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control" unique_id=977331331]
 visible = false

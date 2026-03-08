@@ -40,7 +40,7 @@ mouse_filter = 2
 [node name="Map" parent="." unique_id=107924198 instance=ExtResource("1_owiiy")]
 
 [node name="Player" parent="." unique_id=591300798 instance=ExtResource("2_8llo8")]
-position = Vector2(63, 3367)
+position = Vector2(-98, 45)
 
 [node name="Drilla" parent="." unique_id=222219034 instance=ExtResource("3_8llo8")]
 position = Vector2(150, 367)

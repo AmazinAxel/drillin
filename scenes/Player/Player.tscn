@@ -243,11 +243,11 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2aixn"]
 
-[sub_resource type="Gradient" id="Gradient_mn6xr"]
+[sub_resource type="Gradient" id="Gradient_2aixn"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ky53y"]
-gradient = SubResource("Gradient_mn6xr")
+gradient = SubResource("Gradient_2aixn")
 width = 128
 height = 128
 fill = 1
@@ -296,6 +296,7 @@ shape = SubResource("CapsuleShape2D_2aixn")
 [node name="light" type="PointLight2D" parent="." unique_id=429943406]
 position = Vector2(0, 3)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
+energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_ky53y")
 
@@ -351,6 +352,7 @@ color_ramp = SubResource("Gradient_lbts4")
 
 [node name="flashlight" type="PointLight2D" parent="." unique_id=40282454]
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
+energy = 0.8
 blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("6_socpp")
@@ -430,20 +432,16 @@ debug_color = Color(0.89517343, 0.256144, 0.49235988, 0.41960785)
 
 [node name="woosh" type="AudioStreamPlayer2D" parent="." unique_id=826807480]
 stream = ExtResource("18_2aixn")
-bus = &"cave reverb"
 
 [node name="Walking" type="AudioStreamPlayer2D" parent="." unique_id=1226021126]
 stream = ExtResource("17_5gcuk")
 volume_db = 10.0
-bus = &"cave reverb"
 
 [node name="ouch" type="AudioStreamPlayer2D" parent="." unique_id=785443759]
 stream = ExtResource("19_2aixn")
-bus = &"cave reverb"
 
 [node name="ow" type="AudioStreamPlayer2D" parent="." unique_id=1868238959]
 stream = ExtResource("20_miygw")
-bus = &"cave reverb"
 
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]
