@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	
 	var base_alpha = 1.0 - t
 	$Sprite2D.modulate.a = base_alpha * flicker
+	$PointLight2D.energy = (base_alpha - 0.5) * flicker
+	print((base_alpha) * flicker)
 	
 	if time_elapsed >= lifetime:
 		queue_free()

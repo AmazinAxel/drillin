@@ -10,16 +10,22 @@ extends CharacterBody2D
 
 @export var attack_range: float = 60.0
 
-@export var chargeDamage: int = 100
+@export var chargeDamage: int = 50
 @export var charge_speed: float = 400.0
 @export var charge_duration: float = 0.5
 
 @export var projectile_scene: PackedScene
 
+# === RAGE STATE ===
+var rage: float = 0.0 
+var rage_build_rate: float = 0.01
+var rage_decay_rate: float = 0.5
+
 # === INTERNAL STATE ===
 var health = max_health
 var can_damage: bool = true
 var is_charging: bool = false
+var isDying: bool = false
 var charge_direction: Vector2 = Vector2.ZERO
 var isAnimatedIntoScene: bool = true
 
@@ -27,9 +33,11 @@ var isAnimatedIntoScene: bool = true
 @onready var deathParticles = $deathParticles
 @onready var drillSound = $drillSound
 @onready var miningParticles = $miningParticles
+@onready var heatShieldEffect = $heatShieldEffect
 
 func _ready():
 	isAnimatedIntoScene = true
+	heatShieldEffect.energy = 0.0
 	beginEnterAnimation()
 	
 func beginEnterAnimation():
@@ -52,18 +60,16 @@ func beginEnterAnimation():
 		0.0, 1.0, 1.5
 	)
 	
+	drillSound.pitch_scale = 1.8
 	drillSound.play()
-	
+
 	miningParticles.emitting = true
 	await _move_to(marker1.global_position, animationSpeed, camera)
 	
-	drillSound.stop()
+	drillSound.pitch_scale = 0.6
 
-	
 	miningParticles.emitting = false
 	await _move_to(marker2.global_position, animationSpeed, camera)
-	
-	# BOSSBAR
 	
 	Globals.bossbarMaxValue = max_health
 	var boss_layer = CanvasLayer.new()
@@ -78,7 +84,6 @@ func beginEnterAnimation():
 	boss_tween.tween_property(bossLayer, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 	Globals.boss_health_changed.emit(max_health)
 
-	# Return
 	var return_tween = create_tween()
 	return_tween.set_ease(Tween.EASE_IN_OUT)
 	return_tween.set_trans(Tween.TRANS_CUBIC)
@@ -92,7 +97,6 @@ func beginEnterAnimation():
 	initReady()
 
 func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> void:
-	
 	while global_position.distance_to(target) > 5.0:
 		var dir = (target - global_position).normalized()
 		velocity.x = dir.x * move_speed
@@ -106,6 +110,10 @@ func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> vo
 		await get_tree().process_frame
 	
 	velocity = Vector2.ZERO
+	
+func set_drill_pitch(target: float):
+	var t = create_tween()
+	t.tween_property(drillSound, "pitch_scale", target, 0.25).set_ease(Tween.EASE_IN_OUT)
 	
 func initReady():
 	collision_layer = 8
@@ -154,25 +162,47 @@ func start_charge():
 		return
 	is_charging = true
 	charge_direction = (player.global_position - global_position).normalized()
-	await get_tree().create_timer(charge_duration).timeout
+	set_drill_pitch(1.8)
+	
+	var elapsed = 0.0
+	while elapsed < charge_duration and is_charging:
+		await get_tree().process_frame
+		elapsed += get_process_delta_time()
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			var normal = col.get_normal()
+			if abs(normal.x) > 0.7:
+				is_charging = false
+				break
+	
 	is_charging = false
+	set_drill_pitch(0.6)
+
+func get_rage_damage_multiplier() -> float:
+	return 1.0 + rage * 2.0
 
 func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
+	if isDying:
+		return
+		
 	if isAnimatedIntoScene:
 		return
 		
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
 	var player = get_tree().get_first_node_in_group("player")
 	
 	if is_charging:
-		animated_sprite.play("driving") 
+		animated_sprite.play("driving")
 		velocity.x = charge_direction.x * charge_speed
+		
+		rage = min(rage + rage_build_rate * 3.0 * delta * 60.0, 1.0)
 		
 		var distance = global_position.distance_to(player.global_position)
 		if can_damage and distance < attack_range:
-			player.take_damage(chargeDamage)
+			var final_damage = int(chargeDamage * get_rage_damage_multiplier())
+			player.take_damage(final_damage)
 			can_damage = false
 			await get_tree().create_timer(damage_cooldown).timeout
 			can_damage = true
@@ -183,18 +213,34 @@ func _physics_process(delta):
 		velocity.x = direction.x * speed
 		animated_sprite.flip_h = direction.x > 0
 
+		rage = max(rage - rage_decay_rate * delta * 60.0, 0.0)
+
 		var distance = global_position.distance_to(player.global_position)
 		if can_damage and distance < attack_range:
-			player.take_damage(damage)
+			var final_damage = int(damage * get_rage_damage_multiplier())
+			player.take_damage(final_damage)
 			can_damage = false
 			await get_tree().create_timer(damage_cooldown).timeout
 			can_damage = true
 
+	heatShieldEffect.energy = lerp(heatShieldEffect.energy, rage * 3.5, delta * 4.0)
+	
+	var lightDirection
+	if player:
+		if !is_charging:
+			var direction = (player.global_position - global_position).normalized()
+			if direction.x > 0:
+				lightDirection = -89.5
+			else:
+				lightDirection = 89.5
+			heatShieldEffect.rotation = lightDirection
+		
+	
 	move_and_slide()
 
 func take_damage(amount: int):
 	health -= amount
-	print("damaged by ", health, "health: ", health)
+	$BossHit.play()
 	Globals.boss_health_changed.emit(health)
 	if health <= 0:
 		die()
@@ -203,10 +249,12 @@ func die():
 	animated_sprite.play("death")
 	deathParticles.emitting = true
 	can_damage = false
-	$BossKillSound.playing = true
-	await get_tree().create_timer(2).timeout
+	isDying = true
+	$BossDeath1.playing = true
+	await get_tree().create_timer(0.5).timeout
+	$BossDeath2.playing = true
+	await get_tree().create_timer(1).timeout
 	
-	await get_tree().create_timer(1.0).timeout
 	var shop_layer = CanvasLayer.new()
 	shop_layer.layer = 100
 	shop_layer.name = "ShopLayer"

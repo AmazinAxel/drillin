@@ -42,7 +42,7 @@ func _ready() -> void:
 	print(player)
 	stop()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not player:
 		return
 	var dist = global_position.distance_to(player.global_position)

@@ -1049,13 +1049,13 @@ scale = Vector2(1, 1.00622)
 [node name="BigDrilla" type="Node" parent="Spawnpoints/BossMarkers" unique_id=2085698108]
 
 [node name="AnimateToPoint1" type="Marker2D" parent="Spawnpoints/BossMarkers/BigDrilla" unique_id=177711135 groups=["bossMarker1"]]
-position = Vector2(736, 2240)
+position = Vector2(736, 2244)
 
 [node name="AnimateToPoint2" type="Marker2D" parent="Spawnpoints/BossMarkers/BigDrilla" unique_id=2097423692 groups=["bossMarker2"]]
-position = Vector2(587, 2242)
+position = Vector2(587, 2246)
 
 [node name="BossSpawnpoint" type="Marker2D" parent="Spawnpoints/BossMarkers/BigDrilla" unique_id=62359305 groups=["bossSpawnpoint"]]
-position = Vector2(930, 2240)
+position = Vector2(930, 2244)
 
 [node name="backgroundTilemap" type="TileMapLayer" parent="." unique_id=2030483697]
 z_index = -1

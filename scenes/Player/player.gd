@@ -213,7 +213,7 @@ func catch_pickaxe():
 
 func attack():
 	if Globals.isDead:
-		return # no pickaxe when ded
+		return 
 	if (self.name == "Player"):
 		Globals.isAttacking = true
 		swing_pickaxe()
@@ -222,7 +222,7 @@ func attack():
 
 func swing_pickaxe():
 	if Globals.isDead:
-		return # no pickaxe when ded
+		return 
 	if swing_tween:
 		swing_tween.kill()
 		

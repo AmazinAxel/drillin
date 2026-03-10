@@ -65,11 +65,11 @@ scale_amount_max = 2.0
 color = Color(1, 0.8216669, 0.7922331, 1)
 color_ramp = SubResource("Gradient_yxei1")
 
-[node name="MissileShot" type="AudioStreamPlayer" parent="." unique_id=1330705484]
+[node name="MissileShot" type="AudioStreamPlayer2D" parent="." unique_id=1351556538]
 stream = ExtResource("4_8usqr")
 volume_db = -15.0
 
-[node name="MissileMoving" type="AudioStreamPlayer" parent="." unique_id=1411638955]
+[node name="MissileMoving" type="AudioStreamPlayer2D" parent="." unique_id=298051549]
 stream = ExtResource("5_psxa5")
 volume_db = -15.0
 pitch_scale = 0.2

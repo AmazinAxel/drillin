@@ -24,7 +24,7 @@ func _on_replenish_health_pressed() -> void:
 		$purchase.play()
 		whatCanBuy()
 
-func _process(delta):
+func _process(_delta):
 	$MineralsLabel.text = str(Globals.minerals)
 
 func whatCanBuy():

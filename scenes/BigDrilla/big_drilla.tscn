@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dmtjla55nnoem" path="res://assets/sprites/BigDrillaDrivinDrillin.png" id="2_dytqo"]
 [ext_resource type="Texture2D" uid="uid://cp8tgbihhf62m" path="res://assets/sprites/BigDrillaDeathAnimation.png" id="3_ci0t4"]
 [ext_resource type="AudioStream" uid="uid://dyfpamn11qjhc" path="res://assets/sounds/Effect.mp3" id="8_xfb6v"]
-[ext_resource type="AudioStream" uid="uid://cis4oetklh28" path="res://assets/sounds/BigDrilla/bossKillSound.mp3" id="9_d2faa"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="9_qkt3i"]
+[ext_resource type="AudioStream" uid="uid://cnwqbqm4kdaix" path="res://assets/sounds/BigDrilla/bossHit.mp3" id="10_dbac5"]
 [ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="10_jxy6o"]
 [ext_resource type="AudioStream" uid="uid://ji0brm0vw04i" path="res://assets/sounds/BigDrilla/preparingMissile.mp3" id="10_qkt3i"]
+[ext_resource type="AudioStream" uid="uid://bthj0e7ahdqaw" path="res://assets/sounds/BigDrilla/bossSpawn.mp3" id="11_sc6wf"]
+[ext_resource type="AudioStream" uid="uid://3dh2oghmdcmn" path="res://assets/sounds/BigDrilla/bossDeath1.mp3" id="12_0hseo"]
+[ext_resource type="AudioStream" uid="uid://bb5n4k0n2cgey" path="res://assets/sounds/BigDrilla/bossDeath2.mp3" id="13_0fn1c"]
+[ext_resource type="Texture2D" uid="uid://dgyh5fd8bsr4l" path="res://assets/sprites/heatShield.png" id="14_sc6wf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qd5q"]
 atlas = ExtResource("3_ci0t4")
@@ -396,11 +400,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
 size = Vector2(93, 53)
 
-[sub_resource type="Gradient" id="Gradient_puxyr"]
+[sub_resource type="Gradient" id="Gradient_qkt3i"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nacbp"]
-gradient = SubResource("Gradient_puxyr")
+gradient = SubResource("Gradient_qkt3i")
 width = 128
 height = 128
 fill = 1
@@ -458,7 +462,6 @@ color = Color(0, 0.6461681, 0.76761734, 1)
 
 [node name="yes" type="AudioStreamPlayer2D" parent="." unique_id=1322630447]
 stream = ExtResource("8_xfb6v")
-autoplay = true
 
 [node name="miningParticles" type="CPUParticles2D" parent="." unique_id=713460814]
 position = Vector2(-46, 0)
@@ -476,11 +479,37 @@ color_ramp = SubResource("Gradient_o6u5y")
 
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1151748427]
 stream = ExtResource("10_jxy6o")
+pitch_scale = 1.2
 
-[node name="BossKillSound" type="AudioStreamPlayer" parent="." unique_id=854481174]
-stream = ExtResource("9_d2faa")
-pitch_scale = 0.5
-
-[node name="PreparingMissile" type="AudioStreamPlayer" parent="." unique_id=1494347958]
+[node name="PreparingMissile" type="AudioStreamPlayer2D" parent="." unique_id=2134322574]
 stream = ExtResource("10_qkt3i")
 pitch_scale = 2.0
+
+[node name="BossHit" type="AudioStreamPlayer2D" parent="." unique_id=1044665405]
+stream = ExtResource("10_dbac5")
+volume_db = -10.0
+pitch_scale = 2.0
+max_polyphony = 2
+
+[node name="BossSpawn" type="AudioStreamPlayer" parent="." unique_id=1721926429]
+stream = ExtResource("11_sc6wf")
+volume_db = 5.0
+autoplay = true
+
+[node name="BossDeath1" type="AudioStreamPlayer" parent="." unique_id=519661179]
+stream = ExtResource("12_0hseo")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="BossDeath2" type="AudioStreamPlayer" parent="." unique_id=2028538076]
+stream = ExtResource("13_0fn1c")
+volume_db = -10.0
+
+[node name="heatShieldEffect" type="PointLight2D" parent="." unique_id=487874968]
+rotation = 1.5620697
+scale = Vector2(0.5, 0.7)
+color = Color(0.73, 0.08760001, 0.119720116, 1)
+energy = 0.0
+shadow_enabled = true
+texture = ExtResource("14_sc6wf")
+texture_scale = 0.1
