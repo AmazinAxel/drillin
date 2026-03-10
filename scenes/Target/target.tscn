@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bkmm8277xdoyv"]
+
+[sub_resource type="Gradient" id="Gradient_cjp62"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4pney"]
+gradient = SubResource("Gradient_cjp62")
+width = 16
+height = 16
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjp62"]
+
+[node name="Target" type="StaticBody2D" unique_id=117095771]
+collision_layer = 256
+collision_mask = 256
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1125762291]
+texture = SubResource("GradientTexture2D_4pney")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1374760857]
+shape = SubResource("RectangleShape2D_cjp62")

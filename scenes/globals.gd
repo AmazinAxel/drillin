@@ -17,7 +17,7 @@ func _ready():
 	resetVars()
 
 func resetVars():
-	level = 0
+	level = 2
 	health = 100
 	damageReduction = 1
 	shootSpeed = 1

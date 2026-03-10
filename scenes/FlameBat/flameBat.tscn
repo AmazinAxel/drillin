@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ch6ftc4jva4j3"]
+
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="1_2fmf4"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="2_mxg26"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtrjl"]
+size = Vector2(15, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_565mo"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="flameBat" type="CharacterBody2D" unique_id=1099381924]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654479302]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_wtrjl")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1597814264]
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 21.0
+offset_bottom = 9.0
+value = 100.0
+texture_under = ExtResource("1_2fmf4")
+texture_progress = ExtResource("2_mxg26")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=528721377]
+scale = Vector2(0.5, 0.375)
+sprite_frames = SubResource("SpriteFrames_565mo")

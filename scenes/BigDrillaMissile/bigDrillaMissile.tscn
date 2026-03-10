@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://gbsx60vervrf"]
+
+[ext_resource type="Script" uid="uid://qhkp1f6k6qym" path="res://scenes/BigDrillaMissile/bigDrillaMissile.gd" id="1_00ev0"]
+[ext_resource type="Texture2D" uid="uid://bstfqvgkwti54" path="res://assets/sprites/BossProjectile.png" id="1_qcl74"]
+[ext_resource type="PackedScene" uid="uid://clnp4mc5okl6t" path="res://scenes/LargeExplosion/large_explosion.tscn" id="2_psxa5"]
+[ext_resource type="PackedScene" uid="uid://bkmm8277xdoyv" path="res://scenes/Target/target.tscn" id="3_g3uwi"]
+[ext_resource type="Texture2D" uid="uid://ccqur10aya2rs" path="res://assets/sprites/Dot2.png" id="3_gwtc4"]
+[ext_resource type="AudioStream" uid="uid://fhwi54xrxts4" path="res://assets/sounds/BigDrilla/missileShot.mp3" id="4_8usqr"]
+[ext_resource type="AudioStream" uid="uid://b884poytgwhm4" path="res://assets/sounds/BigDrilla/missileMoving.mp3" id="5_psxa5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00ev0"]
+size = Vector2(29, 13)
+
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gwtc4"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
+[sub_resource type="Gradient" id="Gradient_yxei1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="BigDrillaMissile" type="CharacterBody2D" unique_id=1128983282]
+collision_layer = 257
+collision_mask = 257
+script = ExtResource("1_00ev0")
+explosionScene = ExtResource("2_psxa5")
+targetScene = ExtResource("3_g3uwi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2145356613]
+position = Vector2(1, 0)
+rotation = 1.5707964
+scale = Vector2(1, -1)
+texture = ExtResource("1_qcl74")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=949932250]
+collision_layer = 257
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1055701818]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_00ev0")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=103897851]
+color = Color(0.59575146, 0, 0, 1)
+energy = 0.3
+texture = SubResource("GradientTexture2D_gwtc4")
+
+[node name="miningParticles" type="CPUParticles2D" parent="." unique_id=1743297345]
+position = Vector2(-13, -1)
+amount = 10
+texture = ExtResource("3_gwtc4")
+lifetime = 0.1
+speed_scale = 0.6
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector2(-1, 0)
+spread = 30.0
+initial_velocity_min = 500.0
+initial_velocity_max = 540.78
+scale_amount_max = 2.0
+color = Color(1, 0.8216669, 0.7922331, 1)
+color_ramp = SubResource("Gradient_yxei1")
+
+[node name="MissileShot" type="AudioStreamPlayer" parent="." unique_id=1330705484]
+stream = ExtResource("4_8usqr")
+
+[node name="MissileMoving" type="AudioStreamPlayer" parent="." unique_id=1411638955]
+stream = ExtResource("5_psxa5")
+volume_db = -10.0
+pitch_scale = 0.2
+parameters/looping = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

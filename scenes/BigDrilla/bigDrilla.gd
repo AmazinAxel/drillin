@@ -124,10 +124,12 @@ func shoot_loop():
 		await shoot_burst()
 
 func shoot_burst():
+	$PreparingMissile.playing = true
+	await get_tree().create_timer(0.3).timeout
 	var burst_count = randi_range(3, 6) 
 	for i in burst_count:
 		shoot_projectile()
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.3).timeout
 
 func shoot_projectile():
 	if not projectile_scene:
@@ -200,7 +202,9 @@ func take_damage(amount: int):
 func die():
 	animated_sprite.play("death")
 	deathParticles.emitting = true
-	await get_tree().create_timer(1).timeout
+	can_damage = false
+	$BossKillSound.playing = true
+	await get_tree().create_timer(2).timeout
 	
 	await get_tree().create_timer(1.0).timeout
 	var shop_layer = CanvasLayer.new()

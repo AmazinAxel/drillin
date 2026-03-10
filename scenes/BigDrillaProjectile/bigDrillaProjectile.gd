@@ -5,6 +5,7 @@ var player: Node2D
 var direction: Vector2 = Vector2.RIGHT
 var homing: bool = false
 
+
 func launch(dir: Vector2):
 	direction = Vector2.UP
 	rotation = direction.angle()
@@ -39,6 +40,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var p = get_tree().get_first_node_in_group("player")
 		if p:
 			p.take_damage(10)
+			
 		queue_free()
 	elif body.name == "TileMapLayer":
 		queue_free()

@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bncoh0menkjqm" path="res://scenes/BigDrilla/bigDrilla.gd" id="1_nacbp"]
 [ext_resource type="Texture2D" uid="uid://wjy80e2ypi6g" path="res://assets/sprites/BigDrillaIdleDrillin.png" id="1_ripgs"]
+[ext_resource type="PackedScene" uid="uid://gbsx60vervrf" path="res://scenes/BigDrillaMissile/bigDrillaMissile.tscn" id="2_d2faa"]
 [ext_resource type="Texture2D" uid="uid://dmtjla55nnoem" path="res://assets/sprites/BigDrillaDrivinDrillin.png" id="2_dytqo"]
-[ext_resource type="PackedScene" uid="uid://blcw0v21gkp10" path="res://scenes/BigDrillaProjectile/big_drilla_projectile.tscn" id="2_hnxqk"]
 [ext_resource type="Texture2D" uid="uid://cp8tgbihhf62m" path="res://assets/sprites/BigDrillaDeathAnimation.png" id="3_ci0t4"]
 [ext_resource type="AudioStream" uid="uid://dyfpamn11qjhc" path="res://assets/sounds/Effect.mp3" id="8_xfb6v"]
+[ext_resource type="AudioStream" uid="uid://cis4oetklh28" path="res://assets/sounds/BigDrilla/bossKillSound.mp3" id="9_d2faa"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="9_qkt3i"]
 [ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="10_jxy6o"]
+[ext_resource type="AudioStream" uid="uid://ji0brm0vw04i" path="res://assets/sounds/BigDrilla/preparingMissile.mp3" id="10_qkt3i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qd5q"]
 atlas = ExtResource("3_ci0t4")
@@ -420,7 +422,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_nacbp")
 charge_duration = 2.0
-projectile_scene = ExtResource("2_hnxqk")
+projectile_scene = ExtResource("2_d2faa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501585013]
 sprite_frames = SubResource("SpriteFrames_d2faa")
@@ -474,3 +476,11 @@ color_ramp = SubResource("Gradient_o6u5y")
 
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1151748427]
 stream = ExtResource("10_jxy6o")
+
+[node name="BossKillSound" type="AudioStreamPlayer" parent="." unique_id=854481174]
+stream = ExtResource("9_d2faa")
+pitch_scale = 0.5
+
+[node name="PreparingMissile" type="AudioStreamPlayer" parent="." unique_id=1494347958]
+stream = ExtResource("10_qkt3i")
+pitch_scale = 2.0

@@ -261,7 +261,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qt7jd"]
-size = Vector2(43.332184, 23.760918)
+size = Vector2(58.807972, 30.549747)
 
 [node name="Player" type="CharacterBody2D" unique_id=1005827470 groups=["player"]]
 z_index = 1
@@ -425,6 +425,7 @@ collision_mask = 255
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickaxe/damageArea" unique_id=59650308]
+position = Vector2(0.4973488, 4.7683716e-07)
 rotation = -3.1415925
 scale = Vector2(0.32137287, -0.5892029)
 shape = SubResource("RectangleShape2D_qt7jd")
