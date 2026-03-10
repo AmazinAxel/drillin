@@ -16,10 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://becivtixuvqgf" path="res://assets/sprites/UhParticle.png" id="10_qt7jd"]
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
 [ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
-[ext_resource type="AudioStream" uid="uid://bf686kqtmoi86" path="res://assets/sounds/walkingSound.mp3" id="17_5gcuk"]
-[ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/woosh.mp3" id="18_2aixn"]
+[ext_resource type="AudioStream" uid="uid://bf686kqtmoi86" path="res://assets/sounds/Player/walkingSound.mp3" id="17_5gcuk"]
+[ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/Player/woosh.mp3" id="18_2aixn"]
 [ext_resource type="AudioStream" uid="uid://cccvynvsry5et" path="res://scenes/Player/PronouncedOuch.mp3" id="19_2aixn"]
 [ext_resource type="AudioStream" uid="uid://bq68he1lb0sr4" path="res://scenes/Player/Ouch.mp3" id="20_miygw"]
+[ext_resource type="AudioStream" uid="uid://dshogusvuw2ma" path="res://assets/sounds/Player/ambient1.mp3" id="21_5tklm"]
+[ext_resource type="AudioStream" uid="uid://c5rgony6x7uoh" path="res://assets/sounds/Player/ambient2.mp3" id="22_g055u"]
+[ext_resource type="AudioStream" uid="uid://b3gv0nba3jk1y" path="res://assets/sounds/Player/ambient3.mp3" id="23_2racp"]
 
 [sub_resource type="Gradient" id="Gradient_dqefj"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -443,6 +446,24 @@ stream = ExtResource("19_2aixn")
 
 [node name="ow" type="AudioStreamPlayer2D" parent="." unique_id=1868238959]
 stream = ExtResource("20_miygw")
+
+[node name="Ambient1" type="AudioStreamPlayer" parent="." unique_id=981769242]
+stream = ExtResource("21_5tklm")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
+[node name="Ambient2" type="AudioStreamPlayer" parent="." unique_id=1070754507]
+stream = ExtResource("22_g055u")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="Ambient3" type="AudioStreamPlayer" parent="." unique_id=1731193725]
+stream = ExtResource("23_2racp")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]

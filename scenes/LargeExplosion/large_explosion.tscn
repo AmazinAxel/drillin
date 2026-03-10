@@ -165,6 +165,7 @@ frame = 11
 
 [node name="MissileHitSound" type="AudioStreamPlayer" parent="." unique_id=1298150698]
 stream = ExtResource("32_csq6o")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

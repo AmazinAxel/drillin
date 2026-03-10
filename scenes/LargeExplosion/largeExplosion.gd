@@ -23,7 +23,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	if body.name != "Player":
 		return
-		
+	
 	var p = get_tree().get_first_node_in_group("player")
 	if p:
 		p.take_damage(10)
