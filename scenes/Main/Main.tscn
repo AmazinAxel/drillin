@@ -40,10 +40,10 @@ mouse_filter = 2
 [node name="Map" parent="." unique_id=107924198 instance=ExtResource("1_owiiy")]
 
 [node name="Player" parent="." unique_id=591300798 instance=ExtResource("2_8llo8")]
-position = Vector2(-98, 45)
+position = Vector2(-307, 49)
 
 [node name="Drilla" parent="." unique_id=222219034 instance=ExtResource("3_8llo8")]
-position = Vector2(150, 367)
+position = Vector2(154, 75)
 scale = Vector2(-1, 1)
 frame_progress = 0.0
 
