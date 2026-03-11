@@ -9,9 +9,11 @@ extends CharacterBody2D
 @export var attack_range: float = 15.0
 @export var knockbackFromPlayer: float = 1000.0
 @export var knockbackForce: float = 3.0
-@export var flames_visible_range: float = 80.0
-@export var flame_damage: int = 5
-@export var flame_damage_interval: float = 0.1
+@export var shoot_range: float = 200.0
+@export var shoot_cooldown: float = 1.5
+
+
+@export var projectileScene: PackedScene
 
 # === INTERNAL STATE ===
 var health: int
@@ -21,13 +23,10 @@ var knockbackVelocity: Vector2
 var swarmOffset: Vector2 = Vector2.ZERO
 var swarmOffsetTarget: Vector2 = Vector2.ZERO
 var swarmOffsetTimer: float = 0.0
-var flame_damage_timer: float = 0.0
-var flameIsVisible: bool = false
-var playerIsInFlames: bool = false
+var shoot_timer: float = 0.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $TextureProgressBar
-@onready var flames = $Flames
 
 func _ready():
 	health = max_health
@@ -36,8 +35,25 @@ func _ready():
 	
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
-	flames.visible = false
+	
 
+func shoot_projectile():
+	if not projectileScene:
+		return
+	var player = get_tree().get_first_node_in_group("player")
+	if not player:
+		return
+	
+	var projectile = projectileScene.instantiate()
+	get_tree().current_scene.add_child(projectile)
+	projectile.global_position = global_position
+	
+	var dir = (player.global_position - global_position).normalized()
+	var spread = deg_to_rad(randf_range(-5.0, 5.0))
+	dir = dir.rotated(spread)
+	
+	projectile.launch(dir)
+	
 func _physics_process(delta):
 	if isKnockedBackFromPlayer:
 		knockbackVelocity = knockbackVelocity.lerp(Vector2.ZERO, delta * 10)
@@ -54,10 +70,6 @@ func _physics_process(delta):
 	if player:
 		var distance = global_position.distance_to(player.global_position)
 		
-		flameIsVisible = distance <= flames_visible_range
-		flames.visible = flameIsVisible
-		flames.look_at(player.global_position)
-
 		swarmOffsetTimer -= delta
 		if swarmOffsetTimer <= 0.0:
 			swarmOffsetTimer = randf_range(0.8, 2.0)
@@ -86,20 +98,15 @@ func _physics_process(delta):
 			can_damage = false
 			await get_tree().create_timer(damage_cooldown).timeout
 			can_damage = true
-	
-	if flameIsVisible:
-		if !$Flame.playing:
-			$Flame.playing = true
-		flame_damage_timer -= delta
-		if flame_damage_timer <= 0.0:
-			flame_damage_timer = flame_damage_interval
-			if playerIsInFlames:
-				player.take_damage(flame_damage)
-	else:
-		$Flame.playing = false
+		
+		if distance < shoot_range:
+			shoot_timer -= delta
+			if shoot_timer <= 0.0:
+				shoot_timer = shoot_cooldown
+				shoot_projectile()
 
 	move_and_slide()
-
+	
 
 func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
@@ -118,12 +125,3 @@ func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 func die():
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and !playerIsInFlames:
-		playerIsInFlames = true
-		flame_damage_timer = 0.0
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	playerIsInFlames = false

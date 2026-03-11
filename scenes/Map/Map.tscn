@@ -1085,28 +1085,28 @@ position = Vector2(152, 3323)
 [node name="Lights" type="Node" parent="." unique_id=344751576]
 
 [node name="light" type="PointLight2D" parent="Lights" unique_id=773977131]
-position = Vector2(471, 9)
+position = Vector2(247, 9)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xdt7n")
 
 [node name="light2" type="PointLight2D" parent="Lights" unique_id=837998787]
-position = Vector2(169, -86)
+position = Vector2(-57, -87)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xdt7n")
 
 [node name="light3" type="PointLight2D" parent="Lights" unique_id=1966130107]
-position = Vector2(39, 42)
+position = Vector2(-185, 42)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xdt7n")
 
 [node name="light4" type="PointLight2D" parent="Lights" unique_id=910736601]
-position = Vector2(-10, -71)
+position = Vector2(-233, -71)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 energy = 0.5
 shadow_enabled = true

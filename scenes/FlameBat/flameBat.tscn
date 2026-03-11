@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="2_mxg26"]
 [ext_resource type="Texture2D" uid="uid://8dmds34a5ul0" path="res://assets/sprites/FireFly-FireBat..png" id="3_mxg26"]
 [ext_resource type="AudioStream" uid="uid://cmgkat8td6pn1" path="res://assets/sounds/MommaBat/batFlappingWings.mp3" id="5_565mo"]
+[ext_resource type="Texture2D" uid="uid://dbf6snbfnk3yu" path="res://assets/sprites/Flame-sheet.png" id="5_theln"]
 [ext_resource type="AudioStream" uid="uid://csyk6d06lmujj" path="res://assets/sounds/MommaBat/flame.mp3" id="7_5t6qh"]
 [ext_resource type="AudioStream" uid="uid://y86ef527fnmr" path="res://assets/sounds/enemyHitSound.mp3" id="7_theln"]
 [ext_resource type="AudioStream" uid="uid://chn2gnyjdxres" path="res://assets/sounds/enemyDeathSound.mp3" id="8_fwj1o"]
@@ -48,14 +49,62 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_q8d4p"]
-colors = PackedColorArray(0.8288101, 2.7193873e-06, 5.7756904e-07, 1, 0.827451, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_brjjo"]
-gradient = SubResource("Gradient_q8d4p")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8d4p"]
-size = Vector2(38, 8)
+size = Vector2(44, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwj1o"]
+atlas = ExtResource("5_theln")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgh04"]
+atlas = ExtResource("5_theln")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hes2b"]
+atlas = ExtResource("5_theln")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2i8o"]
+atlas = ExtResource("5_theln")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pugm"]
+atlas = ExtResource("5_theln")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uletj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwj1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgh04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hes2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2i8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pugm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 50.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_yfl7l"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5t6qh"]
+gradient = SubResource("Gradient_yfl7l")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
 
 [node name="flameBat" type="CharacterBody2D" unique_id=1099381924]
 collision_layer = 34
@@ -84,16 +133,18 @@ frame_progress = 0.76557124
 
 [node name="Flames" type="Node2D" parent="." unique_id=776626473]
 
-[node name="Sprite2D" type="Sprite2D" parent="Flames" unique_id=1312962146]
-position = Vector2(26, -1)
-scale = Vector2(0.5839845, 0.12695313)
-texture = SubResource("GradientTexture2D_brjjo")
-
 [node name="Area2D" type="Area2D" parent="Flames" unique_id=1057073101]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flames/Area2D" unique_id=1269557430]
-position = Vector2(26, -1)
+position = Vector2(29, -1)
 shape = SubResource("RectangleShape2D_q8d4p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flames" unique_id=1296094393]
+position = Vector2(29.622082, -1.5034432)
+scale = Vector2(-0.7, -0.5)
+sprite_frames = SubResource("SpriteFrames_uletj")
+autoplay = "default"
+frame_progress = 0.49057075
 
 [node name="BatFlappingWings" type="AudioStreamPlayer2D" parent="." unique_id=140620422]
 stream = ExtResource("5_565mo")
@@ -105,6 +156,7 @@ parameters/looping = true
 [node name="Flame" type="AudioStreamPlayer2D" parent="." unique_id=957745311]
 stream = ExtResource("7_5t6qh")
 pitch_scale = 2.0
+parameters/looping = true
 
 [node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1245653431]
 stream = ExtResource("7_theln")
@@ -114,6 +166,12 @@ pitch_scale = 4.0
 [node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=218890965]
 stream = ExtResource("8_fwj1o")
 pitch_scale = 2.5
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=589461785]
+position = Vector2(0, -3)
+color = Color(0.81960785, 0, 0, 1)
+energy = 0.2
+texture = SubResource("GradientTexture2D_5t6qh")
 
 [connection signal="body_entered" from="Flames/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Flames/Area2D" to="." method="_on_area_2d_body_exited"]

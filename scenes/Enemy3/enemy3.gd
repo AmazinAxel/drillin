@@ -104,12 +104,12 @@ func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 		isKnockedBackFromPlayer = true
 	
 	if health <= 0:
+		$EnemyDeathSound.playing = true
 		die()
 	else:
 		$EnemyHitSound.playing = true
 	
 func die():
 	deathParticles.emitting = true
-	$EnemyDeathSound.playing = true
 	await get_tree().create_timer(0.2).timeout
 	queue_free()

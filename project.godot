@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://b7fmhlwpi4eso"
 [autoload]
 
 Globals="*uid://bi4v57cphj5lw"
+PoisonManager="*uid://b5p5sp4ncow7d"
 
 [display]
 

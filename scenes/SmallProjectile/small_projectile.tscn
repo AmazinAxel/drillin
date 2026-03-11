@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_tc4vi")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=328577462]
 position = Vector2(0, 3)
 color = Color(0.7687156, 1.2995302e-05, 0.5282726, 1)
-energy = 0.3
+energy = 0.1
 texture = SubResource("GradientTexture2D_77rmk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

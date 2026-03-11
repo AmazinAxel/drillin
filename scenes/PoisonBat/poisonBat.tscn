@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://c34pxeev7kwiy"]
+
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="1_05d5q"]
+[ext_resource type="Script" uid="uid://hmy2u5yysstk" path="res://scenes/PoisonBat/poisonBat.gd" id="1_wmumx"]
+[ext_resource type="PackedScene" uid="uid://ceceomd73f6al" path="res://scenes/PoisonProjectile/poisonProjectile.tscn" id="2_h2ggs"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="2_wmumx"]
+[ext_resource type="Texture2D" uid="uid://n723cblhn0sl" path="res://assets/sprites/CancerBat..png" id="3_05d5q"]
+[ext_resource type="AudioStream" uid="uid://y86ef527fnmr" path="res://assets/sounds/enemyHitSound.mp3" id="4_228vg"]
+[ext_resource type="AudioStream" uid="uid://chn2gnyjdxres" path="res://assets/sounds/enemyDeathSound.mp3" id="5_idbkf"]
+[ext_resource type="AudioStream" uid="uid://cmgkat8td6pn1" path="res://assets/sounds/MommaBat/batFlappingWings.mp3" id="6_08crq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqlle"]
+size = Vector2(15, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmumx"]
+atlas = ExtResource("3_05d5q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2ggs"]
+atlas = ExtResource("3_05d5q")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228vg"]
+atlas = ExtResource("3_05d5q")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idbkf"]
+atlas = ExtResource("3_05d5q")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mt78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmumx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2ggs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_228vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idbkf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_h2ggs"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2ggs"]
+gradient = SubResource("Gradient_h2ggs")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
+[node name="poisonBat" type="CharacterBody2D" unique_id=120678988]
+collision_layer = 34
+collision_mask = 34
+script = ExtResource("1_wmumx")
+projectileScene = ExtResource("2_h2ggs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2036783138]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_nqlle")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1106310785]
+offset_left = -16.0
+offset_top = -23.0
+offset_right = 21.0
+offset_bottom = 9.0
+value = 100.0
+texture_under = ExtResource("1_05d5q")
+texture_progress = ExtResource("2_wmumx")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=858135490]
+scale = Vector2(0.5, 0.375)
+sprite_frames = SubResource("SpriteFrames_0mt78")
+frame_progress = 0.21581163
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=47506477]
+stream = ExtResource("4_228vg")
+volume_db = -5.0
+pitch_scale = 4.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1817634704]
+stream = ExtResource("5_idbkf")
+pitch_scale = 2.5
+
+[node name="BatFlappingWings" type="AudioStreamPlayer2D" parent="." unique_id=1793871375]
+stream = ExtResource("6_08crq")
+volume_db = -10.0
+pitch_scale = 3.0
+autoplay = true
+parameters/looping = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1696293003]
+color = Color(0.48235294, 1, 0.5294118, 1)
+energy = 0.2
+texture = SubResource("GradientTexture2D_h2ggs")
