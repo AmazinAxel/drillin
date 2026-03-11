@@ -10,8 +10,28 @@ resource_name = "Delay"
 tap1_delay_ms = 112.0
 tap2_delay_ms = 264.0
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g28q7"]
+resource_name = "Reverb"
+damping = 0.97
+wet = 0.29
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_n8wo2"]
+resource_name = "Delay"
+tap1_delay_ms = 112.0
+tap2_delay_ms = 264.0
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/0/effect/0/enabled = true
 bus/0/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
 bus/0/effect/1/enabled = true
+bus/1/name = &"cave reverb"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.66275597
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_g28q7")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectDelay_n8wo2")
+bus/1/effect/1/enabled = true

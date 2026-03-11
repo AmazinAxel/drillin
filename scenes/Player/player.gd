@@ -149,9 +149,11 @@ func playAgain():
 	overlay.color = Color(0, 0, 0, 0)
 	overlay.size = get_viewport().get_visible_rect().size
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# anchor it to full screen so it stays correct on resize
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	
 	var canvas = CanvasLayer.new()
-	canvas.layer = 100
+	canvas.layer = 128  # go above bossbar
 	canvas.add_child(overlay)
 	tree.root.add_child(canvas)
 	
@@ -160,12 +162,13 @@ func playAgain():
 	tween.tween_callback(func():
 		Globals.resetVars()
 		tree.change_scene_to_file("res://scenes/Main/Main.tscn")
-		
-		var tween2 = overlay.create_tween()
-		tween2.tween_interval(0.1)
-		tween2.tween_property(overlay, "color:a", 0.0, 0.5)
-		tween2.tween_callback(canvas.queue_free)
 	)
+
+	# wait a frame for the new scene to load, then fade out
+	tween.tween_interval(0.1)
+	tween.tween_property(overlay, "color:a", 0.0, 0.5)
+	tween.tween_callback(canvas.queue_free)
+
 #
 # PICKAXE
 #
