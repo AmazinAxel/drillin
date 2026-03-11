@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b4d5eouygp57b" path="res://scenes/SlimetVersion1.png" id="2_f2n7g"]
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="3_iojhh"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="4_3nu70"]
-[ext_resource type="AudioStream" uid="uid://3s0khcb1kxcx" path="res://assets/sounds/Slimy.mp3" id="5_3nu70"]
+[ext_resource type="AudioStream" uid="uid://y86ef527fnmr" path="res://assets/sounds/enemyHitSound.mp3" id="5_23qtn"]
+[ext_resource type="AudioStream" uid="uid://chn2gnyjdxres" path="res://assets/sounds/enemyDeathSound.mp3" id="6_a6u35"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iojhh"]
 size = Vector2(28, 25)
@@ -99,6 +100,11 @@ color = Color(0.39295325, 0.997814, 0.19943595, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_3nu70")
 
-[node name="slimesound" type="AudioStreamPlayer2D" parent="." unique_id=1147073860]
-stream = ExtResource("5_3nu70")
-bus = &"cave reverb"
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=998214745]
+stream = ExtResource("5_23qtn")
+volume_db = -5.0
+pitch_scale = 4.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1976020087]
+stream = ExtResource("6_a6u35")
+pitch_scale = 2.5

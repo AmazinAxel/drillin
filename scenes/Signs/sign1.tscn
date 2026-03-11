@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_0xgph")
 texture = ExtResource("1_yvmfq")
 
 [node name="Control" type="Control" parent="." unique_id=1665322321]
+z_index = 10
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
@@ -32,6 +33,7 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control" unique_id=977331331]
 visible = false
+z_index = 10
 texture_filter = 1
 layout_mode = 0
 offset_left = -17.0

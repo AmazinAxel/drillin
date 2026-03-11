@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://ch6ftc4jva4j3"]
 
 [ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="1_2fmf4"]
+[ext_resource type="Script" uid="uid://kbxxcdedbqae" path="res://scenes/FlameBat/flameBat.gd" id="1_wtrjl"]
 [ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="2_mxg26"]
 [ext_resource type="Texture2D" uid="uid://8dmds34a5ul0" path="res://assets/sprites/FireFly-FireBat..png" id="3_mxg26"]
+[ext_resource type="AudioStream" uid="uid://cmgkat8td6pn1" path="res://assets/sounds/MommaBat/batFlappingWings.mp3" id="5_565mo"]
+[ext_resource type="AudioStream" uid="uid://csyk6d06lmujj" path="res://assets/sounds/MommaBat/flame.mp3" id="7_5t6qh"]
+[ext_resource type="AudioStream" uid="uid://y86ef527fnmr" path="res://assets/sounds/enemyHitSound.mp3" id="7_theln"]
+[ext_resource type="AudioStream" uid="uid://chn2gnyjdxres" path="res://assets/sounds/enemyDeathSound.mp3" id="8_fwj1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtrjl"]
 size = Vector2(15, 8)
@@ -43,9 +48,19 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5t6qh"]
+[sub_resource type="Gradient" id="Gradient_q8d4p"]
+colors = PackedColorArray(0.8288101, 2.7193873e-06, 5.7756904e-07, 1, 0.827451, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brjjo"]
+gradient = SubResource("Gradient_q8d4p")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8d4p"]
+size = Vector2(38, 8)
 
 [node name="flameBat" type="CharacterBody2D" unique_id=1099381924]
+collision_layer = 34
+collision_mask = 34
+script = ExtResource("1_wtrjl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654479302]
 position = Vector2(-0.5, -1)
@@ -69,5 +84,36 @@ frame_progress = 0.76557124
 
 [node name="Flames" type="Node2D" parent="." unique_id=776626473]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flames" unique_id=781030253]
-sprite_frames = SubResource("SpriteFrames_5t6qh")
+[node name="Sprite2D" type="Sprite2D" parent="Flames" unique_id=1312962146]
+position = Vector2(26, -1)
+scale = Vector2(0.5839845, 0.12695313)
+texture = SubResource("GradientTexture2D_brjjo")
+
+[node name="Area2D" type="Area2D" parent="Flames" unique_id=1057073101]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flames/Area2D" unique_id=1269557430]
+position = Vector2(26, -1)
+shape = SubResource("RectangleShape2D_q8d4p")
+
+[node name="BatFlappingWings" type="AudioStreamPlayer2D" parent="." unique_id=140620422]
+stream = ExtResource("5_565mo")
+volume_db = -10.0
+pitch_scale = 3.0
+autoplay = true
+parameters/looping = true
+
+[node name="Flame" type="AudioStreamPlayer2D" parent="." unique_id=957745311]
+stream = ExtResource("7_5t6qh")
+pitch_scale = 2.0
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1245653431]
+stream = ExtResource("7_theln")
+volume_db = -5.0
+pitch_scale = 4.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=218890965]
+stream = ExtResource("8_fwj1o")
+pitch_scale = 2.5
+
+[connection signal="body_entered" from="Flames/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Flames/Area2D" to="." method="_on_area_2d_body_exited"]

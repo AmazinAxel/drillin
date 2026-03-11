@@ -62,6 +62,6 @@ func createExplosion():
 		get_tree().current_scene.add_child(explosion)
 		explosion.global_position = global_position
 		isExploding = true
-		
+		$Sprite2D.visible = false
 		await get_tree().create_timer(1).timeout
 		queue_free()

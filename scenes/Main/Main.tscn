@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="2_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="Shader" uid="uid://bvum5wtjm762w" path="res://scenes/Main/shader.gdshader" id="3_exyxu"]
-[ext_resource type="PackedScene" uid="uid://coexc4n5ty8c0" path="res://scenes/BabyBat/babyBat.tscn" id="6_d463r"]
-[ext_resource type="PackedScene" uid="uid://bk325pkki607i" path="res://scenes/MommaBat/mommaBat.tscn" id="7_q8kdv"]
+[ext_resource type="PackedScene" uid="uid://ch6ftc4jva4j3" path="res://scenes/FlameBat/flameBat.tscn" id="7_q8kdv"]
+[ext_resource type="PackedScene" uid="uid://bwgg0l4esmqmt" path="res://scenes/Enemy1/Enemy1.tscn" id="8_exyxu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q8kdv"]
 shader = ExtResource("3_exyxu")
@@ -47,8 +47,9 @@ position = Vector2(154, 75)
 scale = Vector2(-1, 1)
 frame_progress = 0.0
 
-[node name="BabyBat" parent="." unique_id=331467515 instance=ExtResource("6_d463r")]
-position = Vector2(358, 3898)
+[node name="flameBat" parent="." unique_id=1099381924 instance=ExtResource("7_q8kdv")]
+position = Vector2(-155, -73)
+collision_layer = 32
 
-[node name="MommaBat" parent="." unique_id=124854866 instance=ExtResource("7_q8kdv")]
-position = Vector2(512, 5774)
+[node name="Enemy1" parent="." unique_id=835573775 instance=ExtResource("8_exyxu")]
+position = Vector2(67, 63)
