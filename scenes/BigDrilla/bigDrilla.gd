@@ -39,6 +39,7 @@ func _ready():
 	isAnimatedIntoScene = true
 	heatShieldEffect.energy = 0.0
 	beginEnterAnimation()
+	Globals.bossAlive = true
 	
 func beginEnterAnimation():
 	var marker1 = get_tree().get_first_node_in_group("bossMarker1")
@@ -267,3 +268,4 @@ func die():
 	tween.tween_property(shop, "modulate:a", 1.0, 0.5)
 	
 	queue_free()
+	Globals.bossAlive = false

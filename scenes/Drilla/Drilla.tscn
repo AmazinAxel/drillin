@@ -2,9 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cun7f45f3byma" path="res://scenes/Drilla/MyDrillin.png" id="1_7tgjl"]
 [ext_resource type="Script" uid="uid://df27ju8ahpk1s" path="res://scenes/Drilla/drilla.gd" id="2_ruqpt"]
+[ext_resource type="Texture2D" uid="uid://b6m8mp2nncspp" path="res://scenes/Drilla/PwrSymboChargingt2.png" id="3_8h2t3"]
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="3_yb5c1"]
+[ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="4_e4ra2"]
 [ext_resource type="Texture2D" uid="uid://dpq8amcccqsb" path="res://assets/sprites/Rock.png" id="4_ygnt4"]
 [ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="5_ruqpt"]
+[ext_resource type="Texture2D" uid="uid://c4ladv0m38wkv" path="res://scenes/Drilla/BatteryBarEmptyl.png" id="5_sr2ql"]
+[ext_resource type="Texture2D" uid="uid://b7ivoufn076js" path="res://scenes/Drilla/BatteryBarFull.png" id="6_xopp7"]
+[ext_resource type="Texture2D" uid="uid://c3t0kd3wce70k" path="res://scenes/Drilla/PwrSymbolFull.png" id="8_sr2ql"]
+[ext_resource type="Texture2D" uid="uid://euebagt6ahe4" path="res://scenes/Drilla/PwrSymbolEmpty.png" id="9_xopp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yb5c1"]
 atlas = ExtResource("1_7tgjl")
@@ -66,6 +72,139 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tgjl"]
 size = Vector2(100.5, 106)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4dmy"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr2ql"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xopp7"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvol3"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23q8b"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbkbo"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7s6r"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw2na"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4efx"]
+atlas = ExtResource("3_8h2t3")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nv1pp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4dmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr2ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xopp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvol3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23q8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbkbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7s6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qw2na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4efx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv1pp"]
+atlas = ExtResource("8_sr2ql")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4i40"]
+atlas = ExtResource("9_xopp7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqvyi"]
+atlas = ExtResource("9_xopp7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljap8"]
+atlas = ExtResource("9_xopp7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3ogm"]
+atlas = ExtResource("9_xopp7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pstgg"]
+atlas = ExtResource("9_xopp7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgc0x"]
+atlas = ExtResource("9_xopp7")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ospgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv1pp")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4i40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqvyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljap8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3ogm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pstgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgc0x")
+}],
+"loop": true,
+"name": &"waiting",
+"speed": 5.0
+}]
+
 [sub_resource type="Gradient" id="Gradient_dqp0f"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -93,7 +232,39 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_7tgjl")
 disabled = true
 
-[node name="Label" type="Label" parent="." unique_id=1149840511]
+[node name="energyIcon" type="AnimatedSprite2D" parent="." unique_id=1832338108]
+visible = false
+position = Vector2(16, -43)
+sprite_frames = SubResource("SpriteFrames_nv1pp")
+frame_progress = 0.8799957
+
+[node name="energyBar" type="TextureProgressBar" parent="." unique_id=1191182473]
+visible = false
+offset_left = 8.999996
+offset_top = -27.0
+offset_right = 46.0
+offset_bottom = 5.0
+rotation = 3.1415927
+value = 25.0
+texture_under = ExtResource("5_sr2ql")
+texture_progress = ExtResource("6_xopp7")
+
+[node name="energyLabel" type="Label" parent="." unique_id=1230591709]
+visible = false
+offset_left = 25.999992
+offset_top = -53.000004
+offset_right = 888.0
+offset_bottom = 67.0
+rotation = 3.1415927
+scale = Vector2(0.1, -0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_e4ra2")
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+
+[node name="f" type="Label" parent="." unique_id=1149840511]
+visible = false
 offset_left = 8.0
 offset_top = -53.0
 offset_right = 22.0
@@ -105,8 +276,16 @@ theme_override_font_sizes/font_size = 10
 text = "[F]"
 horizontal_alignment = 1
 
+[node name="energyStaticIcon" type="AnimatedSprite2D" parent="." unique_id=158045632]
+visible = false
+position = Vector2(0, -46)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_ospgl")
+animation = &"filled"
+frame_progress = 0.99399275
+
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1065975270]
-position = Vector2(0, 3)
+position = Vector2(0, 1)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 texture = SubResource("GradientTexture2D_yb5c1")
 
@@ -129,7 +308,6 @@ color_ramp = SubResource("Gradient_ruqpt")
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1791640435]
 stream = ExtResource("5_ruqpt")
 pitch_scale = 2.0
-bus = &"cave reverb"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

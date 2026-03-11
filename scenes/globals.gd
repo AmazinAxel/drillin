@@ -11,13 +11,15 @@ var isAttacking
 var baseRotation
 var isDead
 var stopping
+var inDrill
 var bossbarMaxValue = 100 # doesnt need to have reset vaule since its overwritten by default
+var bossAlive
 
 func _ready():
 	resetVars()
 
 func resetVars():
-	level = 2
+	level = 1
 	health = 100
 	damageReduction = 1
 	shootSpeed = 1
@@ -28,6 +30,8 @@ func resetVars():
 	baseRotation = 0
 	isDead = false
 	stopping = false
+	inDrill = false
+	bossAlive = false
 
 
 func screen_shake(strength: float, duration: float):

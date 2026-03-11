@@ -1,6 +1,5 @@
 extends AnimatedSprite2D
 @onready var area = $Area2D
-@onready var gui = $Label
 @onready var player = get_parent().get_node("Player")
 @onready var miningParticles = $miningParticles
 
@@ -36,10 +35,9 @@ var trigger_distance := 50.0
 var started = false
 var show_gui_blocked = false
 
+var energyFilled = true
+
 func _ready() -> void:
-	print(gui)
-	print(area)
-	print(player)
 	stop()
 
 func _process(_delta: float) -> void:
@@ -47,21 +45,29 @@ func _process(_delta: float) -> void:
 		return
 	var dist = global_position.distance_to(player.global_position)
 	
-	if dist < trigger_distance and not started and not show_gui_blocked:
-		gui.visible = true
+	if dist < trigger_distance and not started and not show_gui_blocked and energyFilled:
+		$f.visible = true
+		$energyStaticIcon.visible = false
 		if Input.is_action_just_pressed("interact"):
 			started = true
-			gui.visible = false
+			$f.visible = false
 			start_drill_sequence()
-	else:
-		gui.visible = false
+	elif energyFilled:
+		$f.visible = false
+		
+		if Globals.inDrill == false:
+			# dont show the static icon when in drill!!!
+			$energyStaticIcon.play("filled");
+			$energyStaticIcon.visible = true
 	
-	gui.scale.x = abs(gui.scale.x) * sign(scale.x)
+	$f.scale.x = abs($f.scale.x) * sign(scale.x)
 
 func start_drill_sequence():
 	play("default")
 	kill_all_enemies()
 	
+	Globals.inDrill = true
+
 	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
 	var player_node = get_tree().get_first_node_in_group("player")
 	
@@ -250,8 +256,10 @@ func stop_drill():
 	show_gui_blocked = true
 	started = false
 	await get_tree().create_timer(1.0).timeout
-	show_gui_blocked = false
+	show_gui_blocked = false;
 	Globals.stopping = false;
+	Globals.inDrill = false;
+	start_energy_fill()
 
 func _start_sound_end_after(delay: float):
 	if delay > 0.0:
@@ -266,3 +274,48 @@ func kill_all_enemies():
 		if is_instance_valid(enemy) and enemy.has_method("die"):
 			enemy.die()
 		await get_tree().create_timer(0.1).timeout
+
+## ENERGYY
+
+func start_energy_fill(duration: float = 15.0) -> void:
+	energyFilled = false
+	if Globals.bossAlive:
+		$energyStaticIcon.visible = true
+		$energyStaticIcon.play("waiting")
+		_wait_for_boss_dead()
+		return
+
+	fade_in($energyIcon);
+	$energyIcon.play();
+	#$energyLabel.visible = true
+	
+	fade_in($energyBar);
+	fade_in($energyIcon);
+	$energyStaticIcon.visible = false
+	$energyBar.value = 0
+
+	var tween = create_tween()
+	tween.tween_property($energyBar, "value", 100, duration)
+	tween.tween_callback(_on_energy_fill_complete)
+
+func _on_energy_fill_complete() -> void:
+	$energyIcon.visible = false
+	#$energyLabel.visible = false
+	$energyBar.visible = false
+
+	fade_in($energyStaticIcon)
+	$energyStaticIcon.play("filled")
+	energyFilled = true
+
+func _wait_for_boss_dead() -> void:
+	while Globals.bossAlive:
+		await get_tree().create_timer(0.2).timeout
+	_on_energy_fill_complete()
+
+# halper function for nice lil animation
+func fade_in(node: Node, duration: float = 0.3) -> Tween:
+	node.modulate.a = 0.0
+	node.visible = true
+	var tween = create_tween()
+	tween.tween_property(node, "modulate:a", 1.0, duration)
+	return tween

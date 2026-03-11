@@ -83,6 +83,8 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount):
 	if Globals.isDead:
 		return
+	if Globals.inDrill:
+		return # no damage in drill
 	var actual_damage = amount * Globals.damageReduction
 	Globals.health -= actual_damage
 	Globals.health = max(Globals.health, 0)
