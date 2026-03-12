@@ -480,8 +480,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="poisonParticles" type="CPUParticles2D" parent="." unique_id=266570159]
-position = Vector2(-2.9840977, -6)
-emitting = false
+position = Vector2(0, -6)
 amount = 5
 texture = SubResource("GradientTexture1D_5tklm")
 lifetime = 0.2

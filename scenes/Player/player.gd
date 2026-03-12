@@ -13,7 +13,7 @@ const CROUCH_SCALE_Y = 0.9
 
 func _physics_process(delta: float) -> void:
 	if Globals.isDead:
-		return # stop all input/movement when ded
+		return
 	
 	var wantsCrouch = Input.is_action_pressed("down")
 
@@ -80,7 +80,6 @@ func _physics_process(delta: float) -> void:
 	if $healthBar:
 		$healthBar.value = Globals.health
 		
-	loopPoisonEffect()
 	handlePoisonDamage(delta)
 
 func take_damage(amount):
@@ -278,18 +277,13 @@ func _set_crouch(crouching: bool) -> void:
 			0.12
 		)
 
-func loopPoisonEffect() -> void:
-	var poisoned = PoisonGlobals.intensity > 0.05
-	$poisonParticles.emitting = poisoned
-	
-	$poisonParticles.amount = int(lerp(2.0, 20.0, PoisonGlobals.intensity / PoisonGlobals.max_intensity))
-	$poisonParticles.speed_scale = lerp(0.5, 2.0, PoisonGlobals.intensity / PoisonGlobals.max_intensity)
-
 func handlePoisonDamage(delta: float) -> void:
 	if PoisonGlobals.intensity > 0.05:
 		poisonTick += delta
 		if poisonTick >= 1.0:
 			poisonTick = 0.0
+			$poisonParticles.emitting = true
 			take_damage(2.0)
 	else:
+		$poisonParticles.emitting = false
 		poisonTick = 0.0

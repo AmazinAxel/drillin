@@ -20,8 +20,7 @@ func _ready():
 	resetVars()
 
 func resetVars():
-	level = 1
-	# DO NOT SET LIVES HERE
+	level = 6
 	health = 100
 	damageReduction = 1
 	shootSpeed = 1

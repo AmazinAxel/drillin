@@ -90,6 +90,13 @@ func _physics_process(delta):
 	if flameIsVisible:
 		if !$Flame.playing:
 			$Flame.playing = true
+			
+
+		var flame_dir = (player.global_position - global_position).angle()
+		var flame_deg = (rad_to_deg(flame_dir) * -1) + 180
+		$Flames/FlameParticles.angle_min = flame_deg
+		$Flames/FlameParticles.angle_max = flame_deg
+		
 		flame_damage_timer -= delta
 		if flame_damage_timer <= 0.0:
 			flame_damage_timer = flame_damage_interval
