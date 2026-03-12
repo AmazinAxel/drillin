@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dy6xm1o2xcho1" path="res://assets/sounds/Drill.mp3" id="5_ruqpt"]
 [ext_resource type="Texture2D" uid="uid://c4ladv0m38wkv" path="res://scenes/Drilla/BatteryBarEmptyl.png" id="5_sr2ql"]
 [ext_resource type="Texture2D" uid="uid://b7ivoufn076js" path="res://scenes/Drilla/BatteryBarFull.png" id="6_xopp7"]
-[ext_resource type="Texture2D" uid="uid://c3t0kd3wce70k" path="res://scenes/Drilla/PwrSymbolFull.png" id="8_sr2ql"]
+[ext_resource type="Texture2D" uid="uid://mem6bma8ycy2" path="res://scenes/Drilla/PwrSymbolBlinkl1-sheet.png" id="8_sr2ql"]
 [ext_resource type="Texture2D" uid="uid://euebagt6ahe4" path="res://scenes/Drilla/PwrSymbolEmpty.png" id="9_xopp7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yb5c1"]
@@ -147,6 +147,18 @@ animations = [{
 atlas = ExtResource("8_sr2ql")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ospgl"]
+atlas = ExtResource("8_sr2ql")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5s87"]
+atlas = ExtResource("8_sr2ql")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as2dv"]
+atlas = ExtResource("8_sr2ql")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4i40"]
 atlas = ExtResource("9_xopp7")
 region = Rect2(0, 0, 16, 16)
@@ -176,10 +188,19 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nv1pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ospgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5s87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as2dv")
 }],
 "loop": true,
 "name": &"filled",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -202,7 +223,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"waiting",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_dqp0f"]
@@ -277,15 +298,22 @@ text = "[F]"
 horizontal_alignment = 1
 
 [node name="energyStaticIcon" type="AnimatedSprite2D" parent="." unique_id=158045632]
-visible = false
 position = Vector2(0, -46)
-scale = Vector2(-1, 1)
+rotation = -3.1415927
+scale = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_ospgl")
 animation = &"filled"
-frame_progress = 0.99399275
+frame_progress = 0.8267175
+
+[node name="PointLight2D2" type="PointLight2D" parent="energyStaticIcon" unique_id=2085198434]
+position = Vector2(1.2239198e-06, -7)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+color = Color(0.92156863, 0.62352943, 0.28627452, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_yb5c1")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1065975270]
-position = Vector2(0, 1)
 color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 texture = SubResource("GradientTexture2D_yb5c1")
 
