@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://b7fmhlwpi4eso"
 
 Globals="*uid://bi4v57cphj5lw"
 PoisonGlobals="*uid://cxf8dfkev525j"
+mainHUD="*uid://cvnup8mn3egmn"
 
 [display]
 

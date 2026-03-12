@@ -62,6 +62,9 @@ func _become_pickup():
 	# Find player after brief pause
 	await get_tree().create_timer(0.3).timeout
 	target = get_tree().get_first_node_in_group("player")
+	
+	mainHUD.setMinerals(Globals.minerals + mineral_reward);
+
 
 func _process(delta):
 	if not is_pickup:

@@ -1,33 +1,36 @@
 [gd_scene format=3 uid="uid://cvnup8mn3egmn"]
 
 [ext_resource type="Texture2D" uid="uid://bgvpuvqs1t3g5" path="res://scenes/UI/UiCrystalllllllllllllllllllll.png" id="1_npkgv"]
+[ext_resource type="Script" uid="uid://csdluthi16pkb" path="res://scenes/UI/overlay.gd" id="1_vs488"]
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="2_shwog"]
 [ext_resource type="Texture2D" uid="uid://csyoh7mspbayd" path="res://scenes/LivesIconMaybe.png" id="3_shwog"]
 
-[node name="OverlayUi" type="Node2D" unique_id=146453691]
+[node name="OverlayUi" type="CanvasLayer" unique_id=441125357]
+layer = 0
+script = ExtResource("1_vs488")
 
 [node name="UiCrystalllllllllllllllllllll" type="Sprite2D" parent="." unique_id=516335999]
 position = Vector2(37, 33)
 scale = Vector2(3, 3)
 texture = ExtResource("1_npkgv")
 
-[node name="Label" type="Label" parent="." unique_id=1823857366]
+[node name="lives" type="Label" parent="." unique_id=312240549]
+offset_left = 592.0
+offset_top = 14.0
+offset_right = 632.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("2_shwog")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="minerals" type="Label" parent="." unique_id=1823857366]
 offset_left = 68.0
 offset_top = 14.0
 offset_right = 108.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("2_shwog")
 theme_override_font_sizes/font_size = 32
-text = "1"
-
-[node name="Label" type="Label" parent="Label" unique_id=312240549]
-layout_mode = 0
-offset_left = 524.0
-offset_right = 564.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("2_shwog")
-theme_override_font_sizes/font_size = 32
-text = "3"
+text = "0"
 
 [node name="LivesIconMaybe" type="Sprite2D" parent="." unique_id=1840632798]
 position = Vector2(554, 34.999996)

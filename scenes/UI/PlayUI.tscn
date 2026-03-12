@@ -5,16 +5,10 @@
 [ext_resource type="Script" uid="uid://cfabot5h6e74b" path="res://scenes/button.gd" id="3_vxir0"]
 [ext_resource type="Texture2D" uid="uid://ds2on7amp5fky" path="res://scenes/Drilla/MyDrilla.png" id="4_ee75v"]
 
-[node name="PlayUi" type="Control" unique_id=1353135535]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="PlayUi" type="CanvasLayer" unique_id=798313449]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1205190943]
-layout_mode = 1
+visibility_layer = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +17,6 @@ grow_vertical = 2
 color = Color(0.16736698, 0.14663881, 0.1362648, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=491307863]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
@@ -39,6 +32,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=812677560]
+visibility_layer = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
@@ -48,6 +42,7 @@ text = "drillin'"
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1272079387]
+visibility_layer = 4
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -63,6 +58,7 @@ size_flags_stretch_ratio = 2.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control" unique_id=1834499642]
 top_level = true
+visibility_layer = 4
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_left = 350.0
