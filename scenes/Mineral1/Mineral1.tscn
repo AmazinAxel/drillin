@@ -19,6 +19,9 @@ colors = PackedColorArray(0.8956391, 0.9658887, 0.9961627, 1)
 gradient = SubResource("Gradient_aqqjk")
 width = 1
 
+[sub_resource type="Gradient" id="Gradient_li6ab"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="Gradient" id="Gradient_puxyr"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
@@ -53,6 +56,7 @@ direction = Vector2(0, -1)
 spread = 180.0
 initial_velocity_min = 280.33
 initial_velocity_max = 290.5
+color_ramp = SubResource("Gradient_li6ab")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1830611367]
 position = Vector2(1, 4)

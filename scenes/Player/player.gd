@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -350.0
 
 var dropTimer := 0.0
 var isDropping := false
+var poisonTick: float = 0.0
 
 var isCrouching := false
 var crouch_tween: Tween
@@ -65,7 +66,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# jump sprite
 	if !is_on_floor():
 		$playerSprite.play("jump")
 
@@ -79,6 +79,9 @@ func _physics_process(delta: float) -> void:
 
 	if $healthBar:
 		$healthBar.value = Globals.health
+		
+	loopPoisonEffect()
+	handlePoisonDamage(delta)
 
 func take_damage(amount):
 	if Globals.isDead:
@@ -240,7 +243,6 @@ func swing_pickaxe():
 	if $playerSprite.flip_h:
 		swing_amount = -swing_amount
 	
-	# damage during the swing
 	$pickaxe/damageArea.monitoring = true
 	
 	swing_tween.tween_property($pickaxe, "rotation", current_angle + swing_amount, 0.1)\
@@ -275,3 +277,19 @@ func _set_crouch(crouching: bool) -> void:
 			16.0 if crouching else 32.0,
 			0.12
 		)
+
+func loopPoisonEffect() -> void:
+	var poisoned = PoisonGlobals.intensity > 0.05
+	$poisonParticles.emitting = poisoned
+	
+	$poisonParticles.amount = int(lerp(2.0, 20.0, PoisonGlobals.intensity / PoisonGlobals.max_intensity))
+	$poisonParticles.speed_scale = lerp(0.5, 2.0, PoisonGlobals.intensity / PoisonGlobals.max_intensity)
+
+func handlePoisonDamage(delta: float) -> void:
+	if PoisonGlobals.intensity > 0.05:
+		poisonTick += delta
+		if poisonTick >= 1.0:
+			poisonTick = 0.0
+			take_damage(2.0)
+	else:
+		poisonTick = 0.0

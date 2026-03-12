@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://bvum5wtjm762w" path="res://scenes/Main/shader.gdshader" id="3_exyxu"]
 [ext_resource type="PackedScene" uid="uid://ch6ftc4jva4j3" path="res://scenes/FlameBat/flameBat.tscn" id="7_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://c34pxeev7kwiy" path="res://scenes/PoisonBat/poisonBat.tscn" id="8_exyxu"]
-[ext_resource type="Shader" uid="uid://bpjf4xsd11cyg" path="res://scenes/Main/poisonShader.gdshader" id="9_r0gd4"]
+[ext_resource type="PackedScene" uid="uid://cbivbeqvo3qt2" path="res://scenes/PoisonShader/poisonShader.tscn" id="9_r0gd4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q8kdv"]
 shader = ExtResource("3_exyxu")
@@ -23,20 +23,13 @@ shader_parameter/vignette_softness = 0.4
 shader_parameter/curvature = 0.03
 shader_parameter/chroma_offset = 1.2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_krkin"]
-shader = ExtResource("9_r0gd4")
-shader_parameter/intensity = 0.0
-shader_parameter/time_offset = 0.0
-
 [node name="Main" type="Node" unique_id=2130844757]
 script = ExtResource("1_q8kdv")
 boss = ExtResource("2_q8kdv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067616523]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=314880418]
-visible = false
 material = SubResource("ShaderMaterial_q8kdv")
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,11 +55,4 @@ collision_layer = 32
 [node name="poisonBat" parent="." unique_id=120678988 instance=ExtResource("8_exyxu")]
 position = Vector2(-163, -76)
 
-[node name="PoisonCanvas" type="CanvasLayer" parent="." unique_id=615025471]
-visible = false
-
-[node name="PoisonRect" type="ColorRect" parent="PoisonCanvas" unique_id=440051043]
-visible = false
-material = SubResource("ShaderMaterial_krkin")
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PoisonShaderCanvas" parent="." unique_id=934021191 instance=ExtResource("9_r0gd4")]

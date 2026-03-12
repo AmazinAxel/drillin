@@ -21,9 +21,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		var p = get_tree().get_first_node_in_group("player")
 		if p:
-			print("applied poison")
-			PoisonManager.add_stack()
-			p.take_damage(10)
+			PoisonGlobals.add_poison()
+			p.take_damage(5)
 		queue_free()
 	elif body.name == "TileMapLayer":
 		queue_free()

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cbivbeqvo3qt2"]
+
+[ext_resource type="Shader" uid="uid://bpjf4xsd11cyg" path="res://scenes/PoisonShader/poisonShader.gdshader" id="1_uj6mc"]
+[ext_resource type="Script" uid="uid://cowcvevcofdbr" path="res://scenes/PoisonShader/activatePoisonShader.gd" id="1_wpnnv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpnnv"]
+shader = ExtResource("1_uj6mc")
+shader_parameter/intensity = 0.0
+shader_parameter/poison_tint = Color(0.18, 0.55, 0.08, 1)
+shader_parameter/warp_strength = 0.012
+shader_parameter/wave_speed = 1.8
+shader_parameter/vignette_radius = 0.55
+shader_parameter/vignette_softness = 0.45
+shader_parameter/desaturation = 0.35
+shader_parameter/pulse_speed = 0.9
+
+[node name="PoisonShaderCanvas" type="CanvasLayer" unique_id=934021191 node_paths=PackedStringArray("color_rect") groups=["poison"]]
+script = ExtResource("1_wpnnv")
+color_rect = NodePath("PoisonRect")
+
+[node name="PoisonRect" type="ColorRect" parent="." unique_id=1828416544]
+material = SubResource("ShaderMaterial_wpnnv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
