@@ -47,7 +47,8 @@ var level_spawn_points: Dictionary = {}
 var level_waves: Dictionary = {}
 
 @onready var bossSpawnPoint = $BossMarkers/BigDrilla/BossSpawnpoint
-@export var boss: PackedScene
+@export var drillaBoss: PackedScene
+@export var mommaBatBoss: PackedScene
 
 var current_wave_index: int = 0
 var wave_spawn_count: int = 0
@@ -81,6 +82,9 @@ func _ready():
 	level_waves[3] = [
 		{ "scene": L3_W1_ENEMY, "start_interval": L3_W1_START_INTERVAL, "divisor": L3_W1_SPEED_DIVISOR, "min_interval": L3_W1_MIN_INTERVAL, "count": L3_W1_COUNT },
 	]
+	level_waves[6] = [
+		{ "scene": L3_W1_ENEMY, "start_interval": L3_W1_START_INTERVAL, "divisor": L3_W1_SPEED_DIVISOR, "min_interval": L3_W1_MIN_INTERVAL, "count": L3_W1_COUNT },
+	]
 
 func _process(delta):
 	var level = Globals.level
@@ -98,8 +102,16 @@ func _process(delta):
 		_spawn_initial(level)
 		
 		if level == 3:
-			var bossRef = boss.instantiate()
+			var bossRef = drillaBoss.instantiate()
 			bossRef.position = bossSpawnPoint.position
+			add_child(bossRef)
+		
+		print(level)
+		if level == 6:
+			var bossRef = mommaBatBoss.instantiate()
+			var markers = get_tree().get_nodes_in_group("mommaBatMarkers")
+			var randomMarker = markers.pick_random()
+			bossRef.position = randomMarker.position
 			add_child(bossRef)
 
 	timer += delta

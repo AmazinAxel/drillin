@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: float = 20.0
 @export var dartSpeed: float = 2
 @export var swarmDistance: float = 5
+@export var animationSpeed: float = 150.0
 
 @export var gravity: float = 800.0
 @export var jump_force: float = -300.0
@@ -26,20 +27,78 @@ var swarmOffsetTimer: float = 0.0
 var dartVelocity: Vector2 = Vector2.ZERO
 var isDarting: bool = false
 
+var isAnimatedIntoScene: bool = true
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $TextureProgressBar
 
-func _ready():
-	health = max_health
-	health_bar.max_value = max_health
-	health_bar.value = max_health
 	
+	
+func _ready():
+	isAnimatedIntoScene = true
+	
+	health = max_health
+	
+	beginEnterAnimation()
+	Globals.bossAlive = true
+	
+func beginEnterAnimation():
+	var player = get_tree().get_first_node_in_group("player")
+		
+	if not player:
+		initReady()
+		return
+	
+	var camera = player.get_node("Camera2D")
+	
+	var cam_tween = create_tween()
+	cam_tween.set_ease(Tween.EASE_IN_OUT)
+	cam_tween.set_trans(Tween.TRANS_CUBIC)
+	var originalZoom = camera.zoom
+	var zoomedOut = originalZoom *  0.5
+	cam_tween.tween_method(
+		func(t): camera.zoom = originalZoom.lerp(zoomedOut, t),
+		0.0, 1.0, 1.5
+	)
+	cam_tween.tween_method(
+		func(t): camera.global_position = camera.global_position.lerp(global_position, t),
+		0.0, 1.0, 1.5
+	)
+	var spawnpoint = get_tree().get_first_node_in_group("mommaBatSpawnpoint")
+	await _move_to(spawnpoint.global_position, animationSpeed, camera)
+	
+	var return_tween = create_tween()
+	return_tween.set_ease(Tween.EASE_IN_OUT)
+	return_tween.set_trans(Tween.TRANS_CUBIC)
+	return_tween.tween_method(
+		func(t): camera.global_position = camera.global_position.lerp(player.global_position, t),
+		0.0, 1.0, 1.5
+	)
+	await return_tween.finished
+	
+	isAnimatedIntoScene = false
+	initReady()
+
+func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> void:
+	while global_position.distance_to(target) > 5.0:
+		var dir = (target - global_position).normalized()
+		velocity.x = dir.x * move_speed
+		velocity.y = dir.y * move_speed
+		move_and_slide()
+		animated_sprite.play("driving")
+		
+		if camera:
+			camera.global_position = camera.global_position.lerp(global_position, 0.1)
+		
+		await get_tree().process_frame
+	
+	velocity = Vector2.ZERO
+
+func initReady():
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
 	
 	await get_tree().create_timer(randf_range(1.0, 3.0)).timeout
 	dartLoop()
-
+	
 func dartLoop():
 	while is_instance_valid(self):
 		await get_tree().create_timer(randf_range(0.5, 3.0)).timeout
@@ -58,6 +117,9 @@ func _startDart():
 	isDarting = false
 	
 func _physics_process(delta):
+	if isAnimatedIntoScene:
+		return
+		
 	if isKnockedBackFromPlayer:
 		velocity.y += gravity * delta
 		
@@ -112,7 +174,6 @@ func _physics_process(delta):
 
 func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
-	health_bar.value = health
 	if hitFrom != Vector2.ZERO:
 		var knockbackDir = (global_position - hitFrom).normalized()
 		knockbackVelocity = knockbackDir * knockbackFromPlayer

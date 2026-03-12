@@ -40,6 +40,8 @@ bossMarker1=""
 bossMarker2=""
 bossSpawnpoint=""
 poison=""
+mommaBatMarkers=""
+mommaBatSpawnpoint=""
 
 [input]
 
