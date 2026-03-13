@@ -59,9 +59,9 @@ initial_velocity_max = 290.5
 color_ramp = SubResource("Gradient_li6ab")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1830611367]
-position = Vector2(1, 4)
+position = Vector2(1, -3)
 color = Color(0.3189962, 0.7685697, 0.839239, 1)
-energy = 0.1
+energy = 0.3
 texture = SubResource("GradientTexture2D_3q3ht")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1201616920]

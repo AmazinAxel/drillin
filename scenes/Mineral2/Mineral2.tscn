@@ -97,8 +97,8 @@ color_ramp = SubResource("Gradient_f17jm")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=94349026]
 position = Vector2(1, 4)
-color = Color(0.3189962, 0.7685697, 0.839239, 1)
-energy = 0.1
+color = Color(0.8235294, 0.30980393, 0.21960784, 1)
+energy = 0.3
 texture = SubResource("GradientTexture2D_20jug")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1060979682]

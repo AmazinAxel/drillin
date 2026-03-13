@@ -83,7 +83,6 @@ func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> vo
 		velocity.x = dir.x * move_speed
 		velocity.y = dir.y * move_speed
 		move_and_slide()
-		animated_sprite.play("driving")
 		
 		if camera:
 			camera.global_position = camera.global_position.lerp(global_position, 0.1)
