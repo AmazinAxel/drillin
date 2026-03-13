@@ -14,6 +14,7 @@ func _on_pressed() -> void:
 	get_tree().root.add_child(canvas)
 	
 	# Fade to black
+	Globals.started = true;
 	var tween = get_tree().create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.5)
 	tween.tween_callback(func():
@@ -26,3 +27,4 @@ func _on_pressed() -> void:
 		tween2.tween_property(overlay, "color:a", 0.0, 0.5)
 		tween2.tween_callback(canvas.queue_free)
 	)
+	

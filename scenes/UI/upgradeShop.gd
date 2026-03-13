@@ -68,3 +68,4 @@ func whatCanBuy():
 		replenishHealth.disabled = true
 	else:
 		replenishHealth.disabled = false
+
