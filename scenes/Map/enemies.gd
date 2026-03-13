@@ -60,7 +60,7 @@ var last_level: int = -1
 
 func _ready():
 	add_to_group("enemies")
-	# Collect spawn points from Level1, Level2, Level3 child nodes
+	
 	for child in get_children():
 		if child.name.begins_with("Level"):
 			var level_num = int(child.name.replace("Level", ""))
@@ -70,7 +70,6 @@ func _ready():
 					points.append(marker)
 			level_spawn_points[level_num] = points
 
-	# Define waves per level
 	level_waves[1] = [
 		{ "scene": L1_W1_ENEMY, "start_interval": L1_W1_START_INTERVAL, "divisor": L1_W1_SPEED_DIVISOR, "min_interval": L1_W1_MIN_INTERVAL, "count": L1_W1_COUNT },
 		{ "scene": L1_W2_ENEMY, "start_interval": L1_W2_START_INTERVAL, "divisor": L1_W2_SPEED_DIVISOR, "min_interval": L1_W2_MIN_INTERVAL, "count": L1_W2_COUNT },
