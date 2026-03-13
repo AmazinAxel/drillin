@@ -14,7 +14,7 @@ var stopping
 var inDrill
 var bossbarMaxValue = 100 # doesnt need to have reset vaule since its overwritten by default
 var bossAlive
-var lives = 3
+var lives = 9;
 
 func _ready():
 	resetVars()

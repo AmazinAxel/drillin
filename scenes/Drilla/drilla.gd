@@ -43,6 +43,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not player:
 		return
+	if Globals.isDead:
+		return
 	var dist = global_position.distance_to(player.global_position)
 	
 	if dist < trigger_distance and not started and not show_gui_blocked and energyFilled:
@@ -117,6 +119,9 @@ func start_drill_sequence():
 	speed_tween = create_tween()
 	speed_tween.tween_property(self, "speed_scale", 0.2, 25.0)
 	
+	if Globals.level == 0:
+		stop_drill()
+		return
 	await get_tree().create_timer(1.0).timeout
 	var shop_layer = CanvasLayer.new()
 	shop_layer.layer = 100

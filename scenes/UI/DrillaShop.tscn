@@ -43,6 +43,7 @@ text = "Shop"
 horizontal_alignment = 1
 
 [node name="tutorial" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=10010420]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_n4ip6")
 theme_override_font_sizes/font_size = 32
@@ -53,7 +54,6 @@ drill to the first floor
 "
 
 [node name="upgradeWeapon" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=562273983]
-visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -62,7 +62,6 @@ theme_override_font_sizes/font_size = 32
 text = "Upgrade Weapon (-3)"
 
 [node name="upgradeArmor" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=161677201]
-visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_direction = 2
 layout_mode = 2
@@ -73,7 +72,6 @@ text = "Upgrade Armor (-3)
 "
 
 [node name="ReplenishHealth" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=989345003]
-visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 0
