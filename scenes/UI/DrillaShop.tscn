@@ -114,7 +114,7 @@ stream = ExtResource("6_jx6w6")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/upgradeWeapon" to="." method="_on_damage_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/upgradeArmor" to="." method="_on_health_upgrade_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_risk_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_replenish_health_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_risk_upgrade_pressed"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_button_up"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

@@ -17,6 +17,10 @@ var bossAlive
 var lives = 9;
 var started = false;
 
+var damageUpgradeCount
+var armorUpgradeCount
+var replenishCount
+
 func _ready():
 	resetVars()
 
@@ -34,6 +38,10 @@ func resetVars():
 	stopping = false
 	inDrill = false
 	bossAlive = false
+	
+	damageUpgradeCount = 0
+	replenishCount = 0
+	armorUpgradeCount = 0
 
 
 func screen_shake(strength: float, duration: float):
