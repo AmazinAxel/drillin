@@ -5,6 +5,7 @@ const JUMP_VELOCITY = -350.0
 
 var dropTimer := 0.0
 var isDropping := false
+var isThrown := false
 var poisonTick: float = 0.0
 
 var isCrouching := false
@@ -26,7 +27,9 @@ func _physics_process(delta: float) -> void:
 		isDropping = true
 		dropTimer = 0.15
 	
-	if Input.is_action_pressed("throw"):
+	if Input.is_action_pressed("attack") and not Globals.isAttacking and not isThrown:
+		attack()
+	elif Input.is_action_pressed("throw"):
 		throwPickaxe()
 		
 	if isDropping:
@@ -182,13 +185,6 @@ func playAgain():
 var swing_tween: Tween
 var thrown_instance = null
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Globals.isDead:
-		return # no pickaxe when ded
-
-	if event.is_action_pressed("attack") and not Globals.isAttacking:
-		attack()
-
 
 func throwPickaxe():
 	if not thrownPickaxeScene:
@@ -196,6 +192,8 @@ func throwPickaxe():
 	if thrown_instance != null:
 		return
 		
+	
+	isThrown = true
 	$woosh.play()
 
 	$pickaxe.visible = false
@@ -210,10 +208,11 @@ func throwPickaxe():
 	thrown_instance.launch(dir, self)
 
 	velocity += -dir * 150.0
-
+	
 	await get_tree().create_timer(0.5).timeout
 	if is_instance_valid(thrown_instance):
 		thrown_instance.returning = true
+		isThrown = false
 		
 func catch_pickaxe():
 	$pickaxe.visible = true
