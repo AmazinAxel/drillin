@@ -7,12 +7,9 @@ var homing: bool = false
 
 
 func launch(dir: Vector2):
-	direction = Vector2.ONE
+	direction = Vector2.ONE * dir
 	rotation = direction.angle()
 	
-	await get_tree().create_timer(0.5).timeout
-	if not is_instance_valid(self):
-		return
 	homing = true
 	
 	await get_tree().create_timer(0.5).timeout

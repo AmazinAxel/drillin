@@ -4,15 +4,18 @@ extends CharacterBody2D
 @export var max_health: int = 6
 @export var speed: float = 40.0
 @export var gravity: float = 400.0
-@export var jump_threshold: float = 20.0  # How far above the enemy the player must be to trigger a jump
+@export var jump_threshold: float = 20.0 
 
 @export var knockbackFromPlayer: float = 300.0
 
-@export var damage: int = 50
+@export var damage: int = 10
 @export var damage_cooldown: float = 0.5
 
 @export var attack_range: float = 60.0
 @export var projectile_scene: PackedScene
+
+@export var minAttackDistance: float = 100.0 
+@export var maxAttackDistance: float = 150.0 
 
 # === INTERNAL STATE ===
 var health: int
@@ -36,7 +39,7 @@ func _ready():
 
 func shoot_loop():
 	while is_instance_valid(self):
-		await get_tree().create_timer(randf_range(3.0, 6.0)).timeout
+		await get_tree().create_timer(randf_range(1.0, 2.5)).timeout
 		await shoot_burst()
 
 func shoot_burst():
@@ -78,17 +81,18 @@ func _physics_process(delta):
 	if player && !isKnockedBackFromPlayer:
 		animated_sprite.play("default")
 		var direction = (player.global_position - global_position).normalized()
-		velocity.x = direction.x * speed
+		
+		var distance = global_position.distance_to(player.global_position)
+		if distance < minAttackDistance:
+			velocity.x = -direction.x * speed
+		elif distance > maxAttackDistance:
+			velocity.x = direction.x * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
+			
 		animated_sprite.flip_h = direction.x > 0
 
-		var distance = global_position.distance_to(player.global_position)
-		if can_damage and distance < attack_range:
-			player.take_damage(damage)
-			can_damage = false
-			await get_tree().create_timer(damage_cooldown).timeout
-			can_damage = true
 			
-		# Jump if player is above or if stuck against a wall
 		if player.global_position.y < global_position.y - jump_threshold and is_on_floor():
 			velocity.y = jump_force
 

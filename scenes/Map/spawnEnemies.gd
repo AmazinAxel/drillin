@@ -87,12 +87,26 @@ func _process(delta: float) -> void:
 	var level = Globals.level
 	
 	if level != lastLevel:
-		checkForSpawnBoss(level)
+		
+		lastLevel = level
+		
+		if level == 3:
+			var bossRef = drillaBoss.instantiate()
+			#bossRef.position = bossSpawnPoint.position
+			add_child(bossRef)
+			return
+			
+		elif level == 7:
+			var bossRef = mommaBatBoss.instantiate()
+			var markers = get_tree().get_nodes_in_group("mommaBatMarkers")
+			var randomMarker = markers.pick_random()
+			bossRef.position = randomMarker.position
+			add_child(bossRef)
+			return
 		
 		if not levelSpawnPoints.has(level) or levelSpawnPoints[level].is_empty():
 			return
 		
-		lastLevel = level
 		enemiesSpawned = 0
 		enemiesInBatch = 0
 		spawnTimer = 0.0
@@ -180,15 +194,3 @@ func getValidSpawnPoints(points: Array) -> Array:
 		return points
 	return points.filter(func(p): return p.global_position.distance_to(player.global_position) >= MIN_SPAWN_DIST)
 	
-func checkForSpawnBoss(level: int) -> void:
-	if level == 3:
-		var bossRef = drillaBoss.instantiate()
-		#bossRef.position = bossSpawnPoint.position
-		add_child(bossRef)
-		
-	elif level == 7:
-		var bossRef = mommaBatBoss.instantiate()
-		var markers = get_tree().get_nodes_in_group("mommaBatMarkers")
-		var randomMarker = markers.pick_random()
-		bossRef.position = randomMarker.position
-		add_child(bossRef)

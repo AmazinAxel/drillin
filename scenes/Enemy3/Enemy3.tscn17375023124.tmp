@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://c035qx8eqron7"]
+
+[ext_resource type="Texture2D" uid="uid://p8jyhfca4357" path="res://assets/tileset/PinkSlimeWalk.png" id="1_ruwya"]
+[ext_resource type="Script" uid="uid://balg04l50f1hw" path="res://scenes/Enemy3/enemy3.gd" id="1_sj2jw"]
+[ext_resource type="Texture2D" uid="uid://6dakjvdru28i" path="res://assets/tileset/RythmIsADancer-shoot.png" id="2_sj2jw"]
+[ext_resource type="PackedScene" uid="uid://c8r2ns3xqe11m" path="res://scenes/SmallProjectile/small_projectile.tscn" id="2_xroqt"]
+[ext_resource type="Texture2D" uid="uid://dtwel8dslgvjp" path="res://scenes/BarMpty.png" id="5_0022e"]
+[ext_resource type="Texture2D" uid="uid://dw5qqjyh5rfq2" path="res://scenes/BarrFull.png" id="6_uboy5"]
+[ext_resource type="AudioStream" uid="uid://y86ef527fnmr" path="res://assets/sounds/enemyHitSound.mp3" id="7_v2ocg"]
+[ext_resource type="AudioStream" uid="uid://chn2gnyjdxres" path="res://assets/sounds/enemyDeathSound.mp3" id="8_doox8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xroqt"]
+size = Vector2(23, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbbh0"]
+atlas = ExtResource("1_ruwya")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0022e"]
+atlas = ExtResource("1_ruwya")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uboy5"]
+atlas = ExtResource("1_ruwya")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ocg"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doox8"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlqyp"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02etx"]
+atlas = ExtResource("2_sj2jw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gi2sj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbbh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0022e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uboy5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2ocg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doox8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02etx")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_aqqjk"]
+colors = PackedColorArray(0.87144446, 3.0996205e-05, 0.62592566, 1, 0.87058824, 0, 0.627451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sj2jw"]
+gradient = SubResource("Gradient_aqqjk")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_v2ocg"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0022e"]
+gradient = SubResource("Gradient_v2ocg")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
+[node name="Enemy3" type="CharacterBody2D" unique_id=562708192 groups=["enemies"]]
+collision_layer = 34
+collision_mask = 34
+script = ExtResource("1_sj2jw")
+projectile_scene = ExtResource("2_xroqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648074876]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_xroqt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1174440913]
+position = Vector2(2, -5.5)
+scale = Vector2(0.875, 0.84375)
+sprite_frames = SubResource("SpriteFrames_gi2sj")
+animation = &"shoot"
+
+[node name="deathParticles" type="CPUParticles2D" parent="." unique_id=1169977919]
+position = Vector2(2, -5)
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture1D_sj2jw")
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.3
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 280.33
+initial_velocity_max = 290.5
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=381208864]
+offset_left = -15.0
+offset_top = -30.0
+offset_right = 22.0
+offset_bottom = 2.0
+value = 100.0
+texture_under = ExtResource("5_0022e")
+texture_progress = ExtResource("6_uboy5")
+metadata/_edit_use_anchors_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=454055913]
+position = Vector2(0, 3)
+color = Color(0.7687156, 1.2995302e-05, 0.5282726, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_0022e")
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1529443743]
+stream = ExtResource("7_v2ocg")
+volume_db = -5.0
+pitch_scale = 4.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1229552009]
+stream = ExtResource("8_doox8")
+pitch_scale = 2.5
