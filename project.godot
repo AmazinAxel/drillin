@@ -13,6 +13,7 @@ config_version=5
 config/name="drillin"
 run/main_scene="uid://di1jb5os7qfa7"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://bvte6l4c76xo5"
 config/icon="res://icon.svg"
 
 [audio]
