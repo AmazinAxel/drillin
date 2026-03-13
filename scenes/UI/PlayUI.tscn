@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cfabot5h6e74b" path="res://scenes/button.gd" id="3_vxir0"]
 [ext_resource type="Texture2D" uid="uid://ds2on7amp5fky" path="res://scenes/Drilla/MyDrilla.png" id="4_ee75v"]
 [ext_resource type="PackedScene" uid="uid://8oujrahfnp72" path="res://scenes/Mineral1/Mineral1.tscn" id="5_jjvaq"]
+[ext_resource type="Script" uid="uid://cwyyfipqd21x6" path="res://scenes/UI/bgParallax.gd" id="5_k3kwe"]
 [ext_resource type="Texture2D" uid="uid://vt15hmigtou" path="res://assets/tileset/CrystalTilemap.png" id="8_dh25r"]
 [ext_resource type="Texture2D" uid="uid://dj0rjfxoiegrx" path="res://assets/tileset/newTilemap.png" id="9_qtwfg"]
 [ext_resource type="Texture2D" uid="uid://b8ui7nhjk2ctn" path="res://assets/tileset/CurrentTilesetVer.png" id="10_sp4ti"]
@@ -874,10 +875,9 @@ fill_to = Vector2(0.49347827, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687228488]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=491307863]
-anchors_preset = -1
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 744.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -886,7 +886,7 @@ alignment = 1
 z_index = 3
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer" unique_id=812677560]
@@ -909,27 +909,9 @@ theme_override_font_sizes/font_size = 42
 text = "Play"
 script = ExtResource("3_vxir0")
 
-[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer" unique_id=1511780397]
-z_index = 9
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Control" unique_id=1834499642]
-top_level = true
-visibility_layer = 4
-z_index = 3
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 0
-offset_left = 350.0
-offset_top = 46.000004
-offset_right = 600.0
-offset_bottom = 296.0
-rotation = 0.1308997
-texture = ExtResource("4_ee75v")
-stretch_mode = 5
-
 [node name="Background" type="Node2D" parent="." unique_id=1998171684]
+z_index = 2
+script = ExtResource("5_k3kwe")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Background" unique_id=249515973]
 position = Vector2(0, 2)
@@ -977,5 +959,13 @@ color = Color(0.92156863, 0.62352943, 0.28627452, 1)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_vogji")
+
+[node name="TextureRect" type="Sprite2D" parent="Background" unique_id=1055387767]
+top_level = true
+visibility_layer = 4
+z_index = 3
+position = Vector2(329, 288)
+rotation = 0.1308997
+texture = ExtResource("4_ee75v")
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/HBoxContainer/VBoxContainer/Button" method="_on_pressed"]
