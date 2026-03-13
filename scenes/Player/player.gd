@@ -25,6 +25,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("down"):
 		isDropping = true
 		dropTimer = 0.15
+	
+	if Input.is_action_pressed("throw"):
+		throwPickaxe()
 		
 	if isDropping:
 		dropTimer -= delta
@@ -186,33 +189,32 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack") and not Globals.isAttacking:
 		attack()
 
-	# Throw pickaxe	
-	elif event.is_action_pressed("throw") and not Globals.isAttacking:
 
-		if not thrownPickaxeScene:
-			return
-		if thrown_instance != null:
-			return
-			
-		$woosh.play()
-
-		$pickaxe.visible = false
-		Globals.isAttacking = true
-
-		thrown_instance = thrownPickaxeScene.instantiate()
-		get_tree().current_scene.add_child(thrown_instance)
+func throwPickaxe():
+	if not thrownPickaxeScene:
+		return
+	if thrown_instance != null:
+		return
 		
-		var dir = (get_global_mouse_position() - global_position).normalized()
-		thrown_instance.global_position = $pickaxe.global_position 
-		thrown_instance.rotation = dir.angle()
-		thrown_instance.launch(dir, self)
+	$woosh.play()
 
-		velocity += -dir * 150.0
+	$pickaxe.visible = false
+	Globals.isAttacking = true
 
-		await get_tree().create_timer(0.5).timeout
-		if is_instance_valid(thrown_instance):
-			thrown_instance.returning = true
+	thrown_instance = thrownPickaxeScene.instantiate()
+	get_tree().current_scene.add_child(thrown_instance)
+	
+	var dir = (get_global_mouse_position() - global_position).normalized()
+	thrown_instance.global_position = $pickaxe.global_position 
+	thrown_instance.rotation = dir.angle()
+	thrown_instance.launch(dir, self)
 
+	velocity += -dir * 150.0
+
+	await get_tree().create_timer(0.5).timeout
+	if is_instance_valid(thrown_instance):
+		thrown_instance.returning = true
+		
 func catch_pickaxe():
 	$pickaxe.visible = true
 	Globals.isAttacking = false
