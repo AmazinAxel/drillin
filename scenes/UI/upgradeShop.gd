@@ -15,7 +15,7 @@ func getCost(prices: Array, count: int) -> int:
 	return prices[count]
 
 func _ready():
-	shopPricingUpdateText()
+	#shopPricingUpdateText()
 	whatCanBuy()
 
 func _on_damage_upgrade_pressed() -> void:
@@ -25,7 +25,7 @@ func _on_damage_upgrade_pressed() -> void:
 		Globals.attackDamage += 1
 		damageUpgradeCount += 1
 		$purchase.play()
-		shopPricingUpdateText()
+		#shopPricingUpdateText()
 		whatCanBuy()
 
 func _on_health_upgrade_pressed() -> void:
@@ -35,7 +35,7 @@ func _on_health_upgrade_pressed() -> void:
 		Globals.damageReduction -= 0.3
 		armorUpgradeCount += 1
 		$purchase.play()
-		shopPricingUpdateText()
+		#shopPricingUpdateText()
 		whatCanBuy()
 
 func _on_replenish_health_pressed() -> void:
@@ -45,7 +45,7 @@ func _on_replenish_health_pressed() -> void:
 		Globals.health = 100
 		replenishCount += 1
 		$purchase.play()
-		shopPricingUpdateText()
+		#shopPricingUpdateText()
 		whatCanBuy()
 
 func _process(_delta):
@@ -68,4 +68,3 @@ func whatCanBuy():
 		replenishHealth.disabled = true
 	else:
 		replenishHealth.disabled = false
-

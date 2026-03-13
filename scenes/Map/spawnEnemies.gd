@@ -37,7 +37,7 @@ class WaveData:
 
 var waveTable: Dictionary = {
 	1: WaveData.new(8,  2.5, { "genericSlime": 7, "tankySlime": 3 }),
-	2: WaveData.new(12, 2.2, { "genericSlime": 5, "tankySlime": 3, "genericBat": 2 }),
+	2: WaveData.new(12, 2.2, { "genericSlime": 5, "tankySlime": 3, "shooterSlime": 2 }),
 	3: WaveData.new(10, 2.0, { }),
 	4: WaveData.new(16, 1.8, { }),
 	5: WaveData.new(16, 1.8, { "genericBat": 4, "flameBat": 3, "shooterSlime": 3, "tankySlime": 2 }),
@@ -48,11 +48,11 @@ var waveTable: Dictionary = {
 var levelSpawnPoints: Dictionary = {}
 
 
-var current_interval: float = 0.0
+var currentInterval: float = 0.0
 var timer: float = 0.0
 var started: bool = false
 var lastLevel: int = -1
-
+var enemiesSpawned: int = 0
 
 
 func _ready() -> void:
@@ -65,48 +65,72 @@ func _ready() -> void:
 				if marker is Marker2D:
 					points.append(marker)
 			levelSpawnPoints[level_num] = points
-	
-	
+			
 	
 func _process(delta: float) -> void:
 
 	var level = Globals.level
 	
 	if level != lastLevel:
-		
 		checkForSpawnBoss(level)
 		
-		if not levelSpawnPoints[level]:
+		if not levelSpawnPoints.has(level) or levelSpawnPoints[level].is_empty():
 			return
-			
+		
 		lastLevel = level
+		enemiesSpawned = 0
 		started = true
+		
+		if waveTable.has(level):
+			currentInterval = waveTable[level].spawnInterval
 	
-
+	if not started:
+		return
+		
 	timer += delta
-	if timer >= current_interval:
+	if timer >= currentInterval:
 		timer = 0.0
 		startWave(level)
+		
+func startWave(level: int) -> void:
+	if not waveTable.has(level):
+		return
+	var wave: WaveData = waveTable[level]
+	if enemiesSpawned >= wave.totalEnemies:
+		return
 
-func startWave(level: int):
-	var points = levelSpawnPoints[level]
+	var points: Array = levelSpawnPoints[level]
 	if points.is_empty():
 		return
-	var pos = points.pick_random().global_position
-	
-	#var enemy = scene.instantiate()
-	#enemy.global_position = pos
-	#get_tree().current_scene.add_child(enemy)
 
+	var pos: Vector2 = points.pick_random().global_position
+	var scene := _get_scene_for_key(wave.pick_enemy_key())
+	if scene == null:
+		return
+
+	var enemy := scene.instantiate()
+	enemy.global_position = pos
+	get_tree().current_scene.add_child(enemy)
+	enemiesSpawned += 1
+
+
+func _get_scene_for_key(key: String) -> PackedScene:
+	match key:
+		"genericSlime": return genericSlime
+		"tankySlime": return tankySlime
+		"shooterSlime": return shooterSlime
+		"genericBat": return genericBat
+		"flameBat": return flameBat
+		"poisonBat": return poisonBat
+	return null
 
 func checkForSpawnBoss(level: int):
-	
 	if level == 3:
 		var bossRef = drillaBoss.instantiate()
 		#bossRef.position = bossSpawnPoint.position
 		add_child(bossRef)
 		
-	if level == 6:
+	elif level == 7:
 		var bossRef = mommaBatBoss.instantiate()
 		var markers = get_tree().get_nodes_in_group("mommaBatMarkers")
 		var randomMarker = markers.pick_random()
