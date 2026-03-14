@@ -972,5 +972,6 @@ max_distance = 12144.0
 
 [node name="Drilla" parent="Background" unique_id=1117207976 instance=ExtResource("12_k3kwe")]
 position = Vector2(294, 286)
+script = null
 
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/VBoxContainer/Button" to="CanvasLayer/HBoxContainer/VBoxContainer/Button" method="_on_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cm667tojhm3kj"]
+
+[ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="1_hrwuf"]
+
+[node name="CheckpointReached" type="Control" unique_id=885434992]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label2" type="Label" parent="." unique_id=514683799]
+modulate = Color(1, 1, 1, 0.5882353)
+visibility_layer = 4
+layout_mode = 0
+offset_left = 148.0
+offset_top = 294.0
+offset_right = 492.0
+offset_bottom = 366.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_hrwuf")
+theme_override_font_sizes/font_size = 32
+text = "🏳️ Checkpoint Reached"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

@@ -119,10 +119,35 @@ func start_drill_sequence():
 	speed_tween = create_tween()
 	speed_tween.tween_property(self, "speed_scale", 0.2, 25.0)
 	
+	#
+	# CHECKPOINT
+	#
+
+	await get_tree().create_timer(1.0).timeout
+
 	if Globals.level == 0:
+		var checkpoint_layer = CanvasLayer.new()
+		checkpoint_layer.layer = 100
+		checkpoint_layer.name = "CheckpointLayer"
+		var checkpoint = preload("res://scenes/UI/checkpointReached.tscn").instantiate()
+		checkpoint.modulate = Color(1, 1, 1, 0)
+		checkpoint_layer.add_child(checkpoint)
+		get_tree().current_scene.add_child(checkpoint_layer)
+		
+		var fade_in_tween = create_tween()
+		fade_in_tween.tween_property(checkpoint, "modulate:a", 1.0, 0.5)
+		await fade_in_tween.finished
+		
+		await get_tree().create_timer(1.0).timeout
+		
+		var fade_out_tween = create_tween()
+		fade_out_tween.tween_property(checkpoint, "modulate:a", 0.0, 0.5)
+		fade_out_tween.tween_callback(checkpoint_layer.queue_free)
+		await fade_out_tween.finished
+		
 		stop_drill()
 		return
-	await get_tree().create_timer(1.0).timeout
+
 	var shop_layer = CanvasLayer.new()
 	shop_layer.layer = 100
 	shop_layer.name = "ShopLayer"
