@@ -50,6 +50,17 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_yfl7l"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5t6qh"]
+gradient = SubResource("Gradient_yfl7l")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8d4p"]
 size = Vector2(44, 8)
 
@@ -100,17 +111,6 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.09128631, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Gradient" id="Gradient_yfl7l"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5t6qh"]
-gradient = SubResource("Gradient_yfl7l")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.49130434, 0.5326087)
-fill_to = Vector2(0.49347827, 0)
-
 [node name="flameBat" type="CharacterBody2D" unique_id=1099381924]
 collision_layer = 34
 collision_mask = 34
@@ -135,41 +135,6 @@ scale = Vector2(0.5, 0.375)
 sprite_frames = SubResource("SpriteFrames_565mo")
 frame = 1
 frame_progress = 0.76557124
-
-[node name="Flames" type="Node2D" parent="." unique_id=776626473]
-
-[node name="Area2D" type="Area2D" parent="Flames" unique_id=1057073101]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flames/Area2D" unique_id=1269557430]
-position = Vector2(29, -1)
-shape = SubResource("RectangleShape2D_q8d4p")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flames" unique_id=1296094393]
-visible = false
-position = Vector2(29.622082, -1.5034432)
-scale = Vector2(-0.7, -0.5)
-sprite_frames = SubResource("SpriteFrames_uletj")
-autoplay = "default"
-frame = 2
-frame_progress = 0.037692327
-
-[node name="FlameParticles" type="CPUParticles2D" parent="Flames" unique_id=2013299477]
-position = Vector2(0.005300522, 0)
-amount = 10
-texture = ExtResource("6_fwj1o")
-lifetime = 0.2
-speed_scale = 0.6
-emission_shape = 1
-emission_sphere_radius = 2.0
-spread = 10.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 300.0
-initial_velocity_max = 350.0
-angle_min = 180.0
-angle_max = 180.0
-scale_amount_min = 0.2
-scale_amount_max = 0.4
-color_ramp = SubResource("Gradient_qgh04")
 
 [node name="BatFlappingWings" type="AudioStreamPlayer2D" parent="." unique_id=140620422]
 stream = ExtResource("5_565mo")
@@ -198,5 +163,39 @@ color = Color(0.81960785, 0, 0, 1)
 energy = 0.2
 texture = SubResource("GradientTexture2D_5t6qh")
 
-[connection signal="body_entered" from="Flames/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Flames/Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Flames" type="Area2D" parent="." unique_id=1057073101]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flames" unique_id=1269557430]
+position = Vector2(29, -1)
+shape = SubResource("RectangleShape2D_q8d4p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flames" unique_id=1296094393]
+visible = false
+position = Vector2(29.622082, -1.5034432)
+rotation = 3.1415927
+scale = Vector2(0.7, 0.5)
+sprite_frames = SubResource("SpriteFrames_uletj")
+autoplay = "default"
+frame = 2
+frame_progress = 0.037692327
+
+[node name="FlameParticles" type="CPUParticles2D" parent="Flames" unique_id=2013299477]
+position = Vector2(0.005300522, 0)
+amount = 10
+texture = ExtResource("6_fwj1o")
+lifetime = 0.2
+speed_scale = 0.6
+emission_shape = 1
+emission_sphere_radius = 2.0
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+angle_min = 180.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_qgh04")
+
+[connection signal="body_entered" from="Flames" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Flames" to="." method="_on_area_2d_body_exited"]

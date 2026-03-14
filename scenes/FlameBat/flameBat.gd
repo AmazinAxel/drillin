@@ -9,9 +9,12 @@ extends CharacterBody2D
 @export var attack_range: float = 15.0
 @export var knockbackFromPlayer: float = 1000.0
 @export var knockbackForce: float = 3.0
-@export var flames_visible_range: float = 200.0
-@export var flame_damage: int = 5
-@export var flame_damage_interval: float = 0.1
+@export var flamesVisibleRange: float = 200.0
+@export var flameDamage: int = 5
+@export var flameDamageInterval: float = 0.1
+@export var flameColliderMaxWidth: float = 60.0
+@export var flameGrowSpeed: float = 3.0
+@export var flameRotationSpeed: float = 2.0
 
 # === INTERNAL STATE ===
 var health: int
@@ -21,14 +24,17 @@ var knockbackVelocity: Vector2
 var swarmOffset: Vector2 = Vector2.ZERO
 var swarmOffsetTarget: Vector2 = Vector2.ZERO
 var swarmOffsetTimer: float = 0.0
-var flame_damage_timer: float = 0.0
+var flameDamageTimer: float = 0.0
+var flameIntensity: float = 0.0
 var flameIsVisible: bool = false
 var playerIsInFlames: bool = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $TextureProgressBar
 @onready var flames = $Flames
-
+@onready var flameParticles = $Flames/FlameParticles
+@onready var flameCollider = $Flames/CollisionShape2D
+ 
 func _ready():
 	health = max_health
 	health_bar.max_value = max_health
@@ -36,7 +42,10 @@ func _ready():
 	
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
-	flames.visible = false
+	
+	flames.visible = true
+	flameParticles.emitting = false
+	_apply_flame_intensity(0.0)
 
 func _physics_process(delta):
 	if isKnockedBackFromPlayer:
@@ -54,10 +63,15 @@ func _physics_process(delta):
 	if player:
 		var distance = global_position.distance_to(player.global_position)
 		
-		flameIsVisible = (distance <= flames_visible_range and hasLineOfSightToPlayer(player))
-		flames.visible = flameIsVisible
-		flames.look_at(player.global_position)
+		flameIsVisible = (distance <= flamesVisibleRange and hasLineOfSightToPlayer(player))
+		var intensityTarget = 1.0 if flameIsVisible else 0.0
+		flameIntensity = move_toward(flameIntensity, intensityTarget, delta * flameGrowSpeed)
+		_apply_flame_intensity(flameIntensity)
 
+		var targetAngle = (player.global_position - global_position).angle()
+		var angleDiff = angle_difference(flames.rotation, targetAngle)
+		flames.rotation += move_toward(0.0, angleDiff, flameRotationSpeed * delta)
+		
 		swarmOffsetTimer -= delta
 		if swarmOffsetTimer <= 0.0:
 			swarmOffsetTimer = randf_range(0.8, 2.0)
@@ -91,22 +105,29 @@ func _physics_process(delta):
 		if !$Flame.playing:
 			$Flame.playing = true
 			
-
-		var flame_dir = (player.global_position - global_position).angle()
-		var flame_deg = (rad_to_deg(flame_dir) * -1) + 180
+			
+		var flame_deg = (rad_to_deg(flames.rotation) * -1) + 180
+		
 		$Flames/FlameParticles.angle_min = flame_deg
 		$Flames/FlameParticles.angle_max = flame_deg
 		
-		flame_damage_timer -= delta
-		if flame_damage_timer <= 0.0:
-			flame_damage_timer = flame_damage_interval
+		flameDamageTimer -= delta
+		if flameDamageTimer <= 0.0:
+			flameDamageTimer = flameDamageInterval
 			if playerIsInFlames:
-				player.take_damage(flame_damage)
+				player.take_damage(flameDamage)
 	else:
 		$Flame.playing = false
 
 	move_and_slide()
 
+func _apply_flame_intensity(t: float) -> void:
+	flameParticles.emitting = t > 0.0
+ 
+	if flameCollider and flameCollider.shape is RectangleShape2D:
+		var base_height = flameCollider.shape.size.x
+		flameCollider.shape.size.x = flameColliderMaxWidth * t
+		
 func hasLineOfSightToPlayer(player: Node2D) -> bool:
 	var space = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
@@ -144,7 +165,7 @@ func die():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and !playerIsInFlames:
 		playerIsInFlames = true
-		flame_damage_timer = 0.0
+		flameDamageTimer = 0.0
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	playerIsInFlames = false

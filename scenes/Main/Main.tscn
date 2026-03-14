@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="2_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="Shader" uid="uid://bvum5wtjm762w" path="res://scenes/Main/shader.gdshader" id="3_exyxu"]
-[ext_resource type="PackedScene" uid="uid://ch6ftc4jva4j3" path="res://scenes/FlameBat/flameBat.tscn" id="7_q8kdv"]
-[ext_resource type="PackedScene" uid="uid://c035qx8eqron7" path="res://scenes/Enemy3/Enemy3.tscn" id="8_exyxu"]
 [ext_resource type="PackedScene" uid="uid://cbivbeqvo3qt2" path="res://scenes/PoisonShader/poisonShader.tscn" id="9_r0gd4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q8kdv"]
@@ -49,9 +47,3 @@ scale = Vector2(-1, 1)
 frame_progress = 0.0
 
 [node name="PoisonShaderCanvas" parent="." unique_id=934021191 instance=ExtResource("9_r0gd4")]
-
-[node name="Enemy3" parent="." unique_id=562708192 instance=ExtResource("8_exyxu")]
-position = Vector2(79, 61)
-
-[node name="flameBat" parent="." unique_id=1099381924 instance=ExtResource("7_q8kdv")]
-position = Vector2(-172, -33)

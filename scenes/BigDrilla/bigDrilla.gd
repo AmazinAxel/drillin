@@ -15,6 +15,7 @@ extends CharacterBody2D
 @export var charge_duration: float = 0.5
 
 @export var projectile_scene: PackedScene
+@export var target_scene: PackedScene
 
 # === RAGE STATE ===
 var rage: float = 0.0 
@@ -124,7 +125,10 @@ func initReady():
 
 func charge_loop():
 	while is_instance_valid(self):
-		await get_tree().create_timer(6.0).timeout
+		await get_tree().create_timer(5.0).timeout
+		var target = target_scene.instantiate()
+		$WarningHolder.add_child(target)
+		await get_tree().create_timer(1.0).timeout
 		start_charge()
 
 func shoot_loop():

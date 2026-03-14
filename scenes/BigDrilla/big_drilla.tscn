@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://3dh2oghmdcmn" path="res://assets/sounds/BigDrilla/bossDeath1.mp3" id="12_0hseo"]
 [ext_resource type="AudioStream" uid="uid://bb5n4k0n2cgey" path="res://assets/sounds/BigDrilla/bossDeath2.mp3" id="13_0fn1c"]
 [ext_resource type="Texture2D" uid="uid://dgyh5fd8bsr4l" path="res://assets/sprites/heatShield.png" id="14_sc6wf"]
+[ext_resource type="PackedScene" uid="uid://bkmm8277xdoyv" path="res://scenes/Target/target.tscn" id="15_0hseo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qd5q"]
 atlas = ExtResource("3_ci0t4")
@@ -252,6 +253,7 @@ collision_mask = 0
 script = ExtResource("1_nacbp")
 charge_duration = 2.0
 projectile_scene = ExtResource("2_d2faa")
+target_scene = ExtResource("15_0hseo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1501585013]
 sprite_frames = SubResource("SpriteFrames_d2faa")
@@ -338,3 +340,7 @@ energy = 0.0
 shadow_enabled = true
 texture = ExtResource("14_sc6wf")
 texture_scale = 0.1
+
+[node name="WarningHolder" type="Node2D" parent="." unique_id=1811698636]
+position = Vector2(0, -39.46)
+scale = Vector2(1.5, 1.5)
