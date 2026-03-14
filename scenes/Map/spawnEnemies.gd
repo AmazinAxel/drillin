@@ -46,13 +46,11 @@ class WaveData:
 		
 # total, startInterval, minInterval, scalingRate, batchSize, restDuration, weights
 var waveTable: Dictionary = {
-	1: WaveData.new(8,  2.5, 1.6, 0.08, 4, 2.0, { "genericSlime": 7, "tankySlime": 3 }),
-	2: WaveData.new(12, 2.2, 1.4, 0.10, 4, 2.0, { "genericSlime": 5, "tankySlime": 3, "shooterSlime": 2 }),
-	3: WaveData.new(10, 2.0, 1.3, 0.10, 3, 1.0, { }),
-	4: WaveData.new(16, 1.8, 1.1, 0.12, 5, 2.0, { }),
-	5: WaveData.new(16, 1.8, 1.0, 0.12, 5, 1.5, { "genericBat": 4, "flameBat": 3, "shooterSlime": 3, "tankySlime": 2 }),
-	6: WaveData.new(20, 1.6, 0.9, 0.14, 6, 1.5, { "genericBat": 3, "flameBat": 3, "poisonBat": 3, "shooterSlime": 4, "tankySlime": 2 }),
-	7: WaveData.new(14, 1.5, 0.8, 0.15, 4, 1.0, { }),
+	1: WaveData.new(8,  3, 1.6, 0.08, 3, 4.0, { "genericSlime": 7, "tankySlime": 3 }),
+	2: WaveData.new(10, 2.8, 1.4, 0.10, 4, 4.0, { "genericSlime": 5, "tankySlime": 3, "shooterSlime": 2 }),
+
+	5: WaveData.new(14, 2.6, 1.4, 0.10, 3, 3.0, { "genericBat": 4, "flameBat": 3, "shooterSlime": 1, "tankySlime": 1 }),
+	6: WaveData.new(16, 2.4, 1.2, 0.12, 4, 3.0, { "genericBat": 3, "flameBat": 4, "poisonBat": 2, "shooterSlime": 1, "tankySlime": 1 }),
 }
 
 enum SpawnState { SPAWNING, RESTING }
@@ -92,12 +90,14 @@ func _process(delta: float) -> void:
 		lastLevel = level
 		
 		if level == 3:
+			started = false
 			var bossRef = drillaBoss.instantiate()
 			bossRef.position = drillaBossSpawnPoint.position
 			add_child(bossRef)
 			return
 			
 		elif level == 7:
+			started = false
 			var bossRef = mommaBatBoss.instantiate()
 			var markers = get_tree().get_nodes_in_group("mommaBatMarkers")
 			var randomMarker = markers.pick_random()

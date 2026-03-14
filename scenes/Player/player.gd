@@ -288,3 +288,6 @@ func handlePoisonDamage(delta: float) -> void:
 	else:
 		$poisonParticles.emitting = false
 		poisonTick = 0.0
+
+func playPickupSound():
+	$MineralPickup.play()

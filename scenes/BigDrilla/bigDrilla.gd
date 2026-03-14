@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_health: int = 20
+@export var max_health: int = 40
 @export var speed: float = 10.0
 @export var animationSpeed: float = 100.0
 @export var gravity: float = 400.0
@@ -10,8 +10,8 @@ extends CharacterBody2D
 
 @export var attack_range: float = 60.0
 
-@export var chargeDamage: int = 50
-@export var charge_speed: float = 400.0
+@export var chargeDamage: int = 20
+@export var charge_speed: float = 300.0
 @export var charge_duration: float = 0.5
 
 @export var projectile_scene: PackedScene

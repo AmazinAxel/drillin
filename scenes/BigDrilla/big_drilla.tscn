@@ -224,7 +224,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
-size = Vector2(93, 53)
+size = Vector2(93, 49)
 
 [sub_resource type="Gradient" id="Gradient_qkt3i"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -261,7 +261,7 @@ animation = &"death"
 frame_progress = 0.09236079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99379516]
-position = Vector2(0.5, 1.5)
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_ripgs")
 one_way_collision = true
 

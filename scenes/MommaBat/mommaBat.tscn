@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b6m17j85jko5y" path="res://scenes/MommaBat/mommaBat.gd" id="1_1lmfc"]
 [ext_resource type="Texture2D" uid="uid://co23mbe64nu1j" path="res://assets/sprites/BAT_FLU.png" id="2_muxby"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l5jl3"]
-radius = 96.0833
+[ext_resource type="AudioStream" uid="uid://cwokdbcntknko" path="res://assets/sounds/MommaBat/batBossDeath.mp3" id="3_n3gil"]
+[ext_resource type="AudioStream" uid="uid://d2sd7ink0pxre" path="res://assets/sounds/MommaBat/batBossDamage.mp3" id="4_l5jl3"]
+[ext_resource type="AudioStream" uid="uid://dr16gb70a7u2y" path="res://assets/sounds/MommaBat/batBossSpawn.mp3" id="5_xa2ae"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixb1d"]
 atlas = ExtResource("2_muxby")
@@ -63,14 +63,13 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_muxby"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3gil"]
+radius = 105.00476
 
 [node name="MommaBat" type="CharacterBody2D" unique_id=124854866]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_1lmfc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528333347]
-shape = SubResource("CircleShape2D_l5jl3")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670502720]
 position = Vector2(-1, -3)
@@ -79,8 +78,20 @@ sprite_frames = SubResource("SpriteFrames_xa2ae")
 autoplay = "default"
 frame_progress = 0.10805688
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1838577414]
+[node name="BatBossDeath" type="AudioStreamPlayer" parent="." unique_id=2112550267]
+stream = ExtResource("3_n3gil")
+volume_db = 10.0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=377867308]
-position = Vector2(-62, -22)
-shape = SubResource("CircleShape2D_muxby")
+[node name="BatBossDamage" type="AudioStreamPlayer" parent="." unique_id=229546615]
+stream = ExtResource("4_l5jl3")
+volume_db = -5.0
+pitch_scale = 2.0
+max_polyphony = 3
+
+[node name="BatBossSpawn" type="AudioStreamPlayer" parent="." unique_id=1884901256]
+stream = ExtResource("5_xa2ae")
+autoplay = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=410822917]
+shape = SubResource("CircleShape2D_n3gil")
+one_way_collision = true

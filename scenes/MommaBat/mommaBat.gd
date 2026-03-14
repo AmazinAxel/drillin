@@ -94,6 +94,8 @@ func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> vo
 func initReady():
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
+	collision_layer = 8
+	collision_mask = 8
 	
 	await get_tree().create_timer(randf_range(1.0, 3.0)).timeout
 	dartLoop()
@@ -170,17 +172,16 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
-func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
+func take_damage(amount: int):
 	health -= amount
-	if hitFrom != Vector2.ZERO:
-		var knockbackDir = (global_position - hitFrom).normalized()
-		knockbackVelocity = knockbackDir * knockbackFromPlayer
-		isKnockedBackFromPlayer = true
-	
+	print("e")
+	$BatBossDamage.play()
 	if health <= 0:
 		die()
+	
 
 func die():
-	await get_tree().create_timer(0.2).timeout
+	$BatBossDamage.play()
+	animated_sprite.visible = false
+	await get_tree().create_timer(2).timeout
 	queue_free()

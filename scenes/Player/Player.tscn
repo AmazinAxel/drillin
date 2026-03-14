@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://dshogusvuw2ma" path="res://assets/sounds/Player/ambient1.mp3" id="21_5tklm"]
 [ext_resource type="AudioStream" uid="uid://c5rgony6x7uoh" path="res://assets/sounds/Player/ambient2.mp3" id="22_g055u"]
 [ext_resource type="AudioStream" uid="uid://b3gv0nba3jk1y" path="res://assets/sounds/Player/ambient3.mp3" id="23_2racp"]
+[ext_resource type="AudioStream" uid="uid://dxctmxo5q3xmf" path="res://assets/sounds/mineralPickup.mp3" id="24_g055u"]
 
 [sub_resource type="Gradient" id="Gradient_dqefj"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -502,6 +503,10 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_max = 10.0
 color_ramp = SubResource("Gradient_5tklm")
+
+[node name="MineralPickup" type="AudioStreamPlayer" parent="." unique_id=766283329]
+stream = ExtResource("24_g055u")
+pitch_scale = 1.5
 
 [connection signal="timeout" from="attackDelay" to="." method="_on_attack_delay_timeout"]
 [connection signal="body_entered" from="pickaxe/damageArea" to="." method="_on_damage_area_body_entered"]
