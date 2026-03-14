@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cbm2v7o7dcnr6"]
 
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_j6rys"]
+[ext_resource type="Script" uid="uid://bm8ui30kun2jn" path="res://scenes/UI/win.gd" id="1_jpt34"]
+[ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="1_lnyhh"]
 
 [node name="WinningUI" type="Control" unique_id=418545339]
 layout_mode = 3
@@ -11,16 +13,110 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_jpt34")
 
-[node name="Label" type="Label" parent="." unique_id=257477398]
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=938044508]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=1730570582]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/Control2" unique_id=1223813737]
 layout_mode = 0
-offset_left = 217.0
-offset_top = 149.0
-offset_right = 442.0
-offset_bottom = 197.0
+offset_left = 119.0
+offset_top = 186.0
+offset_right = 526.0
+offset_bottom = 234.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "Time to Momma Bat:"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/Control2" unique_id=789231634]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 142.0
+offset_right = 522.0
+offset_bottom = 190.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "Time to Big Drilla:"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/Control2" unique_id=356044685]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 226.0
+offset_right = 518.0
+offset_bottom = 274.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "Overall time:"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1318940794]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/Control" unique_id=1991463496]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 63.0
+offset_right = 533.0
+offset_bottom = 111.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "Thanks for playing!!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/Control" unique_id=257477398]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 5.0
+offset_right = 434.0
+offset_bottom = 53.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_j6rys")
 theme_override_font_sizes/font_size = 42
 text = "You win"
 horizontal_alignment = 1
+
+[node name="Control3" type="Control" parent="HBoxContainer" unique_id=847979129]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="HBoxContainer/Control3" unique_id=381028272]
+layout_mode = 0
+offset_top = -78.0
+offset_right = 190.0
+offset_bottom = -49.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 12
+text = "Made by Yehor, Alec & Vaughn
+for Campfire Vancouver & Ember"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HBoxContainer/Control3" unique_id=699590035]
+layout_mode = 0
+offset_top = -45.0
+offset_right = 415.0
+offset_bottom = -4.0
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "Play again in hard mode?"

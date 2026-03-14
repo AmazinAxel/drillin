@@ -1655,16 +1655,16 @@ energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_xdt7n")
 
-[node name="PlayerSpawnpoints" type="Node" parent="." unique_id=273934221]
+[node name="Checkpoints" type="Node" parent="." unique_id=273934221]
 
-[node name="DrillaStage2" type="Marker2D" parent="PlayerSpawnpoints" unique_id=715513209]
+[node name="DrillaStage2" type="Marker2D" parent="Checkpoints" unique_id=715513209]
 position = Vector2(154, 3364)
 
-[node name="PlayerStage2" type="Marker2D" parent="PlayerSpawnpoints" unique_id=703762354]
+[node name="PlayerStage2" type="Marker2D" parent="Checkpoints" unique_id=703762354]
 position = Vector2(256, 3288)
 
-[node name="DrillaStage1" type="Marker2D" parent="PlayerSpawnpoints" unique_id=1931600063]
+[node name="DrillaStage1" type="Marker2D" parent="Checkpoints" unique_id=1931600063]
 position = Vector2(146, 384)
 
-[node name="PlayerStage1" type="Marker2D" parent="PlayerSpawnpoints" unique_id=1192096754]
+[node name="PlayerStage1" type="Marker2D" parent="Checkpoints" unique_id=1192096754]
 position = Vector2(332, 364)

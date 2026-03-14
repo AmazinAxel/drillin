@@ -1,10 +1,17 @@
 [gd_scene format=3 uid="uid://cm667tojhm3kj"]
 
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="1_hrwuf"]
+[ext_resource type="Texture2D" uid="uid://4sj3ib54wrih" path="res://scenes/UI/WhiteFlagTopless.png" id="2_d1bjf"]
 
 [node name="CheckpointReached" type="Control" unique_id=885434992]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label2" type="Label" parent="." unique_id=514683799]
 modulate = Color(1, 1, 1, 0.5882353)
@@ -18,6 +25,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_hrwuf")
 theme_override_font_sizes/font_size = 32
-text = "🏳️ Checkpoint Reached"
+text = "   Checkpoint Reached"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="WhiteFlag" type="Sprite2D" parent="." unique_id=764437955]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(152, 307)
+scale = Vector2(2.0000002, 2.0000002)
+texture = ExtResource("2_d1bjf")

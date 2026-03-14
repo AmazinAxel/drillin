@@ -16,6 +16,11 @@ var bossbarMaxValue = 100 # doesnt need to have reset vaule since its overwritte
 var bossAlive
 var lives = 9;
 var started = false;
+var checkpoint = 0
+var startTime = Time.get_ticks_msec();
+var boss1Time;
+var boss2Time;
+var boss3Time;
 
 var damageUpgradeCount
 var armorUpgradeCount

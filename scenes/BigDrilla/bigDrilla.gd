@@ -283,3 +283,4 @@ func die():
 	
 	queue_free()
 	Globals.bossAlive = false
+	Globals.boss1Time = Time.get_ticks_msec();
