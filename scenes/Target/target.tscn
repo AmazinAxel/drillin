@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://q5xvigb7tkst" path="res://scenes/Target/target.gd" id="1_4pney"]
 [ext_resource type="Texture2D" uid="uid://jowaqrqb6tcg" path="res://assets/sprites/EXCLAMATION_MARK.png" id="2_d307v"]
 
-[sub_resource type="Gradient" id="Gradient_puxyr"]
+[sub_resource type="Gradient" id="Gradient_d307v"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_d307v"]
-gradient = SubResource("Gradient_puxyr")
+gradient = SubResource("Gradient_d307v")
 width = 128
 height = 128
 fill = 1
@@ -23,6 +23,6 @@ texture = ExtResource("2_d307v")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2136749772]
 position = Vector2(0, 3)
 color = Color(0.59575146, 0, 0, 1)
-energy = 0.3
+energy = 0.5
 texture = SubResource("GradientTexture2D_d307v")
 texture_scale = 0.5
