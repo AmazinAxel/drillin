@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var attack_range: float = 15.0
 @export var knockbackFromPlayer: float = 1000.0
 @export var knockbackForce: float = 3.0
-@export var flames_visible_range: float = 80.0
+@export var flames_visible_range: float = 200.0
 @export var flame_damage: int = 5
 @export var flame_damage_interval: float = 0.1
 
@@ -54,7 +54,7 @@ func _physics_process(delta):
 	if player:
 		var distance = global_position.distance_to(player.global_position)
 		
-		flameIsVisible = distance <= flames_visible_range
+		flameIsVisible = (distance <= flames_visible_range and hasLineOfSightToPlayer(player))
 		flames.visible = flameIsVisible
 		flames.look_at(player.global_position)
 
@@ -107,7 +107,21 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+func hasLineOfSightToPlayer(player: Node2D) -> bool:
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
+	query.exclude = [self]
+	var result = space.intersect_ray(query)
+	
+	if result.is_empty():
+		return true 
+	
+	var collider = result.get("collider")
+	if collider and collider.name == "TileMapLayer":
+		return false
+	
+	return true
+	
 func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
 	health_bar.value = health

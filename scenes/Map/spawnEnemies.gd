@@ -8,6 +8,7 @@ extends Node
 @export var flameBat: PackedScene
 @export var poisonBat: PackedScene
 
+@onready var drillaBossSpawnPoint = $BossMarkers/BigDrilla/BossSpawnpoint
 @export var drillaBoss: PackedScene
 @export var mommaBatBoss: PackedScene
 
@@ -92,7 +93,7 @@ func _process(delta: float) -> void:
 		
 		if level == 3:
 			var bossRef = drillaBoss.instantiate()
-			#bossRef.position = bossSpawnPoint.position
+			bossRef.position = drillaBossSpawnPoint.position
 			add_child(bossRef)
 			return
 			
