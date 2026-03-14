@@ -257,19 +257,20 @@ func die():
 	isDying = true
 	$BossDeath1.playing = true
 	await get_tree().create_timer(0.5).timeout
+	animated_sprite.visible = false
 	$BossDeath2.playing = true
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	
-	var shop_layer = CanvasLayer.new()
-	shop_layer.layer = 100
-	shop_layer.name = "ShopLayer"
-	var shop = preload("res://scenes/UI/WinningUI.tscn").instantiate()
-	shop.modulate = Color(1, 1, 1, 0)
-	shop_layer.add_child(shop)
-	get_tree().current_scene.add_child(shop_layer)
+	#var shop_layer = CanvasLayer.new()
+	#shop_layer.layer = 100
+	#shop_layer.name = "ShopLayer"
+	#var shop = preload("res://scenes/UI/WinningUI.tscn").instantiate()
+	#shop.modulate = Color(1, 1, 1, 0)
+	#shop_layer.add_child(shop)
+	#get_tree().current_scene.add_child(shop_layer)
 	
-	var tween = shop.create_tween()
-	tween.tween_property(shop, "modulate:a", 1.0, 0.5)
+	#var tween = shop.create_tween()
+	#tween.tween_property(shop, "modulate:a", 1.0, 0.5)
 	
 	queue_free()
 	Globals.bossAlive = false
