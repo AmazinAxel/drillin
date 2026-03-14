@@ -68,6 +68,29 @@ func shopPricingUpdateText():
 	var upgradeArmor = $HBoxContainer/VBoxContainer/upgradeArmor
 	var replenishHealth = $HBoxContainer/VBoxContainer/ReplenishHealth
 
+	var damageCost = getCost(damagePrices, damageUpgradeCount)
+	var armorCost = getCost(armorPrices, armorUpgradeCount)
+	var replenishCost = getCost(replenishPrices, replenishCount)
+
+	if damageCost > 0:
+		upgradeWeapon.text = "Upgrade Weapon (-%d)" % damageCost
+	else:
+		upgradeWeapon.text = "Upgrade Weapon (maxed)"
+
+	if armorCost > 0:
+		upgradeArmor.text = "Upgrade Armor (-%d)" % armorCost
+	else:
+		upgradeArmor.text = "Upgrade Armor (maxed)"
+
+	if replenishCost > 0:
+		replenishHealth.text = "Replenish Health (-%d)" % replenishCost
+	else:
+		replenishHealth.text = "Replenish Health (maxed)"
+func shopPricingUpdateText():
+	var upgradeWeapon = $HBoxContainer/VBoxContainer/upgradeWeapon
+	var upgradeArmor = $HBoxContainer/VBoxContainer/upgradeArmor
+	var replenishHealth = $HBoxContainer/VBoxContainer/ReplenishHealth
+
 	var damageCost = getCost(mainPrices, Globals.damageUpgradeCount)
 	var armorCost = getCost(mainPrices, Globals.armorUpgradeCount)
 	var replenishCost = getCost(replenishPrices, Globals.replenishCount)

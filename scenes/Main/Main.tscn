@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b2wrk6fclb2g4" path="res://scenes/Map/Map.tscn" id="1_owiiy"]
 [ext_resource type="Script" uid="uid://ccnhbewk2dku1" path="res://scenes/Main/main.gd" id="1_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://coc1f6okc4yx7" path="res://scenes/Player/Player.tscn" id="2_8llo8"]
-[ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="2_q8kdv"]
 [ext_resource type="PackedScene" uid="uid://che0kn53qwtxy" path="res://scenes/Drilla/Drilla.tscn" id="3_8llo8"]
 [ext_resource type="Shader" uid="uid://bvum5wtjm762w" path="res://scenes/Main/shader.gdshader" id="3_exyxu"]
 [ext_resource type="PackedScene" uid="uid://cbivbeqvo3qt2" path="res://scenes/PoisonShader/poisonShader.tscn" id="9_r0gd4"]
@@ -23,7 +22,6 @@ shader_parameter/chroma_offset = 1.2
 
 [node name="Main" type="Node" unique_id=2130844757]
 script = ExtResource("1_q8kdv")
-boss = ExtResource("2_q8kdv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1067616523]
 

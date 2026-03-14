@@ -259,7 +259,16 @@ func die():
 	await get_tree().create_timer(0.5).timeout
 	animated_sprite.visible = false
 	$BossDeath2.playing = true
-	await get_tree().create_timer(2).timeout
+
+	# Fade out the boss health bar
+	var boss_layer = get_tree().current_scene.get_node_or_null("BossLayer")
+	if boss_layer and boss_layer.get_child_count() > 0:
+		var boss_ui = boss_layer.get_child(0)
+		var fade_tween = create_tween()
+		fade_tween.tween_property(boss_ui, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+		fade_tween.tween_callback(boss_layer.queue_free)
+
+	await get_tree().create_timer(1).timeout
 	
 	#var shop_layer = CanvasLayer.new()
 	#shop_layer.layer = 100
