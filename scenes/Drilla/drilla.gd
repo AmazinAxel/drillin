@@ -323,6 +323,9 @@ func start_energy_fill(duration: float = 15.0) -> void:
 		$energyStaticIcon.play("waiting")
 		_wait_for_boss_dead()
 		return
+	if Globals.level == 4: # tutorial level so no energy system
+		_on_energy_fill_complete()
+		return
 
 	fade_in($energyIcon);
 	$energyIcon.play();
