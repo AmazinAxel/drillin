@@ -41,7 +41,7 @@ func _ready():
 
 func resetVars():
 	var startTime = Time.get_ticks_msec();
-	level = 3
+	level = 0
 	health = 100
 	damageReduction = 1
 	attackDamage = 2

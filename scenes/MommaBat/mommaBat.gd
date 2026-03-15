@@ -114,10 +114,10 @@ func beginEnterAnimation():
 	boss_tween.tween_property(bossLayer, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 	Globals.boss_health_changed.emit(max_health)
 
-	healthbar_thing = bossLayer.get_node("box/healthbar");
+	healthbar_thing = bossLayer.get_node("healthbar");
 	healthbar_thing.texture_progress = preload("res://scenes/UI/BatBossBarAlivet.png");
 	healthbar_thing.texture_under = preload("res://scenes/UI/BatBossBarDedt.png");
-	bossLayer.get_node("box/bossName").visible = false; #text = "Momma Bat"
+	bossLayer.get_node("bossName").visible = false; #text = "Momma Bat"
 	
 	Globals.bossbarMaxValue = max_health
 	
