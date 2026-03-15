@@ -89,7 +89,7 @@ func start_drill_sequence():
 	pan_tween.tween_method(set_base_offset, Vector2.ZERO, Vector2(95, 0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	
 	var zoom_tween = create_tween()
-	zoom_tween.tween_property(camera, "zoom", Vector2(2, 2), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	zoom_tween.tween_property(camera, "zoom", Vector2(2.5, 2.5), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	
 	# Start drill sound low-pitched and quiet, ramp up to normal
 	$drillSound.pitch_scale = intro_start_pitch
@@ -293,7 +293,7 @@ func stop_drill():
 	var return_tween = create_tween()
 	return_tween.set_parallel(true)
 	return_tween.tween_property(camera, "offset", Vector2.ZERO, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-	return_tween.tween_property(camera, "zoom", Vector2(1, 1), 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	return_tween.tween_property(camera, "zoom", Vector2(2, 2), 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	await return_tween.finished
 	
 	camera_base_offset = Vector2.ZERO
