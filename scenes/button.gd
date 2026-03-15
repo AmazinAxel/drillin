@@ -67,7 +67,7 @@ func _on_pressed() -> void:
 			if status == ResourceLoader.THREAD_LOAD_LOADED:
 				timer.stop()
 				var scene = ResourceLoader.load_threaded_get("res://scenes/Main/Main.tscn")
-				get_tree().change_scene_to_packed(scene)
+				get_tree().call_deferred("change_scene_to_packed", scene)
 
 				# Use dict so lambda captures by reference
 				var state = { "elapsed": 0.0 }
