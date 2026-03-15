@@ -169,12 +169,25 @@ func start_drill_sequence():
 			Globals.checkpointArmorUpgradeCount = Globals.armorUpgradeCount;
 
 			Globals.checkpointDamageReduction = Globals.damageReduction
-			Globals.checkpointAttackDamage = Globals.attackDamage
+			Globals.checkpointAttackDamage = Globals.attackDamageffa
 
 	if Globals.level == 0: # no matter what the player doesnt need the shop at this stage
 		stop_drill()
 		return
 
+	elif Globals.level == 7:
+		var win_layer = CanvasLayer.new()
+		win_layer.layer = 100
+		win_layer.name = "ShopLayer"
+		var win = preload("res://scenes/UI/WinningUI.tscn").instantiate()
+		win.modulate = Color(1, 1, 1, 0)
+		win_layer.add_child(win)
+		get_tree().current_scene.add_child(win_layer)
+		
+		var win_tween = create_tween()
+		win_tween.tween_property(win, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+		return
+	Globals.showUI = true
 	var shop_layer = CanvasLayer.new()
 	shop_layer.layer = 100
 	shop_layer.name = "ShopLayer"

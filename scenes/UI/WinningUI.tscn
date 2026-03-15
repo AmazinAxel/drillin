@@ -3,6 +3,15 @@
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_j6rys"]
 [ext_resource type="Script" uid="uid://bm8ui30kun2jn" path="res://scenes/UI/win.gd" id="1_jpt34"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="1_lnyhh"]
+[ext_resource type="Shader" uid="uid://djterq473uq1y" path="res://scenes/UI/eaeee.gdshader" id="4_ynfbb"]
+[ext_resource type="Texture2D" uid="uid://ds2on7amp5fky" path="res://scenes/Drilla/MyDrilla.png" id="5_tksa2"]
+[ext_resource type="Texture2D" uid="uid://dbqx4wuya0ivd" path="res://scenes/Heart.png" id="6_tksa2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2bvl"]
+shader = ExtResource("4_ynfbb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmywh"]
+shader = ExtResource("4_ynfbb")
 
 [node name="WinningUI" type="Control" unique_id=418545339]
 layout_mode = 3
@@ -15,67 +24,103 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_jpt34")
 
-[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=938044508]
-layout_direction = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1345089883]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+theme_override_constants/separation = 0
 
-[node name="Control2" type="Control" parent="HBoxContainer" unique_id=1730570582]
+[node name="Control2" type="Control" parent="VBoxContainer" unique_id=1730570582]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Label3" type="Label" parent="HBoxContainer/Control2" unique_id=1223813737]
+[node name="Label3" type="Label" parent="VBoxContainer/Control2" unique_id=1223813737]
 layout_mode = 0
-offset_left = 119.0
-offset_top = 186.0
-offset_right = 526.0
-offset_bottom = 234.0
+offset_left = -157.0
+offset_top = 126.0
+offset_right = 250.0
+offset_bottom = 174.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
 theme_override_font_sizes/font_size = 32
 text = "Time to Momma Bat:"
-horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="HBoxContainer/Control2" unique_id=789231634]
+[node name="Label4" type="Label" parent="VBoxContainer/Control2" unique_id=789231634]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 142.0
-offset_right = 522.0
-offset_bottom = 190.0
+offset_left = -157.0
+offset_top = 166.0
+offset_right = 250.0
+offset_bottom = 214.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
 theme_override_font_sizes/font_size = 32
 text = "Time to Big Drilla:"
-horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="HBoxContainer/Control2" unique_id=356044685]
+[node name="mombat" type="Label" parent="VBoxContainer/Control2" unique_id=434431926]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 226.0
-offset_right = 518.0
-offset_bottom = 274.0
+offset_left = 144.0
+offset_top = 126.0
+offset_right = 551.0
+offset_bottom = 174.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "1s"
+
+[node name="bigdrilla" type="Label" parent="VBoxContainer/Control2" unique_id=1984683061]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 166.0
+offset_right = 551.0
+offset_bottom = 214.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "2s"
+
+[node name="overall" type="Label" parent="VBoxContainer/Control2" unique_id=1591793570]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 206.0
+offset_right = 551.0
+offset_bottom = 254.0
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_lnyhh")
+theme_override_font_sizes/font_size = 32
+text = "3s"
+
+[node name="Label5" type="Label" parent="VBoxContainer/Control2" unique_id=356044685]
+layout_mode = 0
+offset_left = -157.0
+offset_top = 206.0
+offset_right = 250.0
+offset_bottom = 254.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
 theme_override_font_sizes/font_size = 32
 text = "Overall time:"
-horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=1318940794]
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1318940794]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Label2" type="Label" parent="HBoxContainer/Control" unique_id=1991463496]
+[node name="Label2" type="Label" parent="VBoxContainer/Control" unique_id=1991463496]
 layout_mode = 0
-offset_left = 126.0
-offset_top = 63.0
-offset_right = 533.0
-offset_bottom = 111.0
+offset_left = -194.0
+offset_top = 71.0
+offset_right = 213.0
+offset_bottom = 119.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -83,40 +128,64 @@ theme_override_font_sizes/font_size = 32
 text = "Thanks for playing!!"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Control" unique_id=257477398]
+[node name="Label" type="Label" parent="VBoxContainer/Control" unique_id=257477398]
 layout_mode = 0
-offset_left = 209.0
-offset_top = 5.0
-offset_right = 434.0
-offset_bottom = 53.0
+offset_left = -111.0
+offset_top = 13.0
+offset_right = 114.0
+offset_bottom = 61.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_j6rys")
 theme_override_font_sizes/font_size = 42
-text = "You win"
+text = "You win!"
 horizontal_alignment = 1
 
-[node name="Control3" type="Control" parent="HBoxContainer" unique_id=847979129]
+[node name="Control3" type="Control" parent="VBoxContainer" unique_id=955427748]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 
-[node name="Label6" type="Label" parent="HBoxContainer/Control3" unique_id=381028272]
+[node name="Label6" type="Label" parent="VBoxContainer/Control3" unique_id=302816226]
 layout_mode = 0
-offset_top = -78.0
-offset_right = 190.0
-offset_bottom = -49.0
+offset_left = -398.64197
+offset_top = 311.358
+offset_right = -208.64197
+offset_bottom = 340.358
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
 theme_override_font_sizes/font_size = 12
 text = "Made by Yehor, Alec & Vaughn
 for Campfire Vancouver & Ember"
-horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/Control3" unique_id=699590035]
+[node name="Button" type="Button" parent="VBoxContainer/Control3" unique_id=846045224]
 layout_mode = 0
-offset_top = -46.0
-offset_right = 415.0
-offset_bottom = -5.0
+offset_left = -520.0
+offset_top = 256.0
+offset_right = -105.0
+offset_bottom = 297.0
 theme_override_fonts/font = ExtResource("1_lnyhh")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 25
 text = "Play again in hard mode?"
+
+[node name="MyDrilla" type="Sprite2D" parent="." unique_id=486974245]
+material = SubResource("ShaderMaterial_l2bvl")
+position = Vector2(220.35803, 324.35803)
+rotation = 0.20943952
+scale = Vector2(0.4836929, 0.4836929)
+texture = ExtResource("5_tksa2")
+
+[node name="Heart2" type="Sprite2D" parent="." unique_id=238939214]
+visible = false
+material = SubResource("ShaderMaterial_cmywh")
+position = Vector2(495, 87)
+rotation = 0.08726646
+scale = Vector2(1.1972418, 1.1972418)
+texture = ExtResource("6_tksa2")
+
+[node name="Heart" type="Sprite2D" parent="." unique_id=1172937945]
+material = SubResource("ShaderMaterial_cmywh")
+position = Vector2(420.00003, 317)
+rotation = 0.2617994
+texture = ExtResource("6_tksa2")
