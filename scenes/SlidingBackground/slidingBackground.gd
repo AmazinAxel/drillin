@@ -3,6 +3,9 @@ extends Node2D
 @export var backgroundScrollSpeed: float = 200.0
 @export var shakeStrength: float = 0.8
 
+@export var zoomInDuration: float = 1.5
+@export var zoomInFrom: float = 1.3
+
 var background2: Node2D
 var bg_height: float
 var shake_origin: Vector2
@@ -10,6 +13,10 @@ var shake_origin: Vector2
 func _ready() -> void:
 	shake_origin = position
 	setupBackground()
+	
+	scale = Vector2(zoomInFrom, zoomInFrom)
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(1, 1), zoomInDuration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	
 func setupBackground():
 	var tilemap = $Background.get_node("TileMapLayer")
