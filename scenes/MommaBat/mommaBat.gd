@@ -439,7 +439,7 @@ func die():
 	
 	await get_tree().create_timer(1.0).timeout
 	queue_free()
-	Globals.bossAlive = false
+	Globals.bossAlive = false;
 	Globals.boss2Time = Time.get_ticks_msec();
 
 
