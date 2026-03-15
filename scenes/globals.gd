@@ -20,7 +20,10 @@ var checkpoint = 0
 var startTime = Time.get_ticks_msec();
 var boss1Time;
 var boss2Time;
-var boss3Time;
+#var boss3Time;
+var checkpointMinerals = 0;
+var checkpointDamageUpgrade = 0;
+var checkpointReplenishCount = 0;
 
 var damageUpgradeCount
 var armorUpgradeCount
@@ -30,12 +33,16 @@ func _ready():
 	resetVars()
 
 func resetVars():
+	var startTime = Time.get_ticks_msec();
 	level = 6
 	health = 100
 	damageReduction = 1
 	shootSpeed = 1
 	attackDamage = 2
+	checkpoint = 0
+
 	minerals = 0
+	lives = 9
 	riskChance = 10
 	isAttacking = false
 	baseRotation = 0
@@ -43,11 +50,23 @@ func resetVars():
 	stopping = false
 	inDrill = false
 	bossAlive = false
+	# does NOT reset starting
 	
 	damageUpgradeCount = 0
 	replenishCount = 0
 	armorUpgradeCount = 0
+	boss1Time = null;
+	boss2Time = null;
+	checkpointMinerals = 0;
+	checkpointDamageUpgrade = 0;
+	checkpointReplenishCount = 0;
 
+	#boss3Time = null;
+
+func permDie():
+	resetVars()
+	level = 0
+	
 
 func screen_shake(strength: float, duration: float):
 	var camera = get_viewport().get_camera_2d()

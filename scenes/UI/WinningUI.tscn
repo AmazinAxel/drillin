@@ -114,9 +114,9 @@ horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/Control3" unique_id=699590035]
 layout_mode = 0
-offset_top = -45.0
+offset_top = -46.0
 offset_right = 415.0
-offset_bottom = -4.0
+offset_bottom = -5.0
 theme_override_fonts/font = ExtResource("1_lnyhh")
 theme_override_font_sizes/font_size = 32
 text = "Play again in hard mode?"
