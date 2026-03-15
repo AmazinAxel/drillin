@@ -57,6 +57,12 @@ func beginEnterAnimation():
 	var cam_tween = create_tween()
 	cam_tween.set_ease(Tween.EASE_IN_OUT)
 	cam_tween.set_trans(Tween.TRANS_CUBIC)
+	var originalZoom = camera.zoom
+	var zoomedOut = originalZoom * 0.5
+	cam_tween.tween_method(
+		func(t): camera.zoom = originalZoom.lerp(zoomedOut, t),
+		0.0, 1.0, 1.5
+	)
 	cam_tween.tween_method(
 		func(t): camera.global_position = camera.global_position.lerp(global_position, t),
 		0.0, 1.0, 1.5
