@@ -47,6 +47,18 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8pbtb"]
+random_pitch = 1.7817973
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("6_8pbtb")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wojfi"]
+random_pitch = 1.3348398
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_wojfi")
+
 [node name="BabyBat" type="CharacterBody2D" unique_id=331467515 groups=["enemies"]]
 collision_layer = 34
 collision_mask = 34
@@ -77,11 +89,11 @@ pitch_scale = 3.0
 autoplay = true
 parameters/looping = true
 
-[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=328604578]
-stream = ExtResource("6_8pbtb")
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1468798564]
+stream = SubResource("AudioStreamRandomizer_8pbtb")
 volume_db = -5.0
 pitch_scale = 4.0
 
-[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1771553966]
-stream = ExtResource("7_wojfi")
-pitch_scale = 2.5
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=2057013830]
+stream = SubResource("AudioStreamRandomizer_wojfi")
+pitch_scale = 3.0

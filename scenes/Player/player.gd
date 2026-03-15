@@ -192,9 +192,8 @@ func throwPickaxe():
 	if thrown_instance != null:
 		return
 		
-	
-	isThrown = true
 	$woosh.play()
+	isThrown = true
 
 	$pickaxe.visible = false
 	Globals.isAttacking = true

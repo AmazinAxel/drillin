@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bxjhohi86ko4j" path="res://assets/sprites/UnfriendlyOuchPartilcle.png" id="11_cd157"]
 [ext_resource type="Texture2D" uid="uid://vmqlp4ccwtcl" path="res://assets/sprites/pickaxe.png" id="12_qt7jd"]
 [ext_resource type="AudioStream" uid="uid://bf686kqtmoi86" path="res://assets/sounds/Player/walkingSound.mp3" id="17_5gcuk"]
-[ext_resource type="AudioStream" uid="uid://bwrt7kc2o1xxe" path="res://assets/sounds/Player/woosh.mp3" id="18_2aixn"]
+[ext_resource type="AudioStream" uid="uid://diel0s8ltgqgx" path="res://assets/sounds/Player/woosh.mp3" id="18_2aixn"]
 [ext_resource type="AudioStream" uid="uid://cccvynvsry5et" path="res://scenes/Player/PronouncedOuch.mp3" id="19_2aixn"]
 [ext_resource type="AudioStream" uid="uid://bq68he1lb0sr4" path="res://scenes/Player/Ouch.mp3" id="20_miygw"]
 [ext_resource type="AudioStream" uid="uid://dshogusvuw2ma" path="res://assets/sounds/Player/ambient1.mp3" id="21_5tklm"]
@@ -267,6 +267,11 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qt7jd"]
 size = Vector2(58.807972, 30.549747)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g055u"]
+random_pitch = 1.3348398
+streams_count = 1
+stream_0/stream = ExtResource("18_2aixn")
+
 [sub_resource type="Gradient" id="Gradient_aqqjk"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(1, 1, 1, 1)
@@ -450,7 +455,8 @@ shape = SubResource("RectangleShape2D_qt7jd")
 debug_color = Color(0.89517343, 0.256144, 0.49235988, 0.41960785)
 
 [node name="woosh" type="AudioStreamPlayer2D" parent="." unique_id=826807480]
-stream = ExtResource("18_2aixn")
+stream = SubResource("AudioStreamRandomizer_g055u")
+pitch_scale = 1.5
 
 [node name="Walking" type="AudioStreamPlayer2D" parent="." unique_id=1226021126]
 stream = ExtResource("17_5gcuk")

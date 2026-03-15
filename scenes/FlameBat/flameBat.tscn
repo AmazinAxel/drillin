@@ -111,6 +111,18 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.09128631, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fwj1o"]
+random_pitch = 1.7817973
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("7_theln")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qgh04"]
+random_pitch = 1.3348398
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("8_fwj1o")
+
 [node name="flameBat" type="CharacterBody2D" unique_id=1099381924 groups=["enemies"]]
 collision_layer = 34
 collision_mask = 34
@@ -147,15 +159,6 @@ parameters/looping = true
 stream = ExtResource("7_5t6qh")
 pitch_scale = 2.0
 parameters/looping = true
-
-[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1245653431]
-stream = ExtResource("7_theln")
-volume_db = -5.0
-pitch_scale = 4.0
-
-[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=218890965]
-stream = ExtResource("8_fwj1o")
-pitch_scale = 2.5
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=589461785]
 position = Vector2(0, -3)
@@ -196,6 +199,15 @@ angle_max = 180.0
 scale_amount_min = 0.2
 scale_amount_max = 0.4
 color_ramp = SubResource("Gradient_qgh04")
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=775843338]
+stream = SubResource("AudioStreamRandomizer_fwj1o")
+volume_db = -5.0
+pitch_scale = 4.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=748385968]
+stream = SubResource("AudioStreamRandomizer_qgh04")
+pitch_scale = 3.0
 
 [connection signal="body_entered" from="Flames" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Flames" to="." method="_on_area_2d_body_exited"]

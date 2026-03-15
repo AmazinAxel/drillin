@@ -59,6 +59,18 @@ fill = 1
 fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h2ggs"]
+random_pitch = 1.7817973
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("4_228vg")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_228vg"]
+random_pitch = 1.3348398
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("5_idbkf")
+
 [node name="poisonBat" type="CharacterBody2D" unique_id=120678988 groups=["enemies"]]
 collision_layer = 34
 collision_mask = 34
@@ -84,15 +96,6 @@ scale = Vector2(0.5, 0.375)
 sprite_frames = SubResource("SpriteFrames_0mt78")
 frame_progress = 0.21581163
 
-[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=47506477]
-stream = ExtResource("4_228vg")
-volume_db = -5.0
-pitch_scale = 4.0
-
-[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1817634704]
-stream = ExtResource("5_idbkf")
-pitch_scale = 2.5
-
 [node name="BatFlappingWings" type="AudioStreamPlayer2D" parent="." unique_id=1793871375]
 stream = ExtResource("6_08crq")
 volume_db = -10.0
@@ -104,3 +107,12 @@ parameters/looping = true
 color = Color(0.48235294, 1, 0.5294118, 1)
 energy = 0.2
 texture = SubResource("GradientTexture2D_h2ggs")
+
+[node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1962024873]
+stream = SubResource("AudioStreamRandomizer_h2ggs")
+volume_db = -5.0
+pitch_scale = 4.0
+
+[node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=319845585]
+stream = SubResource("AudioStreamRandomizer_228vg")
+pitch_scale = 3.0

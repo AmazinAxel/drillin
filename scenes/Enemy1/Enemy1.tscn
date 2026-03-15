@@ -78,6 +78,18 @@ fill = 1
 fill_from = Vector2(0.49130434, 0.5326087)
 fill_to = Vector2(0.49347827, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_258k1"]
+random_pitch = 1.7817973
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("5_258k1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kngcm"]
+random_pitch = 1.3348398
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("6_kngcm")
+
 [node name="Enemy1" type="CharacterBody2D" unique_id=835573775 groups=["enemies"]]
 collision_layer = 34
 collision_mask = 34
@@ -126,10 +138,10 @@ energy = 0.5
 texture = SubResource("GradientTexture2D_aqqjk")
 
 [node name="EnemyHitSound" type="AudioStreamPlayer2D" parent="." unique_id=1963653770]
-stream = ExtResource("5_258k1")
+stream = SubResource("AudioStreamRandomizer_258k1")
 volume_db = -5.0
 pitch_scale = 4.0
 
 [node name="EnemyDeathSound" type="AudioStreamPlayer2D" parent="." unique_id=1794569052]
-stream = ExtResource("6_kngcm")
-pitch_scale = 2.5
+stream = SubResource("AudioStreamRandomizer_kngcm")
+pitch_scale = 3.0

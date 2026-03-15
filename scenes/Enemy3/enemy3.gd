@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var jump_force: float = -300.0
 
-@export var max_health: int = 6
+@export var max_health: int = 4
 @export var speed: float = 40.0
 @export var gravity: float = 400.0
 @export var jump_threshold: float = 20.0 

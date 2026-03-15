@@ -28,7 +28,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _ready():
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	if is_instance_valid(self):
 		queue_free()
 

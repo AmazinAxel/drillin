@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var speed: float = 60.0
 @export var gravity: float = 800.0
 @export var jump_force: float = -300.0
-@export var damage: int = 15
+@export var damage: int = 8
 @export var damage_cooldown: float = 1.0
 @export var attack_range: float = 40.0
 @export var jump_threshold: float = 20.0  # How far above the enemy the player must be to trigger a jump

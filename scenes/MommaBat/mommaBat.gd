@@ -15,6 +15,8 @@ extends CharacterBody2D
 @export var knockbackFromPlayer: float = 1000.0
 @export var knockbackForce: float = 3.0  
 
+@export var target_scene: PackedScene
+
 # === INTERNAL STATE ===
 var health: int
 var can_damage: bool = true
@@ -82,6 +84,7 @@ func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> vo
 		var dir = (target - global_position).normalized()
 		velocity.x = dir.x * move_speed
 		velocity.y = dir.y * move_speed
+		animated_sprite.flip_h = velocity.x > 0
 		move_and_slide()
 		
 		if camera:
@@ -106,6 +109,18 @@ func dartLoop():
 		_startDart()
 		
 func _startDart():
+	var player = get_tree().get_first_node_in_group("player")
+	if not player or isKnockedBackFromPlayer:
+		return
+		
+	isDarting = true
+	var dir = (player.global_position - global_position).normalized()
+	dir = dir.rotated(randf_range(-0.9, 0.9))
+	dartVelocity = dir * speed * randf_range(4.0, 7.0) * dartSpeed
+	await get_tree().create_timer(0.2).timeout
+	isDarting = false
+	
+func startDiagonalDash():
 	var player = get_tree().get_first_node_in_group("player")
 	if not player or isKnockedBackFromPlayer:
 		return
@@ -174,7 +189,6 @@ func _physics_process(delta):
 
 func take_damage(amount: int):
 	health -= amount
-	print("e")
 	$BatBossDamage.play()
 	if health <= 0:
 		die()
@@ -185,3 +199,4 @@ func die():
 	animated_sprite.visible = false
 	await get_tree().create_timer(2).timeout
 	queue_free()
+	
