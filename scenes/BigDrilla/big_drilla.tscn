@@ -224,7 +224,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ripgs"]
-size = Vector2(93, 49)
+size = Vector2(92, 53)
 
 [sub_resource type="Gradient" id="Gradient_qkt3i"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -247,6 +247,9 @@ width = 1
 [sub_resource type="Gradient" id="Gradient_o6u5y"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hseo"]
+size = Vector2(23, 40)
+
 [node name="BigDrilla" type="CharacterBody2D" unique_id=1445029359]
 collision_layer = 0
 collision_mask = 0
@@ -261,7 +264,7 @@ animation = &"death"
 frame_progress = 0.09236079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99379516]
-position = Vector2(0.5, 3.5)
+position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_ripgs")
 one_way_collision = true
 
@@ -307,6 +310,7 @@ color_ramp = SubResource("Gradient_o6u5y")
 [node name="drillSound" type="AudioStreamPlayer2D" parent="." unique_id=1151748427]
 stream = ExtResource("10_jxy6o")
 pitch_scale = 1.2
+parameters/looping = true
 
 [node name="PreparingMissile" type="AudioStreamPlayer2D" parent="." unique_id=2134322574]
 stream = ExtResource("10_qkt3i")
@@ -344,3 +348,11 @@ texture_scale = 0.1
 [node name="WarningHolder" type="Node2D" parent="." unique_id=1811698636]
 position = Vector2(0, -39.46)
 scale = Vector2(1.5, 1.5)
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1467988785]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=446873857]
+position = Vector2(-32.5, 0)
+shape = SubResource("RectangleShape2D_0hseo")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

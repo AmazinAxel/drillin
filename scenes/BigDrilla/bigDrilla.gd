@@ -8,8 +8,6 @@ extends CharacterBody2D
 @export var damage: int = 50
 @export var damage_cooldown: float = 2.0
 
-@export var attack_range: float = 60.0
-
 @export var chargeDamage: int = 20
 @export var charge_speed: float = 300.0
 @export var charge_duration: float = 0.5
@@ -207,32 +205,21 @@ func _physics_process(delta):
 	if is_charging:
 		animated_sprite.play("driving")
 		velocity.x = charge_direction.x * charge_speed
+		rage = min(rage + rage_build_rate * 3.0 * 60.0, 1.0)
 		
-		rage = min(rage + rage_build_rate * 3.0 * delta * 60.0, 1.0)
-		
-		var distance = global_position.distance_to(player.global_position)
-		if can_damage and distance < attack_range:
-			var final_damage = int(chargeDamage * get_rage_damage_multiplier())
-			player.take_damage(final_damage)
-			can_damage = false
-			await get_tree().create_timer(damage_cooldown).timeout
-			can_damage = true
-
 	elif player:
 		animated_sprite.play("idle")
 		var direction = (player.global_position - global_position).normalized()
 		velocity.x = direction.x * speed
 		animated_sprite.flip_h = direction.x > 0
-
+		
+		if direction.x > 0:
+			$DamageArea.rotation = 180
+		else:
+			$DamageArea.rotation = 0
+			
 		rage = max(rage - rage_decay_rate * delta * 60.0, 0.0)
 
-		var distance = global_position.distance_to(player.global_position)
-		if can_damage and distance < attack_range:
-			var final_damage = int(damage * get_rage_damage_multiplier())
-			player.take_damage(final_damage)
-			can_damage = false
-			await get_tree().create_timer(damage_cooldown).timeout
-			can_damage = true
 
 	heatShieldEffect.energy = lerp(heatShieldEffect.energy, rage * 3.5, delta * 4.0)
 	
@@ -290,3 +277,16 @@ func die():
 	queue_free()
 	Globals.bossAlive = false
 	Globals.boss1Time = Time.get_ticks_msec();
+
+
+func _on_damage_area_body_entered(body: Node2D) -> void:
+
+		if can_damage:
+			var final_damage = int(chargeDamage * get_rage_damage_multiplier())
+			
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				player.take_damage(final_damage)
+			can_damage = false
+			await get_tree().create_timer(damage_cooldown).timeout
+			can_damage = true
