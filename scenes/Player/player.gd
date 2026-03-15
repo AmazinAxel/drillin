@@ -152,6 +152,7 @@ func die():
 
 func playAgain():
 	var tree = get_tree()
+	Globals.transitioningOut = true;
 	
 	var overlay = ColorRect.new()
 	overlay.color = Color(0, 0, 0, 0)
@@ -206,9 +207,8 @@ func playAgain():
 	
 	tween.tween_callback(func():
 		Globals.resetToSpawnpoint()
-		tree.change_scene_to_file("res://scenes/Main/Main.tscn")
-		mainHUD.setLives(Globals.lives);
-		mainHUD.setMinerals(Globals.minerals);
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/Main/Main.tscn");
+		Globals.transitioningOut = false;
 	)
 	
 	# wait a frame for the new scene to load, then fade out

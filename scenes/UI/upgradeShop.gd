@@ -21,6 +21,7 @@ func _on_damage_upgrade_pressed() -> void:
 		$purchase.play()
 		shopPricingUpdateText()
 		whatCanBuy()
+		mainHUD.setMinerals(Globals.minerals);
 
 func _on_health_upgrade_pressed() -> void:
 	var cost = getCost(mainPrices, Globals.armorUpgradeCount)
@@ -31,6 +32,7 @@ func _on_health_upgrade_pressed() -> void:
 		$purchase.play()
 		shopPricingUpdateText()
 		whatCanBuy()
+		mainHUD.setMinerals(Globals.minerals);
 
 func _on_replenish_health_pressed() -> void:
 	var cost = getCost(replenishPrices, Globals.replenishCount)
@@ -41,6 +43,7 @@ func _on_replenish_health_pressed() -> void:
 		$purchase.play()
 		shopPricingUpdateText()
 		whatCanBuy()
+		mainHUD.setMinerals(Globals.minerals);
 
 func _process(_delta):
 	$MineralsLabel.text = str(Globals.minerals)

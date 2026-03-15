@@ -21,6 +21,7 @@ var startTime = Time.get_ticks_msec();
 var boss1Time;
 var boss2Time;
 var checkpointLevel;
+var transitioningOut;
 #var boss3Time;
 var checkpointMinerals = 0;
 var checkpointDamageUpgradeCount = 0;
@@ -60,7 +61,8 @@ func resetVars():
 	
 	damageUpgradeCount = 0
 	replenishCount = 0
-	armorUpgradeCount = 0
+	armorUpgradeCount = 0;
+	transitioningOut = false;
 	boss1Time = null;
 	boss2Time = null;
 	#checkpointMinerals = 0; # DONT USE THIS 
@@ -74,14 +76,13 @@ func resetToSpawnpoint():
 	minerals = checkpointMinerals;
 	damageReduction = checkpointDamageReduction;
 	attackDamage = checkpointAttackDamage;
-
 	level = checkpointLevel;
 	
 	damageUpgradeCount = checkpointDamageUpgradeCount;
 	replenishCount = checkpointReplenishCount
 	armorUpgradeCount = checkpointArmorUpgradeCount
 
-	health = 10
+	health = 100
 	isAttacking = false
 	baseRotation = 0
 	isDead = false
