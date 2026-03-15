@@ -404,7 +404,6 @@ func take_damage(amount: int):
 func die():
 	overridePathfinding = true
 	isDashing = false
-	
 	isDying = true
 	velocity = Vector2.ZERO
 	
@@ -412,17 +411,15 @@ func die():
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.4)
-	print(get_tree().get_nodes_in_group("bats"))
+	
 	for bat in get_tree().get_nodes_in_group("bats"):
 		bat.queue_free()
 	
 	$BatBossDamage.play()
 	animated_sprite.play("fallingDeath")
-	$DamageArea/CollisionShape2D.set_deferred("disabled", true)
 	
 	# Fade out the boss health bar
 	var boss_layer = get_tree().current_scene.get_node_or_null("BossLayer")
-
 	if boss_layer and boss_layer.get_child_count() > 0:
 		var boss_ui = boss_layer.get_child(0)
 		var fade_tween = create_tween()
@@ -433,6 +430,8 @@ func die():
 		velocity.y += (gravity * 0.15) * get_process_delta_time()
 		move_and_slide()
 		await get_tree().process_frame
+		
+	$DamageArea/CollisionShape2D.set_deferred("disabled", true)
 	
 	velocity = Vector2.ZERO
 	animated_sprite.play("onGroundDeath")
