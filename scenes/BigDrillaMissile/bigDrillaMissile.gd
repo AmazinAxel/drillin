@@ -53,19 +53,20 @@ func _ready():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		createExplosion()
-	
+		call_deferred("createExplosion")
 	
 func createExplosion():
 	if Globals.transitioningOut:
 		return
-	if is_instance_valid(self):
-		if isExploding:
-			return
-		var explosion = explosionScene.instantiate()
-		get_tree().current_scene.add_child(explosion)
-		explosion.global_position = global_position
-		isExploding = true
-		$Sprite2D.visible = false
-		await get_tree().create_timer(1).timeout
-		queue_free()
+	if not is_instance_valid(self):
+		return
+	if isExploding:
+		return
+	isExploding = true
+	var explosion = explosionScene.instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
+	$Sprite2D.visible = false
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	await get_tree().create_timer(1).timeout
+	queue_free()
