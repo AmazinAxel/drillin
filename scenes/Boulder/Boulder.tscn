@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://qn7iyv0qpgg5"]
+
+[ext_resource type="Texture2D" uid="uid://ba8x0w44uir45" path="res://assets/sprites/DA_Bouldaaar.png" id="1_6kwcq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1tvk"]
+size = Vector2(80, 79)
+
+[node name="Boulder" type="StaticBody2D" unique_id=1000315957]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=301175892]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_d1tvk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=428251432]
+texture = ExtResource("1_6kwcq")

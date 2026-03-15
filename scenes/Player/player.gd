@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if Input.is_action_just_pressed("up") and is_on_floor():
+	if Input.is_action_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	var direction := Input.get_axis("left", "right")
 
@@ -142,6 +142,8 @@ func die():
 
 	$playerSprite.play("death")
 	$skullParticles.emitting = true
+	
+	PoisonGlobals.clear_poison()
 	
 	$pickaxe.visible = false;
 	$healthBar.visible = false;
@@ -300,7 +302,7 @@ func _set_crouch(crouching: bool) -> void:
 		crouch_tween.kill()
 	crouch_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 
-	var target_scale_y = CROUCH_SCALE_Y if crouching else 1.0
+	var target_scale_y = (CROUCH_SCALE_Y if crouching else 1.0)
 
 	crouch_tween.tween_property($playerSprite, "scale:y", target_scale_y, 0.12)
 
@@ -312,7 +314,7 @@ func _set_crouch(crouching: bool) -> void:
 		crouch_tween.parallel().tween_method(
 			func(h): col.shape.height = h,
 			col.shape.height,
-			16.0 if crouching else 32.0,
+			28.0 if crouching else 32.0,
 			0.12
 		)
 
