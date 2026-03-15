@@ -290,10 +290,14 @@ func stop_drill():
 	$drillSound.pitch_scale = 1.0
 	$drillSound.volume_db = 0.0
 	
+	var zoom = Vector2(2, 2)
+	if Globals.level == 3 or Globals.level == 7:
+		zoom = Vector2(1, 1)
+
 	var return_tween = create_tween()
 	return_tween.set_parallel(true)
 	return_tween.tween_property(camera, "offset", Vector2.ZERO, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
-	return_tween.tween_property(camera, "zoom", Vector2(2, 2), 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	return_tween.tween_property(camera, "zoom", zoom, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	await return_tween.finished
 	
 	camera_base_offset = Vector2.ZERO
