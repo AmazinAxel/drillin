@@ -1,21 +1,36 @@
 extends CharacterBody2D
 
 @export var max_health: int = 6
-@export var speed: float = 20.0
-@export var dartSpeed: float = 2
+@export var speed: float = 100.0
+@export var enragedSpeed: float = 150.0
+@export var maxNumberOfBats: int = 3
+@export var enragedMaxNumberOfBats: int = 5
+
+
 @export var swarmDistance: float = 5
 @export var animationSpeed: float = 150.0
 
 @export var gravity: float = 800.0
 @export var jump_force: float = -300.0
-@export var damage: int = 10
+@export var damage: int = 50
 @export var damage_cooldown: float = 1.0
-@export var attack_range: float = 40.0
+@export var attack_range: float = 100.0
 
 @export var knockbackFromPlayer: float = 1000.0
 @export var knockbackForce: float = 3.0  
 
+
+@export var dashSpeed: float = 300.0
+@export var dashTargetCount: int = 8
+@export var dashTargetSpacing: float = 50.0
 @export var target_scene: PackedScene
+
+
+@export var attackDashSpeed: float = 450.0
+@export var attackDashTargetCount: int = 20
+@export var yLevelSpacing: int = 100
+
+@export var batScenes: Array[PackedScene]
 
 # === INTERNAL STATE ===
 var health: int
@@ -27,7 +42,13 @@ var swarmOffset: Vector2 = Vector2.ZERO
 var swarmOffsetTarget: Vector2 = Vector2.ZERO
 var swarmOffsetTimer: float = 0.0
 var dartVelocity: Vector2 = Vector2.ZERO
-var isDarting: bool = false
+var overridePathfinding: bool = false
+
+var yDifferenceInFloors: int = 0
+var isLeftDirection: bool = false
+
+var belowHalfHealth: bool = false
+
 
 var isAnimatedIntoScene: bool = true
 @onready var animated_sprite = $AnimatedSprite2D
@@ -65,7 +86,7 @@ func beginEnterAnimation():
 		0.0, 1.0, 1.5
 	)
 	var spawnpoint = get_tree().get_first_node_in_group("mommaBatSpawnpoint")
-	await _move_to(spawnpoint.global_position, animationSpeed, camera)
+	await moveToCenterWithCamera(spawnpoint.global_position, animationSpeed, camera)
 	
 	var return_tween = create_tween()
 	return_tween.set_ease(Tween.EASE_IN_OUT)
@@ -79,7 +100,7 @@ func beginEnterAnimation():
 	isAnimatedIntoScene = false
 	initReady()
 
-func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> void:
+func moveToCenterWithCamera(target: Vector2, move_speed: float, camera: Camera2D = null) -> void:
 	while global_position.distance_to(target) > 5.0:
 		var dir = (target - global_position).normalized()
 		velocity.x = dir.x * move_speed
@@ -94,66 +115,177 @@ func _move_to(target: Vector2, move_speed: float, camera: Camera2D = null) -> vo
 	
 	velocity = Vector2.ZERO
 
+func moveToPoint(target: Vector2, move_speed: float):
+	while global_position.distance_to(target) > 5.0:
+		var dir = (target - global_position).normalized()
+		velocity.x = dir.x * move_speed
+		velocity.y = dir.y * move_speed
+		animated_sprite.flip_h = velocity.x > 0
+		move_and_slide()
+		
+		await get_tree().process_frame
+	
+	velocity = Vector2.ZERO
+	
 func initReady():
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
-	collision_layer = 8
-	collision_mask = 8
 	
-	await get_tree().create_timer(randf_range(1.0, 3.0)).timeout
-	dartLoop()
-	
-func dartLoop():
+	diagonalDashLoop()
+	startDashMode()
+
+func diagonalDashLoop():
 	while is_instance_valid(self):
-		await get_tree().create_timer(randf_range(0.5, 3.0)).timeout
-		_startDart()
+		if belowHalfHealth:
+			await get_tree().create_timer(0.1).timeout
+			continue
 		
-func _startDart():
-	var player = get_tree().get_first_node_in_group("player")
-	if not player or isKnockedBackFromPlayer:
-		return
+		await spawnBats()
+		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
+		await startDiagonalDash()
 		
-	isDarting = true
-	var dir = (player.global_position - global_position).normalized()
-	dir = dir.rotated(randf_range(-0.9, 0.9))
-	dartVelocity = dir * speed * randf_range(4.0, 7.0) * dartSpeed
-	await get_tree().create_timer(0.2).timeout
-	isDarting = false
-	
 func startDiagonalDash():
-	var player = get_tree().get_first_node_in_group("player")
-	if not player or isKnockedBackFromPlayer:
+	
+	if belowHalfHealth or isKnockedBackFromPlayer or isAnimatedIntoScene:
 		return
 		
-	isDarting = true
+	var player = get_tree().get_first_node_in_group("player")
+	if not player or isKnockedBackFromPlayer or isAnimatedIntoScene:
+		return
+
 	var dir = (player.global_position - global_position).normalized()
-	dir = dir.rotated(randf_range(-0.9, 0.9))
-	dartVelocity = dir * speed * randf_range(4.0, 7.0) * dartSpeed
-	await get_tree().create_timer(0.2).timeout
-	isDarting = false
+	var lastTargetPos: Vector2
+
+	for i in range(1, dashTargetCount + 1):
+		var targetPos = global_position + dir * dashTargetSpacing * i
+		var target = target_scene.instantiate()
+		get_tree().current_scene.add_child(target)
+		target.global_position = targetPos
+		lastTargetPos = targetPos
+		
+	await get_tree().create_timer(1).timeout
+
+	overridePathfinding = true
+
+	await moveToPoint(lastTargetPos, dashSpeed)
+	var spawnpoint = get_tree().get_first_node_in_group("mommaBatSpawnpoint")
+	await moveToPoint(spawnpoint.global_position, dashSpeed)
 	
+	overridePathfinding = false
+
+
+func startDashMode():
+	while is_instance_valid(self):
+		if !belowHalfHealth:
+			await get_tree().create_timer(0.1).timeout
+			continue
+		
+		await spawnBats()
+		
+		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
+		
+		overridePathfinding = true
+		await moveToAttackPoints()
+		
+		for i in range(3):
+			await moveToNextAttackPoints()
+			if i < 2:
+				await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
+		
+		await moveBackToSpawnpoint()
+		overridePathfinding = false
+		
+		
+		
+func moveToAttackPoints():
+	isLeftDirection = bool(randi() % 2)
+	var currentFloor = randi_range(0, 3)
+	yDifferenceInFloors = currentFloor * yLevelSpacing
+	var animatePoint
+	var animateDistance = 400
+	if isLeftDirection:
+		animateDistance *= -1
+		var leftPoint = get_tree().get_first_node_in_group("attackPoint1")
+		animatePoint = leftPoint
+	else:
+		animateDistance *= 1
+		var rightPoint = get_tree().get_first_node_in_group("attackPoint2")
+		animatePoint = rightPoint
+	
+	await moveToPoint(Vector2(global_position.x + animateDistance, global_position.y), attackDashSpeed)
+	await moveToPoint(Vector2(animatePoint.global_position.x, animatePoint.global_position.y - yDifferenceInFloors), attackDashSpeed)
+
+	
+func moveToNextAttackPoints(): 
+	var currentFloor = randi_range(0, 3)
+	yDifferenceInFloors = currentFloor * yLevelSpacing
+	
+	var nextAnimatedPoint
+	if isLeftDirection:
+		var rightPoint = get_tree().get_first_node_in_group("attackPoint2")
+		nextAnimatedPoint = rightPoint
+	else:
+		var leftPoint = get_tree().get_first_node_in_group("attackPoint1")
+		nextAnimatedPoint = leftPoint
+	
+	var endAnimatedPointPos = Vector2(nextAnimatedPoint.global_position.x, nextAnimatedPoint.global_position.y - yDifferenceInFloors)
+
+	for i in range(1, attackDashTargetCount + 1):
+		var t = float(i) / float(dashTargetCount)
+		var targetPos = global_position.lerp(endAnimatedPointPos, t)
+		var target = target_scene.instantiate()
+		get_tree().current_scene.add_child(target)
+		target.global_position = targetPos
+		
+	await moveToPoint(endAnimatedPointPos, attackDashSpeed)
+	isLeftDirection = !isLeftDirection
+	
+	
+func moveBackToSpawnpoint():
+	var animateDistance = 400
+	
+	if isLeftDirection:
+		animateDistance *= -1
+	else:
+		animateDistance *= 1
+	
+	var spawnpoint = get_tree().get_first_node_in_group("mommaBatSpawnpoint")
+	await moveToPoint(Vector2(spawnpoint.global_position.x + animateDistance, spawnpoint.global_position.y), attackDashSpeed)
+	await moveToPoint(spawnpoint.global_position, attackDashSpeed)
+
+func spawnBats():
+	var numOfBats = randi_range(1, maxNumberOfBats)
+	for i in range(numOfBats):
+		var bat = batScenes.pick_random().instantiate()
+		get_tree().current_scene.add_child(bat)
+		bat.global_position = global_position
+		await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
+		
 func _physics_process(delta):
 	if isAnimatedIntoScene:
 		return
 		
-	if isKnockedBackFromPlayer:
-		velocity.y += gravity * delta
-		
-	if isKnockedBackFromPlayer:
-		knockbackVelocity = knockbackVelocity.lerp(Vector2.ZERO, delta * 10)
-		velocity = knockbackVelocity
-		if knockbackVelocity.length() < 10:
-			knockbackVelocity = Vector2.ZERO
-			isKnockedBackFromPlayer = false
-		move_and_slide()
-		return
 
 	animated_sprite.play("default")
 	
+	if ((max_health / 2) > health) && !belowHalfHealth:
+		belowHalfHealth = true
+		
+		speed = enragedSpeed
+		maxNumberOfBats = enragedMaxNumberOfBats
+		
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(animated_sprite, "modulate", Color("#ff3b2c"), 0.6)
+
+	if overridePathfinding:
+		return
+		
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
+		var distance = global_position.distance_to(player.global_position)
 		
-		# Periodically drift the personal swarm offset to a new random spot
 		swarmOffsetTimer -= delta
 		if swarmOffsetTimer <= 0.0:
 			swarmOffsetTimer = randf_range(0.8, 2.0)
@@ -163,26 +295,16 @@ func _physics_process(delta):
 		var desired_pos = player.global_position + swarmOffset
 		var to_desired = (desired_pos - global_position)
 
-		if isDarting:
-			dartVelocity = dartVelocity.lerp(Vector2.ZERO, delta * 8.0)
-			velocity = dartVelocity
-		else:
-			var desired_vel = to_desired.normalized() * speed
-			if to_desired.length() < 20.0:
-				desired_vel = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * speed * 0.3
-			velocity = velocity.lerp(desired_vel, delta * 3.0)
-			
-			animated_sprite.flip_h = velocity.x > 0
-				
-			var distance = global_position.distance_to(player.global_position)
-			if can_damage and distance < attack_range:
-				player.take_damage(damage)
-				var push_direction = (global_position - player.global_position).normalized()
-				velocity.x = push_direction.x * speed * knockbackForce
-				velocity.y = push_direction.y * speed * knockbackForce
-				can_damage = false
-				await get_tree().create_timer(damage_cooldown).timeout
-				can_damage = true
+		var desired_vel = to_desired.normalized() * speed
+
+		if distance < attack_range * 1.5:
+			var push_away = (global_position - player.global_position).normalized()
+			desired_vel = push_away * speed * 1.5
+		elif to_desired.length() < 20.0:
+			desired_vel = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * speed * 0.3
+
+		velocity = velocity.lerp(desired_vel, delta * 3.0)
+		animated_sprite.flip_h = velocity.x > 0
 
 	move_and_slide()
 
@@ -200,3 +322,14 @@ func die():
 	await get_tree().create_timer(2).timeout
 	queue_free()
 	
+
+
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		if can_damage == false:
+			return
+			
+		body.take_damage(damage)
+		can_damage = false
+		await get_tree().create_timer(damage_cooldown).timeout
+		can_damage = true

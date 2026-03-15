@@ -2,7 +2,7 @@ extends Node
 
 var intensity_per_hit: float = 0.4
 var max_intensity: float = 3.0
-var fade_speed: float = 0.05
+var fade_speed: float = 0.1
 var fade_threshold: float = 0.05
 
 var intensity: float = 0.0

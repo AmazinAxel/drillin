@@ -59,7 +59,7 @@ random_volume_offset_db = 3.0
 streams_count = 1
 stream_0/stream = ExtResource("7_wojfi")
 
-[node name="BabyBat" type="CharacterBody2D" unique_id=331467515 groups=["enemies"]]
+[node name="BabyBat" type="CharacterBody2D" unique_id=331467515 groups=["bats", "enemies"]]
 collision_layer = 34
 collision_mask = 34
 script = ExtResource("1_bwrru")

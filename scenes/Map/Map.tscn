@@ -1156,6 +1156,12 @@ position = Vector2(1403, 5682)
 [node name="BossSpawnpoint" type="Marker2D" parent="Spawnpoints/BossMarkers/MommaBat" unique_id=466208314 groups=["mommaBatSpawnpoint"]]
 position = Vector2(794, 5836)
 
+[node name="AttackPoint1" type="Marker2D" parent="Spawnpoints/BossMarkers/MommaBat" unique_id=1533197157 groups=["attackPoint1"]]
+position = Vector2(-174, 6261)
+
+[node name="AttackPoint2" type="Marker2D" parent="Spawnpoints/BossMarkers/MommaBat" unique_id=987842196 groups=["attackPoint2"]]
+position = Vector2(1730, 6261)
+
 [node name="Level4" type="Node" parent="Spawnpoints" unique_id=2079362858]
 
 [node name="Level5" type="Node" parent="Spawnpoints" unique_id=1011380]

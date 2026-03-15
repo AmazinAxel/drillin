@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bk325pkki607i"]
 
 [ext_resource type="Script" uid="uid://b6m17j85jko5y" path="res://scenes/MommaBat/mommaBat.gd" id="1_1lmfc"]
+[ext_resource type="PackedScene" uid="uid://bkmm8277xdoyv" path="res://scenes/Target/target.tscn" id="2_l5jl3"]
 [ext_resource type="Texture2D" uid="uid://co23mbe64nu1j" path="res://assets/sprites/BAT_FLU.png" id="2_muxby"]
+[ext_resource type="PackedScene" uid="uid://coexc4n5ty8c0" path="res://scenes/BabyBat/babyBat.tscn" id="3_g7dog"]
 [ext_resource type="AudioStream" uid="uid://cwokdbcntknko" path="res://assets/sounds/MommaBat/batBossDeath.mp3" id="3_n3gil"]
+[ext_resource type="PackedScene" uid="uid://ch6ftc4jva4j3" path="res://scenes/FlameBat/flameBat.tscn" id="4_i7l1d"]
 [ext_resource type="AudioStream" uid="uid://d2sd7ink0pxre" path="res://assets/sounds/MommaBat/batBossDamage.mp3" id="4_l5jl3"]
 [ext_resource type="AudioStream" uid="uid://dr16gb70a7u2y" path="res://assets/sounds/MommaBat/batBossSpawn.mp3" id="5_xa2ae"]
+[ext_resource type="PackedScene" uid="uid://c34pxeev7kwiy" path="res://scenes/PoisonBat/poisonBat.tscn" id="5_yv1p5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixb1d"]
 atlas = ExtResource("2_muxby")
@@ -64,12 +68,28 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n3gil"]
-radius = 105.00476
+radius = 94.33981
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5jl3"]
+radius = 81.02469
+
+[sub_resource type="Gradient" id="Gradient_puxyr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l5jl3"]
+gradient = SubResource("Gradient_puxyr")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.49130434, 0.5326087)
+fill_to = Vector2(0.49347827, 0)
 
 [node name="MommaBat" type="CharacterBody2D" unique_id=124854866]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 512
+collision_mask = 512
 script = ExtResource("1_1lmfc")
+target_scene = ExtResource("2_l5jl3")
+batScenes = Array[PackedScene]([ExtResource("3_g7dog"), ExtResource("4_i7l1d"), ExtResource("5_yv1p5")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670502720]
 position = Vector2(-1, -3)
@@ -95,3 +115,17 @@ autoplay = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=410822917]
 shape = SubResource("CircleShape2D_n3gil")
 one_way_collision = true
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1508666229]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=176919677]
+shape = SubResource("CircleShape2D_l5jl3")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=50866240]
+position = Vector2(1, 4)
+color = Color(0.8235294, 0.30980393, 0.21960784, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_l5jl3")
+texture_scale = 3.0
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

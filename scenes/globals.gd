@@ -34,7 +34,7 @@ func _ready():
 
 func resetVars():
 	var startTime = Time.get_ticks_msec();
-	level = 2
+	level = 6
 	health = 100
 	damageReduction = 1
 	shootSpeed = 1

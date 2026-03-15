@@ -43,6 +43,9 @@ bossSpawnpoint=""
 poison=""
 mommaBatMarkers=""
 mommaBatSpawnpoint=""
+attackPoint1=""
+attackPoint2=""
+bats=""
 
 [input]
 
