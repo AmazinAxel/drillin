@@ -157,21 +157,60 @@ func playAgain():
 	overlay.color = Color(0, 0, 0, 0)
 	overlay.size = get_viewport().get_visible_rect().size
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# anchor it to full screen so it stays correct on resize
 	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
 	
 	var canvas = CanvasLayer.new()
-	canvas.layer = 128  # go above bossbar
+	canvas.layer = 128
 	canvas.add_child(overlay)
 	tree.root.add_child(canvas)
 	
 	var tween = tree.create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.5)
+	
+	Globals.lives -= 1;
+	
+	if Globals.lives <= 1:
+		# load and add the warning scene
+		var warning_scene = preload("res://scenes/UI/livesWarning.tscn").instantiate()
+		warning_scene.modulate.a = 0.0
+		canvas.add_child(warning_scene)
+		
+		if Globals.lives == 1:
+			warning_scene.get_node("Label2").text = "1 life remaining"
+		else:
+			warning_scene.get_node("Label2").text = "No lives remaining"
+		
+		# fade in warning
+		tween.tween_property(warning_scene, "modulate:a", 1.0, 0.5)
+		# hold on screen
+		tween.tween_interval(1.5)
+		# fade out warning
+		tween.tween_property(warning_scene, "modulate:a", 0.0, 0.5)
+		
+		if Globals.lives == 0:
+			Globals.level = 0;
+			Globals.started = false;
+			tween.tween_callback(func():
+				Globals.resetVars()
+				tree.change_scene_to_file("res://scenes/UI/PlayUI.tscn")
+				
+				# fix
+				mainHUD.setMinerals(Globals.minerals);
+				mainHUD.setMinerals(Globals.lives);
+			)
+			tween.tween_interval(0.1)
+			tween.tween_property(overlay, "color:a", 0.0, 0.5)
+			tween.tween_callback(canvas.queue_free);
+			
+			return
+	
 	tween.tween_callback(func():
-		Globals.resetVars()
+		Globals.resetToSpawnpoint()
 		tree.change_scene_to_file("res://scenes/Main/Main.tscn")
+		mainHUD.setLives(Globals.lives);
+		mainHUD.setMinerals(Globals.minerals);
 	)
-
+	
 	# wait a frame for the new scene to load, then fade out
 	tween.tween_interval(0.1)
 	tween.tween_property(overlay, "color:a", 0.0, 0.5)

@@ -62,7 +62,6 @@ func _become_pickup():
 	# Find player after brief pause
 	await get_tree().create_timer(0.3).timeout
 	target = get_tree().get_first_node_in_group("player")
-	mainHUD.setMinerals(Globals.minerals + mineral_reward);
 
 
 func _process(delta):
@@ -77,6 +76,7 @@ func _process(delta):
 		if global_position.distance_to(target.global_position) < 15:
 			Globals.minerals += mineral_reward
 			target.playPickupSound()
+			mainHUD.setMinerals(Globals.minerals);
 			queue_free()
 	else:
 		bob_time += delta
