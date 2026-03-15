@@ -191,6 +191,9 @@ func diagonalDashLoop():
 			await get_tree().create_timer(0.1).timeout
 			continue
 		
+		if isDying:
+			return
+			
 		await spawnBats()
 		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
 		await startDiagonalDash()
@@ -199,14 +202,15 @@ func startDiagonalDash():
 	
 	if belowHalfHealth or isKnockedBackFromPlayer or isAnimatedIntoScene:
 		return
-		
+	
+	
 	var player = get_tree().get_first_node_in_group("player")
 	if not player or isKnockedBackFromPlayer or isAnimatedIntoScene:
 		return
 
 	var dir = (player.global_position - global_position).normalized()
 	var lastTargetPos: Vector2
-
+	
 	for i in range(1, dashTargetCount + 1):
 		var targetPos = global_position + dir * dashTargetSpacing * i
 		var target = target_scene.instantiate()
@@ -226,25 +230,31 @@ func startDiagonalDash():
 	
 	overridePathfinding = false
 
-
 func startDashMode():
-	while is_instance_valid(self):
+	while is_instance_valid(self) and not isDying:
 		if !belowHalfHealth:
 			await get_tree().create_timer(0.1).timeout
 			continue
 		
-		healthbar_thing.texture_progress = preload("res://scenes/UI/BatBossBarAliveANNNNNGGGGRYYYYYYYYYY.png");
+		if not is_instance_valid(healthbar_thing):
+			return
+		healthbar_thing.texture_progress = preload("res://scenes/UI/BatBossBarAliveANNNNNGGGGRYYYYYYYYYY.png")
 
 		await spawnBats()
 		
 		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
 		
+		if isDying:
+			return
+			
 		isAttackDashing = true
 		startDashingAnimation()
 		overridePathfinding = true
 		await moveToAttackPoints()
 		
 		for i in range(3):
+			if isDying:
+				return
 			await moveToNextAttackPoints()
 			if i < 2:
 				await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
@@ -408,7 +418,7 @@ func die():
 	
 	$BatBossDamage.play()
 	animated_sprite.play("fallingDeath")
-	$DamageArea/CollisionShape2D.disabled = true
+	$DamageArea/CollisionShape2D.set_deferred("disabled", true)
 	
 	# Fade out the boss health bar
 	var boss_layer = get_tree().current_scene.get_node_or_null("BossLayer")

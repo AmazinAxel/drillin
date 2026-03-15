@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
-@onready var area = $Area2D
-@onready var player = get_parent().get_node("Player")
+@onready var area = get_node_or_null("Area2D")
+@onready var player = get_parent().get_node_or_null("Player")
 @onready var miningParticles = $miningParticles
 
 
@@ -46,9 +46,12 @@ func _ready() -> void:
 	stop()
 	if isBackgroundDrill:
 		add_to_group("backgroundDrill")
+		remove_from_group("drill")
 		startBackgroundEffects()
 
 func _process(_delta: float) -> void:
+	if isBackgroundDrill:
+		return
 	if not player:
 		return
 	if Globals.isDead:
