@@ -21,13 +21,14 @@ extends CharacterBody2D
 
 
 @export var dashSpeed: float = 300.0
+@export var returnSpeed: float = 200.0
 @export var dashTargetCount: int = 8
 @export var dashTargetSpacing: float = 50.0
 @export var target_scene: PackedScene
 
 
 @export var attackDashSpeed: float = 450.0
-@export var attackDashTargetCount: int = 20
+@export var attackDashTargetCount: int = 30
 @export var yLevelSpacing: int = 100
 
 @export var batScenes: Array[PackedScene]
@@ -48,6 +49,9 @@ var yDifferenceInFloors: int = 0
 var isLeftDirection: bool = false
 
 var belowHalfHealth: bool = false
+var isDashing: bool = false
+var isAttackDashing: bool = false
+var isDying: bool = false
 
 
 var isAnimatedIntoScene: bool = true
@@ -117,10 +121,38 @@ func moveToCenterWithCamera(target: Vector2, move_speed: float, camera: Camera2D
 
 func moveToPoint(target: Vector2, move_speed: float):
 	while global_position.distance_to(target) > 5.0:
+		
+		if isDying:
+			return
+			
 		var dir = (target - global_position).normalized()
 		velocity.x = dir.x * move_speed
 		velocity.y = dir.y * move_speed
 		animated_sprite.flip_h = velocity.x > 0
+		
+		if isDashing:
+			var flipped = velocity.x > 0
+			var offset = deg_to_rad(-25) if flipped else deg_to_rad(25)
+			var angle = velocity.angle() + offset
+			$DamageArea.rotation = angle
+			$CollisionShape2D.rotation = angle
+			
+			if isAttackDashing:
+				if flipped:
+					$AnimatedSprite2D.rotation = angle + (deg_to_rad(25))
+					
+					
+				else:
+					$AnimatedSprite2D.rotation = angle + (deg_to_rad(155))
+					
+			else:
+				if flipped:
+					$AnimatedSprite2D.rotation = angle
+				else:
+					$AnimatedSprite2D.rotation = angle + (deg_to_rad(180))
+					
+			
+			
 		move_and_slide()
 		
 		await get_tree().process_frame
@@ -162,14 +194,16 @@ func startDiagonalDash():
 		get_tree().current_scene.add_child(target)
 		target.global_position = targetPos
 		lastTargetPos = targetPos
-		
+	
+	startDashingAnimation()
 	await get_tree().create_timer(1).timeout
 
 	overridePathfinding = true
-
 	await moveToPoint(lastTargetPos, dashSpeed)
+	
+	stopDashingAnimation()
 	var spawnpoint = get_tree().get_first_node_in_group("mommaBatSpawnpoint")
-	await moveToPoint(spawnpoint.global_position, dashSpeed)
+	await moveToPoint(spawnpoint.global_position, returnSpeed)
 	
 	overridePathfinding = false
 
@@ -184,6 +218,8 @@ func startDashMode():
 		
 		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
 		
+		isAttackDashing = true
+		startDashingAnimation()
 		overridePathfinding = true
 		await moveToAttackPoints()
 		
@@ -192,6 +228,8 @@ func startDashMode():
 			if i < 2:
 				await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
 		
+		isAttackDashing = false
+		stopDashingAnimation()
 		await moveBackToSpawnpoint()
 		overridePathfinding = false
 		
@@ -260,20 +298,33 @@ func spawnBats():
 		get_tree().current_scene.add_child(bat)
 		bat.global_position = global_position
 		await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
-		
+
+func startDashingAnimation():
+	isDashing = true
+	$BatFlappingWings.playing = false
+	$BossDashing.playing = true
+	animated_sprite.play("dashing")
+	
+func stopDashingAnimation():
+	isDashing = false
+	$BatFlappingWings.playing = true
+	$BossDashing.playing = false
+	animated_sprite.play("default")
+	$DamageArea.rotation = 25
+	$CollisionShape2D.rotation = 25
+	$AnimatedSprite2D.rotation = 0
+
 func _physics_process(delta):
 	if isAnimatedIntoScene:
 		return
 		
-
-	animated_sprite.play("default")
 	
 	if ((max_health / 2) > health) && !belowHalfHealth:
 		belowHalfHealth = true
 		
 		speed = enragedSpeed
 		maxNumberOfBats = enragedMaxNumberOfBats
-		
+		$BatBossEnraged.play()
 		var tween = create_tween()
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.set_trans(Tween.TRANS_CUBIC)
@@ -317,9 +368,32 @@ func take_damage(amount: int):
 	
 
 func die():
+	overridePathfinding = true
+	isDashing = false
+	isDying = true
+	velocity = Vector2.ZERO
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(animated_sprite, "modulate", Color.WHITE, 0.4)
+	print(get_tree().get_nodes_in_group("bats"))
+	for bat in get_tree().get_nodes_in_group("bats"):
+		bat.queue_free()
+	
 	$BatBossDamage.play()
-	animated_sprite.visible = false
-	await get_tree().create_timer(2).timeout
+	animated_sprite.play("fallingDeath")
+	
+	while isDying == true:
+		velocity.y += (gravity / 5) * get_process_delta_time()
+		move_and_slide()
+		await get_tree().process_frame
+	
+	velocity = Vector2.ZERO
+	animated_sprite.play("onGroundDeath")
+	await animated_sprite.animation_finished
+	
+	await get_tree().create_timer(1.0).timeout
 	queue_free()
 	
 
@@ -333,3 +407,6 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 		can_damage = false
 		await get_tree().create_timer(damage_cooldown).timeout
 		can_damage = true
+	elif body.name == "TileMapLayer":
+		if isDying:
+			isDying = false

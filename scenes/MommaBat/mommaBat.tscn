@@ -6,9 +6,26 @@
 [ext_resource type="PackedScene" uid="uid://coexc4n5ty8c0" path="res://scenes/BabyBat/babyBat.tscn" id="3_g7dog"]
 [ext_resource type="AudioStream" uid="uid://cwokdbcntknko" path="res://assets/sounds/MommaBat/batBossDeath.mp3" id="3_n3gil"]
 [ext_resource type="PackedScene" uid="uid://ch6ftc4jva4j3" path="res://scenes/FlameBat/flameBat.tscn" id="4_i7l1d"]
-[ext_resource type="AudioStream" uid="uid://d2sd7ink0pxre" path="res://assets/sounds/MommaBat/batBossDamage.mp3" id="4_l5jl3"]
 [ext_resource type="AudioStream" uid="uid://dr16gb70a7u2y" path="res://assets/sounds/MommaBat/batBossSpawn.mp3" id="5_xa2ae"]
 [ext_resource type="PackedScene" uid="uid://c34pxeev7kwiy" path="res://scenes/PoisonBat/poisonBat.tscn" id="5_yv1p5"]
+[ext_resource type="Texture2D" uid="uid://caxoh78gv4ku5" path="res://assets/sprites/BAT_BOSS_DASHt.png" id="6_i7l1d"]
+[ext_resource type="Texture2D" uid="uid://de0v4sho67y0u" path="res://assets/sprites/BAT_BOSS_DEATH_ANIM_FALLING.png" id="8_4oeuc"]
+[ext_resource type="AudioStream" uid="uid://boqgtbdcrtgp4" path="res://assets/sounds/MommaBat/batBossDamage2.mp3" id="8_g7dog"]
+[ext_resource type="Texture2D" uid="uid://dee1gpmdwya1l" path="res://assets/sprites/BAT_BOSS_DEATH_ANIM_GROUND.png" id="9_cdu7n"]
+[ext_resource type="AudioStream" uid="uid://cmgkat8td6pn1" path="res://assets/sounds/MommaBat/batFlappingWings.mp3" id="11_yv1p5"]
+[ext_resource type="AudioStream" uid="uid://hinf0we1vx05" path="res://assets/sounds/MommaBat/bossDashing.mp3" id="12_w6erj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv1p5"]
+atlas = ExtResource("6_i7l1d")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6erj"]
+atlas = ExtResource("6_i7l1d")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m6lt"]
+atlas = ExtResource("6_i7l1d")
+region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixb1d"]
 atlas = ExtResource("2_muxby")
@@ -38,8 +55,74 @@ region = Rect2(480, 0, 96, 96)
 atlas = ExtResource("2_muxby")
 region = Rect2(576, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc03k"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spakr"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewwed"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04gqv"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dukrk"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it5s5"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3pma"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6grd"]
+atlas = ExtResource("8_4oeuc")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyau2"]
+atlas = ExtResource("9_cdu7n")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gioo"]
+atlas = ExtResource("9_cdu7n")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkb2i"]
+atlas = ExtResource("9_cdu7n")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4akn"]
+atlas = ExtResource("9_cdu7n")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erojf"]
+atlas = ExtResource("9_cdu7n")
+region = Rect2(384, 0, 96, 96)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_xa2ae"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv1p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6erj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m6lt")
+}],
+"loop": true,
+"name": &"dashing",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ixb1d")
@@ -65,13 +148,68 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc03k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spakr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewwed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04gqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dukrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it5s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3pma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6grd")
+}],
+"loop": false,
+"name": &"fallingDeath",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyau2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gioo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkb2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4akn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erojf")
+}],
+"loop": false,
+"name": &"onGroundDeath",
+"speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n3gil"]
-radius = 94.33981
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i7l1d"]
+random_pitch = 1.7817973
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("8_g7dog")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l5jl3"]
-radius = 81.02469
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yv1p5"]
+size = Vector2(191.08441, 92.25043)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6erj"]
+size = Vector2(172.65778, 52.80038)
 
 [sub_resource type="Gradient" id="Gradient_puxyr"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -92,20 +230,23 @@ target_scene = ExtResource("2_l5jl3")
 batScenes = Array[PackedScene]([ExtResource("3_g7dog"), ExtResource("4_i7l1d"), ExtResource("5_yv1p5")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=670502720]
+z_index = 100
 position = Vector2(-1, -3)
 scale = Vector2(2.28125, 2.1927083)
 sprite_frames = SubResource("SpriteFrames_xa2ae")
+animation = &"onGroundDeath"
 autoplay = "default"
-frame_progress = 0.10805688
+frame = 4
+frame_progress = 1.0
 
 [node name="BatBossDeath" type="AudioStreamPlayer" parent="." unique_id=2112550267]
 stream = ExtResource("3_n3gil")
 volume_db = 10.0
 
-[node name="BatBossDamage" type="AudioStreamPlayer" parent="." unique_id=229546615]
-stream = ExtResource("4_l5jl3")
-volume_db = -5.0
-pitch_scale = 2.0
+[node name="BatBossDamage" type="AudioStreamPlayer2D" parent="." unique_id=1871266011]
+stream = SubResource("AudioStreamRandomizer_i7l1d")
+volume_db = -10.0
+pitch_scale = 3.0
 max_polyphony = 3
 
 [node name="BatBossSpawn" type="AudioStreamPlayer" parent="." unique_id=1884901256]
@@ -113,13 +254,19 @@ stream = ExtResource("5_xa2ae")
 autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=410822917]
-shape = SubResource("CircleShape2D_n3gil")
+position = Vector2(3.5453384, 8.619526)
+rotation = 0.43633235
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_yv1p5")
 one_way_collision = true
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=1508666229]
+rotation = 0.43633232
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=176919677]
-shape = SubResource("CircleShape2D_l5jl3")
+position = Vector2(-2.6427917, 9.233954)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_w6erj")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=50866240]
 position = Vector2(1, 4)
@@ -127,5 +274,21 @@ color = Color(0.8235294, 0.30980393, 0.21960784, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_l5jl3")
 texture_scale = 3.0
+
+[node name="BatBossEnraged" type="AudioStreamPlayer" parent="." unique_id=1463423818]
+stream = ExtResource("3_n3gil")
+volume_db = 5.0
+
+[node name="BatFlappingWings" type="AudioStreamPlayer2D" parent="." unique_id=1211578749]
+stream = ExtResource("11_yv1p5")
+volume_db = -10.0
+pitch_scale = 2.0
+autoplay = true
+parameters/looping = true
+
+[node name="BossDashing" type="AudioStreamPlayer2D" parent="." unique_id=415074516]
+stream = ExtResource("12_w6erj")
+volume_db = -10.0
+parameters/looping = true
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

@@ -456,6 +456,7 @@ debug_color = Color(0.89517343, 0.256144, 0.49235988, 0.41960785)
 
 [node name="woosh" type="AudioStreamPlayer2D" parent="." unique_id=826807480]
 stream = SubResource("AudioStreamRandomizer_g055u")
+volume_db = -10.0
 pitch_scale = 1.5
 
 [node name="Walking" type="AudioStreamPlayer2D" parent="." unique_id=1226021126]
