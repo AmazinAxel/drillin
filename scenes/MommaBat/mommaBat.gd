@@ -317,7 +317,9 @@ func stopDashingAnimation():
 func _physics_process(delta):
 	if isAnimatedIntoScene:
 		return
-		
+	
+	if isDying:
+		return
 	
 	if ((max_health / 2) > health) && !belowHalfHealth:
 		belowHalfHealth = true
@@ -370,6 +372,7 @@ func take_damage(amount: int):
 func die():
 	overridePathfinding = true
 	isDashing = false
+	
 	isDying = true
 	velocity = Vector2.ZERO
 	
@@ -383,9 +386,9 @@ func die():
 	
 	$BatBossDamage.play()
 	animated_sprite.play("fallingDeath")
-	
+	$DamageArea/CollisionShape2D.disabled = true
 	while isDying == true:
-		velocity.y += (gravity / 5) * get_process_delta_time()
+		velocity.y += (gravity * 0.15) * get_process_delta_time()
 		move_and_slide()
 		await get_tree().process_frame
 	
