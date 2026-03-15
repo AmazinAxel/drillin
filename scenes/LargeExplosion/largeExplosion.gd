@@ -16,6 +16,14 @@ func _process(delta: float) -> void:
 		$PointLight2D.energy = 0.0
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	var p = get_tree().get_first_node_in_group("player")
+	if p:
+		var dist = global_position.distance_to(p.global_position)
+		var max_dist = 300.0
+		var closeness = 1.0 - clampf(dist / max_dist, 0.0, 1.0)
+		var strength = lerp(2.0, 12.0, closeness)
+		Globals.screen_shake(strength, 0.4)
+		
 	queue_free()
 
 

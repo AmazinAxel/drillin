@@ -103,7 +103,6 @@ func start_drill_sequence():
 	var zoom_tween = create_tween()
 	zoom_tween.tween_property(camera, "zoom", Vector2(2.5, 2.5), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	
-	# Start drill sound low-pitched and quiet, ramp up to normal
 	$drillSound.pitch_scale = intro_start_pitch
 	$drillSound.volume_db = intro_start_volume_db
 	
@@ -172,7 +171,7 @@ func start_drill_sequence():
 			Globals.checkpointArmorUpgradeCount = Globals.armorUpgradeCount;
 
 			Globals.checkpointDamageReduction = Globals.damageReduction
-			Globals.checkpointAttackDamage = Globals.attackDamageffa
+			Globals.checkpointAttackDamage = Globals.attackDamage
 
 	if Globals.level == 0: # no matter what the player doesnt need the shop at this stage
 		stop_drill()

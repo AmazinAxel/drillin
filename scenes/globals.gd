@@ -41,7 +41,7 @@ func _ready():
 
 func resetVars():
 	var startTime = Time.get_ticks_msec();
-	level = 6
+	level = 3
 	health = 100
 	damageReduction = 1
 	attackDamage = 2
@@ -89,14 +89,14 @@ func resetToSpawnpoint():
 	stopping = false
 	inDrill = false
 	bossAlive = false
-
-
-
+	
 func screen_shake(strength: float, duration: float):
-	var camera = get_viewport().get_camera_2d()
+	var player = get_tree().get_first_node_in_group("player")
+	if not player:
+		return
+	var camera = player.get_node_or_null("Camera2D")
 	if not camera:
-		return # could prevent errors idk
-
+		return
 	var tween = create_tween()
 	tween.tween_method(func(t):
 		camera.offset = Vector2(randf_range(-strength, strength), randf_range(-strength, strength))

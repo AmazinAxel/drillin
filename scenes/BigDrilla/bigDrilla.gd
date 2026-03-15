@@ -126,13 +126,17 @@ func initReady():
 	collision_mask = 8
 	shoot_loop()
 	charge_loop()
-
+	
 func charge_loop():
-	while is_instance_valid(self):
+	while is_instance_valid(self) and not isDying:
 		await get_tree().create_timer(5.0).timeout
+		if isDying or not is_instance_valid(self):
+			return
 		var target = target_scene.instantiate()
 		$WarningHolder.add_child(target)
 		await get_tree().create_timer(1.0).timeout
+		if isDying or not is_instance_valid(self):
+			return
 		start_charge()
 
 func shoot_loop():
@@ -164,7 +168,7 @@ func shoot_projectile():
 	dir = dir.rotated(spread)
 	
 	projectile.launch(dir)
-
+	
 func start_charge():
 	var player = get_tree().get_first_node_in_group("player")
 	if not player:
@@ -175,6 +179,8 @@ func start_charge():
 	
 	var elapsed = 0.0
 	while elapsed < charge_duration and is_charging:
+		if not is_instance_valid(self):
+			return
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 		for i in get_slide_collision_count():
@@ -185,7 +191,8 @@ func start_charge():
 				break
 	
 	is_charging = false
-	set_drill_pitch(0.6)
+	if is_instance_valid(self):
+		set_drill_pitch(0.6)
 
 func get_rage_damage_multiplier() -> float:
 	return 1.0 + rage * 2.0

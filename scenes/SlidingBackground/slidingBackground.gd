@@ -1,10 +1,14 @@
 extends Node2D
 
 @export var backgroundScrollSpeed: float = 200.0
+@export var shakeStrength: float = 0.8
+
 var background2: Node2D
 var bg_height: float
+var shake_origin: Vector2
 
 func _ready() -> void:
+	shake_origin = position
 	setupBackground()
 	
 func setupBackground():
@@ -17,6 +21,11 @@ func setupBackground():
 	background2.position = $Background.position + Vector2(0, bg_height)
 	
 func _process(delta: float) -> void:
+	position = shake_origin + Vector2(
+		randf_range(-shakeStrength, shakeStrength),
+		randf_range(-shakeStrength, shakeStrength)
+	)
+	
 	$Background.position.y -= backgroundScrollSpeed * delta
 	background2.position.y -= backgroundScrollSpeed * delta
 
