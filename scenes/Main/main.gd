@@ -7,3 +7,5 @@ func _ready():
 	elif Globals.checkpoint == 2:
 		$Player.position = $Map/Checkpoints/PlayerStage2.position
 		$Drilla.position = $Map/Checkpoints/DrillaStage2.position
+	mainHUD.setLives(Globals.lives);
+	mainHUD.setMinerals(Globals.minerals);

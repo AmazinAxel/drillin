@@ -82,7 +82,8 @@ func _ready() -> void:
 			
 	
 func _process(delta: float) -> void:
-
+	if not Globals.started:
+		return
 	var level = Globals.level
 	
 	if level != lastLevel:
@@ -118,15 +119,19 @@ func _process(delta: float) -> void:
 		if waveTable.has(level):
 			currentInterval = waveTable[level].spawnInterval
 	
+	
 	if not started:
 		return
-		
+
 	timeInLevel += delta
 	updateDifficulty(level)
 	
 	match spawnState:
 		SpawnState.RESTING:
 			restTimer += delta
+			if not Globals.started:
+				return
+
 			if restTimer >= waveTable[level].restDuration:
 				restTimer = 0.0
 				enemiesInBatch = 0
@@ -149,6 +154,8 @@ func updateDifficulty(level: int) -> void:
 	
 func startWave(level: int) -> void:
 	if not waveTable.has(level):
+		return
+	if not Globals.started:
 		return
 	var wave: WaveData = waveTable[level]
 	if enemiesSpawned >= wave.totalEnemies:

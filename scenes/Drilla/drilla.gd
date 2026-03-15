@@ -69,6 +69,7 @@ func start_drill_sequence():
 	kill_all_enemies()
 	
 	Globals.inDrill = true
+	Globals.showUI = false
 
 	var camera = get_tree().get_first_node_in_group("player").get_node("Camera2D")
 	var player_node = get_tree().get_first_node_in_group("player")
@@ -152,7 +153,16 @@ func start_drill_sequence():
 			fade_out_tween.tween_callback(checkpoint_layer.queue_free)
 			await fade_out_tween.finished
 			Globals.checkpoint += 1;
+			Globals.checkpointLevel = Globals.level;
 			
+			Globals.checkpointMinerals = Globals.minerals;
+			Globals.checkpointDamageUpgradeCount = Globals.damageUpgradeCount;
+			Globals.checkpointReplenishCount = Globals.replenishCount;
+			Globals.checkpointArmorUpgradeCount = Globals.armorUpgradeCount;
+
+			Globals.checkpointDamageReduction = Globals.damageReduction
+			Globals.checkpointAttackDamage = Globals.attackDamage
+
 	if Globals.level == 0: # no matter what the player doesnt need the shop at this stage
 		stop_drill()
 		return
@@ -167,6 +177,7 @@ func start_drill_sequence():
 	
 	var shop_tween = create_tween()
 	shop_tween.tween_property(shop, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+	Globals.showUI = true
 
 func set_base_offset(value: Vector2):
 	camera_base_offset = value

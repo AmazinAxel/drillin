@@ -14,6 +14,8 @@ var isExploding: bool = false
 
 
 func launch(dir: Vector2):
+	if Globals.transitioningOut:
+		return
 	direction = Vector2.UP
 	rotation = direction.angle()
 	
@@ -55,6 +57,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	
 func createExplosion():
+	if Globals.transitioningOut:
+		return
 	if is_instance_valid(self):
 		if isExploding:
 			return

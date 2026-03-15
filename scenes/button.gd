@@ -29,6 +29,7 @@ func _on_pressed() -> void:
 		COLOR = vec4(COLOR.rgb, tex.a * 0.7 * COLOR.a);
 	}
 	"
+	
 	var mat = ShaderMaterial.new()
 	mat.shader = shader
 	spinner.material = mat
@@ -41,7 +42,6 @@ func _on_pressed() -> void:
 	get_tree().root.add_child(canvas)
 
 	# Fade to black
-	Globals.started = true;
 	var tween = get_tree().create_tween()
 	tween.tween_property(overlay, "color:a", 1.0, 0.5)
 	tween.tween_callback(func():
@@ -85,6 +85,7 @@ func _on_pressed() -> void:
 						canvas.queue_free()
 				)
 				fade_timer.start()
+				Globals.started = true;
 		)
 		timer.start()
 	)
