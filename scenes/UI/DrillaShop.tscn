@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://cyur2o4xvcstp" path="res://scenes/UI/upgradeShop.gd" id="1_yhmws"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_n4ip6"]
 [ext_resource type="Script" uid="uid://b1e7v0tfrit3x" path="res://scenes/UI/continueBtn.gd" id="4_21mno"]
+[ext_resource type="AudioStream" uid="uid://ciyxerhdw483x" path="res://assets/sounds/UIHoverSound.mp3" id="5_5cgf3"]
 [ext_resource type="Texture2D" uid="uid://bgvpuvqs1t3g5" path="res://scenes/UI/UiCrystalllllllllllllllllllll.png" id="5_n4ip6"]
 [ext_resource type="AudioStream" uid="uid://cndq616hatpsw" path="res://assets/sounds/purchaseSound.mp3" id="6_jx6w6"]
+[ext_resource type="AudioStream" uid="uid://0le8aqkwtwmg" path="res://assets/sounds/UIButtonClicked.mp3" id="6_xxq43"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gnt0i"]
 random_pitch = 1.0116194
@@ -93,6 +95,14 @@ theme_override_font_sizes/font_size = 38
 text = "Continue"
 script = ExtResource("4_21mno")
 
+[node name="UIHoverSound" type="AudioStreamPlayer" parent="HBoxContainer/VBoxContainer" unique_id=311237698]
+stream = ExtResource("5_5cgf3")
+volume_db = -10.0
+
+[node name="UIButtonClicked" type="AudioStreamPlayer" parent="HBoxContainer/VBoxContainer" unique_id=1717974393]
+stream = ExtResource("6_xxq43")
+pitch_scale = 0.8
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1575484618]
 layout_mode = 0
 offset_left = 440.0
@@ -118,9 +128,13 @@ horizontal_alignment = 1
 stream = SubResource("AudioStreamRandomizer_gnt0i")
 pitch_scale = 2.0
 
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/upgradeWeapon" to="." method="_on_upgrade_weapon_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/upgradeWeapon" to="." method="_on_damage_upgrade_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/upgradeArmor" to="." method="_on_upgrade_armor_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/upgradeArmor" to="." method="_on_health_upgrade_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_replenish_health_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_risk_upgrade_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ReplenishHealth" to="." method="_on_replenish_health_pressed"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_button_up"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Continue" to="HBoxContainer/VBoxContainer/Continue" method="_on_mouse_entered"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

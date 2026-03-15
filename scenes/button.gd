@@ -2,7 +2,12 @@ extends Button
 
 func _on_pressed() -> void:
 	disabled = true
-
+	$UIButtonClicked.play()
+	
+	var drill = get_tree().get_first_node_in_group("backgroundDrill")
+	if drill:
+		await drill.backgroundExitAnimation()
+	
 	var overlay = ColorRect.new()
 	overlay.color = Color(0, 0, 0, 0)
 	overlay.size = get_viewport().get_visible_rect().size
@@ -89,3 +94,6 @@ func _on_pressed() -> void:
 		)
 		timer.start()
 	)
+
+func _on_mouse_entered() -> void:
+	$UIHoverSound.play()

@@ -337,5 +337,10 @@ color_ramp = SubResource("Gradient_ruqpt")
 stream = ExtResource("5_ruqpt")
 pitch_scale = 2.0
 
+[node name="globalDrillSound" type="AudioStreamPlayer2D" parent="." unique_id=1559794478]
+stream = ExtResource("5_ruqpt")
+pitch_scale = 2.0
+max_polyphony = 9
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

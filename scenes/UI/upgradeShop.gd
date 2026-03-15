@@ -15,6 +15,7 @@ func _ready():
 func _on_damage_upgrade_pressed() -> void:
 	var cost = getCost(mainPrices, Globals.damageUpgradeCount)
 	if cost > 0 and Globals.minerals >= cost:
+		$HBoxContainer/VBoxContainer/UIButtonClicked.play()
 		Globals.minerals -= cost
 		Globals.attackDamage += 1
 		Globals.damageUpgradeCount += 1
@@ -26,6 +27,7 @@ func _on_damage_upgrade_pressed() -> void:
 func _on_health_upgrade_pressed() -> void:
 	var cost = getCost(mainPrices, Globals.armorUpgradeCount)
 	if cost > 0 and Globals.minerals >= cost:
+		$HBoxContainer/VBoxContainer/UIButtonClicked.play()
 		Globals.minerals -= cost
 		Globals.damageReduction -= 0.3
 		Globals.armorUpgradeCount += 1
@@ -37,6 +39,7 @@ func _on_health_upgrade_pressed() -> void:
 func _on_replenish_health_pressed() -> void:
 	var cost = getCost(replenishPrices, Globals.replenishCount)
 	if cost > 0 and Globals.minerals >= cost:
+		$HBoxContainer/VBoxContainer/UIButtonClicked.play()
 		Globals.minerals -= cost
 		Globals.health = 100
 		Globals.replenishCount += 1
@@ -57,7 +60,6 @@ func whatCanBuy():
 	var armorCost = getCost(mainPrices, Globals.armorUpgradeCount)
 	var replenishCost = getCost(replenishPrices, Globals.replenishCount)
 
-	# Disable if maxed out or can't afford
 	upgradeWeapon.disabled = damageCost < 0 or Globals.minerals < damageCost
 	upgradeArmor.disabled = armorCost < 0 or Globals.minerals < armorCost
 
@@ -89,3 +91,13 @@ func shopPricingUpdateText():
 		replenishHealth.text = "Replenish Health (-%d)" % replenishCost
 	else:
 		replenishHealth.text = "Replenish Health (maxed)"
+
+
+func _on_upgrade_weapon_mouse_entered() -> void:
+	$HBoxContainer/VBoxContainer/UIHoverSound.play()
+
+func _on_upgrade_armor_mouse_entered() -> void:
+	$HBoxContainer/VBoxContainer/UIHoverSound.play()
+
+func _on_replenish_health_mouse_entered() -> void:
+	$HBoxContainer/VBoxContainer/UIHoverSound.play()

@@ -3,6 +3,7 @@ extends AnimatedSprite2D
 @onready var player = get_parent().get_node("Player")
 @onready var miningParticles = $miningParticles
 
+
 ## Sound - Intro (drill first starts)
 @export_group("Sound - Intro")
 @export var intro_start_pitch := 0.6
@@ -25,6 +26,10 @@ extends AnimatedSprite2D
 @export var fadeout_duration := 1
 @export_range(0.0, 5.0) var sound_end_early_offset := 0.1  ## How many seconds before descent ends to start fade out + pitch return
 
+@export_group("UTILS")
+@export var isBackgroundDrill: bool = false
+
+var is_background_shaking = true 
 var is_shaking = false
 var darkness_overlay = null
 var camera_base_offset = Vector2.ZERO
@@ -39,6 +44,9 @@ var energyFilled = true
 
 func _ready() -> void:
 	stop()
+	if isBackgroundDrill:
+		add_to_group("backgroundDrill")
+		startBackgroundEffects()
 
 func _process(_delta: float) -> void:
 	if not player:
@@ -385,3 +393,55 @@ func fade_in(node: Node, duration: float = 0.3) -> Tween:
 	var tween = create_tween()
 	tween.tween_property(node, "modulate:a", 1.0, duration)
 	return tween
+
+func startBackgroundEffects():
+	$energyStaticIcon.visible = false
+	play("default")
+	miningParticles.emitting = true
+	
+	$globalDrillSound.pitch_scale = intro_start_pitch
+	$globalDrillSound.volume_db = intro_start_volume_db
+	
+	var pitch_tween = create_tween()
+	pitch_tween.tween_property($globalDrillSound, "pitch_scale", intro_target_pitch, intro_pitch_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	
+	var vol_tween = create_tween()
+	vol_tween.tween_property($globalDrillSound, "volume_db", intro_target_volume_db, intro_volume_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	
+	_play_background_sound_loop()
+	_shake_node_forever()
+	
+		
+func backgroundExitAnimation() -> void:
+	is_background_shaking = false
+	await get_tree().process_frame
+	
+	var sound_tween = create_tween()
+	sound_tween.set_parallel(true)
+	sound_tween.tween_property($globalDrillSound, "pitch_scale", descent_peak_pitch, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	sound_tween.tween_property($globalDrillSound, "volume_db", fadeout_target_volume_db, 3.0).set_ease(Tween.EASE_IN)
+	
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "position:y", position.y + 800.0, 1.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "speed_scale", 3.5, 1.5).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "modulate:a", 0.0, 1.5).set_ease(Tween.EASE_IN)
+	await tween.finished
+	
+	$globalDrillSound.stop()
+	$globalDrillSound.pitch_scale = 1.0
+	$globalDrillSound.volume_db = 0.0
+	
+func _play_background_sound_loop() -> void:
+	while is_background_shaking:
+		$globalDrillSound.play()
+		await $globalDrillSound.finished
+		
+func _shake_node_forever() -> void:
+	var origin = position
+	while is_background_shaking:
+		position = origin + Vector2(
+			randf_range(-1.2, 1.2),
+			randf_range(-1.2, 1.2)
+		)
+		await get_tree().process_frame

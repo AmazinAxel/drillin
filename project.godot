@@ -46,6 +46,7 @@ mommaBatSpawnpoint=""
 attackPoint1=""
 attackPoint2=""
 bats=""
+backgroundDrill=""
 
 [input]
 
