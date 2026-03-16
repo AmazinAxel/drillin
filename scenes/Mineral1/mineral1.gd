@@ -27,6 +27,8 @@ func _ready():
 	ui_thing.visible = false
 
 func take_damage(amount):
+	if amount == null:
+		return
 	health -= amount
 	health = max(health, 0)
 	

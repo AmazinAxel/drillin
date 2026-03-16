@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 const SPEED = 10
-const JUMP_VELOCITY = -350.0
+const JUMP_VELOCITY = -350.0 # jump thingy
 
 var dropTimer := 0.0
 var isDropping := false
 var isThrown := false
-var poisonTick: float = 0.0
+var poisonTick := 0.0
 
 var isCrouching := false
 var crouch_tween: Tween
@@ -14,29 +14,29 @@ const CROUCH_SCALE_Y = 0.9
 
 func _physics_process(delta: float) -> void:
 	if Globals.isDead:
-		return
+		return # do not move when dead!!!
 	
+	# crouchin
 	var wantsCrouch = Input.is_action_pressed("down")
-
 	if wantsCrouch and not isCrouching:
 		_set_crouch(true)
 	elif not wantsCrouch and isCrouching:
 		_set_crouch(false)
-		
+	
+	# attackin
 	if Input.is_action_pressed("down"):
 		isDropping = true
 		dropTimer = 0.15
-	
 	if Input.is_action_pressed("attack") and not Globals.isAttacking and not isThrown:
 		attack()
-	elif Input.is_action_pressed("throw"):
+	elif Input.is_action_pressed("throw"): # throwin
 		throwPickaxe()
-		
+	
+	# pickaxe animation
 	if isDropping:
 		dropTimer -= delta
 		if dropTimer <= 0:
 			isDropping = false
-	
 	set_collision_layer_value(6, not isDropping)
 	set_collision_mask_value(6, not isDropping)
 
@@ -70,8 +70,8 @@ func _physics_process(delta: float) -> void:
 		$playerSprite.set_frame_and_progress(0, 0)
 		$playerSprite.pause()
 
+	# jump n move
 	move_and_slide()
-
 	if !is_on_floor():
 		$playerSprite.play("jump")
 
