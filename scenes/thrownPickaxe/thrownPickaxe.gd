@@ -35,7 +35,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.take_damage(round((Globals.attackDamage)/2))
 
 	# RETURN AFTER HITTIN SOMETHING	
-	linear_velocity = Vector2.ZERO
-	gravity_scale = 0
-	await get_tree().create_timer(0.5).timeout
-	returning = true
+	#linear_velocity = Vector2.ZERO
+	#gravity_scale = 0
+	#await get_tree().create_timer(0.5).timeout
+	#returning = true
