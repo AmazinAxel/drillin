@@ -78,6 +78,7 @@ func resetToSpawnpoint():
 	attackDamage = checkpointAttackDamage;
 	level = checkpointLevel;
 	
+	# count stuff
 	damageUpgradeCount = checkpointDamageUpgradeCount;
 	replenishCount = checkpointReplenishCount
 	armorUpgradeCount = checkpointArmorUpgradeCount

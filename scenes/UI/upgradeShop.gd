@@ -1,17 +1,19 @@
 extends Control
 
-var mainPrices := [3, 5, 8]
-var replenishPrices := [1, 2, 2, 3, 3]
+var mainPrices := [3, 5, 8] # for damage and sheild upgrades
+var replenishPrices := [1, 2, 2, 3, 3, 3, 4] # gets more expensives
+
 
 func getCost(prices: Array, count: int) -> int:
 	if count >= prices.size():
-		return -1  # -1 means maxed out
+		return -1  # -1 = maxed out
 	return prices[count]
 
 func _ready():
 	shopPricingUpdateText()
 	whatCanBuy()
 
+# DAMAGE UPGRADE
 func _on_damage_upgrade_pressed() -> void:
 	var cost = getCost(mainPrices, Globals.damageUpgradeCount)
 	if cost > 0 and Globals.minerals >= cost:
@@ -24,6 +26,7 @@ func _on_damage_upgrade_pressed() -> void:
 		whatCanBuy()
 		mainHUD.setMinerals(Globals.minerals);
 
+# todo change this name, this is actually armor upgrade
 func _on_health_upgrade_pressed() -> void:
 	var cost = getCost(mainPrices, Globals.armorUpgradeCount)
 	if cost > 0 and Globals.minerals >= cost:
@@ -36,6 +39,7 @@ func _on_health_upgrade_pressed() -> void:
 		whatCanBuy()
 		mainHUD.setMinerals(Globals.minerals);
 
+# HEALTH
 func _on_replenish_health_pressed() -> void:
 	var cost = getCost(replenishPrices, Globals.replenishCount)
 	if cost > 0 and Globals.minerals >= cost:
@@ -48,9 +52,11 @@ func _on_replenish_health_pressed() -> void:
 		whatCanBuy()
 		mainHUD.setMinerals(Globals.minerals);
 
+# TODo this is bad please update dynamically
 func _process(_delta):
 	$MineralsLabel.text = str(Globals.minerals)
 
+# makes buttons look like faded out
 func whatCanBuy():
 	var upgradeWeapon = $HBoxContainer/VBoxContainer/upgradeWeapon
 	var upgradeArmor = $HBoxContainer/VBoxContainer/upgradeArmor
@@ -68,6 +74,7 @@ func whatCanBuy():
 	else:
 		replenishHealth.disabled = false
 
+# shows pricing on buttons
 func shopPricingUpdateText():
 	var upgradeWeapon = $HBoxContainer/VBoxContainer/upgradeWeapon
 	var upgradeArmor = $HBoxContainer/VBoxContainer/upgradeArmor
@@ -92,7 +99,7 @@ func shopPricingUpdateText():
 	else:
 		replenishHealth.text = "Replenish Health (maxed)"
 
-
+# cool sound polish
 func _on_upgrade_weapon_mouse_entered() -> void:
 	$HBoxContainer/VBoxContainer/UIHoverSound.play()
 

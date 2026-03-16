@@ -128,7 +128,10 @@ func initReady():
 	charge_loop()
 	
 func charge_loop():
-	while is_instance_valid(self) and not isDying:
+	while is_instance_valid(self) and is_inside_tree() and not isDying:
+		await get_tree().create_timer(5.0).timeout
+		if not is_inside_tree() and not isDying:
+			return
 		await get_tree().create_timer(5.0).timeout
 		if isDying or not is_instance_valid(self):
 			return
@@ -140,8 +143,10 @@ func charge_loop():
 		start_charge()
 
 func shoot_loop():
-	while is_instance_valid(self):
+	while is_instance_valid(self) and is_inside_tree():
 		await get_tree().create_timer(randf_range(2.0, 5.0)).timeout
+		if not is_inside_tree():
+			return
 		await shoot_burst()
 
 func shoot_burst():
@@ -180,6 +185,8 @@ func start_charge():
 	var elapsed = 0.0
 	while elapsed < charge_duration and is_charging:
 		if not is_instance_valid(self):
+			return
+		if not is_inside_tree():
 			return
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
@@ -268,7 +275,7 @@ func die():
 		fade_tween.tween_property(boss_ui, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 		fade_tween.tween_callback(boss_layer.queue_free)
 
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(5).timeout
 	
 	#var shop_layer = CanvasLayer.new()
 	#shop_layer.layer = 100

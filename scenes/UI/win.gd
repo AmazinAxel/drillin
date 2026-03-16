@@ -4,7 +4,7 @@ func _ready() -> void:
 
 	# BIG DRILLA BOSS
 	# TEMP REMOVE ME
-	Globals.boss1Time = Time.get_ticks_msec();
+	#Globals.boss1Time = Time.get_ticks_msec();
 	print(Globals.startTime, Globals.boss1Time, Globals.boss2Time, Time.get_ticks_msec())
 	var boss1Ms = Globals.startTime - Globals.boss1Time;
 	var boss1Time = boss1Ms / 1000.0;
