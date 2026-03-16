@@ -6,20 +6,20 @@ func _ready() -> void:
 	# TEMP REMOVE ME
 	#Globals.boss1Time = Time.get_ticks_msec();
 	print(Globals.startTime, Globals.boss1Time, Globals.boss2Time, Time.get_ticks_msec())
-	var boss1Ms = Globals.startTime - Globals.boss1Time;
+	var boss1Ms = Globals.boss1Time - Globals.startTime;
 	var boss1Time = boss1Ms / 1000.0;
 	var boss1Minutes = int(boss1Time) / 60;
 	$VBoxContainer/Control2/bigdrilla.text = str(boss1Minutes) + "m";
 
 	# MOMMA BAT BOSS
-	var boss2Ms = Globals.startTime - Globals.boss2Time;
+	var boss2Ms = Globals.boss2Time - Globals.startTime;
 	var boss2Time = boss2Ms / 1000.0;
 	var boss2Minutes = int(boss2Time) / 60;
 	$VBoxContainer/Control2/mombat.text = str(boss1Minutes) + "m";
 
 	# OVERALL
 	var overall = Time.get_ticks_msec();
-	var overallMs = Globals.startTime - overall;
+	var overallMs = overall - Globals.startTime;
 	var overallTime = overallMs / 1000.0;
 	var overallMinutes = int(overallTime) / 60;
 	$VBoxContainer/Control2/overall.text = str(overallMinutes) + "m";

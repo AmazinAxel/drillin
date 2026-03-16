@@ -41,9 +41,9 @@ size_flags_vertical = 4
 [node name="Label3" type="Label" parent="VBoxContainer/Control2" unique_id=1223813737]
 layout_mode = 0
 offset_left = -157.0
-offset_top = 126.0
+offset_top = 145.0
 offset_right = 250.0
-offset_bottom = 174.0
+offset_bottom = 193.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -53,9 +53,9 @@ text = "Time to Momma Bat:"
 [node name="Label4" type="Label" parent="VBoxContainer/Control2" unique_id=789231634]
 layout_mode = 0
 offset_left = -157.0
-offset_top = 166.0
+offset_top = 185.0
 offset_right = 250.0
-offset_bottom = 214.0
+offset_bottom = 233.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -65,9 +65,9 @@ text = "Time to Big Drilla:"
 [node name="mombat" type="Label" parent="VBoxContainer/Control2" unique_id=434431926]
 layout_mode = 0
 offset_left = 144.0
-offset_top = 126.0
+offset_top = 145.0
 offset_right = 551.0
-offset_bottom = 174.0
+offset_bottom = 193.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -77,9 +77,9 @@ text = "1s"
 [node name="bigdrilla" type="Label" parent="VBoxContainer/Control2" unique_id=1984683061]
 layout_mode = 0
 offset_left = 144.0
-offset_top = 166.0
+offset_top = 185.0
 offset_right = 551.0
-offset_bottom = 214.0
+offset_bottom = 233.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -89,9 +89,9 @@ text = "2s"
 [node name="overall" type="Label" parent="VBoxContainer/Control2" unique_id=1591793570]
 layout_mode = 0
 offset_left = 144.0
-offset_top = 206.0
+offset_top = 225.0
 offset_right = 551.0
-offset_bottom = 254.0
+offset_bottom = 273.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -101,9 +101,9 @@ text = "3s"
 [node name="Label5" type="Label" parent="VBoxContainer/Control2" unique_id=356044685]
 layout_mode = 0
 offset_left = -157.0
-offset_top = 206.0
+offset_top = 225.0
 offset_right = 250.0
-offset_bottom = 254.0
+offset_bottom = 273.0
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("1_lnyhh")
@@ -160,6 +160,7 @@ text = "Made by Yehor, Alec & Vaughn
 for Campfire Vancouver & Ember"
 
 [node name="Button" type="Button" parent="VBoxContainer/Control3" unique_id=846045224]
+visible = false
 layout_mode = 0
 offset_left = -520.0
 offset_top = 256.0
@@ -187,5 +188,5 @@ texture = ExtResource("6_tksa2")
 [node name="Heart" type="Sprite2D" parent="." unique_id=1172937945]
 material = SubResource("ShaderMaterial_cmywh")
 position = Vector2(420.00003, 317)
-rotation = 0.2617994
+rotation = 0.08726646
 texture = ExtResource("6_tksa2")
