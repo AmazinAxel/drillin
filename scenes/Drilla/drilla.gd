@@ -162,8 +162,12 @@ func start_drill_sequence():
 			fade_out_tween.tween_property(checkpoint, "modulate:a", 0.0, 0.5)
 			fade_out_tween.tween_callback(checkpoint_layer.queue_free)
 			await fade_out_tween.finished
-			Globals.checkpoint += 1;
-			Globals.checkpointLevel = Globals.level;
+			if Globals.checkpoint == 0:
+				Globals.checkpoint = 1;
+				Globals.checkpointLevel = 0;
+			elif Globals.checkpoint == 1:
+				Globals.checkpoint = 2;
+				Globals.checkpointLevel = 4;
 			
 			Globals.checkpointMinerals = Globals.minerals;
 			Globals.checkpointDamageUpgradeCount = Globals.damageUpgradeCount;

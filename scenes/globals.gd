@@ -15,7 +15,7 @@ var bossbarMaxValue = 100 # doesnt need to have reset vaule since its overwritte
 var bossAlive
 var lives;
 var showUI = false;
-var checkpoint = 0
+var checkpoint;
 var started = false
 var startTime = Time.get_ticks_msec();
 var boss1Time;
