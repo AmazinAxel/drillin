@@ -49,7 +49,7 @@ func resetVars():
 	# checkpoint level not set
 
 	minerals = 0
-	lives = 2
+	lives = 10
 	riskChance = 10
 	isAttacking = false
 	baseRotation = 0

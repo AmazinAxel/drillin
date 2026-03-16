@@ -1745,6 +1745,9 @@ position = Vector2(1837, 305)
 [node name="DrillaStage2" type="Marker2D" parent="Checkpoints" unique_id=715513209]
 position = Vector2(154, 3392)
 
+[node name="DrillaStage3" type="Marker2D" parent="Checkpoints" unique_id=1500138192]
+position = Vector2(162, 6271)
+
 [node name="PlayerStage2" type="Marker2D" parent="Checkpoints" unique_id=703762354]
 position = Vector2(256, 3288)
 

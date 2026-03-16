@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @export var knockbackFromPlayer: float = 300.0
 
-@export var damage: int = 10
+@export var damage: int = 5
 @export var damage_cooldown: float = 0.5
 
 @export var attack_range: float = 60.0

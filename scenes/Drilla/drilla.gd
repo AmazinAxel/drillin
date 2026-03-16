@@ -280,14 +280,14 @@ func stop_drill():
 		goToY = 2250
 		
 	elif Globals.level == 3:
-		goToY = 3383.0
+		goToY = 3375.0
 	elif Globals.level == 4:
-		goToY = 4007.0
+		goToY = 3995.0
 		
 	elif Globals.level == 5:
-		goToY = 5111.0
+		goToY = 5099.0
 	elif Globals.level == 6:
-		goToY = 6279.0
+		goToY = 6271.0
 	
 	final_tween.tween_property(self, "global_position:y", goToY, 3.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	final_tween.tween_property(player_node, "global_position:y", goToY, 3.7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)

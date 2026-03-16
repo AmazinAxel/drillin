@@ -22,14 +22,14 @@ texture = ExtResource("1_npkgv")
 
 [node name="lives" type="Label" parent="Control" unique_id=312240549]
 layout_mode = 0
-offset_left = 601.0
-offset_top = 9.0
-offset_right = 657.0
+offset_left = 590.00006
+offset_top = 9.000001
+offset_right = 696.00006
 offset_bottom = 81.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("2_shwog")
 theme_override_font_sizes/font_size = 64
-text = "0"
+text = "10"
 
 [node name="minerals" type="Label" parent="Control" unique_id=1823857366]
 layout_mode = 0
@@ -40,9 +40,9 @@ offset_bottom = 82.0
 scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("2_shwog")
 theme_override_font_sizes/font_size = 64
-text = "0"
+text = "10"
 
 [node name="LivesIconMaybe" type="Sprite2D" parent="Control" unique_id=1840632798]
-position = Vector2(578, 27)
+position = Vector2(567, 27)
 scale = Vector2(2, 2)
 texture = ExtResource("3_shwog")
