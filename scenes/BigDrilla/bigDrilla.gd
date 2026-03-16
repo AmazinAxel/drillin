@@ -124,9 +124,16 @@ func set_drill_pitch(target: float):
 func initReady():
 	collision_layer = 8
 	collision_mask = 8
+
+	moosic()
 	shoot_loop()
 	charge_loop()
-	
+
+func moosic():
+	$music1.play()
+	await get_tree().create_timer(16.0).timeout
+	$music2.play()
+
 func charge_loop():
 	while is_instance_valid(self) and is_inside_tree() and not isDying:
 		await get_tree().create_timer(5.0).timeout

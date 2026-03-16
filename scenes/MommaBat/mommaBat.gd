@@ -66,7 +66,7 @@ func _ready():
 	
 	beginEnterAnimation()
 	Globals.bossAlive = true
-	
+
 func beginEnterAnimation():
 	var player = get_tree().get_first_node_in_group("player")
 		
@@ -181,8 +181,14 @@ func initReady():
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
 	
+	moosic()
 	diagonalDashLoop()
 	startDashMode()
+
+func moosic():
+	$music1.play()
+	await get_tree().create_timer(16.0).timeout
+	$music2.play()
 
 func diagonalDashLoop():
 	while is_instance_valid(self):

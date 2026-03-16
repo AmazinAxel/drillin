@@ -93,6 +93,7 @@ func take_damage(amount):
 		return
 	if Globals.inDrill:
 		return # no damage in drill
+
 	var actual_damage = amount * Globals.damageReduction
 	Globals.health -= actual_damage
 	Globals.health = max(Globals.health, 0)
