@@ -29,7 +29,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body.name == "thrownPickaxe" or returning:
 		return
 	if body.has_method("take_damage"):
-		if body.is_in_group("enemies"):
+		if body.is_in_group("enemies")  && !returning:
 			body.take_damage(round((Globals.attackDamage)/2), global_position)
 		else:
 			body.take_damage(round((Globals.attackDamage)/2))
