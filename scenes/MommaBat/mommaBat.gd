@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var max_health: int = 40
+@export var max_health: int = 2
 @export var speed: float = 100.0
 @export var enragedSpeed: float = 150.0
 @export var maxNumberOfBats: int = 3
@@ -105,7 +105,7 @@ func beginEnterAnimation():
 	var boss_layer = CanvasLayer.new()
 	boss_layer.layer = 100
 	boss_layer.name = "BossLayer"
-	var bossLayer = preload("res://scenes/UI/BossUI.tscn").instantiate()
+	var bossLayer = preload("res://scenes/BatBossUI/batBossUI.tscn").instantiate()
 	bossLayer.modulate = Color(1, 1, 1, 0)
 	boss_layer.add_child(bossLayer)
 	get_tree().current_scene.add_child(boss_layer)
@@ -114,10 +114,10 @@ func beginEnterAnimation():
 	boss_tween.tween_property(bossLayer, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 	Globals.boss_health_changed.emit(max_health)
 
-	healthbar_thing = bossLayer.get_node("healthbar");
-	healthbar_thing.texture_progress = preload("res://scenes/UI/BatBossBarAlivet.png");
-	healthbar_thing.texture_under = preload("res://scenes/UI/BatBossBarDedt.png");
-	bossLayer.get_node("bossName").visible = false; #text = "Momma Bat"
+	#healthbar_thing = bossLayer.get_node("healthbar");
+	#healthbar_thing.texture_progress = preload("res://scenes/UI/BatBossBarAlivet.png");
+	#healthbar_thing.texture_under = preload("res://scenes/UI/BatBossBarDedt.png");
+	#bossLayer.get_node("bossName").visible = false; #text = "Momma Bat"
 	
 	Globals.bossbarMaxValue = max_health
 	
@@ -142,6 +142,9 @@ func moveToCenterWithCamera(target: Vector2, move_speed: float, camera: Camera2D
 func moveToPoint(target: Vector2, move_speed: float):
 	while global_position.distance_to(target) > 5.0:
 		
+		if not is_instance_valid(self):
+			return
+			
 		if isDying:
 			return
 			
@@ -160,8 +163,6 @@ func moveToPoint(target: Vector2, move_speed: float):
 			if isAttackDashing:
 				if flipped:
 					$AnimatedSprite2D.rotation = angle + (deg_to_rad(25))
-					
-					
 				else:
 					$AnimatedSprite2D.rotation = angle + (deg_to_rad(155))
 					
@@ -170,10 +171,8 @@ func moveToPoint(target: Vector2, move_speed: float):
 					$AnimatedSprite2D.rotation = angle
 				else:
 					$AnimatedSprite2D.rotation = angle + (deg_to_rad(180))
-
-			
+					
 		move_and_slide()
-		
 		await get_tree().process_frame
 	
 	velocity = Vector2.ZERO
@@ -325,10 +324,14 @@ func moveBackToSpawnpoint():
 func spawnBats():
 	var numOfBats = randi_range(1, maxNumberOfBats)
 	for i in range(numOfBats):
+		if isDying:
+			return
 		var bat = batScenes.pick_random().instantiate()
 		get_tree().current_scene.add_child(bat)
 		bat.global_position = global_position
 		await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
+		if isDying:
+			return
 
 func startDashingAnimation():
 	isDashing = true
@@ -407,6 +410,9 @@ func die():
 	isDying = true
 	velocity = Vector2.ZERO
 	
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
+	
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -418,7 +424,6 @@ func die():
 	$BatBossDamage.play()
 	animated_sprite.play("fallingDeath")
 	
-	# Fade out the boss health bar
 	var boss_layer = get_tree().current_scene.get_node_or_null("BossLayer")
 	if boss_layer and boss_layer.get_child_count() > 0:
 		var boss_ui = boss_layer.get_child(0)
@@ -429,15 +434,17 @@ func die():
 	while isDying == true:
 		velocity.y += (gravity * 0.15) * get_process_delta_time()
 		move_and_slide()
+		if is_on_floor():
+			isDying = false
 		await get_tree().process_frame
-		
+			
 	$DamageArea/CollisionShape2D.set_deferred("disabled", true)
 	
 	velocity = Vector2.ZERO
 	animated_sprite.play("onGroundDeath")
 	await animated_sprite.animation_finished
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	queue_free()
 	Globals.bossAlive = false;
 	Globals.boss2Time = Time.get_ticks_msec();

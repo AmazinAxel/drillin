@@ -262,6 +262,8 @@ func die():
 	deathParticles.emitting = true
 	can_damage = false
 	isDying = true
+	
+	
 	$BossDeath1.playing = true
 	await get_tree().create_timer(0.5).timeout
 	animated_sprite.visible = false

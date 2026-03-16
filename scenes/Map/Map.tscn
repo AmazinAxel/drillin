@@ -7,18 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dj0rjfxoiegrx" path="res://assets/tileset/newTilemap.png" id="4_85nc4"]
 [ext_resource type="Texture2D" uid="uid://vt15hmigtou" path="res://assets/tileset/CrystalTilemap.png" id="4_bo1h4"]
 [ext_resource type="Texture2D" uid="uid://c464fm7dk10ly" path="res://assets/sprites/SecondaryTilemapACTUAL.png" id="4_n3hww"]
-[ext_resource type="PackedScene" uid="uid://dyufts3fkfcc6" path="res://scenes/BigDrilla/big_drilla.tscn" id="6_hkcfk"]
 [ext_resource type="Script" uid="uid://ctw2mbkxvrxyh" path="res://scenes/Map/spawnEnemies.gd" id="6_xdt7n"]
-[ext_resource type="PackedScene" uid="uid://bwgg0l4esmqmt" path="res://scenes/Enemy1/Enemy1.tscn" id="7_ygyl0"]
-[ext_resource type="PackedScene" uid="uid://negrhvo8d8cf" path="res://scenes/Enemy2/Enemy2.tscn" id="8_577ld"]
-[ext_resource type="PackedScene" uid="uid://bk325pkki607i" path="res://scenes/MommaBat/mommaBat.tscn" id="8_vo5uh"]
 [ext_resource type="Texture2D" uid="uid://b0abq1l2o1j8b" path="res://assets/sprites/Tilemap.png" id="9_gd46p"]
-[ext_resource type="PackedScene" uid="uid://c035qx8eqron7" path="res://scenes/Enemy3/Enemy3.tscn" id="9_smbdk"]
-[ext_resource type="PackedScene" uid="uid://coexc4n5ty8c0" path="res://scenes/BabyBat/babyBat.tscn" id="10_aueat"]
 [ext_resource type="Texture2D" uid="uid://cexat7i2j64nr" path="res://assets/sprites/SecondaryTilemap.png" id="10_ghs3u"]
-[ext_resource type="PackedScene" uid="uid://ch6ftc4jva4j3" path="res://scenes/FlameBat/flameBat.tscn" id="11_73owv"]
 [ext_resource type="PackedScene" uid="uid://cvrb7y03a6yxb" path="res://scenes/Signs/sign1.tscn" id="11_ghs3u"]
-[ext_resource type="PackedScene" uid="uid://c34pxeev7kwiy" path="res://scenes/PoisonBat/poisonBat.tscn" id="12_n8gbo"]
 [ext_resource type="PackedScene" uid="uid://dimexdkjk1cnk" path="res://scenes/Signs/sign2.tscn" id="12_xdt7n"]
 [ext_resource type="PackedScene" uid="uid://qn7iyv0qpgg5" path="res://scenes/Boulder/Boulder.tscn" id="21_smbdk"]
 
@@ -868,11 +860,11 @@ texture = ExtResource("10_ghs3u")
 [sub_resource type="TileSet" id="TileSet_xdt7n"]
 sources/0 = SubResource("TileSetAtlasSource_ghs3u")
 
-[sub_resource type="Gradient" id="Gradient_mn6xr"]
+[sub_resource type="Gradient" id="Gradient_bo1h4"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xdt7n"]
-gradient = SubResource("Gradient_mn6xr")
+gradient = SubResource("Gradient_bo1h4")
 width = 128
 height = 128
 fill = 1
@@ -1030,14 +1022,6 @@ position = Vector2(218, 302)
 
 [node name="Spawnpoints" type="Node" parent="." unique_id=169008920]
 script = ExtResource("6_xdt7n")
-genericSlime = ExtResource("7_ygyl0")
-tankySlime = ExtResource("8_577ld")
-shooterSlime = ExtResource("9_smbdk")
-genericBat = ExtResource("10_aueat")
-flameBat = ExtResource("11_73owv")
-poisonBat = ExtResource("12_n8gbo")
-drillaBoss = ExtResource("6_hkcfk")
-mommaBatBoss = ExtResource("8_vo5uh")
 
 [node name="Level1" type="Node" parent="Spawnpoints" unique_id=1502419677]
 

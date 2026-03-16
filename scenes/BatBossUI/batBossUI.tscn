@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://7kaeb3dlqd58"]
+
+[ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_fpequ"]
+[ext_resource type="Texture2D" uid="uid://dl421f7wwt5cd" path="res://assets/sprites/batBossbarUnfilled.png" id="2_fpequ"]
+[ext_resource type="Texture2D" uid="uid://402pal6r1l7n" path="res://assets/sprites/batBossbarFilled.png" id="3_5sjea"]
+[ext_resource type="Script" uid="uid://cht5c1b7ixs5f" path="res://scenes/UI/healthbar.gd" id="4_3yqyu"]
+
+[node name="BatBossUI" type="Control" unique_id=77634517]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bossName" type="Label" parent="." unique_id=1104037972]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = -0.011111111
+anchor_right = 0.1
+anchor_bottom = -0.011111111
+offset_left = 207.0
+offset_top = 12.0
+offset_right = 432.0
+offset_bottom = 48.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.39911243, 0.31660736, 1)
+theme_override_fonts/font = ExtResource("1_fpequ")
+theme_override_font_sizes/font_size = 32
+text = "Momma Bat"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="." unique_id=821646644]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.3, 0.3)
+
+[node name="healthbar" type="TextureProgressBar" parent="Control" unique_id=200428391]
+texture_filter = 6
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.55677
+anchor_top = 0.05
+anchor_right = 11.956769
+anchor_bottom = 0.05
+offset_left = 131.0625
+offset_top = 4.666667
+offset_right = 627.0625
+offset_bottom = 132.66667
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("2_fpequ")
+texture_progress = ExtResource("3_5sjea")
+script = ExtResource("4_3yqyu")
+metadata/_edit_use_anchors_ = true
