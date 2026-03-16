@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://bb5n4k0n2cgey" path="res://assets/sounds/BigDrilla/bossDeath2.mp3" id="13_0fn1c"]
 [ext_resource type="Texture2D" uid="uid://dgyh5fd8bsr4l" path="res://assets/sprites/heatShield.png" id="14_sc6wf"]
 [ext_resource type="PackedScene" uid="uid://bkmm8277xdoyv" path="res://scenes/Target/target.tscn" id="15_0hseo"]
+[ext_resource type="AudioStream" uid="uid://db3qwr7ryt443" path="res://scenes/BigDrilla/INTRO.mp3" id="16_v1l3c"]
+[ext_resource type="AudioStream" uid="uid://b5rp1t8mtoa7f" path="res://scenes/BigDrilla/LOOPING_PART_MAYBE_2.mp3" id="17_mndfy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qd5q"]
 atlas = ExtResource("3_ci0t4")
@@ -354,5 +356,14 @@ scale = Vector2(1.5, 1.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=446873857]
 position = Vector2(-32.5, 0)
 shape = SubResource("RectangleShape2D_0hseo")
+
+[node name="music1" type="AudioStreamPlayer2D" parent="." unique_id=730959790]
+stream = ExtResource("16_v1l3c")
+volume_db = 15.0
+
+[node name="music2" type="AudioStreamPlayer2D" parent="." unique_id=1220690594]
+stream = ExtResource("17_mndfy")
+volume_db = 15.0
+parameters/looping = true
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
