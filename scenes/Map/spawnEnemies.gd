@@ -1,40 +1,37 @@
 extends Node
 
-# da slimes
-var genericSlime
-var tankySlime
-var shooterSlime
+@export var genericSlime: PackedScene
+@export var tankySlime: PackedScene
+@export var shooterSlime: PackedScene
 
-# da bats
-var genericBat
-var flameBat
-var poisonBat
+@export var genericBat: PackedScene
+@export var flameBat: PackedScene
+@export var poisonBat: PackedScene
 
-# da bosses
-var drillaBoss
-var mommaBatBoss
+@onready var drillaBossSpawnPoint = $BossMarkers/BigDrilla/BossSpawnpoint
+@export var drillaBoss: PackedScene
+@export var mommaBatBoss: PackedScene
 
 
 
 class WaveData:
-	var totalEnemies
-	var spawnInterval
-	var minInterval
-	var scaling: float # rmvs time from interval
-	var waveBatchMobEnemies # enemies before rest
-	var restDuration
-	var enemyWeights
+	var totalEnemies: int
+	var spawnInterval: float
+	var minInterval: float # floor — won't go faster than this
+	var scalingRate: float # seconds shaved off interval per 10s in level
+	var batchSize: int # enemies before a rest
+	var restDuration: float # seconds of rest between batches
+	var enemyWeights: Dictionary
 
 	func _init(total: int, interval: float, min_interval: float, scaling: float, batch: int, rest: float, weights: Dictionary) -> void:
 		totalEnemies = total
 		spawnInterval = interval
-		minInterval = min_interval
-		scaling = scaling
-		waveBatchMobEnemies = batch
-		restDuration = rest
+		minInterval   = min_interval
+		scalingRate   = scaling
+		batchSize     = batch
+		restDuration  = rest
 		enemyWeights = weights
 
-	# randomness ig?
 	func pickEnemyKey() -> String:
 		var total_weight := 0
 		for w in enemyWeights.values():
@@ -47,13 +44,11 @@ class WaveData:
 				return key
 		return enemyWeights.keys()[0]
 		
-# total, startInterval, minInterval, scaling, waveBatchMobEnemies, restDuration, weights
+# total, startInterval, minInterval, scalingRate, batchSize, restDuration, weights
 var waveTable: Dictionary = {
-	# BEFORE FIRST BOSS
-	1: WaveData.new(8,3, 1.6, 0.08, 3, 4.0, { "genericSlime": 7, "tankySlime": 3 }),
+	1: WaveData.new(8,  3, 1.6, 0.08, 3, 4.0, { "genericSlime": 7, "tankySlime": 3 }),
 	2: WaveData.new(10, 2.8, 1.4, 0.10, 4, 4.0, { "genericSlime": 5, "tankySlime": 3, "shooterSlime": 2 }),
 
-	# BEFORE SECOND BOSS
 	5: WaveData.new(14, 2.6, 1.4, 0.10, 3, 3.0, { "genericBat": 4, "flameBat": 3, "shooterSlime": 1, "tankySlime": 1 }),
 	6: WaveData.new(16, 2.4, 1.2, 0.12, 4, 3.0, { "genericBat": 3, "flameBat": 4, "poisonBat": 2, "shooterSlime": 1, "tankySlime": 1 }),
 }
@@ -90,8 +85,6 @@ func _process(delta: float) -> void:
 	if not Globals.started:
 		return
 	var level = Globals.level
-	if level == null:
-		return
 	
 	if level != lastLevel:
 		
@@ -100,7 +93,7 @@ func _process(delta: float) -> void:
 		if level == 3:
 			started = false
 			var bossRef = drillaBoss.instantiate()
-			bossRef.position = $BossMarkers/BigDrilla/BossSpawnpoint.position
+			bossRef.position = drillaBossSpawnPoint.position
 			add_child(bossRef)
 			return
 			
@@ -155,10 +148,10 @@ func updateDifficulty(level: int) -> void:
 		return
 	var wave: WaveData = waveTable[level]
 	
-	# Every 10 seconds in the level, reduce interval by scaling
-	var reduction := (timeInLevel / 10.0) * wave.scaling
+	# Every 10 seconds in the level, reduce interval by scalingRate (floored at minInterval)
+	var reduction := (timeInLevel / 10.0) * wave.scalingRate
 	currentInterval = max(wave.minInterval, wave.spawnInterval - reduction)
-
+	
 func startWave(level: int) -> void:
 	if not waveTable.has(level):
 		return
@@ -189,11 +182,10 @@ func startWave(level: int) -> void:
 	enemiesSpawned += 1
 	enemiesInBatch += 1
 	
-	if enemiesInBatch >= wave.waveBatchMobEnemies:
+	if enemiesInBatch >= wave.batchSize:
 		spawnState = SpawnState.RESTING
 
 
-# what a mess
 func getSceneForKey(key: String) -> PackedScene:
 	match key:
 		"genericSlime": return genericSlime
@@ -203,7 +195,7 @@ func getSceneForKey(key: String) -> PackedScene:
 		"flameBat": return flameBat
 		"poisonBat": return poisonBat
 	return null
-
+	
 func getValidSpawnPoints(points: Array) -> Array:
 	var player := get_tree().get_first_node_in_group("player")
 	if player == null:

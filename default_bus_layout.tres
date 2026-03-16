@@ -22,9 +22,9 @@ tap2_delay_ms = 264.0
 
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
-bus/0/effect/0/enabled = true
+bus/0/effect/0/enabled = false
 bus/0/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
-bus/0/effect/1/enabled = true
+bus/0/effect/1/enabled = false
 bus/1/name = &"cave reverb"
 bus/1/solo = false
 bus/1/mute = false
