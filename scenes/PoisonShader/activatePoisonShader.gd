@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var color_rect: ColorRect
-@export var tween_speed: float = 0.6 
+@export var tween_speed: float = 0.3
 
 var _material: ShaderMaterial
 var _displayed_intensity: float = 0.0

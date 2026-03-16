@@ -268,7 +268,7 @@ func die():
 		fade_tween.tween_property(boss_ui, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 		fade_tween.tween_callback(boss_layer.queue_free)
 
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3).timeout
 	
 	#var shop_layer = CanvasLayer.new()
 	#shop_layer.layer = 100
