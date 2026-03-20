@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cmgkat8td6pn1" path="res://assets/sounds/MommaBat/batFlappingWings.mp3" id="11_yv1p5"]
 [ext_resource type="AudioStream" uid="uid://hinf0we1vx05" path="res://assets/sounds/MommaBat/bossDashing.mp3" id="12_w6erj"]
 [ext_resource type="AudioStream" uid="uid://db3qwr7ryt443" path="res://scenes/BigDrilla/INTRO.mp3" id="15_dc03k"]
-[ext_resource type="AudioStream" uid="uid://b5rp1t8mtoa7f" path="res://scenes/BigDrilla/LOOPING_PART_MAYBE_2.mp3" id="16_spakr"]
+[ext_resource type="AudioStream" uid="uid://d0n4skp50dojs" path="res://scenes/BigDrilla/LoopingMINUTES_Many.mp3" id="16_dc03k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yv1p5"]
 atlas = ExtResource("6_i7l1d")
@@ -298,7 +298,7 @@ stream = ExtResource("15_dc03k")
 volume_db = 15.0
 
 [node name="music2" type="AudioStreamPlayer2D" parent="." unique_id=965241632]
-stream = ExtResource("16_spakr")
+stream = ExtResource("16_dc03k")
 volume_db = 15.0
 parameters/looping = true
 

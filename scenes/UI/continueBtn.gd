@@ -2,6 +2,7 @@ extends Button
 
 func _on_button_up() -> void:
 	var drill = get_tree().get_first_node_in_group("drill")
+	if not is_inside_tree(): return
 	if drill:
 		$"../UIButtonClicked".play()
 		drill.stop_drill()

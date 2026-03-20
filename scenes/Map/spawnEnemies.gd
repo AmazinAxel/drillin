@@ -85,6 +85,8 @@ func _process(delta: float) -> void:
 	if not Globals.started:
 		return
 	var level = Globals.level
+	if level == null:
+		return
 	
 	if level != lastLevel:
 		

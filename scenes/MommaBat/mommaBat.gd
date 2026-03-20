@@ -142,7 +142,7 @@ func moveToCenterWithCamera(target: Vector2, move_speed: float, camera: Camera2D
 func moveToPoint(target: Vector2, move_speed: float):
 	while global_position.distance_to(target) > 5.0:
 		
-		if not is_instance_valid(self):
+		if not is_instance_valid(self) or not is_inside_tree():
 			return
 			
 		if isDying:
@@ -171,7 +171,10 @@ func moveToPoint(target: Vector2, move_speed: float):
 					$AnimatedSprite2D.rotation = angle
 				else:
 					$AnimatedSprite2D.rotation = angle + (deg_to_rad(180))
-					
+		
+		if not is_inside_tree():
+			return
+			
 		move_and_slide()
 		await get_tree().process_frame
 	
@@ -229,10 +232,11 @@ func startDiagonalDash():
 	overridePathfinding = true
 	await moveToPoint(lastTargetPos, dashSpeed)
 	
+	
 	stopDashingAnimation()
 	var spawnpoint = get_tree().get_first_node_in_group("mommaBatSpawnpoint")
 	await moveToPoint(spawnpoint.global_position, returnSpeed)
-	
+	if not is_inside_tree(): return
 	overridePathfinding = false
 
 func startDashMode():
@@ -240,11 +244,7 @@ func startDashMode():
 		if !belowHalfHealth:
 			await get_tree().create_timer(0.1).timeout
 			continue
-		
-		if not is_instance_valid(healthbar_thing):
-			return
-		healthbar_thing.texture_progress = preload("res://scenes/UI/BatBossBarAliveANNNNNGGGGRYYYYYYYYYY.png")
-
+	
 		await spawnBats()
 		
 		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
@@ -347,8 +347,9 @@ func startDashingAnimation():
 	
 func stopDashingAnimation():
 	isDashing = false
-	$BatFlappingWings.playing = true
-	$BossDashing.playing = false
+	if is_inside_tree():
+		$BatFlappingWings.playing = true
+		$BossDashing.playing = false
 	animated_sprite.play("default")
 	$DamageArea.rotation = 25
 	$CollisionShape2D.rotation = 25

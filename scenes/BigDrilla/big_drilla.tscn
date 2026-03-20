@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dgyh5fd8bsr4l" path="res://assets/sprites/heatShield.png" id="14_sc6wf"]
 [ext_resource type="PackedScene" uid="uid://bkmm8277xdoyv" path="res://scenes/Target/target.tscn" id="15_0hseo"]
 [ext_resource type="AudioStream" uid="uid://db3qwr7ryt443" path="res://scenes/BigDrilla/INTRO.mp3" id="16_v1l3c"]
-[ext_resource type="AudioStream" uid="uid://b5rp1t8mtoa7f" path="res://scenes/BigDrilla/LOOPING_PART_MAYBE_2.mp3" id="17_mndfy"]
+[ext_resource type="AudioStream" uid="uid://d0n4skp50dojs" path="res://scenes/BigDrilla/LoopingMINUTES_Many.mp3" id="17_v1l3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qd5q"]
 atlas = ExtResource("3_ci0t4")
@@ -362,7 +362,7 @@ stream = ExtResource("16_v1l3c")
 volume_db = 15.0
 
 [node name="music2" type="AudioStreamPlayer2D" parent="." unique_id=1220690594]
-stream = ExtResource("17_mndfy")
+stream = ExtResource("17_v1l3c")
 volume_db = 15.0
 parameters/looping = true
 
