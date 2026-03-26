@@ -242,11 +242,13 @@ func startDiagonalDash():
 func startDashMode():
 	while is_instance_valid(self) and not isDying:
 		if !belowHalfHealth:
+			if not is_inside_tree(): return
 			await get_tree().create_timer(0.1).timeout
 			continue
 	
 		await spawnBats()
 		
+		if not is_inside_tree(): return
 		await get_tree().create_timer(randf_range(3.0, 5.0)).timeout
 		
 		if isDying:
@@ -261,6 +263,7 @@ func startDashMode():
 			if isDying:
 				return
 			await moveToNextAttackPoints()
+			if not is_inside_tree(): return
 			if i < 2:
 				await get_tree().create_timer(randf_range(0.5, 1.0)).timeout
 		
@@ -268,7 +271,6 @@ func startDashMode():
 		stopDashingAnimation()
 		await moveBackToSpawnpoint()
 		overridePathfinding = false
-		
 		
 		
 func moveToAttackPoints():
