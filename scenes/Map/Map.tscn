@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c053lkmyhf8bn" path="res://assets/sprites/BACKGROUND_CRYSTAL_RED.png" id="22_n8gbo"]
 [ext_resource type="Texture2D" uid="uid://bxcvnwv17a74q" path="res://assets/sprites/BACKGROUND_CRYSTAL_White.png" id="23_3qrj3"]
 [ext_resource type="Texture2D" uid="uid://3uedbtqbugt1" path="res://assets/sprites/BACKGROUND_CRYSTAL_BLU.png" id="24_i4as0"]
+[ext_resource type="Texture2D" uid="uid://bapldv87eoocl" path="res://assets/sprites/BossCrystalCrab.png" id="25_3qrj3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vo5uh"]
 texture = ExtResource("4_bo1h4")
@@ -1864,3 +1865,7 @@ texture = ExtResource("22_n8gbo")
 [node name="BackgroundCrystalWhite3" type="Sprite2D" parent="." unique_id=679238867]
 position = Vector2(42, 898)
 texture = ExtResource("23_3qrj3")
+
+[node name="BossCrystalCrab" type="Sprite2D" parent="." unique_id=1198030565]
+position = Vector2(169, 9490)
+texture = ExtResource("25_3qrj3")
