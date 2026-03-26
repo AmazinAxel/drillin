@@ -1,10 +1,7 @@
 extends StaticBody2D
 
-# ========================== CONFIG ==========================
-@export var max_health: float = 4.0
-@export var mineral_reward: int = 1
-
-
+var max_health: float = 4.0 # config
+var mineral_reward: int = 1 # config
 var health: float
 var is_pickup: bool = false
 var speed: float = 0.0
@@ -13,18 +10,12 @@ var acceleration: float = 600.0
 var target: Node2D = null
 var bob_time: float = 0.0
 
-@onready var point_light = $PointLight2D
-@onready var sprite = get_node_or_null("Sprite2D")
-@onready var health_bar = $TextureProgressBar
-@onready var ui_thing = $UI
-@onready var collision = $CollisionShape2D
-
 func _ready():
 	health = max_health
-	health_bar.max_value = max_health
-	health_bar.value = max_health
-	health_bar.visible = false
-	ui_thing.visible = false
+	$TextureProgressBar.max_value = max_health
+	$TextureProgressBar.value = max_health
+	$TextureProgressBar.visible = false
+	$UI.visible = false
 
 func take_damage(amount):
 	if amount == null:
@@ -37,9 +28,9 @@ func take_damage(amount):
 	else:
 		$hit2.play()
 
-	health_bar.visible = true
-	health_bar.value = health
-	ui_thing.visible = true
+	$TextureProgressBar.visible = true
+	$TextureProgressBar.value = health
+	$UI.visible = true
 	$damageParticles.emitting = true
 
 	modulate = Color.WHITE * 2
@@ -53,9 +44,9 @@ func _become_pickup():
 	is_pickup = true
 
 	# Hide health bar and disable collision
-	health_bar.visible = false
-	ui_thing.visible = false
-	collision.set_deferred("disabled", true)
+	$TextureProgressBar.visible = false
+	$UI.visible = false
+	$CollisionShape2D.set_deferred("disabled", true)
 
 	# Shrink and float up
 	scale = Vector2(0.5, 0.5)

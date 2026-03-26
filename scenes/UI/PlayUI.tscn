@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://di1jb5os7qfa7"]
 
-[ext_resource type="Script" uid="uid://c71vdjq73b4ub" path="res://scenes/UI/animatePlayUI.gd" id="1_p033w"]
 [ext_resource type="FontFile" uid="uid://c3g62tojgeqhs" path="res://scenes/karmatic-arcade.ttf" id="1_r0bhs"]
 [ext_resource type="FontFile" uid="uid://c65gbpprdei7w" path="res://scenes/lowres-pixel.otf" id="2_p033w"]
 [ext_resource type="Script" uid="uid://cfabot5h6e74b" path="res://scenes/button.gd" id="3_vxir0"]
@@ -9,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://0le8aqkwtwmg" path="res://assets/sounds/UIButtonClicked.mp3" id="6_ee75v"]
 
 [node name="PlayUi" type="Node" unique_id=1693352864]
-script = ExtResource("1_p033w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=687228488]
 

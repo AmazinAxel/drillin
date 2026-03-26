@@ -1,40 +1,31 @@
 extends CharacterBody2D
-@export var jump_force: float = -300.0
 
-@export var max_health: int = 4
-@export var speed: float = 40.0
-@export var gravity: float = 400.0
-@export var jump_threshold: float = 20.0 
+var jump_force: float = -300.0
+var max_health: int = 4
+var speed: float = 40.0
+var gravity: float = 400.0
+var jump_threshold: float = 20.0 
+var knockbackFromPlayer: float = 300.0
+var damage: int = 5
+var damage_cooldown: float = 0.5
+var attack_range: float = 60.0
+@export var projectile_scene: PackedScene # THIS IS AN EXPORT DO NOT REMOVE
 
-@export var knockbackFromPlayer: float = 300.0
+var minAttackDistance: float = 100.0 
+var maxAttackDistance: float = 150.0 
 
-@export var damage: int = 5
-@export var damage_cooldown: float = 0.5
-
-@export var attack_range: float = 60.0
-@export var projectile_scene: PackedScene
-
-@export var minAttackDistance: float = 100.0 
-@export var maxAttackDistance: float = 150.0 
-
-# === INTERNAL STATE ===
 var health: int
 var can_damage: bool = true
-
 var isKnockedBackFromPlayer: bool = false
 var knockbackVelocity: Vector2
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $TextureProgressBar
-@onready var deathParticles = $deathParticles
-
 func _ready():
 	health = max_health
-	health_bar.max_value = max_health
-	health_bar.value = max_health
+	$TextureProgressBar.max_value = max_health
+	$TextureProgressBar.value = max_health
 	
 	await get_tree().create_timer(randf_range(0.0, 2.0)).timeout
-	animated_sprite.play("shoot")
+	$AnimatedSprite2D.play("shoot")
 	shoot_loop()
 
 func shoot_loop():
@@ -79,7 +70,7 @@ func _physics_process(delta):
 			
 	var player = get_tree().get_first_node_in_group("player")
 	if player && !isKnockedBackFromPlayer:
-		animated_sprite.play("default")
+		$AnimatedSprite2D.play("default")
 		var direction = (player.global_position - global_position).normalized()
 		
 		var distance = global_position.distance_to(player.global_position)
@@ -90,7 +81,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 			
-		animated_sprite.flip_h = direction.x > 0
+		$AnimatedSprite2D.flip_h = direction.x > 0
 
 			
 		if player.global_position.y < global_position.y - jump_threshold and is_on_floor():
@@ -100,7 +91,7 @@ func _physics_process(delta):
 
 func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
-	health_bar.value = health
+	$TextureProgressBar.value = health
 	
 	if hitFrom != Vector2.ZERO:
 		var knockbackDir = (global_position - hitFrom).normalized()
@@ -114,6 +105,6 @@ func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 		$EnemyHitSound.playing = true
 	
 func die():
-	deathParticles.emitting = true
+	$deathParticles.emitting = true
 	await get_tree().create_timer(0.2).timeout
 	queue_free()

@@ -1,21 +1,19 @@
 extends CharacterBody2D
-@export var max_health: int = 6
-@export var speed: float = 50.0
-@export var swarmDistance: float = 1.3
-@export var gravity: float = 800.0
-@export var jump_force: float = -300.0
-@export var damage: int = 5
-@export var damage_cooldown: float = 1.0
-@export var attack_range: float = 15.0
-@export var knockbackFromPlayer: float = 1000.0
-@export var knockbackForce: float = 3.0
-@export var shoot_range: float = 200.0
-@export var shoot_cooldown: float = 1.5
 
+var max_health: int = 6
+var speed: float = 50.0
+var swarmDistance: float = 1.3
+var gravity: float = 800.0
+var jump_force: float = -300.0
+var damage: int = 5
+var damage_cooldown: float = 1.0
+var attack_range: float = 15.0
+var knockbackFromPlayer: float = 1000.0
+var knockbackForce: float = 3.0
+var shoot_range: float = 200.0
+var shoot_cooldown: float = 1.5
+@export var projectileScene: PackedScene # DO NOT REMOVE EXPORT
 
-@export var projectileScene: PackedScene
-
-# === INTERNAL STATE ===
 var health: int
 var can_damage: bool = true
 var isKnockedBackFromPlayer: bool = false
@@ -25,13 +23,10 @@ var swarmOffsetTarget: Vector2 = Vector2.ZERO
 var swarmOffsetTimer: float = 0.0
 var shoot_timer: float = 0.0
 
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $TextureProgressBar
-
 func _ready():
 	health = max_health
-	health_bar.max_value = max_health
-	health_bar.value = max_health
+	$TextureProgressBar.max_value = max_health
+	$TextureProgressBar.value = max_health
 	
 	swarmOffsetTarget = Vector2(randf_range(-60, 60), randf_range(-80, 20))
 	swarmOffset = swarmOffsetTarget
@@ -64,7 +59,7 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 		
-	animated_sprite.play("default")
+	$AnimatedSprite2D.play("default")
 	
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
@@ -88,7 +83,7 @@ func _physics_process(delta):
 			desired_vel = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * speed * 0.3
 
 		velocity = velocity.lerp(desired_vel, delta * 3.0)
-		animated_sprite.flip_h = velocity.x > 0
+		$AnimatedSprite2D.flip_h = velocity.x > 0
 			
 		if can_damage and distance < attack_range:
 			player.take_damage(damage)
@@ -110,7 +105,7 @@ func _physics_process(delta):
 
 func take_damage(amount: int, hitFrom: Vector2 = Vector2.ZERO) -> void:
 	health -= amount
-	health_bar.value = health
+	$TextureProgressBar.value = health
 	if hitFrom != Vector2.ZERO:
 		var knockbackDir = (global_position - hitFrom).normalized()
 		knockbackVelocity = knockbackDir * knockbackFromPlayer

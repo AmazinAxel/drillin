@@ -1,5 +1,7 @@
 extends Node
 
+# checkpoint system
+
 func _ready():
 	if Globals.checkpoint == 1:
 		$Player.position = $Map/Checkpoints/PlayerStage1.position
