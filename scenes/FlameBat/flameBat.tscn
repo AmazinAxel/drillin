@@ -124,8 +124,8 @@ streams_count = 1
 stream_0/stream = ExtResource("8_fwj1o")
 
 [node name="flameBat" type="CharacterBody2D" unique_id=1099381924 groups=["enemies"]]
-collision_layer = 34
-collision_mask = 34
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_wtrjl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654479302]

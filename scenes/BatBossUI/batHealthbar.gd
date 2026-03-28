@@ -1,8 +1,8 @@
 extends TextureProgressBar
 
 func _ready():
-	max_value = 105
-	min_value = -5
+	max_value = 110
+	min_value = -10
 	value = 80
 	Globals.boss_health_changed.connect(_on_boss_health_changed)
 

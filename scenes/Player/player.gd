@@ -74,6 +74,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if !is_on_floor():
 		$playerSprite.play("jump")
+	elif $playerSprite.animation:
+		$playerSprite.play("default")
 
 	var mouse_pos = get_global_mouse_position()
 	var mouseDirection = mouse_pos - global_position

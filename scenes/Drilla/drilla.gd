@@ -157,7 +157,7 @@ func start_drill_sequence():
 		stop_drill()
 		return
 
-	elif Globals.level == 7:
+	elif Globals.level == 10:
 		var win_layer = CanvasLayer.new()
 		win_layer.layer = 100
 		win_layer.name = "ShopLayer"
@@ -169,6 +169,7 @@ func start_drill_sequence():
 		var win_tween = create_tween()
 		win_tween.tween_property(win, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
 		return
+		
 	Globals.showUI = true
 	var shop_layer = CanvasLayer.new()
 	shop_layer.layer = 100
@@ -270,6 +271,20 @@ func stop_drill():
 		goToY = 5099.0
 	elif Globals.level == 6:
 		goToY = 6271.0
+		
+	elif Globals.level == 7:
+		goToY = 7228.0
+	elif Globals.level == 8:
+		goToY = 7804.0
+	elif Globals.level == 9:
+		goToY = 8396.0
+	
+	elif Globals.level == 10:
+		goToY = 9530.0
+		
+	elif Globals.level == 11:
+		goToY = 9530.0
+	
 	
 	final_tween.tween_property(self, "global_position:y", goToY, 3.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	final_tween.tween_property(player_node, "global_position:y", goToY, 3.7).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)

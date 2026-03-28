@@ -60,8 +60,8 @@ streams_count = 1
 stream_0/stream = ExtResource("7_wojfi")
 
 [node name="BabyBat" type="CharacterBody2D" unique_id=331467515 groups=["bats", "enemies"]]
-collision_layer = 34
-collision_mask = 34
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_bwrru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1171831636]
