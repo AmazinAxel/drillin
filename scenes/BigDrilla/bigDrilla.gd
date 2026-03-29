@@ -40,6 +40,8 @@ func _ready():
 	beginEnterAnimation()
 	Globals.bossAlive = true
 	
+	moosic()
+	
 func beginEnterAnimation():
 	var marker1 = get_tree().get_first_node_in_group("bossMarker1")
 	var marker2 = get_tree().get_first_node_in_group("bossMarker2")
@@ -125,7 +127,6 @@ func initReady():
 	collision_layer = 8
 	collision_mask = 8
 
-	moosic()
 	shoot_loop()
 	charge_loop()
 

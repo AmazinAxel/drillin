@@ -72,8 +72,8 @@ streams_count = 1
 stream_0/stream = ExtResource("5_idbkf")
 
 [node name="poisonBat" type="CharacterBody2D" unique_id=120678988 groups=["enemies"]]
-collision_layer = 34
-collision_mask = 34
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_wmumx")
 projectileScene = ExtResource("2_h2ggs")
 
